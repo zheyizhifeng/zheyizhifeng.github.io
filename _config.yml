@@ -104,5 +104,7 @@ theme: next
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: git
-  repo: https://github.com/zheyizhifeng/zheyizhifeng.github.io.git
+  repo: 
+    github: https://github.com/zheyizhifeng/zheyizhifeng.github.io.git
+    coding: https://e.coding.net/zheyizhifeng/lucida/lucida-blog.git
   branch: master

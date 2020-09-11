@@ -1,6 +1,7 @@
 ---
 title: '404'
 date: 2020-09-11 15:48:59
+permalink: /404
 ---
 <!DOCTYPE HTML>
 <html>
@@ -13,8 +14,6 @@ date: 2020-09-11 15:48:59
 </head>
 
 <body>
-  <script type="text/javascript" src="https://www.qq.com/404/search_children.js" charset="utf-8"
-    homePageUrl="https://zheyizhifeng.github.io" homePageName="回到我的主页"></script>
-</body>
+<script type="text/javascript" src="//qzonestyle.gtimg.cn/qzone/hybrid/app/404/search_children.js" charset="utf-8" homePageUrl="https://zheyizhifeng.github.io" homePageName="回到我的主页"></script></body>
 
 </html>

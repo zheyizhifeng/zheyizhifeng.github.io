@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2020-10-11 21:39:31 / Modified: 22:28:58" itemprop="dateCreated datePublished" datetime="2020-10-11T21:39:31+08:00">2020-10-11</time>
+              <time title="Created: 2020-10-11 21:39:31 / Modified: 23:40:38" itemprop="dateCreated datePublished" datetime="2020-10-11T21:39:31+08:00">2020-10-11</time>
             </span>
 
           
@@ -218,10 +218,23 @@
 
 <p>安装完成以后效果如下</p>
 <p><img src="https://www.hildeberto.com/images/posts/oh-my-zsh.png" alt="Installing Oh-My-Zsh on Debian-Based Systems"></p>
-<h1 id="修改主题以及配置"><a href="#修改主题以及配置" class="headerlink" title="修改主题以及配置"></a>修改主题以及配置</h1><p><strong>oh-my-zsh</strong> 的配置文件位于 <code>~/.zshrc</code>，可以在<code>~/.zshrc</code>中修改 <strong>ZSH_THEME</strong> 主题字段以及 <strong>plugins</strong> 扩展插件d等字段进行更丰富的扩展</p>
-<p><img src="https://user-gold-cdn.xitu.io/2019/9/16/16d38ba897035db8?imageView2/0/w/1280/h/960/format/webp/ignore-error/1" alt="img"></p>
-<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Set name of the theme to load --- if set to &quot;random&quot;, it will</span></span><br><span class="line"><span class="comment"># load a random theme each time oh-my-zsh is loaded, in which case,</span></span><br><span class="line"><span class="comment"># to know which specific one was loaded, run: echo $RANDOM_THEME</span></span><br><span class="line"><span class="comment"># See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes</span></span><br><span class="line">ZSH_THEME=<span class="string">&quot;agnoster&quot;</span></span><br></pre></td></tr></table></figure>
+<h1 id="修改主题以及配置"><a href="#修改主题以及配置" class="headerlink" title="修改主题以及配置"></a>修改主题以及配置</h1><p><strong>oh-my-zsh</strong> 的配置文件位于 <code>~/.zshrc</code>，可以进行自定义的修改配置。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011231204276.png" alt="~/.zshrc配置文件"></p>
+<h2 id="主题配置"><a href="#主题配置" class="headerlink" title="主题配置"></a>主题配置</h2><p><strong>ZSH_THEME</strong> 字段为主题字段，可选的主题参考 <code>~/.oh-my-zsh/themes/</code> 目录。</p>
+<h2 id="插件配置"><a href="#插件配置" class="headerlink" title="插件配置"></a>插件配置</h2><p>本文推荐 <strong>3</strong> 个较为常用的 <code>oh-my-zsh</code> 插件</p>
+<ul>
+<li><p><strong>zsh-autosuggestions</strong> 【给出建议、效率神器】</p>
+</li>
+<li><p><strong>zsh-syntax-highlighting</strong> 【高亮命令】</p>
+</li>
+<li><p><strong>git</strong>【插件默认启用，支持各种 <strong>git</strong> 命令简写，参考 <code>~/.oh-my-zsh/plugins/git/git.plugin.zsh</code>】</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011233927923.png" alt="常见git命令简写"></p>
+</li>
+</ul>
+<h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 安装 zsh-autosuggestions</span></span><br><span class="line">git <span class="built_in">clone</span> git://github.com/zsh-users/zsh-autosuggestions <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh-autosuggestions</span><br><span class="line"><span class="comment"># 安装 zsh-syntax-highlighting</span></span><br><span class="line">git <span class="built_in">clone</span> git://github.com/zsh-users/zsh-syntax-highlighting <span class="variable">$ZSH_CUSTOM</span>/plugins/zsh-syntax-highlighting</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装后的插件位于~/.oh-my-zsh/custom/plugins/目录</span></span><br></pre></td></tr></table></figure>
 
+<p>安装插件以后还需要更新 <code>~/.zshrc</code> 配置文件</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011232535934.png" alt="image-20201011232535934"></p>
 <h1 id="保存配置后进行更新"><a href="#保存配置后进行更新" class="headerlink" title="保存配置后进行更新"></a>保存配置后进行更新</h1><figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.zshrc</span><br></pre></td></tr></table></figure>
 
 <p>下图为 <strong>agnoster</strong> 主题的效果</p>

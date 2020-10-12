@@ -51,59 +51,57 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 
 ```
 
-安装完成以后效果如下
+安装完成以后效果如图
 
-![Installing Oh-My-Zsh on Debian-Based Systems](https://www.hildeberto.com/images/posts/oh-my-zsh.png)
+![](https://www.hildeberto.com/images/posts/oh-my-zsh.png)
 
 # 修改主题以及配置
 
 **oh-my-zsh** 的配置文件位于 `~/.zshrc`，可以进行自定义的修改配置。
 
-![~/.zshrc配置文件](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011231204276.png)
-
 ## 主题配置
 
-**ZSH_THEME** 字段为主题字段，可选的主题参考 `~/.oh-my-zsh/themes/` 目录。
+![](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201012111742916.png)
+
+**ZSH_THEME** 字段为主题字段，默认为 **robbyrussell**，可以自由更改，可选的主题参考 `~/.oh-my-zsh/themes/` 目录。
 
 ## 插件配置
 
-本文推荐 **3** 个较为常用的 `oh-my-zsh` 插件
+本文只介绍 **3** 个较为常用的 **oh-my-zsh** 插件
 
-### 插件简介
+### 插件介绍
 
-- **zsh-autosuggestions**
+#### zsh-autosuggestions
+输入命令时可提示自动补全
 
- 输入命令时可提示自动补全
+![](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201012151917520.png)
 
-![提示自动补全](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011235101847.png)
-
-- **zsh-syntax-highlighting** 
+#### zsh-syntax-highlighting 
 
 常用的命令会高亮显示，命令错误显示红色
 
-![高亮提示](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011235321240.png)
+![](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201012151551507.png)
 
-- **git**
+#### git
+默认启用，支持各种 **git** 命令简写，完整简写列表参考 `~/.oh-my-zsh/plugins/git/git.plugin.zsh`
 
-插件默认启用，支持各种 **git** 命令简写, 参考 `~/.oh-my-zsh/plugins/git/git.plugin.zsh`
-  ![常见git命令简写](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011233927923.png)
+![](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011233927923.png)
 
 ### 安装插件
 
 ```zsh
 # 安装 zsh-autosuggestions
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
 # 安装 zsh-syntax-highlighting
 git clone git://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 
-# 安装后的插件位于~/.oh-my-zsh/custom/plugins/目录
+# 安装后的插件位于~/.oh-my-zsh/custom/plugins/ 目录
 ```
 
 安装插件以后还需要更新 `~/.zshrc` 配置文件
 
-![image-20201011232535934](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201011232535934.png)
-
-
+![](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201012112022558.png)
 
 # 保存配置后进行更新
 
@@ -113,7 +111,7 @@ source ~/.zshrc
 
 下图为 **agnoster** 主题的效果
 
-![agnoster-zsh-theme](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/20201011222823.png)
+![](https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20201012152422118.png)
 
  **注意**：在使用 **agnoster** 主题时，**部分符号在终端无法正常显示**，还需**安装** [Powerline fonts](https://github.com/powerline/fonts) **字体**
 

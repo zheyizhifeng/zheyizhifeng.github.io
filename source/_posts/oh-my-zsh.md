@@ -1,7 +1,13 @@
 ---
-title: oh my zsh!
+title: Oh My Zsh!
 date: 2020-10-11 21:39:31
-tags: terminal
+categories: 
+  - Tools
+  - Terminal
+tags: 
+  - Tools
+  - Terminal
+  - oh-my-zsh
 ---
 # 查看已有终端
 ```bash
@@ -15,6 +21,7 @@ cat /etc/shells
 # /bin/tcsh
 # /bin/zsh
 ```
+<!-- more -->
 
 # 查看当前正在使用的终端
 ```bash
@@ -42,7 +49,7 @@ chsh -s $(which zsh) $(whoami)
 
 # 安装 oh-my-zsh
 
-```zsh
+```bash
 # curl 方式安装
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
@@ -89,7 +96,7 @@ sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install
 
 ### 安装插件
 
-```zsh
+```bash
 # 安装 zsh-autosuggestions
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
@@ -105,7 +112,7 @@ git clone git://github.com/zsh-users/zsh-syntax-highlighting $ZSH_CUSTOM/plugins
 
 # 保存配置后进行更新
 
-```zsh
+```bash
 source ~/.zshrc
 ```
 
@@ -115,7 +122,7 @@ source ~/.zshrc
 
  **注意**：在使用 **agnoster** 主题时，**部分符号在终端无法正常显示**，还需**安装** [Powerline fonts](https://github.com/powerline/fonts) **字体**
 
-```zsh
+```bash
 # clone
 git clone https://github.com/powerline/fonts.git --depth=1
 # install

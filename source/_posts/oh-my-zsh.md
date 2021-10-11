@@ -1,7 +1,13 @@
 ---
-title: oh my zsh!
+title: Oh My Zsh!
 date: 2020-10-11 21:39:31
-tags: terminal
+categories: 
+  - Tools
+  - Terminal
+tags: 
+  - Tools
+  - Terminal
+  - oh-my-zsh
 ---
 # 查看已有终端
 ```bash
@@ -15,6 +21,7 @@ cat /etc/shells
 # /bin/tcsh
 # /bin/zsh
 ```
+<!-- more -->
 
 # 查看当前正在使用的终端
 ```bash

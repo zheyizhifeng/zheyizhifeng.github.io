@@ -1,24 +1,29 @@
 ---
-title: 在VS Code刷Leetcode
+title: LeetCode On VS Code
 date: 2020-10-28 10:39:06
-tags:
+categories: 
+  - Tools
+  - LeetCode
+tags: 
+  - Tools
+  - Vscode扩展
+  - Leetcode
+  - 算法
 ---
 # 如何优雅的在VS Code刷Leetcode算法题库？
 
 ## Requirements / 要求
 
-------
 
 **VS Code和Node的版本要求**
 
 - [*VS Code 1.30.1+*](https://code.visualstudio.com/)
 - [*Node.js 8+*](https://nodejs.org/en/)
 
-------
+<!-- more -->
 
 ## Quick Start / 快速开始
 
-------
 
 首先，我们需要给VS Code安装一个`leetcode`插件
 
@@ -28,23 +33,15 @@ tags:
 
 [*VS Code LeetCode在线下载地址*](https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-leetcode)
 
-------
 
 ## Features / 功能
 
-------
 
 ### 登陆登出
 
 - 点击`LeetCode Explorer`中的`Sign in to LeetCode` 即可登入。
 
-- 也可以使用快捷键(
-
-  ```
-  Ctrl+shift+p
-  ```
-
-  )唤起下列命令登入或利用cookie登入或登出:
+- 也可以使用快捷键 `Ctrl/Cmd+Shift+P` 唤起下列命令登入或利用cookie登入或登出:
 
   - **LeetCode: Sign in**
   - **LeetCode: Sign in (by cookie)**
@@ -67,23 +64,17 @@ tags:
 
 - `Solution`: 显示该问题的高票解答；
 
-- ```
-  Description
-  ```
+- ` Description `: 显示该问题的题目描述。
 
-  : 显示该问题的题目描述。
-
-  > *注意：可以通过 `leetcode.editor.shortcuts` 配置项来定制需要激活的快捷方式。默认情况下只有 `Submit` 和 `Test` 会被激活。*
+> *注意：可以通过 `leetcode.editor.shortcuts` 配置项来定制需要激活的快捷方式。默认情况下只有 `Submit` 和 `Test` 会被激活。*
 
 ### 通过关键字搜索题目
 
 - 点击 `LeetCode Explorer` 导航栏中的搜索按钮可按照关键字搜索题目。
 
-------
 
 ## Problem / 问题
 
-------
 
 ### 国内无法登陆海外版问题
 
@@ -107,7 +98,6 @@ tags:
 - 打卡VS Code用快捷键：`ctrl + shift + p` 输入leetcode，选择`Sign In by Cookie`
 - 输入邮箱 -> paste 刚刚从览器copy的`cookies`信息 -> ok,done. Start coding…
 
-------
 
 ## 参考链接
 
@@ -115,4 +105,3 @@ tags:
 - [*vscode-leetcode 中文使用教程*](https://github.com/jdneo/vscode-leetcode/blob/master/docs/README_zh-CN.md)
 - [*github issues: Failed to log in with a leetcode.com account*](https://github.com/jdneo/vscode-leetcode/issues/478)
 - [*浏览器获取cookies的方法*](https://github.com/jdneo/vscode-leetcode/issues/478)
-

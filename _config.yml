@@ -4,8 +4,8 @@
 
 # Site
 title: Lucida's Blog
-subtitle: 'a computer programer'
-description: ''
+subtitle: 'Stay Hungry, Stay Foolish'
+description: '文质彬彬，然后君子'
 keywords: Programing
 author: lucida
 language: zh-CN
@@ -32,7 +32,7 @@ i18n_dir: :lang
 skip_render:
 
 # Writing
-new_post_name: :title.md # File name of new posts
+new_post_name: :year/:title.md # File name of new posts
 default_layout: post
 titlecase: false # Transform title into titlecase
 external_link:

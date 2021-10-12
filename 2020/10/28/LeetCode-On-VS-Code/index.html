@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CIosevka:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="如何优雅的在VS Code刷Leetcode算法题库？Requirements &#x2F; 要求VS Code和Node的版本要求  VS Code 1.30.1+ Node.js 8+">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode On VS Code">
+<meta property="og:url" content="http://example.com/2020/10/28/LeetCode-On-VS-Code/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="如何优雅的在VS Code刷Leetcode算法题库？Requirements &#x2F; 要求VS Code和Node的版本要求  VS Code 1.30.1+ Node.js 8+">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-10-28T02:39:06.000Z">
+<meta property="article:modified_time" content="2021-10-11T06:10:46.649Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="Tools">
+<meta property="article:tag" content="Vscode扩展">
+<meta property="article:tag" content="Leetcode">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/10/28/LeetCode-On-VS-Code/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/10/28/LeetCode-On-VS-Code/","path":"2020/10/28/LeetCode-On-VS-Code/","title":"LeetCode On VS Code"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LeetCode On VS Code | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">8</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">5</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">4</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BC%98%E9%9B%85%E7%9A%84%E5%9C%A8VS-Code%E5%88%B7Leetcode%E7%AE%97%E6%B3%95%E9%A2%98%E5%BA%93%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">如何优雅的在VS Code刷Leetcode算法题库？</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Requirements-%E8%A6%81%E6%B1%82"><span class="nav-number">1.1.</span> <span class="nav-text">Requirements &#x2F; 要求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start-%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B"><span class="nav-number">1.2.</span> <span class="nav-text">Quick Start &#x2F; 快速开始</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Features-%E5%8A%9F%E8%83%BD"><span class="nav-number">1.3.</span> <span class="nav-text">Features &#x2F; 功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%99%BB%E9%99%86%E7%99%BB%E5%87%BA"><span class="nav-number">1.3.1.</span> <span class="nav-text">登陆登出</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E9%A2%98%E7%9B%AE"><span class="nav-number">1.3.2.</span> <span class="nav-text">选择题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%96%E8%BE%91%E5%99%A8%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F"><span class="nav-number">1.3.3.</span> <span class="nav-text">编辑器快捷方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E8%BF%87%E5%85%B3%E9%94%AE%E5%AD%97%E6%90%9C%E7%B4%A2%E9%A2%98%E7%9B%AE"><span class="nav-number">1.3.4.</span> <span class="nav-text">通过关键字搜索题目</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem-%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.</span> <span class="nav-text">Problem &#x2F; 问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BD%E5%86%85%E6%97%A0%E6%B3%95%E7%99%BB%E9%99%86%E6%B5%B7%E5%A4%96%E7%89%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.4.1.</span> <span class="nav-text">国内无法登陆海外版问题</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">1.5.</span> <span class="nav-text">参考链接</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/10/28/LeetCode-On-VS-Code/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode On VS Code
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-10-28 10:39:06" itemprop="dateCreated datePublished" datetime="2020-10-28T10:39:06+08:00">2020-10-28</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-11 14:10:46" itemprop="dateModified" datetime="2021-10-11T14:10:46+08:00">2021-10-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tools/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="如何优雅的在VS-Code刷Leetcode算法题库？"><a href="#如何优雅的在VS-Code刷Leetcode算法题库？" class="headerlink" title="如何优雅的在VS Code刷Leetcode算法题库？"></a>如何优雅的在VS Code刷Leetcode算法题库？</h1><h2 id="Requirements-要求"><a href="#Requirements-要求" class="headerlink" title="Requirements / 要求"></a>Requirements / 要求</h2><p><strong>VS Code和Node的版本要求</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://code.visualstudio.com/"><em>VS Code 1.30.1+</em></a></li>
+<li><a target="_blank" rel="noopener" href="https://nodejs.org/en/"><em>Node.js 8+</em></a></li>
+</ul>
+<a id="more"></a>
+
+<h2 id="Quick-Start-快速开始"><a href="#Quick-Start-快速开始" class="headerlink" title="Quick Start / 快速开始"></a>Quick Start / 快速开始</h2><p>首先，我们需要给VS Code安装一个<code>leetcode</code>插件</p>
+<p><strong>安装方法：</strong></p>
+<blockquote>
+<p>打开<code>VS Code</code> -&gt; 左边操作栏找到<code>Extensions</code> -&gt; 搜索插件名称：<code>leetcode</code> -&gt; <code>install</code></p>
+</blockquote>
+<p><a target="_blank" rel="noopener" href="https://marketplace.visualstudio.com/items?itemName=shengchen.vscode-leetcode"><em>VS Code LeetCode在线下载地址</em></a></p>
+<h2 id="Features-功能"><a href="#Features-功能" class="headerlink" title="Features / 功能"></a>Features / 功能</h2><h3 id="登陆登出"><a href="#登陆登出" class="headerlink" title="登陆登出"></a>登陆登出</h3><ul>
+<li><p>点击<code>LeetCode Explorer</code>中的<code>Sign in to LeetCode</code> 即可登入。</p>
+</li>
+<li><p>也可以使用快捷键 <code>Ctrl/Cmd+Shift+P</code> 唤起下列命令登入或利用cookie登入或登出:</p>
+<ul>
+<li><strong>LeetCode: Sign in</strong></li>
+<li><strong>LeetCode: Sign in (by cookie)</strong></li>
+<li><strong>LeetCode: Sign out</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="选择题目"><a href="#选择题目" class="headerlink" title="选择题目"></a>选择题目</h3><ul>
+<li>直接点击题目或者在 <code>LeetCode Explorer</code> 中右键题目并选择 <code>Preview Problem</code> 可查看题目描述</li>
+<li>选择 <code>Show Problem</code> 可直接进行答题。</li>
+</ul>
+<blockquote>
+<p>注意：可以通过更新配置项 <code>leetcode.workspaceFolder</code> 来指定保存题目文件所用的工作区路径。默认工作区路径为：**$HOME/.leetcode/**。<br>注意：可以通过更新配置项 <code>leetcode.showCommentDescription</code> 来指定是否要在注释中包含题目描述。<br>注意：可以通过 <code>LeetCode: Switch Default Language</code> 命令变更答题时默认使用编程语言。</p>
+</blockquote>
+<h3 id="编辑器快捷方式"><a href="#编辑器快捷方式" class="headerlink" title="编辑器快捷方式"></a>编辑器快捷方式</h3><ul>
+<li><p><code>Submit</code>: 提交你的答案至 <code>LeetCode</code>；</p>
+</li>
+<li><p><code>Test</code>: 用给定的测试用例测试你的答案；</p>
+</li>
+<li><p><code>Solution</code>: 显示该问题的高票解答；</p>
+</li>
+<li><p><code>Description</code>: 显示该问题的题目描述。</p>
+</li>
+</ul>
+<blockquote>
+<p><em>注意：可以通过 <code>leetcode.editor.shortcuts</code> 配置项来定制需要激活的快捷方式。默认情况下只有 <code>Submit</code> 和 <code>Test</code> 会被激活。</em></p>
+</blockquote>
+<h3 id="通过关键字搜索题目"><a href="#通过关键字搜索题目" class="headerlink" title="通过关键字搜索题目"></a>通过关键字搜索题目</h3><ul>
+<li>点击 <code>LeetCode Explorer</code> 导航栏中的搜索按钮可按照关键字搜索题目。</li>
+</ul>
+<h2 id="Problem-问题"><a href="#Problem-问题" class="headerlink" title="Problem / 问题"></a>Problem / 问题</h2><h3 id="国内无法登陆海外版问题"><a href="#国内无法登陆海外版问题" class="headerlink" title="国内无法登陆海外版问题"></a>国内无法登陆海外版问题</h3><p><strong>如何解决VS Code的<code>vscode-leetcode</code>插件无法登陆海外版的问题？</strong></p>
+<blockquote>
+<p><em>注意：<a target="_blank" rel="noopener" href="https://leetcode.com/">登陆的endpoint(端点)：https://leetcode.com（并非中国leetcode-cn.com社区）</a></em></p>
+</blockquote>
+<p><strong>几个解决方案：</strong></p>
+<p>1、切换 LeetCode 版本为中国版，点击<code>Switch Endpoint</code>切换为<code>leetcode-cn.com</code>(中国社区版)<br>2、用<code>leetcode-cli</code>命令行工具进行登陆<br>3、正常输入用户名和密码无法登陆的情况下，通过获取<a target="_blank" rel="noopener" href="https://leetcode.com/"><em>leetcode.com</em></a>的<code>Cookies</code>信息进行登陆。</p>
+<p><strong>具体实现步骤：</strong></p>
+<ul>
+<li>先保证退出账户</li>
+<li>确保当前激活的节点为<code>leetcode.com</code>（而非<code>leetcode-cn.com</code>）</li>
+<li>访问端点：<a target="_blank" rel="noopener" href="https://leetcode.com/"><em>https://leetcode.com</em></a>并打开Chrome开发者工具，选择<code>Network</code> -&gt; 选择<code>XHR</code></li>
+<li>Web端登陆账号密码后，并点击problems按钮获取leetcode的session和csrf token信息</li>
+<li>找到<code>all</code>这个<code>api</code>接口：<code>https://leetcode.com/api/problems/all/</code>，并copy完整的<code>Cookies</code></li>
+<li>打卡VS Code用快捷键：<code>ctrl + shift + p</code> 输入leetcode，选择<code>Sign In by Cookie</code></li>
+<li>输入邮箱 -&gt; paste 刚刚从览器copy的<code>cookies</code>信息 -&gt; ok,done. Start coding…</li>
+</ul>
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jdneo/vscode-leetcode"><em>vscode-leetcode Github</em></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jdneo/vscode-leetcode/blob/master/docs/README_zh-CN.md"><em>vscode-leetcode 中文使用教程</em></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jdneo/vscode-leetcode/issues/478"><em>github issues: Failed to log in with a leetcode.com account</em></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jdneo/vscode-leetcode/issues/478"><em>浏览器获取cookies的方法</em></a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Tools/" rel="tag"><i class="fa fa-tag"></i> Tools</a>
+              <a href="/tags/Vscode%E6%89%A9%E5%B1%95/" rel="tag"><i class="fa fa-tag"></i> Vscode扩展</a>
+              <a href="/tags/Leetcode/" rel="tag"><i class="fa fa-tag"></i> Leetcode</a>
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"><i class="fa fa-tag"></i> 算法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/10/11/oh-my-zsh/" rel="prev" title="Oh My Zsh!">
+                  <i class="fa fa-chevron-left"></i> Oh My Zsh!
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/11/C%E8%AF%AD%E8%A8%80%E6%95%99%E7%A8%8B/" rel="next" title="C语言——入门教程&&自查文档">
+                  C语言——入门教程&&自查文档 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1674 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic%7CRoboto+Mono:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="SSH 是 Linux 系统的登录工具，现在广泛用于服务器登录和各种加密通信。本教程介绍 SSH（主要是它的实现 OpenSSH）的概念和基本用法，也可以当作手册查询。 SSH 基本知识SSH（Secure Shell 的缩写）是一种网络协议，用于加密两台计算机之间的通信，并且支持各种身份验证机制。 实务中，它主要用于保证远程登录和远程通信的安全，任何网络服务都可以用这个协议来加密。 SSH 是什">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH 教程">
+<meta property="og:url" content="http://example.com/2021/10/12/SSH%20%E6%95%99%E7%A8%8B/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="SSH 是 Linux 系统的登录工具，现在广泛用于服务器登录和各种加密通信。本教程介绍 SSH（主要是它的实现 OpenSSH）的概念和基本用法，也可以当作手册查询。 SSH 基本知识SSH（Secure Shell 的缩写）是一种网络协议，用于加密两台计算机之间的通信，并且支持各种身份验证机制。 实务中，它主要用于保证远程登录和远程通信的安全，任何网络服务都可以用这个协议来加密。 SSH 是什">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-10-12T09:12:26.000Z">
+<meta property="article:modified_time" content="2021-10-12T09:24:27.399Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="Programming">
+<meta property="article:tag" content="SSH">
+<meta property="article:tag" content="Shell">
+<meta property="article:tag" content="脚本">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2021/10/12/SSH%20%E6%95%99%E7%A8%8B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2021/10/12/SSH%20%E6%95%99%E7%A8%8B/","path":"2021/10/12/SSH 教程/","title":"SSH 教程"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SSH 教程 | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">13</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">7</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-%E5%9F%BA%E6%9C%AC%E7%9F%A5%E8%AF%86"><span class="nav-number">1.</span> <span class="nav-text">SSH 基本知识</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">1.1.</span> <span class="nav-text">SSH 是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%86%E5%8F%B2"><span class="nav-number">1.2.</span> <span class="nav-text">历史</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SSH-%E6%9E%B6%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">SSH 架构</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-%E8%AF%81%E4%B9%A6%E7%99%BB%E5%BD%95"><span class="nav-number">2.</span> <span class="nav-text">SSH 证书登录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%9E%E8%AF%81%E4%B9%A6%E7%99%BB%E5%BD%95%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="nav-number">2.1.</span> <span class="nav-text">非证书登录的缺点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E7%99%BB%E5%BD%95%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">2.2.</span> <span class="nav-text">证书登录是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AF%81%E4%B9%A6%E7%99%BB%E5%BD%95%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.3.</span> <span class="nav-text">证书登录的流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E6%88%90-CA-%E7%9A%84%E5%AF%86%E9%92%A5"><span class="nav-number">2.4.</span> <span class="nav-text">生成 CA 的密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CA-%E7%AD%BE%E5%8F%91%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6"><span class="nav-number">2.5.</span> <span class="nav-text">CA 签发服务器证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CA-%E7%AD%BE%E5%8F%91%E7%94%A8%E6%88%B7%E8%AF%81%E4%B9%A6"><span class="nav-number">2.6.</span> <span class="nav-text">CA 签发用户证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6"><span class="nav-number">2.7.</span> <span class="nav-text">服务器安装证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AE%89%E8%A3%85-CA-%E5%85%AC%E9%92%A5"><span class="nav-number">2.8.</span> <span class="nav-text">服务器安装 CA 公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85%E8%AF%81%E4%B9%A6"><span class="nav-number">2.9.</span> <span class="nav-text">客户端安装证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E5%AE%89%E8%A3%85-CA-%E5%85%AC%E9%92%A5"><span class="nav-number">2.10.</span> <span class="nav-text">客户端安装 CA 公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%9F%E9%99%A4%E8%AF%81%E4%B9%A6"><span class="nav-number">2.11.</span> <span class="nav-text">废除证书</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="nav-number">2.12.</span> <span class="nav-text">参考链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">3.</span> <span class="nav-text">SSH 客户端</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9E%E6%8E%A5%E6%B5%81%E7%A8%8B"><span class="nav-number">3.3.</span> <span class="nav-text">连接流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%AF%86%E9%92%A5%E5%8F%98%E6%9B%B4"><span class="nav-number">3.4.</span> <span class="nav-text">服务器密钥变更</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%A7%E8%A1%8C%E8%BF%9C%E7%A8%8B%E5%91%BD%E4%BB%A4"><span class="nav-number">3.5.</span> <span class="nav-text">执行远程命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A0%E5%AF%86%E5%8F%82%E6%95%B0"><span class="nav-number">3.6.</span> <span class="nav-text">加密参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">3.7.</span> <span class="nav-text">ssh 命令行配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">3.8.</span> <span class="nav-text">客户端配置文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%8D%E7%BD%AE"><span class="nav-number">3.8.1.</span> <span class="nav-text">位置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E6%9C%BA%E8%AE%BE%E7%BD%AE"><span class="nav-number">3.8.2.</span> <span class="nav-text">主机设置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4%E7%9A%84%E8%AF%AD%E6%B3%95"><span class="nav-number">3.8.3.</span> <span class="nav-text">配置命令的语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E9%85%8D%E7%BD%AE%E5%91%BD%E4%BB%A4"><span class="nav-number">3.8.4.</span> <span class="nav-text">主要配置命令</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">SSH 密钥登录</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E6%98%AF%E4%BB%80%E4%B9%88"><span class="nav-number">4.1.</span> <span class="nav-text">密钥是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%86%E9%92%A5%E7%99%BB%E5%BD%95%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">4.2.</span> <span class="nav-text">密钥登录的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-keygen%E5%91%BD%E4%BB%A4%EF%BC%9A%E7%94%9F%E6%88%90%E5%AF%86%E9%92%A5"><span class="nav-number">4.3.</span> <span class="nav-text">ssh-keygen命令：生成密钥</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-1"><span class="nav-number">4.3.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">4.3.2.</span> <span class="nav-text">配置项</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%8B%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%85%AC%E9%92%A5"><span class="nav-number">4.4.</span> <span class="nav-text">手动上传公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-copy-id-%E5%91%BD%E4%BB%A4%EF%BC%9A%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%E5%85%AC%E9%92%A5"><span class="nav-number">4.5.</span> <span class="nav-text">ssh-copy-id 命令：自动上传公钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh-agent-%E5%91%BD%E4%BB%A4%EF%BC%8Cssh-add-%E5%91%BD%E4%BB%A4"><span class="nav-number">4.6.</span> <span class="nav-text">ssh-agent 命令，ssh-add 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-2"><span class="nav-number">4.6.1.</span> <span class="nav-text">基本用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh-add%E5%91%BD%E4%BB%A4"><span class="nav-number">4.6.2.</span> <span class="nav-text">ssh-add命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%97%AD%E5%AF%86%E7%A0%81%E7%99%BB%E5%BD%95"><span class="nav-number">4.7.</span> <span class="nav-text">关闭密码登录</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-%E7%AB%AF%E5%8F%A3%E8%BD%AC%E5%8F%91"><span class="nav-number">5.</span> <span class="nav-text">SSH 端口转发</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-1"><span class="nav-number">5.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%A8%E6%80%81%E8%BD%AC%E5%8F%91"><span class="nav-number">5.2.</span> <span class="nav-text">动态转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%AC%E5%9C%B0%E8%BD%AC%E5%8F%91"><span class="nav-number">5.3.</span> <span class="nav-text">本地转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E8%BD%AC%E5%8F%91"><span class="nav-number">5.4.</span> <span class="nav-text">远程转发</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9E%E4%BE%8B"><span class="nav-number">5.5.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E6%98%93-VPN"><span class="nav-number">5.5.1.</span> <span class="nav-text">简易 VPN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%A4%E7%BA%A7%E8%B7%B3%E6%9D%BF"><span class="nav-number">5.5.2.</span> <span class="nav-text">两级跳板</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-1"><span class="nav-number">5.6.</span> <span class="nav-text">参考链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#rsync-%E5%91%BD%E4%BB%A4"><span class="nav-number">6.</span> <span class="nav-text">rsync 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-2"><span class="nav-number">6.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%89%E8%A3%85"><span class="nav-number">6.2.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95-3"><span class="nav-number">6.3.</span> <span class="nav-text">基本用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#r%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.1.</span> <span class="nav-text">-r参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#a%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.2.</span> <span class="nav-text">-a参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#n%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.3.</span> <span class="nav-text">-n参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#delete%E5%8F%82%E6%95%B0"><span class="nav-number">6.3.4.</span> <span class="nav-text">--delete参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8E%92%E9%99%A4%E6%96%87%E4%BB%B6"><span class="nav-number">6.4.</span> <span class="nav-text">排除文件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#exclude%E5%8F%82%E6%95%B0"><span class="nav-number">6.4.1.</span> <span class="nav-text">--exclude参数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#include%E5%8F%82%E6%95%B0"><span class="nav-number">6.4.2.</span> <span class="nav-text">--include参数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E5%90%8C%E6%AD%A5"><span class="nav-number">6.5.</span> <span class="nav-text">远程同步</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SSH-%E5%8D%8F%E8%AE%AE"><span class="nav-number">6.5.1.</span> <span class="nav-text">SSH 协议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rsync-%E5%8D%8F%E8%AE%AE"><span class="nav-number">6.5.2.</span> <span class="nav-text">rsync 协议</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A2%9E%E9%87%8F%E5%A4%87%E4%BB%BD"><span class="nav-number">6.6.</span> <span class="nav-text">增量备份</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-1"><span class="nav-number">6.7.</span> <span class="nav-text">配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5-2"><span class="nav-number">6.8.</span> <span class="nav-text">参考链接</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#scp-%E5%91%BD%E4%BB%A4"><span class="nav-number">7.</span> <span class="nav-text">scp 命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-3"><span class="nav-number">7.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="nav-number">7.2.</span> <span class="nav-text">基本语法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%A8%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="nav-number">7.3.</span> <span class="nav-text">用法示例</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E9%A1%B9-2"><span class="nav-number">7.4.</span> <span class="nav-text">配置项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SSH-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="nav-number">8.</span> <span class="nav-text">SSH 服务器</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B-4"><span class="nav-number">8.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshd-%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="nav-number">8.2.</span> <span class="nav-text">sshd 配置文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshd-%E5%AF%86%E9%92%A5"><span class="nav-number">8.3.</span> <span class="nav-text">sshd 密钥</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshd-%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">8.4.</span> <span class="nav-text">sshd 配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sshd-%E7%9A%84%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%85%8D%E7%BD%AE%E9%A1%B9"><span class="nav-number">8.5.</span> <span class="nav-text">sshd 的命令行配置项</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#sftp-%E5%91%BD%E4%BB%A4"><span class="nav-number">9.</span> <span class="nav-text">sftp 命令</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/10/12/SSH%20%E6%95%99%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SSH 教程
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-12 17:12:26 / 修改时间：17:24:27" itemprop="dateCreated datePublished" datetime="2021-10-12T17:12:26+08:00">2021-10-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Programming/SSH/" itemprop="url" rel="index"><span itemprop="name">SSH</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Programming/SSH/Shell/" itemprop="url" rel="index"><span itemprop="name">Shell</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Programming/SSH/Shell/%E8%84%9A%E6%9C%AC/" itemprop="url" rel="index"><span itemprop="name">脚本</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>SSH 是 Linux 系统的登录工具，现在广泛用于服务器登录和各种加密通信。<br>本教程介绍 SSH（主要是它的实现 OpenSSH）的概念和基本用法，也可以当作手册查询。</p>
+<h1 id="SSH-基本知识"><a href="#SSH-基本知识" class="headerlink" title="SSH 基本知识"></a>SSH 基本知识</h1><p>SSH（Secure Shell 的缩写）是一种网络协议，用于加密两台计算机之间的通信，并且支持各种身份验证机制。</p>
+<p>实务中，它主要用于保证远程登录和远程通信的安全，任何网络服务都可以用这个协议来加密。</p>
+<h2 id="SSH-是什么"><a href="#SSH-是什么" class="headerlink" title="SSH 是什么"></a>SSH 是什么</h2><p>历史上，网络主机之间的通信是不加密的，属于明文通信。这使得通信很不安全，一个典型的例子就是服务器登录。登录远程服务器的时候，需要将用户输入的密码传给服务器，如果这个过程是明文通信，就意味着传递过程中，线路经过的中间计算机都能看到密码，这是很可怕的。</p>
+<p>SSH 就是为了解决这个问题而诞生的，它能够加密计算机之间的通信，保证不被窃听或篡改。它还能对操作者进行认证（authentication）和授权（authorization）。明文的网络协议可以套用在它里面，从而实现加密。</p>
+<a id="more"></a>
+<h2 id="历史"><a href="#历史" class="headerlink" title="历史"></a>历史</h2><p>1995年，芬兰赫尔辛基工业大学的研究员 Tatu Ylönen 设计了 SSH 协议的第一个版本（现称为 SSH 1），同时写出了第一个实现（称为 SSH1）。</p>
+<p>当时，他所在的大学网络一直发生密码嗅探攻击，他不得不为服务器设计一个更安全的登录方式。写完以后，他就把这个工具公开了，允许其他人免费使用。</p>
+<p>SSH 可以替换 rlogin、TELNET、FTP 和 rsh 这些不安全的协议，所以大受欢迎，用户快速增长，1995年底已经发展到五十个国家的20,000个用户。SSH 1 协议也变成 IETF 的标准文档。</p>
+<p>1995年12月，由于客服需求越来越大，Tatu Ylönen 就成立了一家公司 SCS，专门销售和开发 SSH。这个软件的后续版本，逐渐从免费软件变成了专有的商业软件。</p>
+<p>SSH 1 协议存在一些安全漏洞，所以1996年又提出了 SSH 2 协议（或者称为 SSH 2.0）。这个协议与1.0版不兼容，在1997年进行了标准化，1998年推出了软件实现 SSH2。但是，官方的 SSH2 软件是一个专有软件，不能免费使用，而且 SSH1 的有些功能也没有提供。</p>
+<p>1999年，OpenBSD 的开发人员决定写一个 SSH 2 协议的开源实现，这就是 OpenSSH 项目。该项目最初是基于 SSH 1.2.12 版本，那是当时 SSH1 最后一个开源版本。但是，OpenSSH 很快就完全摆脱了原始的官方代码，在许多开发者的参与下，按照自己的路线发展。OpenSSH 随 OpenBSD 2.6 版本一起提供，以后又移植到其他操作系统，成为最流行的 SSH 实现。目前，Linux 的所有发行版几乎都自带 OpenSSH。</p>
+<p>现在，SSH-2 有多种实现，既有免费的，也有收费的。本书的内容主要是针对 OpenSSH。</p>
+<h2 id="SSH-架构"><a href="#SSH-架构" class="headerlink" title="SSH 架构"></a>SSH 架构</h2><p>SSH 的软件架构是服务器-客户端模式（Server - Client）。在这个架构中，SSH 软件分成两个部分：向服务器发出请求的部分，称为客户端（client），OpenSSH 的实现为 ssh；接收客户端发出的请求的部分，称为服务器（server），OpenSSH 的实现为 sshd。</p>
+<p>本教程约定，大写的 SSH 表示协议，小写的 ssh 表示客户端软件。</p>
+<p>另外，OpenSSH 还提供一些辅助工具软件（比如 ssh-keygen 、ssh-agent）和专门的客户端工具（比如 scp 和 sftp），这个教程也会予以介绍。</p>
+<h1 id="SSH-证书登录"><a href="#SSH-证书登录" class="headerlink" title="SSH 证书登录"></a>SSH 证书登录</h1><p>SSH 是服务器登录工具，一般情况下都采用密码登录或密钥登录。</p>
+<p>但是，SSH 还有第三种登录方法，那就是证书登录。某些情况下，它是更合理、更安全的登录方法，本文就介绍这种登录方法。</p>
+<h2 id="非证书登录的缺点"><a href="#非证书登录的缺点" class="headerlink" title="非证书登录的缺点"></a>非证书登录的缺点</h2><p>密码登录和密钥登录，都有各自的缺点。</p>
+<p>密码登录需要输入服务器密码，这非常麻烦，也不安全，存在被暴力破解的风险。</p>
+<p>密钥登录需要服务器保存用户的公钥，也需要用户保存服务器公钥的指纹。这对于多用户、多服务器的大型机构很不方便，如果有员工离职，需要将他的公钥从每台服务器删除。</p>
+<h2 id="证书登录是什么？"><a href="#证书登录是什么？" class="headerlink" title="证书登录是什么？"></a>证书登录是什么？</h2><p>证书登录就是为了解决上面的缺点而设计的。它引入了一个证书颁发机构（Certificate Authority，简称 CA），对信任的服务器颁发服务器证书，对信任的用户颁发用户证书。</p>
+<p>登录时，用户和服务器不需要提前知道彼此的公钥，只需要交换各自的证书，验证是否可信即可。</p>
+<p>证书登录的主要优点有两个：（1）用户和服务器不用交换公钥，这更容易管理，也具有更好的可扩展性。（2）证书可以设置到期时间，而公钥没有到期时间。针对不同的情况，可以设置有效期很短的证书，进一步提高安全性。</p>
+<h2 id="证书登录的流程"><a href="#证书登录的流程" class="headerlink" title="证书登录的流程"></a>证书登录的流程</h2><p>SSH 证书登录之前，如果还没有证书，需要生成证书。具体方法是：（1）用户和服务器都将自己的公钥，发给 CA；（2）CA 使用服务器公钥，生成服务器证书，发给服务器；（3）CA 使用用户的公钥，生成用户证书，发给用户。</p>
+<p>有了证书以后，用户就可以登录服务器了。整个过程都是 SSH 自动处理，用户无感知。</p>
+<p>第一步，用户登录服务器时，SSH 自动将用户证书发给服务器。</p>
+<p>第二步，服务器检查用户证书是否有效，以及是否由可信的 CA 颁发。证实以后，就可以信任用户。</p>
+<p>第三步，SSH 自动将服务器证书发给用户。</p>
+<p>第四步，用户检查服务器证书是否有效，以及是否由信任的 CA 颁发。证实以后，就可以信任服务器。</p>
+<p>第五步，双方建立连接，服务器允许用户登录。</p>
+<h2 id="生成-CA-的密钥"><a href="#生成-CA-的密钥" class="headerlink" title="生成 CA 的密钥"></a>生成 CA 的密钥</h2><p>证书登录的前提是，必须有一个 CA，而 CA 本质上就是一对密钥，跟其他密钥没有不同，CA 就用这对密钥去签发证书。</p>
+<p>虽然 CA 可以用同一对密钥签发用户证书和服务器证书，但是出于安全性和灵活性，最好用不同的密钥分别签发。所以，CA 至少需要两对密钥，一对是签发用户证书的密钥，假设叫做<code>user_ca</code>，另一对是签发服务器证书的密钥，假设叫做<code>host_ca</code>。</p>
+<p>使用下面的命令，生成<code>user_ca</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成 CA 签发用户证书的密钥</span>
+$ ssh-keygen -t rsa -b <span class="token number">4096</span> -f ~/.ssh/user_ca -C user_ca<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上面的命令会在<code>~/.ssh</code>目录生成一对密钥：<code>user_ca</code>（私钥）和<code>user_ca.pub</code>（公钥）。</p>
+<p>这个命令的各个参数含义如下。</p>
+<ul>
+<li><code>-t rsa</code>：指定密钥算法 RSA。</li>
+<li><code>-b 4096</code>：指定密钥的位数是4096位。安全性要求不高的场合，这个值可以小一点，但是不应小于1024。</li>
+<li><code>-f ~/.ssh/user_ca</code>：指定生成密钥的位置和文件名。</li>
+<li><code>-C user_ca</code>：指定密钥的识别字符串，相当于注释，可以随意设置。</li>
+</ul>
+<p>使用下面的命令，生成<code>host_ca</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 生成 CA 签发服务器证书的密钥</span>
+$ ssh-keygen -t rsa -b <span class="token number">4096</span> -f host_ca -C host_ca<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上面的命令会在<code>~/.ssh</code>目录生成一对密钥：<code>host_ca</code>（私钥）和<code>host_ca.pub</code>（公钥）。</p>
+<p>现在，<code>~/.ssh</code>目录应该至少有四把密钥。</p>
+<ul>
+<li><code>~/.ssh/user_ca</code></li>
+<li><code>~/.ssh/user_ca.pub</code></li>
+<li><code>~/.ssh/host_ca</code></li>
+<li><code>~/.ssh/host_ca.pub</code></li>
+</ul>
+<h2 id="CA-签发服务器证书"><a href="#CA-签发服务器证书" class="headerlink" title="CA 签发服务器证书"></a>CA 签发服务器证书</h2><p>有了 CA 以后，就可以签发服务器证书了。</p>
+<p>签发证书，除了 CA 的密钥以外，还需要服务器的公钥。一般来说，SSH 服务器（通常是<code>sshd</code>）安装时，已经生成密钥<code>/etc/ssh/ssh_host_rsa_key</code>了。如果没有的话，可以用下面的命令生成。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> ssh-keygen -f /etc/ssh/ssh_host_rsa_key -b <span class="token number">4096</span> -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令会在<code>/etc/ssh</code>目录，生成<code>ssh_host_rsa_key</code>（私钥）和<code>ssh_host_rsa_key.pub</code>（公钥）。然后，需要把服务器公钥<code>ssh_host_rsa_key.pub</code>，复制或上传到 CA 所在的服务器。</p>
+<p>上传以后，CA 就可以使用密钥<code>host_ca</code>为服务器的公钥<code>ssh_host_rsa_key.pub</code>签发服务器证书。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -s host_ca -I host.example.com -h -n host.example.com -V +52w ssh_host_rsa_key.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令会生成服务器证书<code>ssh_host_rsa_key-cert.pub</code>（服务器公钥名字加后缀<code>-cert</code>）。这个命令各个参数的含义如下。</p>
+<ul>
+<li><code>-s</code>：指定 CA 签发证书的密钥。</li>
+<li><code>-I</code>：身份字符串，可以随便设置，相当于注释，方便区分证书，将来可以使用这个字符串撤销证书。</li>
+<li><code>-h</code>：指定该证书是服务器证书，而不是用户证书。</li>
+<li><code>-n host.example.com</code>：指定服务器的域名，表示证书仅对该域名有效。如果有多个域名，则使用逗号分隔。用户登录该域名服务器时，SSH 通过证书的这个值，分辨应该使用哪张证书发给用户，用来证明服务器的可信性。</li>
+<li><code>-V +52w</code>：指定证书的有效期，这里为52周（一年）。默认情况下，证书是永远有效的。建议使用该参数指定有效期，并且有效期最好短一点，最长不超过52周。</li>
+<li><code>ssh_host_rsa_key.pub</code>：服务器公钥。</li>
+</ul>
+<p>生成证书以后，可以使用下面的命令，查看证书的细节。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -L -f ssh_host_rsa_key-cert.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最后，为证书设置权限。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">chmod</span> <span class="token number">600</span> ssh_host_rsa_key-cert.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="CA-签发用户证书"><a href="#CA-签发用户证书" class="headerlink" title="CA 签发用户证书"></a>CA 签发用户证书</h2><p>下面，再用 CA 签发用户证书。这时需要用户的公钥，如果没有的话，客户端可以用下面的命令生成一对密钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -f ~/.ssh/user_key -b <span class="token number">4096</span> -t rsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令会在<code>~/.ssh</code>目录，生成<code>user_key</code>（私钥）和<code>user_key.pub</code>（公钥）。</p>
+<p>然后，将用户公钥<code>user_key.pub</code>，上传或复制到 CA 服务器。接下来，就可以使用 CA 的密钥<code>user_ca</code>为用户公钥<code>user_key.pub</code>签发用户证书。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -s user_ca -I user@example.com -n user -V +1d user_key.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令会生成用户证书<code>user_key-cert.pub</code>（用户公钥名字加后缀<code>-cert</code>）。这个命令各个参数的含义如下。</p>
+<ul>
+<li><code>-s</code>：指定 CA 签发证书的密钥</li>
+<li><code>-I</code>：身份字符串，可以随便设置，相当于注释，方便区分证书，将来可以使用这个字符串撤销证书。</li>
+<li><code>-n user</code>：指定用户名，表示证书仅对该用户名有效。如果有多个用户名，使用逗号分隔。用户以该用户名登录服务器时，SSH 通过这个值，分辨应该使用哪张证书，证明自己的身份，发给服务器。</li>
+<li><code>-V +1d</code>：指定证书的有效期，这里为1天，强制用户每天都申请一次证书，提高安全性。默认情况下，证书是永远有效的。</li>
+<li><code>user_key.pub</code>：用户公钥。</li>
+</ul>
+<p>生成证书以后，可以使用下面的命令，查看证书的细节。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -L -f user_key-cert.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最后，为证书设置权限。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">chmod</span> <span class="token number">600</span> user_key-cert.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="服务器安装证书"><a href="#服务器安装证书" class="headerlink" title="服务器安装证书"></a>服务器安装证书</h2><p>CA 生成服务器证书<code>ssh_host_rsa_key-cert.pub</code>以后，需要将该证书发回服务器，可以使用下面的<code>scp</code>命令，将证书拷贝过去。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> ~/.ssh/ssh_host_rsa_key-cert.pub root@host.example.com:/etc/ssh/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后，将下面一行添加到服务器配置文件<code>/etc/ssh/sshd_config</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的代码告诉 sshd，服务器证书是哪一个文件。</p>
+<p>重新启动 sshd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl restart sshd.service
+<span class="token comment"># 或者</span>
+$ <span class="token function">sudo</span> <span class="token function">service</span> sshd restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="服务器安装-CA-公钥"><a href="#服务器安装-CA-公钥" class="headerlink" title="服务器安装 CA 公钥"></a>服务器安装 CA 公钥</h2><p>为了让服务器信任用户证书，必须将 CA 签发用户证书的公钥<code>user_ca.pub</code>，拷贝到服务器。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> ~/.ssh/user_ca.pub root@host.example.com:/etc/ssh/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令，将 CA 签发用户证书的公钥<code>user_ca.pub</code>，拷贝到 SSH 服务器的<code>/etc/ssh</code>目录。</p>
+<p>然后，将下面一行添加到服务器配置文件<code>/etc/ssh/sshd_config</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">TrustedUserCAKeys /etc/ssh/user_ca.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的做法是将<code>user_ca.pub</code>加到<code>/etc/ssh/sshd_config</code>，这会产生全局效果，即服务器的所有账户都会信任<code>user_ca</code>签发的所有用户证书。</p>
+<p>另一种做法是将<code>user_ca.pub</code>加到服务器某个账户的<code>~/.ssh/authorized_keys</code>文件，只让该账户信任<code>user_ca</code>签发的用户证书。具体方法是打开<code>~/.ssh/authorized_keys</code>，追加一行，开头是<code>@cert-authority principals=&quot;...&quot;</code>，然后后面加上<code>user_ca.pub</code>的内容，大概是下面这个样子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">@cert-authority <span class="token assign-left variable">principals</span><span class="token operator">=</span><span class="token string">"user"</span> ssh-rsa AAAAB3Nz<span class="token punctuation">..</span>.XNRM1EX2gQ<span class="token operator">==</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面代码中，<code>principals=&quot;user&quot;</code>指定用户登录的服务器账户名，一般就是<code>authorized_keys</code>文件所在的账户。</p>
+<p>重新启动 sshd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl restart sshd.service
+<span class="token comment"># 或者</span>
+$ <span class="token function">sudo</span> <span class="token function">service</span> sshd restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>至此，SSH 服务器已配置为信任<code>user_ca</code>签发的证书。</p>
+<h2 id="客户端安装证书"><a href="#客户端安装证书" class="headerlink" title="客户端安装证书"></a>客户端安装证书</h2><p>客户端安装用户证书很简单，就是从 CA 将用户证书<code>user_key-cert.pub</code>复制到客户端，与用户的密钥<code>user_key</code>保存在同一个目录即可。</p>
+<h2 id="客户端安装-CA-公钥"><a href="#客户端安装-CA-公钥" class="headerlink" title="客户端安装 CA 公钥"></a>客户端安装 CA 公钥</h2><p>为了让客户端信任服务器证书，必须将 CA 签发服务器证书的公钥<code>host_ca.pub</code>，加到客户端的<code>/etc/ssh/ssh_known_hosts</code>文件（全局级别）或者<code>~/.ssh/known_hosts</code>文件（用户级别）。</p>
+<p>具体做法是打开<code>ssh_known_hosts</code>或<code>known_hosts</code>文件，追加一行，开头为<code>@cert-authority *.example.com</code>，然后将<code>host_ca.pub</code>文件的内容（即公钥）粘贴在后面，大概是下面这个样子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">@cert-authority *.example.com ssh-rsa AAAAB3Nz<span class="token punctuation">..</span>.XNRM1EX2gQ<span class="token operator">==</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面代码中，<code>*.example.com</code>是域名的模式匹配，表示只要服务器符合该模式的域名，且签发服务器证书的 CA 匹配后面给出的公钥，就都可以信任。如果没有域名限制，这里可以写成<code>*</code>。如果有多个域名模式，可以使用逗号分隔；如果服务器没有域名，可以用主机名（比如<code>host1,host2,host3</code>）或者 IP 地址（比如<code>11.12.13.14,21.22.23.24</code>）。</p>
+<p>然后，就可以使用证书，登录远程服务器了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -i ~/.ssh/user_key user@host.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令的<code>-i</code>参数用来指定用户的密钥。如果证书与密钥在同一个目录，则连接服务器时将自动使用该证书。</p>
+<h2 id="废除证书"><a href="#废除证书" class="headerlink" title="废除证书"></a>废除证书</h2><p>废除证书的操作，分成用户证书的废除和服务器证书的废除两种。</p>
+<p>服务器证书的废除，用户需要在<code>known_hosts</code>文件里面，修改或删除对应的<code>@cert-authority</code>命令的那一行。</p>
+<p>用户证书的废除，需要在服务器新建一个<code>/etc/ssh/revoked_keys</code>文件，然后在配置文件<code>sshd_config</code>添加一行，内容如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">RevokedKeys /etc/ssh/revoked_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>revoked_keys</code>文件保存不再信任的用户公钥，由下面的命令生成。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -kf /etc/ssh/revoked_keys -z <span class="token number">1</span> ~/.ssh/user1_key.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-z</code>参数用来指定用户公钥保存在<code>revoked_keys</code>文件的哪一行，这个例子是保存在第1行。</p>
+<p>如果以后需要废除其他的用户公钥，可以用下面的命令保存在第2行。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -ukf /etc/ssh/revoked_keys -z <span class="token number">2</span> ~/.ssh/user2_key.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://smallstep.com/blog/ssh-emergency-access/">SSH Emergency Access</a>, Carl Tashian</li>
+<li><a target="_blank" rel="noopener" href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-using_openssh_certificate_authentication">Using OpenSSH Certificate Authentication</a>, Red Hat Enterprise Linux Deployment Guide</li>
+<li><a target="_blank" rel="noopener" href="https://gravitational.com/blog/how-to-ssh-properly/">How to SSH Properly</a>, Gus Luxton</li>
+</ul>
+<h1 id="SSH-客户端"><a href="#SSH-客户端" class="headerlink" title="SSH 客户端"></a>SSH 客户端</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>OpenSSH 的客户端是二进制程序 ssh。它在 Linux/Unix 系统的位置是<code>/usr/local/bin/ssh</code>，Windows 系统的位置是<code>\Program Files\OpenSSH\bin\ssh.exe</code>。</p>
+<p>Linux 系统一般都自带 ssh，如果没有就需要安装。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Ubuntu 和 Debian</span>
+$ <span class="token function">sudo</span> <span class="token function">apt</span> <span class="token function">install</span> openssh-client
+
+<span class="token comment"># CentOS 和 Fedora</span>
+$ <span class="token function">sudo</span> dnf <span class="token function">install</span> openssh-clients<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>安装以后，可以使用<code>-V</code>参数输出版本号，查看一下是否安装成功。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -V<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h2><p>ssh 最常见的用途就是登录服务器，这要求服务器安装并正在运行 SSH 服务器软件。</p>
+<p>ssh 登录服务器的命令如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> <span class="token function">hostname</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>hostname</code>是主机名，它可以是域名，也可能是 IP 地址或局域网内部的主机名。不指定用户名的情况下，将使用客户端的当前用户名，作为远程服务器的登录用户名。如果要指定用户名，可以采用下面的语法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> user@hostname<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令中，用户名和主机名写在一起了，之间使用<code>@</code>分隔。</p>
+<p>用户名也可以使用<code>ssh</code>的<code>-l</code>参数指定，这样的话，用户名和主机名就不用写在一起了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -l username <span class="token function">host</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>ssh 默认连接服务器的22端口，<code>-p</code>参数可以指定其他端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -p <span class="token number">8821</span> foo.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令连接服务器<code>foo.com</code>的8821端口。</p>
+<h2 id="连接流程"><a href="#连接流程" class="headerlink" title="连接流程"></a>连接流程</h2><p>ssh 连接远程服务器后，首先有一个验证过程，验证远程服务器是否为陌生地址。</p>
+<p>如果是第一次连接某一台服务器，命令行会显示一段文字，表示不认识这台机器，提醒用户确认是否需要连接。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">The authenticity of <span class="token function">host</span> <span class="token string">'foo.com (192.168.121.111)'</span> can't be established.
+ECDSA key fingerprint is SHA256:Vybt22mVXuNuB5unE++yowF7lgA/9/2bLSiO3qmYWBY.
+Are you sure you want to <span class="token builtin class-name">continue</span> connecting <span class="token punctuation">(</span>yes/no<span class="token punctuation">)</span>?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>上面这段文字告诉用户，<code>foo.com</code>这台服务器的指纹是陌生的，让用户选择是否要继续连接（输入 yes 或 no）。</p>
+<p>所谓“服务器指纹”，指的是 SSH 服务器公钥的哈希值。每台 SSH 服务器都有唯一一对密钥，用于跟客户端通信，其中公钥的哈希值就可以用来识别服务器。</p>
+<p>下面的命令可以查看某个公钥的指纹。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -l -f /etc/ssh/ssh_host_ecdsa_key.pub
+<span class="token number">256</span> da:24:43:0b:2e:c1:3f:a1:84:13:92:01:52:b4:84:ff   <span class="token punctuation">(</span>ECDSA<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上面的例子中，<code>ssh-keygen -l -f</code>命令会输出公钥<code>/etc/ssh/ssh_host_ecdsa_key.pub</code>的指纹。</p>
+<p>ssh 会将本机连接过的所有服务器公钥的指纹，都储存在本机的<code>~/.ssh/known_hosts</code>文件中。每次连接服务器时，通过该文件判断是否为陌生主机（陌生公钥）。</p>
+<p>在上面这段文字后面，输入<code>yes</code>，就可以将当前服务器的指纹也储存在本机<code>~/.ssh/known_hosts</code>文件中，并显示下面的提示。以后再连接的时候，就不会再出现警告了。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Warning: Permanently added <span class="token string">'foo.com (192.168.121.111)'</span> <span class="token punctuation">(</span>RSA<span class="token punctuation">)</span> to the list of known hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后，客户端就会跟服务器建立连接。接着，ssh 就会要求用户输入所要登录账户的密码。用户输入并验证密码正确以后，就能登录远程服务器的 Shell 了。</p>
+<h2 id="服务器密钥变更"><a href="#服务器密钥变更" class="headerlink" title="服务器密钥变更"></a>服务器密钥变更</h2><p>服务器指纹可以防止有人恶意冒充远程主机。如果服务器的密钥发生变更（比如重装了 SSH 服务器），客户端再次连接时，就会发生公钥指纹不吻合的情况。这时，客户端就会中断连接，并显示一段警告信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED<span class="token operator">!</span>     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY<span class="token operator">!</span>
+Someone could be eavesdropping on you right now <span class="token punctuation">(</span>man-in-the-middle attack<span class="token punctuation">)</span><span class="token operator">!</span>
+It is also possible that the RSA <span class="token function">host</span> key has just been changed.
+The fingerprint <span class="token keyword">for</span> the RSA key sent by the remote <span class="token function">host</span> is
+<span class="token number">77</span>:a5:69:81:9b:eb:40:76:7b:13:04:a9:6c:f4:9c:5d.
+Please contact your system administrator.
+Add correct <span class="token function">host</span> key <span class="token keyword">in</span> /home/me/.ssh/known_hosts to get rid of this message.
+Offending key <span class="token keyword">in</span> /home/me/.ssh/known_hosts:36<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面这段文字的意思是，该主机的公钥指纹跟<code>~/.ssh/known_hosts</code>文件储存的不一样，必须处理以后才能连接。这时，你需要确认是什么原因，使得公钥指纹发生变更，到底是恶意劫持，还是管理员变更了 SSH 服务器公钥。</p>
+<p>如果新的公钥确认可以信任，需要继续执行连接，你可以执行下面的命令，将原来的公钥指纹从<code>~/.ssh/known_hosts</code>文件删除。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -R <span class="token function">hostname</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>hostname</code>是发生公钥变更的主机名。</p>
+<p>除了使用上面的命令，你也可以手工修改<code>known_hosts</code>文件，将公钥指纹删除。</p>
+<p>删除了原来的公钥指纹以后，重新执行 ssh 命令连接远程服务器，将新的指纹加入<code>known_hosts</code>文件，就可以顺利连接了。</p>
+<h2 id="执行远程命令"><a href="#执行远程命令" class="headerlink" title="执行远程命令"></a>执行远程命令</h2><p>SSH 登录成功后，用户就进入了远程主机的命令行环境，所看到的提示符，就是远程主机的提示符。这时，你就可以输入想要在远程主机执行的命令。</p>
+<p>另一种执行远程命令的方法，是将命令直接写在<code>ssh</code>命令的后面。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> username@hostname <span class="token builtin class-name">command</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令会使得 SSH 在登录成功后，立刻在远程主机上执行命令<code>command</code>。</p>
+<p>下面是一个例子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> foo@server.example.com <span class="token function">cat</span> /etc/hosts<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令会在登录成功后，立即远程执行命令<code>cat /etc/hosts</code>。</p>
+<p>采用这种语法执行命令时，ssh 客户端不会提供互动式的 Shell 环境，而是直接将远程命令的执行结果输出在命令行。但是，有些命令需要互动式的 Shell 环境，这时就要使用<code>-t</code>参数。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 报错</span>
+$ <span class="token function">ssh</span> remote.server.com emacs
+emacs: standard input is not a <span class="token function">tty</span>
+
+<span class="token comment"># 不报错</span>
+$ <span class="token function">ssh</span> -t server.example.com emacs<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面代码中，<code>emacs</code>命令需要一个互动式 Shell，所以报错。只有加上<code>-t</code>参数，ssh 才会分配一个互动式 Shell。</p>
+<h2 id="加密参数"><a href="#加密参数" class="headerlink" title="加密参数"></a>加密参数</h2><p>SSH 连接的握手阶段，客户端必须跟服务端约定加密参数集（cipher suite）。</p>
+<p>加密参数集包含了若干不同的加密参数，它们之间使用下划线连接在一起，下面是一个例子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">TLS_RSA_WITH_AES_128_CBC_SHA<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>它的含义如下。</p>
+<ul>
+<li>TLS：加密通信协议</li>
+<li>RSA：密钥交换算法</li>
+<li>AES：加密算法</li>
+<li>128：加密算法的强度</li>
+<li>CBC：加密算法的模式</li>
+<li>SHA：数字签名的 Hash 函数</li>
+</ul>
+<p>下面是一个例子，客户端向服务器发出的握手信息。</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">Handshake protocol: ClientHello
+    Version: TLS 1.2
+    Random
+        Client time: May 22, 2030 02:43:46 GMT
+        Random bytes: b76b0e61829557eb4c611adfd2d36eb232dc1332fe29802e321ee871
+    Session ID: (empty)
+    Cipher Suites
+        Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256”
+        Suite: TLS_DHE_RSA_WITH_AES_128_GCM_SHA256
+        Suite: TLS_RSA_WITH_AES_128_GCM_SHA256
+        Suite: TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA
+        Suite: TLS_DHE_RSA_WITH_AES_128_CBC_SHA
+        Suite: TLS_RSA_WITH_AES_128_CBC_SHA
+        Suite: TLS_RSA_WITH_3DES_EDE_CBC_SHA
+        Suite: TLS_RSA_WITH_RC4_128_SHA
+    Compression methods
+        Method: null
+    Extensions
+        Extension: server_name
+            Hostname: www.feistyduck.com
+        Extension: renegotiation_info
+        Extension: elliptic_curves
+            Named curve: secp256r1
+            Named curve: secp384r1
+        Extension: signature_algorithms
+            Algorithm: sha1/rsa
+            Algorithm: sha256/rsa
+            Algorithm: sha1/ecdsa
+            Algorithm: sha256/ecdsa”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的握手信息（ClientHello）之中，<code>Cipher Suites</code>字段就是客户端列出可选的加密参数集，服务器在其中选择一个自己支持的参数集。</p>
+<p>服务器选择完毕之后，向客户端发出回应。</p>
+<pre class="line-numbers language-http" data-language="http"><code class="language-http">Handshake protocol: ServerHello
+    Version: TLS 1.2
+    Random
+        Server time: Mar 10, 2059 02:35:57 GMT”
+        Random bytes: 8469b09b480c1978182ce1b59290487609f41132312ca22aacaf5012
+    Session ID: 4cae75c91cf5adf55f93c9fb5dd36d19903b1182029af3d527b7a42ef1c32c80
+    Cipher Suite: TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+    Compression method: null
+    Extensions
+        Extension: server_name
+        Extension: renegotiation_info”<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的回应信息（ServerHello）中，<code>Cipher Suite</code>字段就是服务器最终选定的加密参数。</p>
+<h2 id="ssh-命令行配置项"><a href="#ssh-命令行配置项" class="headerlink" title="ssh 命令行配置项"></a>ssh 命令行配置项</h2><p>ssh 命令有很多配置项，修改它的默认行为。</p>
+<p><strong>-c</strong></p>
+<p><code>-c</code>参数指定加密算法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -c blowfish,3des server.example.com
+<span class="token comment"># 或者</span>
+$ <span class="token function">ssh</span> -c blowfish -c 3des server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>上面命令指定使用加密算法<code>blowfish</code>或<code>3des</code>。</p>
+<p><strong>-C</strong></p>
+<p><code>-C</code>参数表示压缩数据传输。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -C server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>-D</strong></p>
+<p><code>-D</code>参数指定本机的 Socks 监听端口，该端口收到的请求，都将转发到远程的 SSH 主机，又称动态端口转发，详见《端口转发》一章。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -D <span class="token number">1080</span> server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令将本机 1080 端口收到的请求，都转发到服务器<code>server</code>。</p>
+<p><strong>-f</strong></p>
+<p><code>-f</code>参数表示 SSH 连接在后台运行。</p>
+<p><strong>-F</strong></p>
+<p><code>-F</code>参数指定配置文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -F /usr/local/ssh/other_config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令指定使用配置文件<code>other_config</code>。</p>
+<p><strong>-i</strong></p>
+<p><code>-i</code>参数用于指定私钥，意为“identity_file”，默认值为<code>~/.ssh/id_dsa</code>（DSA 算法）和<code>~/.ssh/id_rsa</code>（RSA 算法）。注意，对应的公钥必须存放到服务器，详见《密钥登录》一章。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -i my-key server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>-l</strong></p>
+<p><code>-l</code>参数指定远程登录的账户名。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -l sally server.example.com
+<span class="token comment"># 等同于</span>
+$ <span class="token function">ssh</span> sally@server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>-L</strong></p>
+<p><code>-L</code>参数设置本地端口转发，详见《端口转发》一章。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span>  -L <span class="token number">9999</span>:targetServer:80 user@remoteserver<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，所有发向本地<code>9999</code>端口的请求，都会经过<code>remoteserver</code>发往 targetServer 的 80 端口，这就相当于直接连上了 targetServer 的 80 端口。</p>
+<p><strong>-m</strong></p>
+<p><code>-m</code>参数指定校验数据完整性的算法（message authentication code，简称 MAC）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -m hmac-sha1,hmac-md5 server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令指定数据校验算法为<code>hmac-sha1</code>或<code>hmac-md5</code>。</p>
+<p><strong>-N</strong></p>
+<p><code>-N</code>参数用于端口转发，表示建立的 SSH 只用于端口转发，不能执行远程命令，这样可以提供安全性，详见《端口转发》一章。</p>
+<p><strong>-o</strong></p>
+<p><code>-o</code>参数用来指定一个配置命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -o <span class="token string">"Keyword Value"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>举例来说，配置文件里面有如下内容。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">User sally
+Port <span class="token number">220</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>通过<code>-o</code>参数，可以把上面两个配置命令从命令行传入。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -o <span class="token string">"User sally"</span> -o <span class="token string">"Port 220"</span> server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>使用等号时，配置命令可以不用写在引号里面，但是等号前后不能有空格。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -o <span class="token assign-left variable">User</span><span class="token operator">=</span>sally -o <span class="token assign-left variable">Port</span><span class="token operator">=</span><span class="token number">220</span> server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>-p</strong></p>
+<p><code>-p</code>参数指定 SSH 客户端连接的服务器端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -p <span class="token number">2035</span> server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令连接服务器的2035端口。</p>
+<p><strong>-q</strong></p>
+<p><code>-q</code>参数表示安静模式（quiet），不向用户输出任何警告信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> –q foo.com
+root’s password:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上面命令使用<code>-q</code>参数，只输出要求用户输入密码的提示。</p>
+<p><strong>-R</strong></p>
+<p><code>-R</code>参数指定远程端口转发，详见《端口转发》一章。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -R <span class="token number">9999</span>:targetServer:902 <span class="token builtin class-name">local</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令需在跳板服务器执行，指定本地计算机<code>local</code>监听自己的 9999 端口，所有发向这个端口的请求，都会转向 targetServer 的 902 端口。</p>
+<p><strong>-t</strong></p>
+<p><code>-t</code>参数在 ssh 直接运行远端命令时，提供一个互动式 Shell。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -t server.example.com emacs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>-v</strong></p>
+<p><code>-v</code>参数显示详细信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -v server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>-v</code>可以重复多次，表示信息的详细程度，比如<code>-vv</code>和<code>-vvv</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -vvv server.example.com
+<span class="token comment"># 或者</span>
+$ <span class="token function">ssh</span> -v -v -v server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>上面命令会输出最详细的连接信息。</p>
+<p><strong>-V</strong></p>
+<p><code>-V</code>参数输出 ssh 客户端的版本。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> –V
+ssh: SSH Secure Shell <span class="token number">3.2</span>.3 <span class="token punctuation">(</span>non-commercial version<span class="token punctuation">)</span> on i686-pc-linux-gnu<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上面命令输出本机 ssh 客户端版本是<code>SSH Secure Shell 3.2.3</code>。</p>
+<p><strong>-X</strong></p>
+<p><code>-X</code>参数表示打开 X 窗口转发。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -X server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>-1，-2</strong></p>
+<p><code>-1</code>参数指定使用 SSH 1 协议。</p>
+<p><code>-2</code>参数指定使用 SSH 2 协议。</p>
+<pre class="line-numbers language-ssh" data-language="ssh"><code class="language-ssh">$ ssh -2 server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>-4，-6</strong></p>
+<p><code>-4</code>指定使用 IPv4 协议，这是默认值。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -4 server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>-6</code>指定使用 IPv6 协议。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -6 server.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="客户端配置文件"><a href="#客户端配置文件" class="headerlink" title="客户端配置文件"></a>客户端配置文件</h2><h3 id="位置"><a href="#位置" class="headerlink" title="位置"></a>位置</h3><p>SSH 客户端的全局配置文件是<code>/etc/ssh/ssh_config</code>，用户个人的配置文件在<code>~/.ssh/config</code>，优先级高于全局配置文件。</p>
+<p>除了配置文件，<code>~/.ssh</code>目录还有一些用户个人的密钥文件和其他文件。下面是其中一些常见的文件。</p>
+<ul>
+<li><code>~/.ssh/id_ecdsa</code>：用户的 ECDSA 私钥。</li>
+<li><code>~/.ssh/id_ecdsa.pub</code>：用户的 ECDSA 公钥。</li>
+<li><code>~/.ssh/id_rsa</code>：用于 SSH 协议版本2 的 RSA 私钥。</li>
+<li><code>~/.ssh/id_rsa.pub</code>：用于SSH 协议版本2 的 RSA 公钥。</li>
+<li><code>~/.ssh/identity</code>：用于 SSH 协议版本1 的 RSA 私钥。</li>
+<li><code>~/.ssh/identity.pub</code>：用于 SSH 协议版本1 的 RSA 公钥。</li>
+<li><code>~/.ssh/known_hosts</code>：包含 SSH 服务器的公钥指纹。</li>
+</ul>
+<h3 id="主机设置"><a href="#主机设置" class="headerlink" title="主机设置"></a>主机设置</h3><p>用户个人的配置文件<code>~/.ssh/config</code>，可以按照不同服务器，列出各自的连接参数，从而不必每一次登录都输入重复的参数。下面是一个例子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host *
+     Port <span class="token number">2222</span>
+
+Host remoteserver
+     HostName remote.example.com
+     User neo
+     Port <span class="token number">2112</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面代码中，<code>Host *</code>表示对所有主机生效，后面的<code>Port 2222</code>表示所有主机的默认连接端口都是2222，这样就不用在登录时特别指定端口了。这里的缩进并不是必需的，只是为了视觉上，易于识别针对不同主机的设置。</p>
+<p>后面的<code>Host remoteserver</code>表示，下面的设置只对主机<code>remoteserver</code>生效。<code>remoteserver</code>只是一个别名，具体的主机由<code>HostName</code>命令指定，<code>User</code>和<code>Port</code>这两项分别表示用户名和端口。这里的<code>Port</code>会覆盖上面<code>Host *</code>部分的<code>Port</code>设置。</p>
+<p>以后，登录<code>remote.example.com</code>时，只要执行<code>ssh remoteserver</code>命令，就会自动套用 config 文件里面指定的参数。<br>单个主机的配置格式如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> remoteserver
+<span class="token comment"># 等同于</span>
+$ <span class="token function">ssh</span> -p <span class="token number">2112</span> neo@remote.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>Host</code>命令的值可以使用通配符，比如<code>Host *</code>表示对所有主机都有效的设置，<code>Host *.edu</code>表示只对一级域名为<code>.edu</code>的主机有效的设置。它们的设置都可以被单个主机的设置覆盖。</p>
+<h3 id="配置命令的语法"><a href="#配置命令的语法" class="headerlink" title="配置命令的语法"></a>配置命令的语法</h3><p>ssh 客户端配置文件的每一行，就是一个配置命令。配置命令与对应的值之间，可以使用空格，也可以使用等号。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Compression <span class="token function">yes</span>
+<span class="token comment"># 等同于</span>
+Compression <span class="token operator">=</span> <span class="token function">yes</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><code>#</code>开头的行表示注释，会被忽略。空行等同于注释。</p>
+<h3 id="主要配置命令"><a href="#主要配置命令" class="headerlink" title="主要配置命令"></a>主要配置命令</h3><p>下面是 ssh 客户端的一些主要配置命令，以及它们的范例值。</p>
+<ul>
+<li><code>AddressFamily inet</code>：表示只使用 IPv4 协议。如果设为<code>inet6</code>，表示只使用 IPv6 协议。</li>
+<li><code>BindAddress 192.168.10.235</code>：指定本机的 IP 地址（如果本机有多个 IP 地址）。</li>
+<li><code>CheckHostIP yes</code>：检查 SSH 服务器的 IP 地址是否跟公钥数据库吻合。</li>
+<li><code>Ciphers blowfish,3des</code>：指定加密算法。</li>
+<li><code>Compression yes</code>：是否压缩传输信号。</li>
+<li><code>ConnectionAttempts 10</code>：客户端进行连接时，最大的尝试次数。</li>
+<li><code>ConnectTimeout 60</code>：客户端进行连接时，服务器在指定秒数内没有回复，则中断连接尝试。</li>
+<li><code>DynamicForward 1080</code>：指定动态转发端口。</li>
+<li><code>GlobalKnownHostsFile /users/smith/.ssh/my_global_hosts_file</code>：指定全局的公钥数据库文件的位置。</li>
+<li><code>Host server.example.com</code>：指定连接的域名或 IP 地址，也可以是别名，支持通配符。<code>Host</code>命令后面的所有配置，都是针对该主机的，直到下一个<code>Host</code>命令为止。</li>
+<li><code>HostKeyAlgorithms ssh-dss,ssh-rsa</code>：指定密钥算法，优先级从高到低排列。</li>
+<li><code>HostName myserver.example.com</code>：在<code>Host</code>命令使用别名的情况下，<code>HostName</code>指定域名或 IP 地址。</li>
+<li><code>IdentityFile keyfile</code>：指定私钥文件。</li>
+<li><code>LocalForward 2001 localhost:143</code>：指定本地端口转发。</li>
+<li><code>LogLevel QUIET</code>：指定日志详细程度。如果设为<code>QUIET</code>，将不输出大部分的警告和提示。</li>
+<li><code>MACs hmac-sha1,hmac-md5</code>：指定数据校验算法。</li>
+<li><code>NumberOfPasswordPrompts 2</code>：密码登录时，用户输错密码的最大尝试次数。</li>
+<li><code>PasswordAuthentication no</code>：指定是否支持密码登录。不过，这里只是客户端禁止，真正的禁止需要在 SSH 服务器设置。</li>
+<li><code>Port 2035</code>：指定客户端连接的 SSH 服务器端口。</li>
+<li><code>PreferredAuthentications publickey,hostbased,password</code>：指定各种登录方法的优先级。</li>
+<li><code>Protocol 2</code>：支持的 SSH 协议版本，多个版本之间使用逗号分隔。</li>
+<li><code>PubKeyAuthentication yes</code>：是否支持密钥登录。这里只是客户端设置，还需要在 SSH 服务器进行相应设置。</li>
+<li><code>RemoteForward 2001 server:143</code>：指定远程端口转发。</li>
+<li><code>SendEnv COLOR</code>：SSH 客户端向服务器发送的环境变量名，多个环境变量之间使用空格分隔。环境变量的值从客户端当前环境中拷贝。</li>
+<li><code>ServerAliveCountMax 3</code>：如果没有收到服务器的回应，客户端连续发送多少次<code>keepalive</code>信号，才断开连接。该项默认值为3。</li>
+<li><code>ServerAliveInterval 300</code>：客户端建立连接后，如果在给定秒数内，没有收到服务器发来的消息，客户端向服务器发送<code>keepalive</code>消息。如果不希望客户端发送，这一项设为<code>0</code>。</li>
+<li><code>StrictHostKeyChecking yes</code>：<code>yes</code>表示严格检查，服务器公钥为未知或发生变化，则拒绝连接。<code>no</code>表示如果服务器公钥未知，则加入客户端公钥数据库，如果公钥发生变化，不改变客户端公钥数据库，输出一条警告，依然允许连接继续进行。<code>ask</code>（默认值）表示询问用户是否继续进行。</li>
+<li><code>TCPKeepAlive yes</code>：客户端是否定期向服务器发送<code>keepalive</code>信息。</li>
+<li><code>User userName</code>：指定远程登录的账户名。</li>
+<li><code>UserKnownHostsFile /users/smith/.ssh/my_local_hosts_file</code>：指定当前用户的<code>known_hosts</code>文件（服务器公钥指纹列表）的位置。</li>
+<li><code>VerifyHostKeyDNS yes</code>：是否通过检查 SSH 服务器的 DNS 记录，确认公钥指纹是否与<code>known_hosts</code>文件保存的一致。</li>
+</ul>
+<h1 id="SSH-密钥登录"><a href="#SSH-密钥登录" class="headerlink" title="SSH 密钥登录"></a>SSH 密钥登录</h1><p>SSH 默认采用密码登录，这种方法有很多缺点，简单的密码不安全，复杂的密码不容易记忆，每次手动输入也很麻烦。密钥登录是比密码登录更好的解决方案。</p>
+<h2 id="密钥是什么"><a href="#密钥是什么" class="headerlink" title="密钥是什么"></a>密钥是什么</h2><p>密钥（key）是一个非常大的数字，通过加密算法得到。对称加密只需要一个密钥，非对称加密需要两个密钥成对使用，分为公钥（public key）和私钥（private key）。</p>
+<p>SSH 密钥登录采用的是非对称加密，每个用户通过自己的密钥登录。其中，私钥必须私密保存，不能泄漏；公钥则是公开的，可以对外发送。它们的关系是，公钥和私钥是一一对应的，每一个私钥都有且仅有一个对应的公钥，反之亦然。</p>
+<p>如果数据使用公钥加密，那么只有使用对应的私钥才能解密，其他密钥都不行；反过来，如果使用私钥加密（这个过程一般称为“签名”），也只有使用对应的公钥解密。</p>
+<h2 id="密钥登录的过程"><a href="#密钥登录的过程" class="headerlink" title="密钥登录的过程"></a>密钥登录的过程</h2><p>SSH 密钥登录分为以下的步骤。</p>
+<p>预备步骤，客户端通过<code>ssh-keygen</code>生成自己的公钥和私钥。</p>
+<p>第一步，手动将客户端的公钥放入远程服务器的指定位置。</p>
+<p>第二步，客户端向服务器发起 SSH 登录的请求。</p>
+<p>第三步，服务器收到用户 SSH 登录的请求，发送一些随机数据给用户，要求用户证明自己的身份。</p>
+<p>第四步，客户端收到服务器发来的数据，使用私钥对数据进行签名，然后再发还给服务器。</p>
+<p>第五步，服务器收到客户端发来的加密签名后，使用对应的公钥解密，然后跟原始数据比较。如果一致，就允许用户登录。</p>
+<h2 id="ssh-keygen命令：生成密钥"><a href="#ssh-keygen命令：生成密钥" class="headerlink" title="ssh-keygen命令：生成密钥"></a><code>ssh-keygen</code>命令：生成密钥</h2><h3 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h3><p>密钥登录时，首先需要生成公钥和私钥。OpenSSH 提供了一个工具程序<code>ssh-keygen</code>命令，用来生成密钥。</p>
+<p>直接输入<code>ssh-keygen</code>，程序会询问一系列问题，然后生成密钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>通常做法是使用<code>-t</code>参数，指定密钥的加密算法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -t dsa<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面示例中，<code>-t</code>参数用来指定密钥的加密算法，一般会选择 DSA 算法或 RSA 算法。如果省略该参数，默认使用 RSA 算法。</p>
+<p>输入上面的命令以后，<code>ssh-keygen</code>会要求用户回答一些问题。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -t dsa
+Generating public/private dsa key pair.
+Enter <span class="token function">file</span> <span class="token keyword">in</span> <span class="token function">which</span> to save the key <span class="token punctuation">(</span>/home/username/.ssh/id_dsa<span class="token punctuation">)</span>:  press ENTER
+Enter passphrase <span class="token punctuation">(</span>empty <span class="token keyword">for</span> no passphrase<span class="token punctuation">)</span>: ********
+Enter same passphrase again: ********
+Your identification has been saved <span class="token keyword">in</span> /home/username/.ssh/id_dsa.
+Your public key has been saved <span class="token keyword">in</span> /home/username/.ssh/id_dsa.pub.
+The key fingerprint is:
+<span class="token number">14</span>:ba:06:98:a8:98:ad:27:b5:ce:55:85:ec:64:37:19 username@shell.isp.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面示例中，执行<code>ssh-keygen</code>命令以后，会出现第一个问题，询问密钥保存的文件名，默认是<code>~/.ssh/id_dsa</code>文件，这个是私钥的文件名，对应的公钥文件<code>~/.ssh/id_dsa.pub</code>是自动生成的。用户的密钥一般都放在主目录的<code>.ssh</code>目录里面。</p>
+<p>如果选择<code>rsa</code>算法，生成的密钥文件默认就会是<code>~/.ssh/id_rsa</code>（私钥）和<code>~/.ssh/id_rsa.pub</code>（公钥）。</p>
+<p>接着，就会是第二个问题，询问是否要为私钥文件设定密码保护（passphrase）。这样的话，即使入侵者拿到私钥，还是需要破解密码。如果为了方便，不想设定密码保护，可以直接按回车键，密码就会为空。后面还会让你再输入一次密码，两次输入必须一致。注意，这里“密码”的英文单词是 passphrase，这是为了避免与 Linux 账户的密码单词 password 混淆，表示这不是用户系统账户的密码。</p>
+<p>最后，就会生成私钥和公钥，屏幕上还会给出公钥的指纹，以及当前的用户名和主机名作为注释，用来识别密钥的来源。</p>
+<p>公钥文件和私钥文件都是文本文件，可以用文本编辑器看一下它们的内容。公钥文件的内容类似下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAIEAvpB4lUbAaEbh9u6HLig7amsfywD4fqSZq2ikACIUBn3GyRPfeF93l/
+weQh702ofXbDydZAKMcDvBJqRhUotQUwqV6HJxqoqPDlPGUUyo8RDIkLUIPRyq
+ypZxmK9aCXokFiHoGCXfQ9imUP/w/jfqb9ByDtG97tUJF6nFMP5WzhM<span class="token operator">=</span> username@shell.isp.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>上面示例中，末尾的<code>username@shell.isp.com</code>是公钥的注释，用来识别不同的公钥，表示这是哪台主机（<code>shell.isp.com</code>）的哪个用户（<code>username</code>）的公钥，不是必需项。</p>
+<p>注意，公钥只有一行。因为它太长了，所以上面分成三行显示。</p>
+<p>下面的命令可以列出用户所有的公钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ls</span> -l ~/.ssh/id_*.pub<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>生成密钥以后，建议修改它们的权限，防止其他人读取。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/id_rsa
+$ <span class="token function">chmod</span> <span class="token number">600</span> ~/.ssh/id_rsa.pub<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h3 id="配置项"><a href="#配置项" class="headerlink" title="配置项"></a>配置项</h3><p><code>ssh-keygen</code>的命令行配置项，主要有下面这些。</p>
+<p><strong>（1）<code>-b</code></strong></p>
+<p><code>-b</code>参数指定密钥的二进制位数。这个参数值越大，密钥就越不容易破解，但是加密解密的计算开销也会加大。</p>
+<p>一般来说，<code>-b</code>至少应该是<code>1024</code>，更安全一些可以设为<code>2048</code>或者更高。</p>
+<p><strong>（2）<code>-C</code></strong></p>
+<p><code>-C</code>参数可以为密钥文件指定新的注释，格式为<code>username@host</code>。</p>
+<p>下面命令生成一个4096位 RSA 加密算法的密钥对，并且给出了用户名和主机名。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -t rsa -b <span class="token number">4096</span> -C <span class="token string">"your_email@domain.com"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（3）<code>-f</code></strong></p>
+<p><code>-f</code>参数指定生成的私钥文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -t dsa -f mykey<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令会在当前目录生成私钥文件<code>mykey</code>和公钥文件<code>mykey.pub</code>。</p>
+<p><strong>（4）<code>-F</code></strong></p>
+<p><code>-F</code>参数检查某个主机名是否在<code>known_hosts</code>文件里面。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -F example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（5）<code>-N</code></strong></p>
+<p><code>-N</code>参数用于指定私钥的密码（passphrase）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -t dsa -N secretword<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（6）<code>-p</code></strong></p>
+<p><code>-p</code>参数用于重新指定私钥的密码（passphrase）。它与<code>-N</code>的不同之处在于，新密码不在命令中指定，而是执行后再输入。ssh 先要求输入旧密码，然后要求输入两遍新密码。</p>
+<p><strong>（7）<code>-R</code></strong></p>
+<p><code>-R</code>参数将指定的主机公钥指纹移出<code>known_hosts</code>文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-keygen -R example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（8）<code>-t</code></strong></p>
+<p><code>-t</code>参数用于指定生成密钥的加密算法，一般为<code>dsa</code>或<code>rsa</code></p>
+<h2 id="手动上传公钥"><a href="#手动上传公钥" class="headerlink" title="手动上传公钥"></a>手动上传公钥</h2><p>生成密钥以后，公钥必须上传到服务器，才能使用公钥登录。</p>
+<p>OpenSSH 规定，用户公钥保存在服务器的<code>~/.ssh/authorized_keys</code>文件。你要以哪个用户的身份登录到服务器，密钥就必须保存在该用户主目录的<code>~/.ssh/authorized_keys</code>文件。只要把公钥添加到这个文件之中，就相当于公钥上传到服务器了。每个公钥占据一行。如果该文件不存在，可以手动创建。</p>
+<p>用户可以手动编辑该文件，把公钥粘贴进去，也可以在本机计算机上，执行下面的命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">cat</span> ~/.ssh/id_rsa.pub <span class="token operator">|</span> <span class="token function">ssh</span> user@host <span class="token string">"mkdir -p ~/.ssh &amp;&amp; cat >> ~/.ssh/authorized_keys"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面示例中，<code>user@host</code>要替换成你所要登录的用户名和主机名。</p>
+<p>注意，<code>authorized_keys</code>文件的权限要设为<code>644</code>，即只有文件所有者才能写。如果权限设置不对，SSH 服务器可能会拒绝读取该文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">chmod</span> <span class="token number">644</span> ~/.ssh/authorized_keys<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>只要公钥上传到服务器，下次登录时，OpenSSH 就会自动采用密钥登录，不再提示输入密码。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -l username shell.isp.com
+Enter passphrase <span class="token keyword">for</span> key <span class="token string">'/home/you/.ssh/id_dsa'</span><span class="token builtin class-name">:</span> ************
+Last login: Mon Mar <span class="token number">24</span> 02:17:27 <span class="token number">2014</span> from ex.ample.com
+shell.isp.com<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面例子中，SSH 客户端使用私钥之前，会要求用户输入密码（passphrase），用来解开私钥。</p>
+<h2 id="ssh-copy-id-命令：自动上传公钥"><a href="#ssh-copy-id-命令：自动上传公钥" class="headerlink" title="ssh-copy-id 命令：自动上传公钥"></a>ssh-copy-id 命令：自动上传公钥</h2><p>OpenSSH 自带一个<code>ssh-copy-id</code>命令，可以自动将公钥拷贝到远程服务器的<code>~/.ssh/authorized_keys</code>文件。如果<code>~/.ssh/authorized_keys</code>文件不存在，<code>ssh-copy-id</code>命令会自动创建该文件。</p>
+<p>用户在本地计算机执行下面的命令，就可以把本地的公钥拷贝到服务器。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-copy-id -i key_file user@host<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-i</code>参数用来指定公钥文件，<code>user</code>是所要登录的账户名，<code>host</code>是服务器地址。如果省略用户名，默认为当前的本机用户名。执行完该命令，公钥就会拷贝到服务器。</p>
+<p>注意，公钥文件可以不指定路径和<code>.pub</code>后缀名，<code>ssh-copy-id</code>会自动在<code>~/.ssh</code>目录里面寻找。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-copy-id -i id_rsa user@host<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，公钥文件会自动匹配到<code>~/.ssh/id_rsa.pub</code>。</p>
+<p><code>ssh-copy-id</code>会采用密码登录，系统会提示输入远程服务器的密码。</p>
+<p>注意，<code>ssh-copy-id</code>是直接将公钥添加到<code>authorized_keys</code>文件的末尾。如果<code>authorized_keys</code>文件的末尾不是一个换行符，会导致新的公钥添加到前一个公钥的末尾，两个公钥连在一起，使得它们都无法生效。所以，如果<code>authorized_keys</code>文件已经存在，使用<code>ssh-copy-id</code>命令之前，务必保证<code>authorized_keys</code>文件的末尾是换行符（假设该文件已经存在）。</p>
+<h2 id="ssh-agent-命令，ssh-add-命令"><a href="#ssh-agent-命令，ssh-add-命令" class="headerlink" title="ssh-agent 命令，ssh-add 命令"></a>ssh-agent 命令，ssh-add 命令</h2><h3 id="基本用法-2"><a href="#基本用法-2" class="headerlink" title="基本用法"></a>基本用法</h3><p>私钥设置了密码以后，每次使用都必须输入密码，有时让人感觉非常麻烦。比如，连续使用<code>scp</code>命令远程拷贝文件时，每次都要求输入密码。</p>
+<p><code>ssh-agent</code>命令就是为了解决这个问题而设计的，它让用户在整个 Bash 对话（session）之中，只在第一次使用 SSH 命令时输入密码，然后将私钥保存在内存中，后面都不需要再输入私钥的密码了。</p>
+<p>第一步，使用下面的命令新建一次命令行对话。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-agent <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，如果你使用的命令行环境不是 Bash，可以用其他的 Shell 命令代替。比如<code>zsh</code>和<code>fish</code>。</p>
+<p>如果想在当前对话启用<code>ssh-agent</code>，可以使用下面的命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token builtin class-name">eval</span> <span class="token variable"><span class="token variable">`</span>ssh-agent<span class="token variable">`</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>ssh-agent</code>会先自动在后台运行，并将需要设置的环境变量输出在屏幕上，类似下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-agent
+<span class="token assign-left variable"><span class="token environment constant">SSH_AUTH_SOCK</span></span><span class="token operator">=</span>/tmp/ssh-barrett/ssh-22841-agent<span class="token punctuation">;</span> <span class="token builtin class-name">export</span> <span class="token environment constant">SSH_AUTH_SOCK</span><span class="token punctuation">;</span>
+<span class="token assign-left variable">SSH_AGENT_PID</span><span class="token operator">=</span><span class="token number">22842</span><span class="token punctuation">;</span> <span class="token builtin class-name">export</span> SSH_AGENT_PID<span class="token punctuation">;</span>
+<span class="token builtin class-name">echo</span> Agent pid <span class="token number">22842</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>eval</code>命令的作用，就是运行上面的<code>ssh-agent</code>命令的输出，设置环境变量。</p>
+<p>第二步，在新建的 Shell 对话里面，使用<code>ssh-add</code>命令添加默认的私钥（比如<code>~/.ssh/id_rsa</code>，或<code>~/.ssh/id_dsa</code>，或<code>~/.ssh/id_ecdsa</code>，或<code>~/.ssh/id_ed25519</code>）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-add
+Enter passphrase <span class="token keyword">for</span> /home/you/.ssh/id_dsa: ********
+Identity added: /home/you/.ssh/id_dsa <span class="token punctuation">(</span>/home/you/.ssh/id_dsa<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>上面例子中，添加私钥时，会要求输入密码。以后，在这个对话里面再使用密钥时，就不需要输入私钥的密码了，因为私钥已经加载到内存里面了。</p>
+<p>如果添加的不是默认私钥，<code>ssh-add</code>命令需要显式指定私钥文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-add my-other-key-file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令中，<code>my-other-key-file</code>就是用户指定的私钥文件。</p>
+<p>第三步，使用 ssh 命令正常登录远程服务器。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> remoteHost<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>remoteHost</code>是远程服务器的地址，ssh 使用的是默认的私钥。这时如果私钥设有密码，ssh 将不再询问密码，而是直接取出内存里面的私钥。</p>
+<p>如果要使用其他私钥登录服务器，需要使用 ssh 命令的<code>-i</code>参数指定私钥文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> –i OpenSSHPrivateKey remoteHost<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>最后，如果要退出<code>ssh-agent</code>，可以直接退出子 Shell（按下 Ctrl + d），也可以使用下面的命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-agent -k<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="ssh-add命令"><a href="#ssh-add命令" class="headerlink" title="ssh-add命令"></a><code>ssh-add</code>命令</h3><p><code>ssh-add</code>命令用来将私钥加入<code>ssh-agent</code>，它有如下的参数。</p>
+<p><strong>（1）<code>-d</code></strong></p>
+<p><code>-d</code>参数从内存中删除指定的私钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-add -d name-of-key-file<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（2）<code>-D</code></strong></p>
+<p><code>-D</code>参数从内存中删除所有已经添加的私钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-add -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（3）<code>-l</code></strong></p>
+<p><code>-l</code>参数列出所有已经添加的私钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ ssh-add -l<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="关闭密码登录"><a href="#关闭密码登录" class="headerlink" title="关闭密码登录"></a>关闭密码登录</h2><p>为了安全性，启用密钥登录之后，最好关闭服务器的密码登录。</p>
+<p>对于 OpenSSH，具体方法就是打开服务器 sshd 的配置文件<code>/etc/ssh/sshd_config</code>，将<code>PasswordAuthentication</code>这一项设为<code>no</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PasswordAuthentication no<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>修改配置文件以后，不要忘了重新启动 sshd，否则不会生效。</p>
+<h1 id="SSH-端口转发"><a href="#SSH-端口转发" class="headerlink" title="SSH 端口转发"></a>SSH 端口转发</h1><h2 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h2><p>SSH 除了登录服务器，还有一大用途，就是作为加密通信的中介，充当两台服务器之间的通信加密跳板，使得原本不加密的通信变成加密通信。这个功能称为端口转发（port forwarding），又称 SSH 隧道（tunnel）。</p>
+<p>端口转发有两个主要作用：</p>
+<p>（1）将不加密的数据放在 SSH 安全连接里面传输，使得原本不安全的网络服务增加了安全性，比如通过端口转发访问 Telnet、FTP 等明文服务，数据传输就都会加密。</p>
+<p>（2）作为数据通信的加密跳板，绕过网络防火墙。</p>
+<p>端口转发有三种使用方法：动态转发，本地转发，远程转发。下面逐一介绍。</p>
+<h2 id="动态转发"><a href="#动态转发" class="headerlink" title="动态转发"></a>动态转发</h2><p>动态转发指的是，本机与 SSH 服务器之间创建了一个加密连接，然后本机内部针对某个端口的通信，都通过这个加密连接转发。它的一个使用场景就是，访问所有外部网站，都通过 SSH 转发。</p>
+<p>动态转发需要把本地端口绑定到 SSH 服务器。至于 SSH 服务器要去访问哪一个网站，完全是动态的，取决于原始通信，所以叫做动态转发。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -D local-port tunnel-host -N<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-D</code>表示动态转发，<code>local-port</code>是本地端口，<code>tunnel-host</code>是 SSH 服务器，<code>-N</code>表示这个 SSH 连接只进行端口转发，不登录远程 Shell，不能执行远程命令，只能充当隧道。</p>
+<p>举例来说，如果本地端口是<code>2121</code>，那么动态转发的命令就是下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -D <span class="token number">2121</span> tunnel-host -N<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意，这种转发采用了 SOCKS5 协议。访问外部网站时，需要把 HTTP 请求转成 SOCKS5 协议，才能把本地端口的请求转发出去。</p>
+<p>下面是 SSH 隧道建立后的一个使用实例。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> -x socks5://localhost:2121 http://www.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，curl 的<code>-x</code>参数指定代理服务器，即通过 SOCKS5 协议的本地<code>2121</code>端口，访问<code>http://www.example.com</code>。</p>
+<p>如果经常使用动态转发，可以将设置写入 SSH 客户端的用户个人配置文件（<code>~/.ssh/config</code>）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">DynamicForward tunnel-host:local-port<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="本地转发"><a href="#本地转发" class="headerlink" title="本地转发"></a>本地转发</h2><p>本地转发（local forwarding）指的是，SSH 服务器作为中介的跳板机，建立本地计算机与特定目标网站之间的加密连接。本地转发是在本地计算机的 SSH 客户端建立的转发规则。</p>
+<p>它会指定一个本地端口（local-port），所有发向那个端口的请求，都会转发到 SSH 跳板机（tunnel-host），然后 SSH 跳板机作为中介，将收到的请求发到目标服务器（target-host）的目标端口（target-port）。</p>
+<pre class="line-numbers language-html" data-language="html"><code class="language-html">$ ssh -L local-port:target-host:target-port tunnel-host<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-L</code>参数表示本地转发，<code>local-port</code>是本地端口，<code>target-host</code>是你想要访问的目标服务器，<code>target-port</code>是目标服务器的端口，<code>tunnel-host</code>是 SSH 跳板机。</p>
+<p>举例来说，现在有一台 SSH 跳板机<code>tunnel-host</code>，我们想要通过这台机器，在本地<code>2121</code>端口与目标网站<code>www.example.com</code>的80端口之间建立 SSH 隧道，就可以写成下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -L <span class="token number">2121</span>:www.example.com:80 tunnel-host -N<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后，访问本机的<code>2121</code>端口，就是访问<code>www.example.com</code>的80端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> http://localhost:2121<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意，本地端口转发采用 HTTP 协议，不用转成 SOCKS5 协议。</p>
+<p>另一个例子是加密访问邮件获取协议 POP3。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -L <span class="token number">1100</span>:mail.example.com:110 mail.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令将本机的1100端口，绑定邮件服务器<code>mail.example.com</code>的110端口（POP3 协议的默认端口）。端口转发建立以后，POP3 邮件客户端只需要访问本机的1100端口，请求就会通过 SSH 跳板机（这里是<code>mail.example.com</code>），自动转发到<code>mail.example.com</code>的110端口。</p>
+<p>上面这种情况有一个前提条件，就是<code>mail.example.com</code>必须运行 SSH 服务器。否则，就必须通过另一台 SSH 服务器中介，执行的命令要改成下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -L <span class="token number">1100</span>:mail.example.com:110 other.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，本机的1100端口还是绑定<code>mail.example.com</code>的110端口，但是由于<code>mail.example.com</code>没有运行 SSH 服务器，所以必须通过<code>other.example.com</code>中介。本机的 POP3 请求通过1100端口，先发给<code>other.example.com</code>的22端口（sshd 默认端口），再由后者转给<code>mail.example.com</code>，得到数据以后再原路返回。</p>
+<p>注意，采用上面的中介方式，只有本机到<code>other.example.com</code>的这一段是加密的，<code>other.example.com</code>到<code>mail.example.com</code>的这一段并不加密。</p>
+<p>这个命令最好加上<code>-N</code>参数，表示不在 SSH 跳板机执行远程命令，让 SSH 只充当隧道。另外还有一个<code>-f</code>参数表示 SSH 连接在后台运行。</p>
+<p>如果经常使用本地转发，可以将设置写入 SSH 客户端的用户个人配置文件（<code>~/.ssh/config</code>）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host test.example.com
+LocalForward client-IP:client-port server-IP:server-port<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="远程转发"><a href="#远程转发" class="headerlink" title="远程转发"></a>远程转发</h2><p>远程转发指的是在远程 SSH 服务器建立的转发规则。</p>
+<p>它跟本地转发正好反过来。建立本地计算机到远程计算机的 SSH 隧道以后，本地转发是通过本地计算机访问远程计算机，而远程转发则是通过远程计算机访问本地计算机。它的命令格式如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -R remote-port:target-host:target-port -N remotehost<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-R</code>参数表示远程端口转发，<code>remote-port</code>是远程计算机的端口，<code>target-host</code>和<code>target-port</code>是目标服务器及其端口，<code>remotehost</code>是远程计算机。</p>
+<p>远程转发主要针对内网的情况。下面举两个例子。</p>
+<p>第一个例子是内网某台服务器<code>localhost</code>在 80 端口开了一个服务，可以通过远程转发将这个 80 端口，映射到具有公网 IP 地址的<code>my.public.server</code>服务器的 8080 端口，使得访问<code>my.public.server:8080</code>这个地址，就可以访问到那台内网服务器的 80 端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -R <span class="token number">8080</span>:localhost:80 -N my.public.server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令是在内网<code>localhost</code>服务器上执行，建立从<code>localhost</code>到<code>my.public.server</code>的 SSH 隧道。运行以后，用户访问<code>my.public.server:8080</code>，就会自动映射到<code>localhost:80</code>。</p>
+<p>第二个例子是本地计算机<code>local</code>在外网，SSH 跳板机和目标服务器<code>my.private.server</code>都在内网，必须通过 SSH 跳板机才能访问目标服务器。但是，本地计算机<code>local</code>无法访问内网之中的 SSH 跳板机，而 SSH 跳板机可以访问本机计算机。</p>
+<p>由于本机无法访问内网 SSH 跳板机，就无法从外网发起 SSH 隧道，建立端口转发。必须反过来，从 SSH 跳板机发起隧道，建立端口转发，这时就形成了远程端口转发。跳板机执行下面的命令，绑定本地计算机<code>local</code>的<code>2121</code>端口，去访问<code>my.private.server:80</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -R <span class="token number">2121</span>:my.private.server:80 -N <span class="token builtin class-name">local</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令是在 SSH 跳板机上执行的，建立跳板机到<code>local</code>的隧道，并且这条隧道的出口映射到<code>my.private.server:80</code>。</p>
+<p>显然，远程转发要求本地计算机<code>local</code>也安装了 SSH 服务器，这样才能接受 SSH 跳板机的远程登录。</p>
+<p>执行上面的命令以后，跳板机到<code>local</code>的隧道已经建立了。然后，就可以从本地计算机访问目标服务器了，即在本机执行下面的命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">curl</span> http://localhost:2121<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>本机执行上面的命令以后，就会输出服务器<code>my.private.server</code>的 80 端口返回的内容。</p>
+<p>如果经常执行远程端口转发，可以将设置写入 SSH 客户端的用户个人配置文件（<code>~/.ssh/config</code>）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Host remote-forward
+  HostName test.example.com
+  RemoteForward remote-port target-host:target-port<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>完成上面的设置后，执行下面的命令就会建立远程转发。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -N remote-forward
+
+<span class="token comment"># 等同于</span>
+$ <span class="token function">ssh</span> -R remote-port:target-host:target-port -N test.example.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>下面看两个端口转发的实例。</p>
+<h3 id="简易-VPN"><a href="#简易-VPN" class="headerlink" title="简易 VPN"></a>简易 VPN</h3><p>VPN 用来在外网与内网之间建立一条加密通道。内网的服务器不能从外网直接访问，必须通过一个跳板机，如果本机可以访问跳板机，就可以使用 SSH 本地转发，简单实现一个 VPN。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -L <span class="token number">2080</span>:corp-server:80 -L <span class="token number">2443</span>:corp-server:443 tunnel-host -N<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令通过 SSH 跳板机，将本机的<code>2080</code>端口绑定内网服务器的<code>80</code>端口，本机的<code>2443</code>端口绑定内网服务器的<code>443</code>端口。</p>
+<h3 id="两级跳板"><a href="#两级跳板" class="headerlink" title="两级跳板"></a>两级跳板</h3><p>端口转发可以有多级，比如新建两个 SSH 隧道，第一个隧道转发给第二个隧道，第二个隧道才能访问目标服务器。</p>
+<p>首先，在本机新建第一级隧道。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -L <span class="token number">7999</span>:localhost:2999 tunnel1-host<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令在本地<code>7999</code>端口与<code>tunnel1-host</code>之间建立一条隧道，隧道的出口是<code>tunnel1-host</code>的<code>localhost:2999</code>，也就是<code>tunnel1-host</code>收到本机的请求以后，转发给自己的<code>2999</code>端口。</p>
+<p>然后，在第一台跳板机（<code>tunnel1-host</code>）执行下面的命令，新建第二级隧道。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">ssh</span> -L <span class="token number">2999</span>:target-host:7999 tunnel2-host -N<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令将第一台跳板机<code>tunnel1-host</code>的<code>2999</code>端口，通过第二台跳板机<code>tunnel2-host</code>，连接到目标服务器<code>target-host</code>的<code>7999</code>端口。</p>
+<p>最终效果就是，访问本机的<code>7999</code>端口，就会转发到<code>target-host</code>的<code>7999</code>端口。</p>
+<h2 id="参考链接-1"><a href="#参考链接-1" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://solitum.net/posts/an-illustrated-guide-to-ssh-tunnels/">An Illustrated Guide to SSH Tunnels</a>, Scott Wiersdorf</li>
+</ul>
+<h1 id="rsync-命令"><a href="#rsync-命令" class="headerlink" title="rsync 命令"></a>rsync 命令</h1><h2 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h2><p>rsync 是一个常用的 Linux 应用程序，用于文件同步。</p>
+<p>它可以在本地计算机与远程计算机之间，或者两个本地目录之间同步文件（但不支持两台远程计算机之间的同步）。它也可以当作文件复制工具，替代<code>cp</code>和<code>mv</code>命令。</p>
+<p>它名称里面的<code>r</code>指的是 remote，rsync 其实就是“远程同步”（remote sync）的意思。与其他文件传输工具（如 FTP 或 scp）不同，rsync 的最大特点是会检查发送方和接收方已有的文件，仅传输有变动的部分（默认规则是文件大小或修改时间有变动）。</p>
+<p>虽然 rsync 不是 SSH 工具集的一部分，但因为也涉及到远程操作，所以放在这里一起介绍。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p>如果本机或者远程计算机没有安装 rsync，可以用下面的命令安装。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian</span>
+$ <span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> <span class="token function">rsync</span>
+
+<span class="token comment"># Red Hat</span>
+$ <span class="token function">sudo</span> yum <span class="token function">install</span> <span class="token function">rsync</span>
+
+<span class="token comment"># Arch Linux</span>
+$ <span class="token function">sudo</span> pacman -S <span class="token function">rsync</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>注意，传输的双方都必须安装 rsync。</p>
+<h2 id="基本用法-3"><a href="#基本用法-3" class="headerlink" title="基本用法"></a>基本用法</h2><p>rsync 可以用于本地计算机的两个目录之间的同步。下面就用本地同步举例，顺便讲解 rsync 几个主要参数的用法。</p>
+<h3 id="r参数"><a href="#r参数" class="headerlink" title="-r参数"></a><code>-r</code>参数</h3><p>本机使用 rsync 命令时，可以作为<code>cp</code>和<code>mv</code>命令的替代方法，将源目录拷贝到目标目录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -r <span class="token builtin class-name">source</span> destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-r</code>表示递归，即包含子目录。注意，<code>-r</code>是必须的，否则 rsync 运行不会成功。<code>source</code>目录表示源目录，<code>destination</code>表示目标目录。上面命令执行以后，目标目录下就会出现<code>destination/source</code>这个子目录。</p>
+<p>如果有多个文件或目录需要同步，可以写成下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -r source1 source2 destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>source1</code>、<code>source2</code>都会被同步到<code>destination</code>目录。</p>
+<h3 id="a参数"><a href="#a参数" class="headerlink" title="-a参数"></a><code>-a</code>参数</h3><p><code>-a</code>参数可以替代<code>-r</code>，除了可以递归同步以外，还可以同步元信息（比如修改时间、权限等）。由于 rsync 默认使用文件大小和修改时间决定文件是否需要更新，所以<code>-a</code>比<code>-r</code>更有用。下面的用法才是常见的写法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -a <span class="token builtin class-name">source</span> destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>目标目录<code>destination</code>如果不存在，rsync 会自动创建。执行上面的命令后，源目录<code>source</code>被完整地复制到了目标目录<code>destination</code>下面，即形成了<code>destination/source</code>的目录结构。</p>
+<p>如果只想同步源目录<code>source</code>里面的内容到目标目录<code>destination</code>，则需要在源目录后面加上斜杠。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -a source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令执行后，<code>source</code>目录里面的内容，就都被复制到了<code>destination</code>目录里面，并不会在<code>destination</code>下面创建一个<code>source</code>子目录。</p>
+<h3 id="n参数"><a href="#n参数" class="headerlink" title="-n参数"></a><code>-n</code>参数</h3><p>如果不确定 rsync 执行后会产生什么结果，可以先用<code>-n</code>或<code>--dry-run</code>参数模拟执行的结果。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -anv source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-n</code>参数模拟命令执行的结果，并不真的执行命令。<code>-v</code>参数则是将结果输出到终端，这样就可以看到哪些内容会被同步。</p>
+<h3 id="delete参数"><a href="#delete参数" class="headerlink" title="--delete参数"></a><code>--delete</code>参数</h3><p>默认情况下，rsync 只确保源目录的所有内容（明确排除的文件除外）都复制到目标目录。它不会使两个目录保持相同，并且不会删除文件。如果要使得目标目录成为源目录的镜像副本，则必须使用<code>--delete</code>参数，这将删除只存在于目标目录、不存在于源目录的文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --delete source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>--delete</code>参数会使得<code>destination</code>成为<code>source</code>的一个镜像。</p>
+<h2 id="排除文件"><a href="#排除文件" class="headerlink" title="排除文件"></a>排除文件</h2><h3 id="exclude参数"><a href="#exclude参数" class="headerlink" title="--exclude参数"></a><code>--exclude</code>参数</h3><p>有时，我们希望同步时排除某些文件或目录，这时可以用<code>--exclude</code>参数指定排除模式。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --exclude<span class="token operator">=</span><span class="token string">'*.txt'</span> source/ destination
+<span class="token comment"># 或者</span>
+$ <span class="token function">rsync</span> -av --exclude <span class="token string">'*.txt'</span> source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>上面命令排除了所有 TXT 文件。</p>
+<p>注意，rsync 会同步以“点”开头的隐藏文件，如果要排除隐藏文件，可以这样写<code>--exclude=&quot;.*&quot;</code>。</p>
+<p>如果要排除某个目录里面的所有文件，但不希望排除目录本身，可以写成下面这样。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --exclude <span class="token string">'dir1/*'</span> source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>多个排除模式，可以用多个<code>--exclude</code>参数。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --exclude <span class="token string">'file1.txt'</span> --exclude <span class="token string">'dir1/*'</span> source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>多个排除模式也可以利用 Bash 的大扩号的扩展功能，只用一个<code>--exclude</code>参数。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --exclude<span class="token operator">=</span><span class="token punctuation">&#123;</span><span class="token string">'file1.txt'</span>,<span class="token string">'dir1/*'</span><span class="token punctuation">&#125;</span> source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果排除模式很多，可以将它们写入一个文件，每个模式一行，然后用<code>--exclude-from</code>参数指定这个文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --exclude-from<span class="token operator">=</span><span class="token string">'exclude-file.txt'</span> source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="include参数"><a href="#include参数" class="headerlink" title="--include参数"></a><code>--include</code>参数</h3><p><code>--include</code>参数用来指定必须同步的文件模式，往往与<code>--exclude</code>结合使用。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av --include<span class="token operator">=</span><span class="token string">"*.txt"</span> --exclude<span class="token operator">=</span><span class="token string">'*'</span> source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令指定同步时，排除所有文件，但是会包括 TXT 文件。</p>
+<h2 id="远程同步"><a href="#远程同步" class="headerlink" title="远程同步"></a>远程同步</h2><h3 id="SSH-协议"><a href="#SSH-协议" class="headerlink" title="SSH 协议"></a>SSH 协议</h3><p>rsync 除了支持本地两个目录之间的同步，也支持远程同步。它可以将本地内容，同步到远程服务器。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av source/ username@remote_host:destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>也可以将远程内容同步到本地。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av username@remote_host:source/ destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>rsync 默认使用 SSH 进行远程登录和数据传输。</p>
+<p>由于早期 rsync 不使用 SSH 协议，需要用<code>-e</code>参数指定协议，后来才改的。所以，下面<code>-e ssh</code>可以省略。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av -e <span class="token function">ssh</span> source/ user@remote_host:/destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>但是，如果 ssh 命令有附加的参数，则必须使用<code>-e</code>参数指定所要执行的 SSH 命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av -e <span class="token string">'ssh -p 2234'</span> source/ user@remote_host:/destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>-e</code>参数指定 SSH 使用2234端口。</p>
+<h3 id="rsync-协议"><a href="#rsync-协议" class="headerlink" title="rsync 协议"></a>rsync 协议</h3><p>除了使用 SSH，如果另一台服务器安装并运行了 rsync 守护程序，则也可以用<code>rsync://</code>协议（默认端口873）进行传输。具体写法是服务器与目标目录之间使用双冒号分隔<code>::</code>。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av source/ <span class="token number">192.168</span>.122.32::module/destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意，上面地址中的<code>module</code>并不是实际路径名，而是 rsync 守护程序指定的一个资源名，由管理员分配。</p>
+<p>如果想知道 rsync 守护程序分配的所有 module 列表，可以执行下面命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> rsync://192.168.122.32<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>rsync 协议除了使用双冒号，也可以直接用<code>rsync://</code>协议指定地址。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -av source/ rsync://192.168.122.32/module/destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="增量备份"><a href="#增量备份" class="headerlink" title="增量备份"></a>增量备份</h2><p>rsync 的最大特点就是它可以完成增量备份，也就是默认只复制有变动的文件。</p>
+<p>除了源目录与目标目录直接比较，rsync 还支持使用基准目录，即将源目录与基准目录之间变动的部分，同步到目标目录。</p>
+<p>具体做法是，第一次同步是全量备份，所有文件在基准目录里面同步一份。以后每一次同步都是增量备份，只同步源目录与基准目录之间有变动的部分，将这部分保存在一个新的目标目录。这个新的目标目录之中，也是包含所有文件，但实际上，只有那些变动过的文件是存在于该目录，其他没有变动的文件都是指向基准目录文件的硬链接。</p>
+<p><code>--link-dest</code>参数用来指定同步时的基准目录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">rsync</span> -a --delete --link-dest /compare/path /source/path /target/path<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>--link-dest</code>参数指定基准目录<code>/compare/path</code>，然后源目录<code>/source/path</code>跟基准目录进行比较，找出变动的文件，将它们拷贝到目标目录<code>/target/path</code>。那些没变动的文件则会生成硬链接。这个命令的第一次备份时是全量备份，后面就都是增量备份了。</p>
+<p>下面是一个脚本示例，备份用户的主目录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token shebang important">#!/bin/bash</span>
+
+<span class="token comment"># A script to perform incremental backups using rsync</span>
+
+<span class="token builtin class-name">set</span> -o errexit
+<span class="token builtin class-name">set</span> -o nounset
+<span class="token builtin class-name">set</span> -o pipefail
+
+<span class="token builtin class-name">readonly</span> <span class="token assign-left variable">SOURCE_DIR</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$&#123;<span class="token environment constant">HOME</span>&#125;</span>"</span>
+<span class="token builtin class-name">readonly</span> <span class="token assign-left variable">BACKUP_DIR</span><span class="token operator">=</span><span class="token string">"/mnt/data/backups"</span>
+<span class="token builtin class-name">readonly</span> <span class="token assign-left variable">DATETIME</span><span class="token operator">=</span><span class="token string">"<span class="token variable"><span class="token variable">$(</span><span class="token function">date</span> <span class="token string">'+%Y-%m-%d_%H:%M:%S'</span><span class="token variable">)</span></span>"</span>
+<span class="token builtin class-name">readonly</span> <span class="token assign-left variable">BACKUP_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$&#123;BACKUP_DIR&#125;</span>/<span class="token variable">$&#123;DATETIME&#125;</span>"</span>
+<span class="token builtin class-name">readonly</span> <span class="token assign-left variable">LATEST_LINK</span><span class="token operator">=</span><span class="token string">"<span class="token variable">$&#123;BACKUP_DIR&#125;</span>/latest"</span>
+
+<span class="token function">mkdir</span> -p <span class="token string">"<span class="token variable">$&#123;BACKUP_DIR&#125;</span>"</span>
+
+<span class="token function">rsync</span> -av --delete <span class="token punctuation">\</span>
+  <span class="token string">"<span class="token variable">$&#123;SOURCE_DIR&#125;</span>/"</span> <span class="token punctuation">\</span>
+  --link-dest <span class="token string">"<span class="token variable">$&#123;LATEST_LINK&#125;</span>"</span> <span class="token punctuation">\</span>
+  --exclude<span class="token operator">=</span><span class="token string">".cache"</span> <span class="token punctuation">\</span>
+  <span class="token string">"<span class="token variable">$&#123;BACKUP_PATH&#125;</span>"</span>
+
+<span class="token function">rm</span> -rf <span class="token string">"<span class="token variable">$&#123;LATEST_LINK&#125;</span>"</span>
+<span class="token function">ln</span> -s <span class="token string">"<span class="token variable">$&#123;BACKUP_PATH&#125;</span>"</span> <span class="token string">"<span class="token variable">$&#123;LATEST_LINK&#125;</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面脚本中，每一次同步都会生成一个新目录<code>$&#123;BACKUP_DIR&#125;/$&#123;DATETIME&#125;</code>，并将软链接<code>$&#123;BACKUP_DIR&#125;/latest</code>指向这个目录。下一次备份时，就将<code>$&#123;BACKUP_DIR&#125;/latest</code>作为基准目录，生成新的备份目录。最后，再将软链接<code>$&#123;BACKUP_DIR&#125;/latest</code>指向新的备份目录。</p>
+<h2 id="配置项-1"><a href="#配置项-1" class="headerlink" title="配置项"></a>配置项</h2><p><code>-a</code>、<code>--archive</code>参数表示存档模式，保存所有的元数据，比如修改时间（modification time）、权限、所有者等，并且软链接也会同步过去。</p>
+<p><code>--append</code>参数指定文件接着上次中断的地方，继续传输。</p>
+<p><code>--append-verify</code>参数跟<code>--append</code>参数类似，但会对传输完成后的文件进行一次校验。如果校验失败，将重新发送整个文件。</p>
+<p><code>-b</code>、<code>--backup</code>参数指定在删除或更新目标目录已经存在的文件时，将该文件更名后进行备份，默认行为是删除。更名规则是添加由<code>--suffix</code>参数指定的文件后缀名，默认是<code>~</code>。</p>
+<p><code>--backup-dir</code>参数指定文件备份时存放的目录，比如<code>--backup-dir=/path/to/backups</code>。</p>
+<p><code>--bwlimit</code>参数指定带宽限制，默认单位是 KB/s，比如<code>--bwlimit=100</code>。</p>
+<p><code>-c</code>、<code>--checksum</code>参数改变<code>rsync</code>的校验方式。默认情况下，rsync 只检查文件的大小和最后修改日期是否发生变化，如果发生变化，就重新传输；使用这个参数以后，则通过判断文件内容的校验和，决定是否重新传输。</p>
+<p><code>--delete</code>参数删除只存在于目标目录、不存在于源目标的文件，即保证目标目录是源目标的镜像。</p>
+<p><code>-e</code>参数指定使用 SSH 协议传输数据。</p>
+<p><code>--exclude</code>参数指定排除不进行同步的文件，比如<code>--exclude=&quot;*.iso&quot;</code>。</p>
+<p><code>--exclude-from</code>参数指定一个本地文件，里面是需要排除的文件模式，每个模式一行。</p>
+<p><code>--existing</code>、<code>--ignore-non-existing</code>参数表示不同步目标目录中不存在的文件和目录。</p>
+<p><code>-h</code>参数表示以人类可读的格式输出。</p>
+<p><code>-h</code>、<code>--help</code>参数返回帮助信息。</p>
+<p><code>-i</code>参数表示输出源目录与目标目录之间文件差异的详细情况。</p>
+<p><code>--ignore-existing</code>参数表示只要该文件在目标目录中已经存在，就跳过去，不再同步这些文件。</p>
+<p><code>--include</code>参数指定同步时要包括的文件，一般与<code>--exclude</code>结合使用。</p>
+<p><code>--link-dest</code>参数指定增量备份的基准目录。</p>
+<p><code>-m</code>参数指定不同步空目录。</p>
+<p><code>--max-size</code>参数设置传输的最大文件的大小限制，比如不超过200KB（<code>--max-size=&#39;200k&#39;</code>）。</p>
+<p><code>--min-size</code>参数设置传输的最小文件的大小限制，比如不小于10KB（<code>--min-size=10k</code>）。</p>
+<p><code>-n</code>参数或<code>--dry-run</code>参数模拟将要执行的操作，而并不真的执行。配合<code>-v</code>参数使用，可以看到哪些内容会被同步过去。</p>
+<p><code>-P</code>参数是<code>--progress</code>和<code>--partial</code>这两个参数的结合。</p>
+<p><code>--partial</code>参数允许恢复中断的传输。不使用该参数时，<code>rsync</code>会删除传输到一半被打断的文件；使用该参数后，传输到一半的文件也会同步到目标目录，下次同步时再恢复中断的传输。一般需要与<code>--append</code>或<code>--append-verify</code>配合使用。</p>
+<p><code>--partial-dir</code>参数指定将传输到一半的文件保存到一个临时目录，比如<code>--partial-dir=.rsync-partial</code>。一般需要与<code>--append</code>或<code>--append-verify</code>配合使用。</p>
+<p><code>--progress</code>参数表示显示进展。</p>
+<p><code>-r</code>参数表示递归，即包含子目录。</p>
+<p><code>--remove-source-files</code>参数表示传输成功后，删除发送方的文件。</p>
+<p><code>--size-only</code>参数表示只同步大小有变化的文件，不考虑文件修改时间的差异。</p>
+<p><code>--suffix</code>参数指定文件名备份时，对文件名添加的后缀，默认是<code>~</code>。</p>
+<p><code>-u</code>、<code>--update</code>参数表示同步时跳过目标目录中修改时间更新的文件，即不同步这些有更新的时间戳的文件。</p>
+<p><code>-v</code>参数表示输出细节。<code>-vv</code>表示输出更详细的信息，<code>-vvv</code>表示输出最详细的信息。</p>
+<p><code>--version</code>参数返回 rsync 的版本。</p>
+<p><code>-z</code>参数指定同步时压缩数据。</p>
+<h2 id="参考链接-2"><a href="#参考链接-2" class="headerlink" title="参考链接"></a>参考链接</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-use-rsync-to-sync-local-and-remote-directories-on-a-vps">How To Use Rsync to Sync Local and Remote Directories on a VPS</a>, Justin Ellingwood</li>
+<li><a target="_blank" rel="noopener" href="https://www.howtoforge.com/mirroring_with_rsync">Mirror Your Web Site With rsync</a>, Falko Timme</li>
+<li><a target="_blank" rel="noopener" href="https://linuxconfig.org/examples-on-how-to-use-rsync-for-local-and-remote-data-backups-and-synchonization">Examples on how to use Rsync</a>, Egidio Docile</li>
+<li><a target="_blank" rel="noopener" href="https://linuxconfig.org/how-to-create-incremental-backups-using-rsync-on-linux">How to create incremental backups using rsync on Linux</a>, Egidio Docile</li>
+</ul>
+<h1 id="scp-命令"><a href="#scp-命令" class="headerlink" title="scp 命令"></a>scp 命令</h1><p><code>scp</code>是 SSH 提供的一个客户端程序，用来在两台主机之间加密传送文件（即复制文件）。</p>
+<h2 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h2><p><code>scp</code>是 secure copy 的缩写，相当于<code>cp</code>命令 + SSH。它的底层是 SSH 协议，默认端口是22，相当于先使用<code>ssh</code>命令登录远程主机，然后再执行拷贝操作。</p>
+<p><code>scp</code>主要用于以下三种复制操作。</p>
+<ul>
+<li>本地复制到远程。</li>
+<li>远程复制到本地。</li>
+<li>两个远程系统之间的复制。</li>
+</ul>
+<p>使用<code>scp</code>传输数据时，文件和密码都是加密的，不会泄漏敏感信息。</p>
+<h2 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h2><p><code>scp</code>的语法类似<code>cp</code>的语法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> <span class="token builtin class-name">source</span> destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令中，<code>source</code>是文件当前的位置，<code>destination</code>是文件所要复制到的位置。它们都可以包含用户名和主机名。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> user@host:foo.txt bar.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令将远程主机（<code>user@host</code>）用户主目录下的<code>foo.txt</code>，复制为本机当前目录的<code>bar.txt</code>。可以看到，主机与文件之间要使用冒号（<code>:</code>）分隔。</p>
+<p><code>scp</code>会先用 SSH 登录到远程主机，然后在加密连接之中复制文件。客户端发起连接后，会提示用户输入密码，这部分是跟 SSH 的用法一致的。</p>
+<p>用户名和主机名都是可以省略的。用户名的默认值是本机的当前用户名，主机名默认为当前主机。注意，<code>scp</code>会使用 SSH 客户端的配置文件<code>.ssh/config</code>，如果配置文件里面定义了主机的别名，这里也可以使用别名连接。</p>
+<p><code>scp</code>支持一次复制多个文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> source1 source2 destination<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令会将<code>source1</code>和<code>source2</code>两个文件，复制到<code>destination</code>。</p>
+<p>注意，如果所要复制的文件，在目标位置已经存在同名文件，<code>scp</code>会在没有警告的情况下覆盖同名文件。</p>
+<h2 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h2><p><strong>（1）本地文件复制到远程</strong></p>
+<p>复制本机文件到远程系统的用法如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 语法</span>
+$ <span class="token function">scp</span> SourceFile user@host:directory/TargetFile
+
+<span class="token comment"># 示例</span>
+$ <span class="token function">scp</span> file.txt remote_username@10.10.0.2:/remote/directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下面是复制整个目录的例子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 将本机的 documents 目录拷贝到远程主机，</span>
+<span class="token comment"># 会在远程主机创建 documents 目录</span>
+$ <span class="token function">scp</span> -r documents username@server_ip:/path_to_remote_directory
+
+<span class="token comment"># 将本机整个目录拷贝到远程目录下</span>
+$ <span class="token function">scp</span> -r localmachine/path_to_the_directory username@server_ip:/path_to_remote_directory/
+
+<span class="token comment"># 将本机目录下的所有内容拷贝到远程目录下</span>
+$ <span class="token function">scp</span> -r localmachine/path_to_the_directory/* username@server_ip:/path_to_remote_directory/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（2）远程文件复制到本地</strong></p>
+<p>从远程主机复制文件到本地的用法如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 语法</span>
+$ <span class="token function">scp</span> user@host:directory/SourceFile TargetFile
+
+<span class="token comment"># 示例</span>
+$ <span class="token function">scp</span> remote_username@10.10.0.2:/remote/file.txt /local/directory<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下面是复制整个目录的例子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 拷贝一个远程目录到本机目录下</span>
+$ <span class="token function">scp</span> -r username@server_ip:/path_to_remote_directory local-machine/path_to_the_directory/
+
+<span class="token comment"># 拷贝远程目录下的所有内容，到本机目录下</span>
+$ <span class="token function">scp</span> -r username@server_ip:/path_to_remote_directory/* local-machine/path_to_the_directory/
+$ <span class="token function">scp</span> -r user@host:directory/SourceFolder TargetFolder<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>（3）两个远程系统之间的复制</strong></p>
+<p>本机发出指令，从远程主机 A 拷贝到远程主机 B 的用法如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 语法</span>
+$ <span class="token function">scp</span> user@host1:directory/SourceFile user@host2:directory/SourceFile
+
+<span class="token comment"># 示例</span>
+$ <span class="token function">scp</span> user1@host1.com:/files/file.txt user2@host2.com:/files<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>系统将提示你输入两个远程帐户的密码。数据将直接从一个远程主机传输到另一个远程主机。</p>
+<h2 id="配置项-2"><a href="#配置项-2" class="headerlink" title="配置项"></a>配置项</h2><p><strong>（1）<code>-c</code></strong></p>
+<p><code>-c</code>参数用来指定文件拷贝数据传输的加密算法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -c blowfish some_file your_username@remotehost.edu:~<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面代码指定加密算法为<code>blowfish</code>。</p>
+<p><strong>（2）<code>-C</code></strong></p>
+<p><code>-C</code>参数表示是否在传输时压缩文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -c blowfish -C local_file your_username@remotehost.edu:~<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（3）<code>-F</code></strong></p>
+<p><code>-F</code>参数用来指定 ssh_config 文件，供 ssh 使用。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -F /home/pungki/proxy_ssh_config Label.pdf root@172.20.10.8:/root<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（4）<code>-i</code></strong></p>
+<p><code>-i</code>参数用来指定密钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -vCq -i private_key.pem ~/test.txt root@192.168.1.3:/some/path/test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（5）<code>-l</code></strong></p>
+<p><code>-l</code>参数用来限制传输数据的带宽速率，单位是 Kbit/sec。对于多人分享的带宽，这个参数可以留出一部分带宽供其他人使用。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -l <span class="token number">80</span> yourusername@yourserver:/home/yourusername/* <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面代码中，<code>scp</code>命令占用的带宽限制为每秒 80K 比特位，即每秒 10K 字节。</p>
+<p><strong>（6）<code>-p</code></strong></p>
+<p><code>-p</code>参数用来保留修改时间（modification time）、访问时间（access time）、文件状态（mode）等原始文件的信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -p ~/test.txt root@192.168.1.3:/some/path/test.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（7）<code>-P</code></strong></p>
+<p><code>-P</code>参数用来指定远程主机的 SSH 端口。如果远程主机使用默认端口22，可以不用指定，否则需要用<code>-P</code>参数在命令中指定。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -P <span class="token number">2222</span> user@host:directory/SourceFile TargetFile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（8）<code>-q</code></strong></p>
+<p><code>-q</code>参数用来关闭显示拷贝的进度条。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -q Label.pdf mrarianto@202.x.x.x:.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>（9）<code>-r</code></strong></p>
+<p><code>-r</code>参数表示是否以递归方式复制目录。</p>
+<p><strong>（10）<code>-v</code></strong></p>
+<p><code>-v</code>参数用来显示详细的输出。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">scp</span> -v ~/test.txt root@192.168.1.3:/root/help2356.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h1 id="SSH-服务器"><a href="#SSH-服务器" class="headerlink" title="SSH 服务器"></a>SSH 服务器</h1><h2 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h2><p>SSH 的架构是服务器/客户端模式，两端运行的软件是不一样的。OpenSSH 的客户端软件是 ssh，服务器软件是 sshd。本章介绍 sshd 的各种知识。</p>
+<p>如果没有安装 sshd，可以用下面的命令安装。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Debian</span>
+$ <span class="token function">sudo</span> <span class="token function">aptitude</span> <span class="token function">install</span> openssh-server
+
+<span class="token comment"># Red Hat</span>
+$ <span class="token function">sudo</span> yum <span class="token function">install</span> openssh-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>一般来说，sshd 安装后会跟着系统一起启动。如果当前 sshd 没有启动，可以用下面的命令启动。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令运行后，如果提示“sshd re-exec requires execution with an absolute path”，就需要使用绝对路径来启动。这是为了防止有人出于各种目的，放置同名软件在<code>$PATH</code>变量指向的目录中，代替真正的 sshd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># Centos、Ubuntu、OS X</span>
+$ /usr/sbin/sshd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>上面的命令运行以后，sshd 自动进入后台，所以命令后面不需要加上<code>&amp;</code>。</p>
+<p>除了直接运行可执行文件，也可以通过 Systemd 启动 sshd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 启动</span>
+$ <span class="token function">sudo</span> systemctl start sshd.service
+
+<span class="token comment"># 停止</span>
+$ <span class="token function">sudo</span> systemctl stop sshd.service
+
+<span class="token comment"># 重启</span>
+$ <span class="token function">sudo</span> systemctl restart sshd.service<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>下面的命令让 sshd 在计算机下次启动时自动运行。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl <span class="token builtin class-name">enable</span> sshd.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="sshd-配置文件"><a href="#sshd-配置文件" class="headerlink" title="sshd 配置文件"></a>sshd 配置文件</h2><p>sshd 的配置文件在<code>/etc/ssh</code>目录，主配置文件是<code>sshd_config</code>，此外还有一些安装时生成的密钥。</p>
+<ul>
+<li><code>/etc/ssh/sshd_config</code>：配置文件</li>
+<li><code>/etc/ssh/ssh_host_ecdsa_key</code>：ECDSA 私钥。</li>
+<li><code>/etc/ssh/ssh_host_ecdsa_key.pub</code>：ECDSA 公钥。</li>
+<li><code>/etc/ssh/ssh_host_key</code>：用于 SSH 1 协议版本的 RSA 私钥。</li>
+<li><code>/etc/ssh/ssh_host_key.pub</code>：用于 SSH 1 协议版本的 RSA 公钥。</li>
+<li><code>/etc/ssh/ssh_host_rsa_key</code>：用于 SSH 2 协议版本的 RSA 私钥。</li>
+<li><code>/etc/ssh/ssh_host_rsa_key.pub</code>：用于 SSH 2 协议版本的 RSA 公钥。</li>
+<li><code>/etc/pam.d/sshd</code>：PAM 配置文件。</li>
+</ul>
+<p>注意，如果重装 sshd，上面这些密钥都会重新生成，导致客户端重新连接 ssh 服务器时，会跳出警告，拒绝连接。为了避免这种情况，可以在重装 sshd 时，先备份<code>/etc/ssh</code>目录，重装后再恢复这个目录。</p>
+<p>配置文件<code>sshd_config</code>的格式是，每个命令占据一行。每行都是配置项和对应的值，配置项的大小写不敏感，与值之间使用空格分隔。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Port <span class="token number">2034</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的配置命令指定，配置项<code>Port</code>的值是<code>2034</code>。<code>Port</code>写成<code>port</code>也可。</p>
+<p>配置文件还有另一种格式，就是配置项与值之间有一个等号，等号前后的空格可选。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Port <span class="token operator">=</span> <span class="token number">2034</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>配置文件里面，<code>#</code>开头的行表示注释。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 这是一行注释</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>注意，注释只能放在一行的开头，不能放在一行的结尾。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Port <span class="token number">2034</span> <span class="token comment"># 此处不允许注释</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的写法是错误的。</p>
+<p>另外，空行等同于注释。</p>
+<p>sshd 启动时会自动读取默认的配置文件。如果希望使用其他的配置文件，可以用 sshd 命令的<code>-f</code>参数指定。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -f /usr/local/ssh/my_config<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面的命令指定 sshd 使用另一个配置文件<code>my_config</code>。</p>
+<p>修改配置文件以后，可以用 sshd 命令的<code>-t</code>（test）检查有没有语法错误。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -t<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>配置文件修改以后，并不会自动生效，必须重新启动 sshd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl restart sshd.service<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="sshd-密钥"><a href="#sshd-密钥" class="headerlink" title="sshd 密钥"></a>sshd 密钥</h2><p>sshd 有自己的一对或多对密钥。它使用密钥向客户端证明自己的身份。所有密钥都是公钥和私钥成对出现，公钥的文件名一般是私钥文件名加上后缀<code>.pub</code>。</p>
+<p>DSA 格式的密钥文件默认为<code>/etc/ssh/ssh_host_dsa_key</code>（公钥为<code>ssh_host_dsa_key.pub</code>），RSA 格式的密钥为<code>/etc/ssh/ssh_host_rsa_key</code>（公钥为<code>ssh_host_rsa_key.pub</code>）。如果需要支持 SSH 1 协议，则必须有密钥<code>/etc/ssh/ssh_host_key</code>。</p>
+<p>如果密钥不是默认文件，那么可以通过配置文件<code>sshd_config</code>的<code>HostKey</code>配置项指定。默认密钥的<code>HostKey</code>设置如下。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># HostKey for protocol version 1</span>
+<span class="token comment"># HostKey /etc/ssh/ssh_host_key</span>
+
+<span class="token comment"># HostKeys for protocol version 2</span>
+<span class="token comment"># HostKey /etc/ssh/ssh_host_rsa_key</span>
+<span class="token comment"># HostKey /etc/ssh/ssh_host_dsa_ke</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面命令前面的<code>#</code>表示这些行都是注释，因为这是默认值，有没有这几行都一样。</p>
+<p>如果要修改密钥，就要去掉行首的<code>#</code>，指定其他密钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HostKey /usr/local/ssh/my_dsa_key
+HostKey /usr/local/ssh/my_rsa_key
+HostKey /usr/local/ssh/my_old_ssh1_key<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="sshd-配置项"><a href="#sshd-配置项" class="headerlink" title="sshd 配置项"></a>sshd 配置项</h2><p>以下是<code>/etc/ssh/sshd_config</code>文件里面的配置项。</p>
+<p><strong>AcceptEnv</strong></p>
+<p><code>AcceptEnv</code>指定允许接受客户端通过<code>SendEnv</code>命令发来的哪些环境变量，即允许客户端设置服务器的环境变量清单，变量名之间使用空格分隔（<code>AcceptEnv PATH TERM</code>）。</p>
+<p><strong>AllowGroups</strong></p>
+<p><code>AllowGroups</code>指定允许登录的用户组（<code>AllowGroups groupName</code>，多个组之间用空格分隔。如果不使用该项，则允许所有用户组登录。</p>
+<p><strong>AllowUsers</strong></p>
+<p><code>AllowUsers</code>指定允许登录的用户，用户名之间使用空格分隔（<code>AllowUsers user1 user2</code>），也可以使用多行<code>AllowUsers</code>命令指定，用户名支持使用通配符。如果不使用该项，则允许所有用户登录。该项也可以使用<code>用户名@域名</code>的格式（比如<code>AllowUsers jones@example.com</code>）。</p>
+<p><strong>AllowTcpForwarding</strong></p>
+<p><code>AllowTcpForwarding</code>指定是否允许端口转发，默认值为<code>yes</code>（<code>AllowTcpForwarding yes</code>），<code>local</code>表示只允许本地端口转发，<code>remote</code>表示只允许远程端口转发。</p>
+<p><strong>AuthorizedKeysFile</strong></p>
+<p><code>AuthorizedKeysFile</code>指定储存用户公钥的目录，默认是用户主目录的<code>ssh/authorized_keys</code>目录（<code>AuthorizedKeysFile .ssh/authorized_keys</code>）。</p>
+<p><strong>Banner</strong></p>
+<p><code>Banner</code>指定用户登录后，sshd 向其展示的信息文件（<code>Banner /usr/local/etc/warning.txt</code>），默认不展示任何内容。</p>
+<p><strong>ChallengeResponseAuthentication</strong></p>
+<p><code>ChallengeResponseAuthentication</code>指定是否使用“键盘交互”身份验证方案，默认值为<code>yes</code>（<code>ChallengeResponseAuthentication yes</code>）。</p>
+<p>从理论上讲，“键盘交互”身份验证方案可以向用户询问多重问题，但是实践中，通常仅询问用户密码。如果要完全禁用基于密码的身份验证，请将<code>PasswordAuthentication</code>和<code>ChallengeResponseAuthentication</code>都设置为<code>no</code>。</p>
+<p><strong>Ciphers</strong></p>
+<p><code>Ciphers</code>指定 sshd 可以接受的加密算法（<code>Ciphers 3des-cbc</code>），多个算法之间使用逗号分隔。</p>
+<p><strong>ClientAliveCountMax</strong></p>
+<p><code>ClientAliveCountMax</code>指定建立连接后，客户端失去响应时，服务器尝试连接的次数（<code>ClientAliveCountMax 8</code>）。</p>
+<p><strong>ClientAliveInterval</strong></p>
+<p><code>ClientAliveInterval</code>指定允许客户端发呆的时间，单位为秒（<code>ClientAliveInterval 180</code>）。如果这段时间里面，客户端没有发送任何信号，SSH 连接将关闭。</p>
+<p><strong>Compression</strong></p>
+<p><code>Compression</code>指定客户端与服务器之间的数据传输是否压缩。默认值为<code>yes</code>（<code>Compression yes</code>）</p>
+<p><strong>DenyGroups</strong></p>
+<p><code>DenyGroups</code>指定不允许登录的用户组（<code>DenyGroups groupName</code>）。</p>
+<p><strong>DenyUsers</strong></p>
+<p><code>DenyUsers</code>指定不允许登录的用户（<code>DenyUsers user1</code>），用户名之间使用空格分隔，也可以使用多行<code>DenyUsers</code>命令指定。</p>
+<p><strong>FascistLogging</strong></p>
+<p>SSH 1 版本专用，指定日志输出全部 Debug 信息（<code>FascistLogging yes</code>）。</p>
+<p><strong>HostKey</strong></p>
+<p><code>HostKey</code>指定 sshd 服务器的密钥，详见前文。</p>
+<p><strong>KeyRegenerationInterval</strong></p>
+<p><code>KeyRegenerationInterval</code>指定 SSH 1 版本的密钥重新生成时间间隔，单位为秒，默认是3600秒（<code>KeyRegenerationInterval 3600</code>）。</p>
+<p><strong>ListenAddress</strong></p>
+<p><code>ListenAddress</code>指定 sshd 监听的本机 IP 地址，即 sshd 启用的 IP 地址，默认是 0.0.0.0（<code>ListenAddress 0.0.0.0</code>）表示在本机所有网络接口启用。可以改成只在某个网络接口启用（比如<code>ListenAddress 192.168.10.23</code>），也可以指定某个域名启用（比如<code>ListenAddress server.example.com</code>）。</p>
+<p>如果要监听多个指定的 IP 地址，可以使用多行<code>ListenAddress</code>命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">ListenAddress <span class="token number">172.16</span>.1.1
+ListenAddress <span class="token number">192.168</span>.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><strong>LoginGraceTime</strong></p>
+<p><code>LoginGraceTime</code>指定允许客户端登录时发呆的最长时间，比如用户迟迟不输入密码，连接就会自动断开，单位为秒（<code>LoginGraceTime 60</code>）。如果设为<code>0</code>，就表示没有限制。</p>
+<p><strong>LogLevel</strong></p>
+<p><code>LogLevel</code>指定日志的详细程度，可能的值依次为<code>QUIET</code>、<code>FATAL</code>、<code>ERROR</code>、<code>INFO</code>、<code>VERBOSE</code>、<code>DEBUG</code>、<code>DEBUG1</code>、<code>DEBUG2</code>、<code>DEBUG3</code>，默认为<code>INFO</code>（<code>LogLevel INFO</code>）。</p>
+<p><strong>MACs</strong></p>
+<p><code>MACs</code>指定sshd 可以接受的数据校验算法（<code>MACs hmac-sha1</code>），多个算法之间使用逗号分隔。</p>
+<p><strong>MaxAuthTries</strong></p>
+<p><code>MaxAuthTries</code>指定允许 SSH 登录的最大尝试次数（<code>MaxAuthTries 3</code>），如果密码输入错误达到指定次数，SSH 连接将关闭。</p>
+<p><strong>MaxStartups</strong></p>
+<p><code>MaxStartups</code>指定允许同时并发的 SSH 连接数量（MaxStartups）。如果设为<code>0</code>，就表示没有限制。</p>
+<p>这个属性也可以设为<code>A:B:C</code>的形式，比如<code>MaxStartups 10:50:20</code>，表示如果达到10个并发连接，后面的连接将有50%的概率被拒绝；如果达到20个并发连接，则后面的连接将100%被拒绝。</p>
+<p><strong>PasswordAuthentication</strong></p>
+<p><code>PasswordAuthentication</code>指定是否允许密码登录，默认值为<code>yes</code>（<code>PasswordAuthentication yes</code>），建议改成<code>no</code>（禁止密码登录，只允许密钥登录）。</p>
+<p><strong>PermitEmptyPasswords</strong></p>
+<p><code>PermitEmptyPasswords</code>指定是否允许空密码登录，即用户的密码是否可以为空，默认为<code>yes</code>（<code>PermitEmptyPasswords yes</code>），建议改成<code>no</code>（禁止无密码登录）。</p>
+<p><strong>PermitRootLogin</strong></p>
+<p><code>PermitRootLogin</code>指定是否允许根用户登录，默认为<code>yes</code>（<code>PermitRootLogin yes</code>），建议改成<code>no</code>（禁止根用户登录）。</p>
+<p>还有一种写法是写成<code>prohibit-password</code>，表示 root 用户不能用密码登录，但是可以用密钥登录。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PermitRootLogin prohibit-password<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>PermitUserEnvironment</strong></p>
+<p><code>PermitUserEnvironment</code>指定是否允许 sshd 加载客户端的<code>~/.ssh/environment</code>文件和<code>~/.ssh/authorized_keys</code>文件里面的<code>environment= options</code>环境变量设置。默认值为<code>no</code>（<code>PermitUserEnvironment no</code>）。</p>
+<p><strong>Port</strong></p>
+<p><code>Port</code>指定 sshd 监听的端口，即客户端连接的端口，默认是22（<code>Port 22</code>）。出于安全考虑，可以改掉这个端口（比如<code>Port 8822</code>）。</p>
+<p>配置文件可以使用多个<code>Port</code>命令，同时监听多个端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Port <span class="token number">22</span>
+Port <span class="token number">80</span>
+Port <span class="token number">443</span>
+Port <span class="token number">8080</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面的示例表示同时监听4个端口。</p>
+<p><strong>PrintMotd</strong></p>
+<p><code>PrintMotd</code>指定用户登录后，是否向其展示系统的 motd（Message of the day）的信息文件<code>/etc/motd</code>。该文件用于通知所有用户一些重要事项，比如系统维护时间、安全问题等等。默认值为<code>yes</code>（<code>PrintMotd yes</code>），由于 Shell 一般会展示这个信息文件，所以这里可以改为<code>no</code>。</p>
+<p><strong>PrintLastLog</strong></p>
+<p><code>PrintLastLog</code>指定是否打印上一次用户登录时间，默认值为<code>yes</code>（<code>PrintLastLog yes</code>）。</p>
+<p><strong>Protocol</strong></p>
+<p><code>Protocol</code>指定 sshd 使用的协议。<code>Protocol 1</code>表示使用 SSH 1 协议，建议改成<code>Protocol 2</code>（使用 SSH 2 协议）。<code>Protocol 2,1</code>表示同时支持两个版本的协议。</p>
+<p><strong>PubKeyAuthentication</strong></p>
+<p><code>PubKeyAuthentication</code>指定是否允许公钥登录，默认值为<code>yes</code>（<code>PubKeyAuthentication yes</code>）。</p>
+<p><strong>QuietMode</strong></p>
+<p>SSH 1 版本专用，指定日志只输出致命的错误信息（<code>QuietMode yes</code>）。</p>
+<p><strong>RSAAuthentication</strong></p>
+<p><code>RSAAuthentication</code>指定允许 RSA 认证，默认值为<code>yes</code>（<code>RSAAuthentication yes</code>）。</p>
+<p><strong>ServerKeyBits</strong></p>
+<p><code>ServerKeyBits</code>指定 SSH 1 版本的密钥重新生成时的位数，默认是768（<code>ServerKeyBits 768</code>）。</p>
+<p><strong>StrictModes</strong></p>
+<p><code>StrictModes</code>指定 sshd 是否检查用户的一些重要文件和目录的权限。默认为<code>yes</code>（<code>StrictModes yes</code>），即对于用户的 SSH 配置文件、密钥文件和所在目录，SSH 要求拥有者必须是根用户或用户本人，用户组和其他人的写权限必须关闭。</p>
+<p><strong>SyslogFacility</strong></p>
+<p><code>SyslogFacility</code>指定 Syslog 如何处理 sshd 的日志，默认是 Auth（<code>SyslogFacility AUTH</code>）。</p>
+<p><strong>TCPKeepAlive</strong></p>
+<p><code>TCPKeepAlive</code>指定打开 sshd 跟客户端 TCP 连接的 keepalive 参数（<code>TCPKeepAlive yes</code>）。</p>
+<p><strong>UseDNS</strong></p>
+<p><code>UseDNS</code>指定用户 SSH 登录一个域名时，服务器是否使用 DNS，确认该域名对应的 IP 地址包含本机（<code>UseDNS yes</code>）。打开该选项意义不大，而且如果 DNS 更新不及时，还有可能误判，建议关闭。</p>
+<p><strong>UseLogin</strong></p>
+<p><code>UseLogin</code>指定用户认证内部是否使用<code>/usr/bin/login</code>替代 SSH 工具，默认为<code>no</code>（<code>UseLogin no</code>）。</p>
+<p><strong>UserPrivilegeSeparation</strong></p>
+<p><code>UserPrivilegeSeparation</code>指定用户认证通过以后，使用另一个子线程处理用户权限相关的操作，这样有利于提高安全性。默认值为<code>yes</code>（<code>UsePrivilegeSeparation yes</code>）。</p>
+<p><strong>VerboseMode</strong></p>
+<p>SSH 2 版本专用，指定日志输出详细的 Debug 信息（<code>VerboseMode yes</code>）。</p>
+<p><strong>X11Forwarding</strong></p>
+<p><code>X11Forwarding</code>指定是否打开 X window 的转发，默认值为 no（<code>X11Forwarding no</code>）。</p>
+<p>修改配置文件以后，可以使用下面的命令验证，配置文件是否有语法错误。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -t<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>新的配置文件生效，必须重启 sshd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sudo</span> systemctl restart sshd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="sshd-的命令行配置项"><a href="#sshd-的命令行配置项" class="headerlink" title="sshd 的命令行配置项"></a>sshd 的命令行配置项</h2><p>sshd 命令有一些配置项。这些配置项在调用时指定，可以覆盖配置文件的设置。</p>
+<p>（1）<code>-d</code></p>
+<p><code>-d</code>参数用于显示 debug 信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（2）<code>-D</code></p>
+<p><code>-D</code>参数指定 sshd 不作为后台守护进程运行。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（3）<code>-e</code></p>
+<p><code>-e</code>参数将 sshd 写入系统日志 syslog 的内容导向标准错误（standard error）。</p>
+<p>（4）<code>-f</code></p>
+<p><code>-f</code>参数指定配置文件的位置。</p>
+<p>（5）<code>-h</code></p>
+<p><code>-h</code>参数用于指定密钥。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -h /usr/local/ssh/my_rsa_key<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（6）<code>-o</code></p>
+<p><code>-o</code>参数指定配置文件的一个配置项和对应的值。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -o <span class="token string">"Port 2034"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>配置项和对应值之间，可以使用等号。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -o <span class="token string">"Port = 2034"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果省略等号前后的空格，也可以不使用引号。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -o <span class="token assign-left variable">Port</span><span class="token operator">=</span><span class="token number">2034</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><code>-o</code>参数可以多个一起使用，用来指定多个配置关键字。</p>
+<p>（7）<code>-p</code></p>
+<p><code>-p</code>参数指定 sshd 的服务端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -p <span class="token number">2034</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>上面命令指定 sshd 在<code>2034</code>端口启动。</p>
+<p><code>-p</code>参数可以指定多个端口。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ sshd -p <span class="token number">2222</span> -p <span class="token number">3333</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>（8）<code>-t</code></p>
+<p><code>-t</code>参数检查配置文件的语法是否正确。</p>
+<h1 id="sftp-命令"><a href="#sftp-命令" class="headerlink" title="sftp 命令"></a>sftp 命令</h1><p><code>sftp</code>是 SSH 提供的一个客户端应用程序，主要用来安全地访问 FTP。因为 FTP 是不加密协议，很不安全，<code>sftp</code>就相当于将 FTP 放入了 SSH。</p>
+<p>下面的命令连接 FTP 主机。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sftp</span> username@hostname<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>执行上面的命令，会要求输入 FTP 的密码。密码验证成功以后，就会出现 FTP 的提示符<code>sftp&gt; </code>，下面是一个例子。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">sftp</span> <span class="token environment constant">USER</span>@penguin.example.com
+<span class="token environment constant">USER</span>@penguin.example.com's password:
+Connected to penguin.example.com.
+sftp<span class="token operator">></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>FTP 的提示符下面，就可以输入各种 FTP 命令了，这部分完全跟传统的 FTP 用法完全一样。</p>
+<ul>
+<li><code>ls [directory]</code>：列出一个远程目录的内容。如果没有指定目标目录，则默认列出当前目录。</li>
+<li><code>cd directory</code>：从当前目录改到指定目录。</li>
+<li><code>mkdir directory</code>：创建一个远程目录。</li>
+<li><code>rmdir path</code>：删除一个远程目录。</li>
+<li><code>put localfile [remotefile]</code>：本地文件传输到远程主机。</li>
+<li><code>get remotefile [localfile]</code>：远程文件传输到本地。</li>
+<li><code>help</code>：显示帮助信息。</li>
+<li><code>bye</code>：退出 sftp。</li>
+<li><code>quit</code>：退出 sftp。</li>
+<li><code>exit</code>：退出 sftp。</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"><i class="fa fa-tag"></i> Programming</a>
+              <a href="/tags/SSH/" rel="tag"><i class="fa fa-tag"></i> SSH</a>
+              <a href="/tags/Shell/" rel="tag"><i class="fa fa-tag"></i> Shell</a>
+              <a href="/tags/%E8%84%9A%E6%9C%AC/" rel="tag"><i class="fa fa-tag"></i> 脚本</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/11/C%20%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93/" rel="prev" title="C 语言——标准库">
+                  <i class="fa fa-chevron-left"></i> C 语言——标准库
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/12/Web%20API%20%E6%95%99%E7%A8%8B/" rel="next" title="Web API 教程">
+                  Web API 教程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 ---
-title: C语言——入门教程&&自查文档
+title: C 语言——教程 && 自查文档
 date: 2021-10-11 17:28:12
 categories: 
   - Programming

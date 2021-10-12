@@ -367,12 +367,12 @@ codeblock:
   copy_button:
     enable: true
     # Available values: default | flat | mac
-    style: flat
+    style:
 
 back2top:
   enable: true
   # Back to top in sidebar.
-  sidebar: true
+  sidebar: false
   # Scroll percent label in b2t button.
   scrollpercent: true
 
@@ -452,7 +452,7 @@ font:
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family: Iosevka
+    family: Roboto Mono
 
 
 # ---------------------------------------------------------------

@@ -26,9 +26,9 @@ custom_file_path:
   #postBodyEnd: source/_data/post-body-end.njk
   footer: source/_data/footer.njk
   #bodyEnd: source/_data/body-end.njk
-  #variable: source/_data/variables.styl
+  variable: source/_data/variables.styl
   #mixin: source/_data/mixins.styl
-  #style: source/_data/styles.styl
+  style: source/_data/styles.styl
 
 
 # ---------------------------------------------------------------
@@ -429,7 +429,7 @@ font:
   # Global font settings used for all elements inside <body>.
   global:
     external: true
-    family: Lato
+    family: Noto Sans Simplified Chinese, Cousine
     size:
 
   # Font settings for site title (.site-title).
@@ -452,7 +452,7 @@ font:
   # Font settings for <code> and code blocks.
   codes:
     external: true
-    family: Roboto Mono
+    family: Cousine
 
 
 # ---------------------------------------------------------------

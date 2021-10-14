@@ -14,7 +14,6 @@ tags:
 
 ## Requirements / 要求
 
-
 **VS Code和Node的版本要求**
 
 - [*VS Code 1.30.1+*](https://code.visualstudio.com/)

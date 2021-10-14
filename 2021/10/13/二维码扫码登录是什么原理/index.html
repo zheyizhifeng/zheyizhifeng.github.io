@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="在日常生活中，二维码出现在很多场景，比如出行乘车、超市支付、系统登录、应用下载等等。了解二维码的原理，可以为技术人员在技术选型时提供新的思路。对于非技术人员呢，除了解惑，还可以引导他更好地辨别生活中遇到的各种二维码，防止上当受骗。二维码，大家再熟悉不过了 购物扫个码，吃饭扫个码，坐公交也扫个码">
+<meta property="og:type" content="article">
+<meta property="og:title" content="二维码扫码登录是什么原理">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/13/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="在日常生活中，二维码出现在很多场景，比如出行乘车、超市支付、系统登录、应用下载等等。了解二维码的原理，可以为技术人员在技术选型时提供新的思路。对于非技术人员呢，除了解惑，还可以引导他更好地辨别生活中遇到的各种二维码，防止上当受骗。二维码，大家再熟悉不过了 购物扫个码，吃饭扫个码，坐公交也扫个码">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d6fc802874f84b0daf46a143b0bb0d92~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71e7a6e66bff4cd495859fd6d806b3d8~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4e303f2bab33466c98590a7e69241979~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8308ad662abe45e2a2ff6562147be620~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e39768fec0ab403998cd0ed4580b9817~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e1dfc077969e4607b172c0a396eb626b~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92d8a413b7c540a2b8ad374e7e555452~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/74b521bcf35d4215a97a9bea4ae8146d~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4226f007007743d8aaa8892c5270b82c~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf8b719e2b3f4a90bc17ba497fbffb39~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5422358c7404ac689ffe65bae104a6f~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="article:published_time" content="2021-10-13T10:18:21.000Z">
+<meta property="article:modified_time" content="2021-10-13T10:35:00.384Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="二维码登录">
+<meta property="article:tag" content="网络通信">
+<meta property="article:tag" content="认证授权">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d6fc802874f84b0daf46a143b0bb0d92~tplv-k3u1fbpfcp-watermark.awebp">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/13/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/13/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E7%90%86/","path":"2021/10/13/二维码扫码登录是什么原理/","title":"二维码扫码登录是什么原理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>二维码扫码登录是什么原理 | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="nav-number">1.</span> <span class="nav-text">二维码登录的本质</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%86%E4%BA%8C%E7%BB%B4%E7%A0%81"><span class="nav-number">2.</span> <span class="nav-text">认识二维码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E8%AE%A4%E8%AF%81%E6%9C%BA%E5%88%B6"><span class="nav-number">3.</span> <span class="nav-text">系统认证机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%AB%E6%8F%8F%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95%E7%9A%84%E4%B8%80%E8%88%AC%E6%AD%A5%E9%AA%A4"><span class="nav-number">4.</span> <span class="nav-text">扫描二维码登录的一般步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%A7%E6%A6%82%E6%B5%81%E7%A8%8B"><span class="nav-number">4.1.</span> <span class="nav-text">大概流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E7%A0%81%E5%87%86%E5%A4%87"><span class="nav-number">4.2.</span> <span class="nav-text">二维码准备</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%89%AB%E6%8F%8F%E7%8A%B6%E6%80%81%E5%88%87%E6%8D%A2"><span class="nav-number">4.3.</span> <span class="nav-text">扫描状态切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E7%A1%AE%E8%AE%A4"><span class="nav-number">4.4.</span> <span class="nav-text">状态确认</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/13/%E4%BA%8C%E7%BB%B4%E7%A0%81%E6%89%AB%E7%A0%81%E7%99%BB%E5%BD%95%E6%98%AF%E4%BB%80%E4%B9%88%E5%8E%9F%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          二维码扫码登录是什么原理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-13 18:18:21 / 修改时间：18:35:00" itemprop="dateCreated datePublished" datetime="2021-10-13T18:18:21+08:00">2021-10-13</time>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>在日常生活中，二维码出现在很多场景，比如出行乘车、超市支付、系统登录、应用下载等等。了解二维码的原理，可以为技术人员在技术选型时提供新的思路。对于非技术人员呢，除了解惑，还可以引导他更好地辨别生活中遇到的各种二维码，防止上当受骗。<br>二维码，大家再熟悉不过了</p>
+<p>购物扫个码，吃饭扫个码，坐公交也扫个码</p>
+<a id="more"></a>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d6fc802874f84b0daf46a143b0bb0d92~tplv-k3u1fbpfcp-watermark.awebp" alt="Reaf23573de7bac41f202d2fb0e0b9934.jpeg"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71e7a6e66bff4cd495859fd6d806b3d8~tplv-k3u1fbpfcp-watermark.awebp" alt="110_ba82eb278547ec279eaf835fb0f63b3f.png"></p>
+<p>在扫码的过程中，大家可能会有疑问：这二维码安全吗？会不会泄漏我的个人信息？更深度的用户还会考虑：我的系统是不是也可以搞一个二维码来推广呢？</p>
+<p>这时候就需要了解一下二维码背后的技术和逻辑了！</p>
+<p>二维码最常用的场景之一就是通过手机端应用扫描PC或者WEB端的二维码，来登录同一个系统。 比如手机微信扫码登录PC端微信，手机淘宝扫码登录PC端淘宝。 那么就让我们来看一下，二维码登录是怎么操作的！</p>
+<h2 id="二维码登录的本质"><a href="#二维码登录的本质" class="headerlink" title="二维码登录的本质"></a>二维码登录的本质</h2><p>二维码登录本质上也是一种登录认证方式。既然是登录认证，要做的也就两件事情！</p>
+<ol>
+<li>告诉系统我是谁</li>
+<li>向系统证明我是谁</li>
+</ol>
+<p>比如账号密码登录，账号就是告诉系统我是谁， 密码就是向系统证明我是谁; 比如手机验证码登录，手机号就是告诉系统我是谁，验证码就是向系统证明我是谁;</p>
+<p>那么扫码登录是怎么做到这两件事情的呢？我们一起来考虑一下</p>
+<p>手机端应用扫PC端二维码，手机端确认后，账号就在PC端登录成功了！这里，PC端登录的账号肯定与手机端是同一个账号。不可能手机端登录的是账号A，而扫码登录以后，PC端登录的是账号B。</p>
+<p>所以，第一件事情，告诉系统我是谁，是比较清楚的！</p>
+<p>通过扫描二维码，把手机端的账号信息传递到PC端，至于是怎么传的，我们后面再说</p>
+<p>第二件事情，向系统证明我是谁。扫码登录过程中，用户并没有去输入密码，也没有输入验证码，或者其他什么码。那是怎么证明的呢？</p>
+<p>有些同学会想到，是不是扫码过程中，把密码传到了PC端呢？ 但这是不可能的。因为那样太不安全的，客户端也根本不会去存储密码。我们仔细想一下，其实手机端APP它是已经登录过的，就是说手机端是已经通过登录认证。所说只要<strong>扫码确认是这个手机且是这个账号操作的，其实就能间接证明我谁。</strong></p>
+<h2 id="认识二维码"><a href="#认识二维码" class="headerlink" title="认识二维码"></a>认识二维码</h2><p>那么如何做确认呢？我们后面会详细说明，在这之前我们需要先认识一下二维码！ 在认识二维码之前我们先看一下一维码！</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4e303f2bab33466c98590a7e69241979~tplv-k3u1fbpfcp-watermark.awebp" alt="201211061549088595.png"></p>
+<p>所谓一维码，也就是条形码，超市里的条形码–这个相信大家都非常熟悉，条形码实际上就是一串数字，它上面存储了商品的序列号。</p>
+<p>二维码其实与条形码类似，只不过它存储的不一定是数字，还可以是任何的字符串，你可以认为，它就是字符串的另外一种表现形式，</p>
+<p>在搜索引擎中搜索二维码，你可以找到很多在线生成二维码的工具网站，这些网站可以提供字符串与二维码之间相互转换的功能，比如 <a href="https://link.juejin.cn/?target=https://cli.im/">草料二维码网站</a></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8308ad662abe45e2a2ff6562147be620~tplv-k3u1fbpfcp-watermark.awebp" alt="20210318103206.jpg"></p>
+<p>在左边的输入框就可以输入你的内容，它可以是文本、网址，文件……..。然后就可以生成代表它们的二维码</p>
+<p>你也可以把二维码上传，进行”解码“，然后就可以解析出二维码代表的含义</p>
+<h2 id="系统认证机制"><a href="#系统认证机制" class="headerlink" title="系统认证机制"></a>系统认证机制</h2><p>认识了二维码，我们了解一下移动互联网下的系统认证机制。</p>
+<p>前面我们说过，为了安全，手机端它是不会存储你的登录密码的。 但是在日常使用过程中，我们应该会注意到，只有在你的应用下载下来后，第一次登录的时候，才需要进行一个账号密码的登录， 那之后呢 即使这个应用进程被杀掉，或者手机重启，都是不需要再次输入账号密码的，它可以自动登录。</p>
+<p>其实这背后就是一套基于token的认证机制，我们来看一下这套机制是怎么运行的，</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e39768fec0ab403998cd0ed4580b9817~tplv-k3u1fbpfcp-watermark.awebp" alt="阿萨德阿萨德.jpg"></p>
+<ol>
+<li>账号密码登录时，客户端会将设备信息一起传递给服务端，</li>
+<li>如果账号密码校验通过，服务端会把账号与设备进行一个绑定，存在一个数据结构中，这个数据结构中包含了账号ID，设备ID，设备类型等等</li>
+</ol>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token keyword">const</span> token <span class="token operator">=</span> <span class="token punctuation">&#123;</span>
+  acountid<span class="token operator">:</span><span class="token string">'账号ID'</span><span class="token punctuation">,</span>
+  deviceid<span class="token operator">:</span><span class="token string">'登录的设备ID'</span><span class="token punctuation">,</span>
+  deviceType<span class="token operator">:</span><span class="token string">'设备类型，如 iso,android,pc......'</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>然后服务端会生成一个token，用它来映射数据结构，这个token其实就是一串有着特殊意义的字符串，它的意义就在于，通过它可以找到对应的账号与设备信息，</p>
+<ol>
+<li>客户端得到这个token后，需要进行一个本地保存，每次访问系统API都携带上token与设备信息。</li>
+<li>服务端就可以通过token找到与它绑定的账号与设备信息，然后把绑定的设备信息与客户端每次传来的设备信息进行比较， 如果相同，那么校验通过，返回AP接口响应数据， 如果不同，那就是校验不通过拒绝访问</li>
+</ol>
+<p>从前面这个流程，我们可以看到，客户端不会也没必要保存你的密码，相反，它是保存了token。可能有些同学会想，这个token这么重要，万一被别人知道了怎么办。实际上，知道了也没有影响， 因为设备信息是唯一的，只要你的设备信息别人不知道， 别人拿其他设备来访问，验证也是不通过的。</p>
+<p>可以说，客户端登录的目的，就是获得属于自己的token。</p>
+<p>那么在扫码登录过程中，PC端是怎么获得属于自己的token呢？不可能手机端直接把自己的token给PC端用！token只能属于某个客户端私有，其他人或者是其他客户端是用不了的。在分析这个问题之前，我们有必要先梳理一下，扫描二维码登录的一般步骤是什么样的。这可以帮助我们梳理清楚整个过程，</p>
+<h2 id="扫描二维码登录的一般步骤"><a href="#扫描二维码登录的一般步骤" class="headerlink" title="扫描二维码登录的一般步骤"></a>扫描二维码登录的一般步骤</h2><h3 id="大概流程"><a href="#大概流程" class="headerlink" title="大概流程"></a>大概流程</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e1dfc077969e4607b172c0a396eb626b~tplv-k3u1fbpfcp-watermark.awebp" alt="啊啊啊.jpg"></p>
+<ol>
+<li>扫码前，手机端应用是已登录状态，PC端显示一个二维码，等待扫描</li>
+<li>手机端打开应用，扫描PC端的二维码，扫描后，会提示”已扫描，请在手机端点击确认”</li>
+<li>用户在手机端点击确认，确认后PC端登录就成功了</li>
+</ol>
+<p>可以看到，二维码在中间有三个状态， 待扫描，已扫描待确认，已确认。 那么可以想象</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/92d8a413b7c540a2b8ad374e7e555452~tplv-k3u1fbpfcp-watermark.awebp" alt="666.jpg"></p>
+<ol>
+<li>二维码的背后它一定存在一个唯一性的ID，当二维码生成时，这个ID也一起生成，并且绑定了PC端的设备信息</li>
+<li>手机去扫描这个二维码</li>
+<li>二维码切换为 已扫描待确认状态， 此时就会将账号信息与这个ID绑定</li>
+<li>当手机端确认登录时，它就会生成PC端用于登录的token，并返回给PC端</li>
+</ol>
+<p>好了，到这里，基本思路就已经清晰了，接下来我们把整个过程再具体化一下</p>
+<h3 id="二维码准备"><a href="#二维码准备" class="headerlink" title="二维码准备"></a>二维码准备</h3><p>按二维码不同状态来看， 首先是等待扫描状态，用户打开PC端，切换到二维码登录界面时。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/74b521bcf35d4215a97a9bea4ae8146d~tplv-k3u1fbpfcp-watermark.awebp" alt="1111.jpg"></p>
+<ol>
+<li>PC端向服务端发起请求，告诉服务端，我要生成用户登录的二维码，并且把PC端设备信息也传递给服务端</li>
+<li>服务端收到请求后，它生成二维码ID，并将二维码ID与PC端设备信息进行绑定</li>
+<li>然后把二维码ID返回给PC端</li>
+<li>PC端收到二维码ID后，生成二维码(二维码中肯定包含了ID)</li>
+<li>为了及时知道二维码的状态，客户端在展现二维码后，PC端不断的轮询服务端，比如每隔一秒就轮询一次，请求服务端告诉当前二维码的状态及相关信息</li>
+</ol>
+<p>二维码已经准好了，接下来就是扫描状态</p>
+<h3 id="扫描状态切换"><a href="#扫描状态切换" class="headerlink" title="扫描状态切换"></a>扫描状态切换</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4226f007007743d8aaa8892c5270b82c~tplv-k3u1fbpfcp-watermark.awebp" alt="7777.jpg"></p>
+<ol>
+<li>用户用手机去扫描PC端的二维码，通过二维码内容取到其中的二维码ID</li>
+<li>再调用服务端API将移动端的身份信息与二维码ID一起发送给服务端</li>
+<li>服务端接收到后，它可以将身份信息与二维码ID进行绑定，生成临时token。然后返回给手机端</li>
+<li>因为PC端一直在轮询二维码状态，所以这时候二维码状态发生了改变，它就可以在界面上把二维码状态更新为已扫描</li>
+</ol>
+<p>那么为什么需要返回给手机端一个临时token呢？临时token与token一样，它也是一种身份凭证，不同的地方在于它只能用一次，用过就失效。</p>
+<p>在第三步骤中返回临时token，为的就是手机端在下一步操作时，可以用它作为凭证。以此确保扫码，登录两步操作是同一部手机端发出的，</p>
+<h3 id="状态确认"><a href="#状态确认" class="headerlink" title="状态确认"></a>状态确认</h3><p>最后就是状态的确认了。</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bf8b719e2b3f4a90bc17ba497fbffb39~tplv-k3u1fbpfcp-watermark.awebp" alt="3333333332.jpg"></p>
+<ol>
+<li>手机端在接收到临时token后会弹出确认登录界面，用户点击确认时，手机端携带临时token用来调用服务端的接口，告诉服务端，我已经确认</li>
+<li>服务端收到确认后，根据二维码ID绑定的设备信息与账号信息，生成用户PC端登录的token</li>
+<li>这时候PC端的轮询接口，它就可以得知二维码的状态已经变成了”已确认”。并且从服务端可以获取到用户登录的token</li>
+<li>到这里，登录就成功了，后端PC端就可以用token去访问服务端的资源了</li>
+</ol>
+<p>扫码动作的基础流程都讲完了，有些细节还没有深入介绍，</p>
+<p>比如二维码的内容是什么？</p>
+<ul>
+<li>可以是二维码ID</li>
+<li>可以是包含二维码ID的一个url地址</li>
+</ul>
+<p>在扫码确认这一步，用户取消了怎么处理？ 这些细节都留给大家思考</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e5422358c7404ac689ffe65bae104a6f~tplv-k3u1fbpfcp-watermark.awebp" alt="6767676.jpg"></p>
+<p>我们从登陆的本质触发，探索二维码扫码登录是如何做到的</p>
+<ol>
+<li>告诉系统我是谁</li>
+<li>向系统证明我谁</li>
+</ol>
+<p>在这个过程中，我们先简单讲了两个前提知识，</p>
+<ul>
+<li>一个是二维码原理，</li>
+<li>一个是基于token的认证机制。</li>
+</ul>
+<p>然后我们以二维码状态为轴，分析了这背后的逻辑: 通过token认证机制与二维码状态变化来实现扫码登录.</p>
+<p>需要指出的是，前面的讲的登录流程，它适用于同一个系统的PC端，WEB端，移动端。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/%E4%BA%8C%E7%BB%B4%E7%A0%81%E7%99%BB%E5%BD%95/" rel="tag"><i class="fa fa-tag"></i> 二维码登录</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" rel="tag"><i class="fa fa-tag"></i> 网络通信</a>
+              <a href="/tags/%E8%AE%A4%E8%AF%81%E6%8E%88%E6%9D%83/" rel="tag"><i class="fa fa-tag"></i> 认证授权</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/13/%E5%8A%A8%E6%89%8B%E5%AE%9E%E7%8E%B0%E4%B8%80%E4%B8%AA%E8%A7%84%E8%8C%83%E7%9A%84%20Promise/" rel="prev" title="动手实现一个规范的 Promise">
+                  <i class="fa fa-chevron-left"></i> 动手实现一个规范的 Promise
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/14/awesome-frontend/" rel="next" title="awesome-frontend">
+                  awesome-frontend <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="工具路由 react-router - React 的声明式路由。   reach - React 的下一代路由。   wouter - 一个极简友好的 ~1.3KB 路由库。   navi - React 的声明式异步路由。   universal-router - 简单中间件式路由，用于同构 JavaScript Web 应用程序的。   curi - 用于单页应用程序的 JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="awesome-react">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/14/awesome-react/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="工具路由 react-router - React 的声明式路由。   reach - React 的下一代路由。   wouter - 一个极简友好的 ~1.3KB 路由库。   navi - React 的声明式异步路由。   universal-router - 简单中间件式路由，用于同构 JavaScript Web 应用程序的。   curi - 用于单页应用程序的 JavaScript">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.shields.io/github/stars/ReactTraining/react-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/reach/router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/molefrog/wouter.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/frontarm/navi.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/kriasoft/universal-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/pshrmn/curi.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/yahoo/react-intl.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/i18next/react-i18next.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/lingui/js-lingui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alibaba/react-intl-universal.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/cherry-projects/react-translate-maker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fakundo/react-localized.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ant-design/ant-design.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mui-org/material-ui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chakra-ui/chakra-ui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/react-bootstrap/react-bootstrap.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/palantir/blueprint.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Semantic-Org/Semantic-UI-React.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/OfficeDev/office-ui-fabric-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/microsoft/fluentui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/segmentio/evergreen.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/reactstrap/reactstrap.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rebassjs/rebass.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/grommet/grommet.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uber/baseweb.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rsuite/rsuite.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/adobe/react-spectrum.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/reakit/reakit.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/carbon-design-system/carbon.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/searchkit/searchkit.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/pinterest/gestalt.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/elastic/eui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JetBrains/ring-ui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/zeit-ui/react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/primefaces/primereact.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mantinedev/mantine.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alibaba/ChatUI.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/kiwicom/orbit-components.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/couds/react-bulma-components.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bumbag/bumbag-ui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sheinsight/shineout.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/pivotal-cf/pivotal-ui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/nordsoftware/react-foundation.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/kulakowka/react-bulma.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fibo/trunx.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Devwares-Team/cdbreact.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ant-design/ant-design-mobile.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/OnsenUI/OnsenUI.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ant-design/ant-design-pro.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/marmelab/react-admin.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rcaferati/react-awesome-button.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/arifszn/reactive-button.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gorangajic/react-icons.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/danawoodman/react-fontawesome.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/iconify/iconify-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/lunahq/react-open-doodles.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/STRML/react-grid-layout.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/deepstreamIO/golden-layout.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/xudafeng/autoresponsive-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/eiriklv/react-masonry-component.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/dantrain/react-stonecutter.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/aeagle/react-spaces.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Paol-imi/muuri-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/martinnov92/React-Splitters.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JSBros/hedron.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/leefsmp/Re-Flex.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/nachoaIvarez/flexbox-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tcoopman/react-flexbox.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/wwayne/react-tooltip.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/popperjs/react-popper.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fkhadra/react-toastify.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/timolins/react-hot-toast.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jossmac/react-toast-notifications.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/teodosii/react-notifications-component.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Cogoport/cogo-toast.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alexpermyakov/simple-react-notifications.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/moharnadreza/react-toast.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/reactjs/react-modal.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/davidtheclark/react-aria-modal.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/marcio/react-skylight.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sweetalert2/sweetalert2-react-content.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/hiradary/reoverlay.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bold-commerce/reboron.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/negomi/react-burger-menu.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/luukdv/hamburger-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/innFactory/react-planet.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/vutran/react-offcanvas.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/captivationsoftware/react-sticky.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/KyleAMathews/react-headroom.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/yahoo/react-stickynode.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/reactjs/react-tabs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ctxhou/react-tabtab.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/atlassian/react-beautiful-dnd.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gaearon/react-dnd.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/okonet/react-dropzone.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mzabriskie/react-draggable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tajo/react-movable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bevacqua/react-dragula.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bokuweb/react-sortable-pane.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ceolter/ag-grid.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/adazzle/react-data-grid.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/revolist/revogrid.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/silevis/reactgrid.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/GigaTables/reactables.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tannerlinsley/react-table.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mbrn/material-table.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gregnb/mui-datatables.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/DevExpress/devextreme-reactive.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jbetancur/react-data-table-component.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rsuite/rsuite-table.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/komarovalexander/ka-table.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sematext/sematable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/telerik/kendo-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rexxars/react-markdown.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/wojtekmaj/react-pdf.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alexkuz/react-json-tree.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/phuoc-ng/react-pdf-viewer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/akiran/react-slick.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rcbyr/keen-slider.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rcaferati/react-awesome-slider.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/leandrowd/react-responsive-carousel.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/naver/egjs-flicking.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/express-labs/pure-react-carousel.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/phuoc-ng/react-pdf-viewer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/skozer/react-instagram-zoom-slider.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jasonslyvia/react-lazyload.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/loktar00/react-lazy-load.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bvaughn/react-window.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/orgsync/react-list.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mkosir/react-parallax-tilt.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/nowaalex/af-virtual-scroll.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/danilowoz/react-content-loader.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/davidhu2000/react-spinners.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mironov/react-redux-loading-bar.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/TheCognizantFoundry/react-loader.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JoshK2/react-spinners-css.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/availity/react-block-ui.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/nkbt/react-collapse.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/springload/react-accessible-accordion.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Merri/react-tabbordion.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alexcurtis/react-treebeard.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chenglou/react-treeview.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/lukasbach/react-complex-tree.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/oliviertassinari/react-swipeable-views.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fisshy/react-scroll.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rommguy/react-custom-scroll.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sakhnyuk/rc-scrollbars.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/andrelmlins/react-shadow-scroll.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/CookPete/react-player.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/video-react/video-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/soundblogs/react-soundplayer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/troybetz/react-youtube.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Werter12/material-ui-audio-player.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/u-wave/react-dailymotion.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/nmn/react-timeago.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/hustcc/timeago-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sachinchoolur/lightGallery.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/xiaolin/react-image-gallery.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/neptunian/react-photo-gallery.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fritz-c/react-image-lightbox.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chrvadala/react-svg-pan-zoom.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/malerba118/react-particle-image.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/imgix/react-imgix.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/junkboy0315/react-compare-image.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/brycedorn/react-intense.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/AdeleD/react-paginate.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/lionix-team/react-laravel-paginex.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/makotot/paginated.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/konvajs/react-konva.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tbolis/react-sketch.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/vinothpandian/react-sketch-canvas.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/recharts/recharts.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/airbnb/visx.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/FormidableLabs/victory.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uber/react-vis.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alibaba/BizCharts.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jerairrest/react-chartjs-2.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/borisyankov/react-sparklines.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/nteract/semiotic.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/codesuki/react-d3-components.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Raathigesh/Dazzle.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/kirjs/react-highcharts.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/RakanNimer/react-google-charts.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/esnet/react-timeseries-charts.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/kirillstepkin/chartify.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fraserxu/react-chartist.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rumble-charts/rumble-charts.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/syncfusion/ej2-react-ui-components.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/99ff00/react-charty.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uiwjs/react-heat-map.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chartshq/react-muze.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/antvis/graphin.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/dunnock/react-sigma.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uber/react-map-gl.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/istarkov/google-map-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/PaulLeCam/react-leaflet.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mariusandra/pigeon-maps.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/alex3165/react-mapbox-gl.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ubilabs/react-geosuggest.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/VictorCazanave/react-svg-map.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/msafi/text-mask.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/amarofashion/react-credit-cards.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sanniassin/react-input-mask.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/insin/react-maskedinput.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/medipass/react-payment-inputs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gpietro/react-numpad.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/moroshko/react-autosuggest.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/effektif/react-mentions.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fmoo/react-typeahead.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/yury-dymov/react-autocomplete-input.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/andreypopp/react-textarea-autosize.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JedWatson/react-input-autosize.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/kierien/react-autowidth-input.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/olahol/react-tagsinput.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/prakhar1989/react-tags.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/instructure-react/react-tokeninput.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/pathofdev/react-tag-input.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JedWatson/react-select.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/davidtheclark/react-aria-menubutton.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/instructure-react/react-select-box.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/based-ghost/react-functional-select.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chr-ge/react-column-select.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chenglou/react-radio-group.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/cameronroe/react-star-rating.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ikr/react-star-rating-input.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fedoryakubovich/react-awesome-stars-rating.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/instructure-react/react-toggle.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/clari/react-ios-switch.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Hacker0x01/react-datepicker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/intljusticemission/react-big-calendar.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gpbl/react-day-picker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/wojtekmaj/react-calendar.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Adphorus/react-date-range.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/YouCanBookMe/react-datetime.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/DevExpress/devextreme-reactive.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/hernansartorio/react-nice-dates.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/wojtekmaj/react-date-picker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/BelkaLab/react-yearly-calendar.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/coderhaoxin/react-flatpickr.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JSLancerTeam/react-google-flight-datepicker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mberneti/react-datepicker2.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/almogtavor/date-range-picker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/antonfisher/react-simple-timefield.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ndom91/react-timezone-select.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/milesj/interweave.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/omgovich/react-colorful.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/wangzuo/react-input-color.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/elrumordelaluz/coloreact.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uiwjs/react-color.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mpowaga/react-slider.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/SortableJS/Sortable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jasonslyvia/react-anything-sortable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/danielstocks/react-sortable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ianstormtaylor/slate.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/facebook/draft-js.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jpuri/react-draft-wysiwyg.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/zenoamaro/react-quill.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/liferay/alloy-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/remirror/remirror.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/lovasoa/react-contenteditable.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/globocom/megadraft.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/edtr-io/edtr-io.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/wangzuo/react-medium-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ckeditor/ckeditor5-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/appleple/smartblock.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/RD17/react-trumbowyg.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ckeditor/ckeditor4-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fritx/react-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/securingsincity/react-ace.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uiwjs/react-codemirror.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jaywcjlove/react-monacoeditor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/uiwjs/react-md-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/RIP21/react-simplemde-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JedWatson/react-md-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jrm2k6/react-markdown-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/DominicTobias/react-image-crop.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mosch/react-avatar-editor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/ricardo-ch/react-easy-crop.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/jerryshew/react-image-cropper.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/JosephSmith127/react-avatar-generator.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/react-spring/react-spring.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/chenglou/react-motion.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/framer/motion.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/joshwcomeau/react-flip-move.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/twitter-fabric/velocity-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/FormidableLabs/react-animations.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/maisano/react-router-transition.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/matteobruni/tsparticles.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rnosov/react-reveal.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/stelatech/react-anime.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/azazdeaz/react-gsap-enhancer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tkh44/data-driven-motion.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/luukdv/gooey-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/lindelof/particles-bg.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/moarwick/react-mt-svg-lines.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gilbox/react-spark-scroll.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/gilbox/react-track.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/react-component/tween-one.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bringking/react-web-animation.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/Lapple/react-transitive-number.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/teodosii/react-tweenful.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/DualWield/auto-size-transition.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/rrutsche/react-parallax.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/mkosir/react-parallax-tilt.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/keske/react-parallax-component.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/facebook/jest.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/airbnb/enzyme.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/testing-library/react-testing-library.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/producthunt/chai-enzyme.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/philcockfield/ui-harness.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/pzavolinsky/react-unit.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/bruderstein/unexpected-react.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tcoopman/react-flexbox.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/milesj/rut.svg?style=social&label=Star">
+<meta property="article:published_time" content="2021-10-14T03:36:01.000Z">
+<meta property="article:modified_time" content="2021-10-14T03:38:10.712Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="front-end">
+<meta property="article:tag" content="Framework">
+<meta property="article:tag" content="React">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/github/stars/ReactTraining/react-router.svg?style=social&label=Star">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/14/awesome-react/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/14/awesome-react/","path":"2021/10/14/awesome-react/","title":"awesome-react"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>awesome-react | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">1.</span> <span class="nav-text">工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1"><span class="nav-number">1.1.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i18n"><span class="nav-number">1.2.</span> <span class="nav-text">i18n</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">UI框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%A7%BB%E5%8A%A8%E7%AB%AF"><span class="nav-number">2.1.</span> <span class="nav-text">移动端</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">2.2.</span> <span class="nav-text">解决方案</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI%E7%BB%84%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">UI组件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8C%89%E9%92%AE"><span class="nav-number">3.1.</span> <span class="nav-text">按钮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E6%A0%87"><span class="nav-number">3.2.</span> <span class="nav-text">图标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B8%83%E5%B1%80"><span class="nav-number">3.3.</span> <span class="nav-text">布局</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#flexbox%E5%AE%9E%E7%8E%B0"><span class="nav-number">3.3.1.</span> <span class="nav-text">flexbox实现</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%90%E7%A4%BA%E5%B7%A5%E5%85%B7"><span class="nav-number">3.4.</span> <span class="nav-text">提示工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%9A%E7%9F%A5%E6%8F%90%E9%86%92%E6%A1%86%E7%BB%84%E4%BB%B6"><span class="nav-number">3.5.</span> <span class="nav-text">通知提醒框组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9%E8%AF%9D%E6%A1%86-%E6%A8%A1%E6%80%81%E5%BC%B9%E7%AA%97-%E8%AD%A6%E5%91%8A%E6%8F%90%E7%A4%BA%E7%BB%84%E4%BB%B6"><span class="nav-number">3.6.</span> <span class="nav-text">对话框&#x2F;模态弹窗&#x2F;警告提示组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA%E8%8F%9C%E5%8D%95"><span class="nav-number">3.7.</span> <span class="nav-text">导航菜单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B2%98%E6%80%A7%E5%90%B8%E9%A1%B6"><span class="nav-number">3.8.</span> <span class="nav-text">粘性吸顶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E9%A1%B5"><span class="nav-number">3.9.</span> <span class="nav-text">标签页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%96%E6%94%BE"><span class="nav-number">3.10.</span> <span class="nav-text">拖放</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%AF%E7%BC%96%E8%BE%91%E6%95%B0%E6%8D%AE%E7%BD%91%E6%A0%BC-%E7%94%B5%E5%AD%90%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.11.</span> <span class="nav-text">可编辑数据网格&#x2F;电子表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E6%A0%BC"><span class="nav-number">3.12.</span> <span class="nav-text">表格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B-%E9%A2%84%E8%A7%88%E5%99%A8"><span class="nav-number">3.13.</span> <span class="nav-text">查看&#x2F;预览器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BD%AE%E6%92%AD%E7%BB%84%E4%BB%B6"><span class="nav-number">3.14.</span> <span class="nav-text">轮播组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%87%92%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6"><span class="nav-number">3.15.</span> <span class="nav-text">懒加载组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E6%BB%9A%E5%8A%A8%E5%88%97%E8%A1%A8-%E6%A8%A1%E5%9D%97"><span class="nav-number">3.16.</span> <span class="nav-text">虚拟滚动列表&#x2F;模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8A%A0%E8%BD%BD%E7%BB%84%E4%BB%B6"><span class="nav-number">3.17.</span> <span class="nav-text">加载组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8A%98%E5%8F%A0%E7%BB%84%E4%BB%B6"><span class="nav-number">3.18.</span> <span class="nav-text">折叠组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A0%91"><span class="nav-number">3.19.</span> <span class="nav-text">树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%BC%E8%88%AA%E7%BB%84%E4%BB%B6"><span class="nav-number">3.20.</span> <span class="nav-text">导航组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%BB%9A%E5%8A%A8%E6%9D%A1"><span class="nav-number">3.21.</span> <span class="nav-text">自定义滚动条</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9F%B3%E8%A7%86%E9%A2%91"><span class="nav-number">3.22.</span> <span class="nav-text">音视频</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F-%E6%97%B6%E9%97%B4"><span class="nav-number">3.23.</span> <span class="nav-text">日期&#x2F;时间</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%85%A7%E7%89%87-%E5%9B%BE%E5%83%8F"><span class="nav-number">3.24.</span> <span class="nav-text">照片&#x2F;图像</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%86%E9%A1%B5"><span class="nav-number">3.25.</span> <span class="nav-text">分页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%94%BB%E5%B8%83"><span class="nav-number">3.26.</span> <span class="nav-text">画布</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96"><span class="nav-number">3.27.</span> <span class="nav-text">数据可视化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E8%A1%A8"><span class="nav-number">3.27.1.</span> <span class="nav-text">图表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E5%9B%BE"><span class="nav-number">3.27.2.</span> <span class="nav-text">关系图</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9C%B0%E5%9B%BE"><span class="nav-number">3.27.3.</span> <span class="nav-text">地图</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A8%E5%8D%95%E7%BB%84%E4%BB%B6"><span class="nav-number">3.28.</span> <span class="nav-text">表单组件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%90%84%E7%B1%BB%E8%BE%93%E5%85%A5%E6%A1%86"><span class="nav-number">3.28.1.</span> <span class="nav-text">各类输入框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E5%AE%8C%E6%88%90"><span class="nav-number">3.28.2.</span> <span class="nav-text">自动完成</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%8A%A8%E7%BC%A9%E6%94%BE%E7%9A%84%E8%BE%93%E5%85%A5%E6%A1%86-%E6%96%87%E6%9C%AC%E8%BE%93%E5%85%A5%E6%A1%86"><span class="nav-number">3.28.3.</span> <span class="nav-text">自动缩放的输入框&#x2F;文本输入框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E8%BE%93%E5%85%A5"><span class="nav-number">3.28.4.</span> <span class="nav-text">标签输入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%8B%E6%8B%89%E9%80%89%E6%8B%A9%E6%A1%86-%E4%B8%8B%E6%8B%89%E8%8F%9C%E5%8D%95"><span class="nav-number">3.28.5.</span> <span class="nav-text">下拉选择框&#x2F;下拉菜单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8D%95%E9%80%89%E6%A1%86"><span class="nav-number">3.28.6.</span> <span class="nav-text">单选框</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%84%E5%88%86%E7%BB%84%E4%BB%B6"><span class="nav-number">3.28.7.</span> <span class="nav-text">评分组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E5%88%87%E6%8D%A2%E6%8C%89%E9%92%AE"><span class="nav-number">3.28.8.</span> <span class="nav-text">状态切换按钮</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E6%9C%9F%E5%92%8C%E6%97%B6%E9%97%B4%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.28.9.</span> <span class="nav-text">日期和时间选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A1%A8%E6%83%85%E7%AC%A6%E5%8F%B7%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.28.10.</span> <span class="nav-text">表情符号选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%A2%9C%E8%89%B2%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">3.28.11.</span> <span class="nav-text">颜色选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BB%91%E5%8A%A8%E8%BE%93%E5%85%A5%E6%9D%A1"><span class="nav-number">3.28.12.</span> <span class="nav-text">滑动输入条</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%AF%E6%8E%92%E5%BA%8F%E5%88%97%E8%A1%A8"><span class="nav-number">3.28.13.</span> <span class="nav-text">可排序列表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AF%8C%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">3.28.14.</span> <span class="nav-text">富文本编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">3.28.15.</span> <span class="nav-text">代码编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Markdown%E7%BC%96%E8%BE%91%E5%99%A8"><span class="nav-number">3.28.16.</span> <span class="nav-text">Markdown编辑器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9B%BE%E7%89%87%E7%BC%96%E8%BE%91"><span class="nav-number">3.28.17.</span> <span class="nav-text">图片编辑</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI%E5%8A%A8%E7%94%BB"><span class="nav-number">4.</span> <span class="nav-text">UI动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A7%86%E8%A7%89%E5%B7%AE"><span class="nav-number">4.1.</span> <span class="nav-text">视觉差</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7"><span class="nav-number">5.</span> <span class="nav-text">开发工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8B%E8%AF%95%E7%9B%B8%E5%85%B3"><span class="nav-number">5.1.</span> <span class="nav-text">测试相关</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/14/awesome-react/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          awesome-react
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-14 11:36:01 / 修改时间：11:38:10" itemprop="dateCreated datePublished" datetime="2021-10-14T11:36:01+08:00">2021-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/" itemprop="url" rel="index"><span itemprop="name">front-end</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/JavaScript/Framework/" itemprop="url" rel="index"><span itemprop="name">Framework</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h2><h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><ul>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/ReactTraining/react-router">react-router</a> - React 的声明式路由。 <img src="https://img.shields.io/github/stars/ReactTraining/react-router.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/reach/router">reach</a> - React 的下一代路由。 <img src="https://img.shields.io/github/stars/reach/router.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/molefrog/wouter">wouter</a> - 一个极简友好的 ~1.3KB 路由库。 <img src="https://img.shields.io/github/stars/molefrog/wouter.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/frontarm/navi">navi</a> - React 的声明式异步路由。 <img src="https://img.shields.io/github/stars/frontarm/navi.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/kriasoft/universal-router">universal-router</a> - 简单中间件式路由，用于同构 JavaScript Web 应用程序的。 <img src="https://img.shields.io/github/stars/kriasoft/universal-router.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/pshrmn/curi">curi</a> - 用于单页应用程序的 JavaScript 路由。 <img src="https://img.shields.io/github/stars/pshrmn/curi.svg?style=social&label=Star"></p>
+<a id="more"></a>
+<h3 id="i18n"><a href="#i18n" class="headerlink" title="i18n"></a>i18n</h3></li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/yahoo/react-intl">react-intl</a> - React 应用国际化。 <img src="https://img.shields.io/github/stars/yahoo/react-intl.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/i18next/react-i18next">react-i18next</a> - 使用 i18next 的 React 国际化。 <img src="https://img.shields.io/github/stars/i18next/react-i18next.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/lingui/js-lingui">js-lingui</a> – 可读、自动化和优化的 (5 kb) JavaScript 国际化。 <img src="https://img.shields.io/github/stars/lingui/js-lingui.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/alibaba/react-intl-universal">react-intl-universal</a> - React 应用程序国际化。不仅适用于 React 组件，同样适用于原生 JS。 <img src="https://img.shields.io/github/stars/alibaba/react-intl-universal.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/cherry-projects/react-translate-maker">react-translate-maker</a> - 通用国际化 (i18n) 开源 React 库。 <img src="https://img.shields.io/github/stars/cherry-projects/react-translate-maker.svg?style=social&label=Star"></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://github.com/fakundo/react-localized">react-localized</a> - 基于 <code>gettext</code> 格式的 React 组件国际化。 <img src="https://img.shields.io/github/stars/fakundo/react-localized.svg?style=social&label=Star"></p>
+</li>
+</ul>
+<h2 id="UI框架"><a href="#UI框架" class="headerlink" title="UI框架"></a>UI框架</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design">ant-design</a> - 一套企业级 UI 设计语言和 React 组件库。 <img src="https://img.shields.io/github/stars/ant-design/ant-design.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mui-org/material-ui">material-ui</a> - 一套React 组件，以实现更快、更轻松的 Web 开发。 <img src="https://img.shields.io/github/stars/mui-org/material-ui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chakra-ui/chakra-ui">chakra-ui</a> - 用于 React 应用程序的简单、模块化和可访问性的 UI 组件。 <img src="https://img.shields.io/github/stars/chakra-ui/chakra-ui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/react-bootstrap/react-bootstrap">react-bootstrap</a> - 使用 React 构建的 Bootstrap 组件。 <img src="https://img.shields.io/github/stars/react-bootstrap/react-bootstrap.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/palantir/blueprint">blueprint</a> - 用于 Web 的基于 React 的 UI 工具包。 <img src="https://img.shields.io/github/stars/palantir/blueprint.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Semantic-Org/Semantic-UI-React">semantic-ui-react</a> - Semantic 官方提供的 React 封装。 <img src="https://img.shields.io/github/stars/Semantic-Org/Semantic-UI-React.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OfficeDev/office-ui-fabric-react">office-ui-fabric-react</a> - 用于构建Microsoft Web体验的React组件。 <img src="https://img.shields.io/github/stars/OfficeDev/office-ui-fabric-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/microsoft/fluentui">Fluent UI</a> - 一套用于构建 Microsoft Web 体验的 React 组件。 <img src="https://img.shields.io/github/stars/microsoft/fluentui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/segmentio/evergreen">evergreen</a> - Segment使用的UI框架。 <img src="https://img.shields.io/github/stars/segmentio/evergreen.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/reactstrap/reactstrap">reactstrap</a> - 简单的 React Bootstrap 4 组件。 <img src="https://img.shields.io/github/stars/reactstrap/reactstrap.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rebassjs/rebass">rebass</a> - 使用 styled-system 构建的原始React UI 组件。 <img src="https://img.shields.io/github/stars/rebassjs/rebass.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/grommet/grommet">grommet</a> - 基于React的整洁框架，提供可访问性、模块化、响应性和主题。 <img src="https://img.shields.io/github/stars/grommet/grommet.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uber/baseweb">baseweb</a> - Base 是一个由现代的、响应式的、有生命力的组件组成的设计系统。 Base Web 是 Base 的 React 实现。 <img src="https://img.shields.io/github/stars/uber/baseweb.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rsuite/rsuite">rsuite</a> - 一套 React 组件。 <img src="https://img.shields.io/github/stars/rsuite/rsuite.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adobe/react-spectrum">react-spectrum</a> - Adobe 的库和工具集合，可帮助您构建适应性强、可访问且强大的用户体验。 <img src="https://img.shields.io/github/stars/adobe/react-spectrum.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/reakit/reakit">reakit</a> - 可访问、可组合和可定制的React组件。 <img src="https://img.shields.io/github/stars/reakit/reakit.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/carbon-design-system/carbon">carbon</a> - IBM构建的设计系统。 <img src="https://img.shields.io/github/stars/carbon-design-system/carbon.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/searchkit/searchkit">searchkit</a> - React UI组件/小部件。使用<code>Elasticsearch</code>构建出色搜索体验的最简单方法。 <img src="https://img.shields.io/github/stars/searchkit/searchkit.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pinterest/gestalt">gestalt</a> - 一组支持 Pinterest设计语言的组件。 <img src="https://img.shields.io/github/stars/pinterest/gestalt.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/elastic/eui">eui</a> - 弹性式UI框架。 <img src="https://img.shields.io/github/stars/elastic/eui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JetBrains/ring-ui">ring-ui</a> - JetBrains的 Web UI组件库。 <img src="https://img.shields.io/github/stars/JetBrains/ring-ui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zeit-ui/react">zeit-ui-react</a> - 现代简约的 React UI库。 <img src="https://img.shields.io/github/stars/zeit-ui/react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/primefaces/primereact">primereact</a> - 一个完整的 React UI 框架，包含 50 多个具有material、bootstrap和自定义主题的组件。 <img src="https://img.shields.io/github/stars/primefaces/primereact.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mantinedev/mantine">mantine</a> -具有原生深色主题支持的 React 组件和Hooks库专注于可用性、可访问性和开发人员体验。 <img src="https://img.shields.io/github/stars/mantinedev/mantine.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/ChatUI">ChatUI</a> - 服务于对话领域的设计和开发体系。 <img src="https://img.shields.io/github/stars/alibaba/ChatUI.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kiwicom/orbit-components">orbit-components</a> - 用于构建面向旅行的项目的组件。 <img src="https://img.shields.io/github/stars/kiwicom/orbit-components.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/couds/react-bulma-components">react-bulma-components</a> - Bulma 的React组件。 <img src="https://img.shields.io/github/stars/couds/react-bulma-components.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bumbag/bumbag-ui">bumbag-ui</a> - 使用 Bumbag 构建具备可访问性且主题化的 React 应用程序。 <img src="https://img.shields.io/github/stars/bumbag/bumbag-ui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sheinsight/shineout">shineout</a> - 中文友好的组件集：表单元素、导航、表格、树、树选择下拉等。 <img src="https://img.shields.io/github/stars/sheinsight/shineout.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pivotal-cf/pivotal-ui">pivotal-ui-react</a> - 基于自定义版本的Bootstrap库的React组件。 <img src="https://img.shields.io/github/stars/pivotal-cf/pivotal-ui.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nordsoftware/react-foundation">react-foundation</a> - 作为React组件的基础。 <img src="https://img.shields.io/github/stars/nordsoftware/react-foundation.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kulakowka/react-bulma">react-bulma</a> - 基于 Flexbox 的现代 CSS 框架的 React.js 组件。 <img src="https://img.shields.io/github/stars/kulakowka/react-bulma.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fibo/trunx">trunx</a> - 使用 TypeScript 实现，基于Bulma 的React 组件。 <img src="https://img.shields.io/github/stars/fibo/trunx.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Devwares-Team/cdbreact">cdbreact</a> - 优雅的UI Kit库和可重用组件，用于构建移动优先、响应式网站和Web应用程序。 <img src="https://img.shields.io/github/stars/Devwares-Team/cdbreact.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="移动端"><a href="#移动端" class="headerlink" title="移动端"></a>移动端</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design-mobile">antd-mobile</a> - 可配置的移动端UI（来自中国）。 <img src="https://img.shields.io/github/stars/ant-design/ant-design-mobile.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OnsenUI/OnsenUI">OnsenUI</a> - 具有Material和flat(iOS)设计的移动应用程序框架。 基于 Web Components。 <img src="https://img.shields.io/github/stars/OnsenUI/OnsenUI.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ant-design/ant-design-pro">ant-design-pro</a> - 一个开箱即用企业应用程序UI解决方案。An out-of-box UI solution for enterprise applications as a React boilerplate. <img src="https://img.shields.io/github/stars/ant-design/ant-design-pro.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/marmelab/react-admin">react-admin</a> - 一个前端框架，用于在 REST/GraphQL API 之上构建在浏览器中运行的 B2B 应用程序，使用 ES6、React 和 Material Design。 <img src="https://img.shields.io/github/stars/marmelab/react-admin.svg?style=social&label=Star"></li>
+</ul>
+<h2 id="UI组件"><a href="#UI组件" class="headerlink" title="UI组件"></a>UI组件</h2><h3 id="按钮"><a href="#按钮" class="headerlink" title="按钮"></a>按钮</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rcaferati/react-awesome-button">react-awesome-button</a> - 带有加载进度和社交分享操作的 3D 动画 60fps 按钮。 <img src="https://img.shields.io/github/stars/rcaferati/react-awesome-button.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/arifszn/reactive-button">reactive-button</a> - 一个漂亮的带有进度指示器的动画按钮组件。 <img src="https://img.shields.io/github/stars/arifszn/reactive-button.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="图标"><a href="#图标" class="headerlink" title="图标"></a>图标</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/gorangajic/react-icons">react-icons</a> - 使用ES6导入React SVG流行图标库。<img src="https://img.shields.io/github/stars/gorangajic/react-icons.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/danawoodman/react-fontawesome">react-fontawesome</a> - Font Awesome组件。 <img src="https://img.shields.io/github/stars/danawoodman/react-fontawesome.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/iconify/iconify-react">iconify-react</a> - 来自50多个图标集的超过4万个图标，包括所有流行的图标和表情符号集。 <img src="https://img.shields.io/github/stars/iconify/iconify-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lunahq/react-open-doodles">react-open-doodles</a> - 由<code>opendoodles</code>提供的一组免费粗略插图。 <img src="https://img.shields.io/github/stars/lunahq/react-open-doodles.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="布局"><a href="#布局" class="headerlink" title="布局"></a>布局</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/STRML/react-grid-layout">react-grid-layout</a> - 网格布局系统，可以实现响应式的网格布局，并且支持分割点（breakpoints）的设置，灵活运用可以方便的实现拖拽式组件。 <img src="https://img.shields.io/github/stars/STRML/react-grid-layout.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/deepstreamIO/golden-layout">golden-layout</a> - 一款强大的响应式多窗口分割管理器。 <img src="https://img.shields.io/github/stars/deepstreamIO/golden-layout.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xudafeng/autoresponsive-react">autoresponsive-react</a> - 自动响应式网格布局库。 <img src="https://img.shields.io/github/stars/xudafeng/autoresponsive-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eiriklv/react-masonry-component">react-masonry-component</a> - 基于@desandro’s Masonry的封装。 <img src="https://img.shields.io/github/stars/eiriklv/react-masonry-component.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dantrain/react-stonecutter">react-stonecutter</a> - 动画网格布局组件。 <img src="https://img.shields.io/github/stars/dantrain/react-stonecutter.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/aeagle/react-spaces">react-spaces</a> - 使您可以将页面或容器划分为可嵌套的锚定，可滚动和可调整大小的空间。 <img src="https://img.shields.io/github/stars/aeagle/react-spaces.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Paol-imi/muuri-react">muuri-react</a> - 响应式、可排序、可筛选和可拖动的网格布局。 <img src="https://img.shields.io/github/stars/Paol-imi/muuri-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/martinnov92/React-Splitters">m-react-splitters</a> - 拆分器组件，用 TypeScript 编写。 <img src="https://img.shields.io/github/stars/martinnov92/React-Splitters.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="flexbox实现"><a href="#flexbox实现" class="headerlink" title="flexbox实现"></a>flexbox实现</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/JSBros/hedron">hedron</a> - 一个简洁的flexbox网格系统，由样式组件提供支持。 <img src="https://img.shields.io/github/stars/JSBros/hedron.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/leefsmp/Re-Flex">react-reflex</a> - 用于高级React Web应用程序的Flex布局容器组件。 <img src="https://img.shields.io/github/stars/leefsmp/Re-Flex.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nachoaIvarez/flexbox-react">flexbox-react</a> - 无偏见、符合标准的 flexbox 组件. <img src="https://img.shields.io/github/stars/nachoaIvarez/flexbox-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tcoopman/react-flexbox">react-flexbox</a> - React flexbox思想。 <img src="https://img.shields.io/github/stars/tcoopman/react-flexbox.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="提示工具"><a href="#提示工具" class="headerlink" title="提示工具"></a>提示工具</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/wwayne/react-tooltip">react-tooltip</a> - React提示工具组件。 <img src="https://img.shields.io/github/stars/wwayne/react-tooltip.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/popperjs/react-popper">react-popper</a> - 🍿⚛官方 React 库，使用定位库 Popper。 <img src="https://img.shields.io/github/stars/popperjs/react-popper.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="通知提醒框组件"><a href="#通知提醒框组件" class="headerlink" title="通知提醒框组件"></a>通知提醒框组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/fkhadra/react-toastify">react-toastify</a> - 🎉 React-Toastify允许你轻松的添加通知。<img src="https://img.shields.io/github/stars/fkhadra/react-toastify.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/timolins/react-hot-toast">react-hot-toast</a> - 好用的通知提示组件，默认情况下轻量，可定制和美观。 <img src="https://img.shields.io/github/stars/timolins/react-hot-toast.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/iamhosseindhv/notistack">notistack</a> - 高度可定制的通知组件（toasts），可以堆叠在彼此的顶部。 <img src="https://img.shields.io/github/stars/iamhosseindhv/notistack.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jossmac/react-toast-notifications">react-toast-notifications</a> - 一个 React &amp; Redux 的通知系统。 <img src="https://img.shields.io/github/stars/jossmac/react-toast-notifications.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/teodosii/react-notifications-component">react-notifications-component</a> - 高度可定制和易用的通知提醒组件。 <img src="https://img.shields.io/github/stars/teodosii/react-notifications-component.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Cogoport/cogo-toast">cogo-toast</a> - 美观，零配置的Toast消息组件。~4kb gzip (包括样式和图标) <img src="https://img.shields.io/github/stars/Cogoport/cogo-toast.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alexpermyakov/simple-react-notifications">simple-react-notifications</a> - 极小的通知库(gzip后仅1kb). <img src="https://img.shields.io/github/stars/alexpermyakov/simple-react-notifications.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/moharnadreza/react-toast">react-toast</a> - 小巧的toast通知组件。<img src="https://img.shields.io/github/stars/moharnadreza/react-toast.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="对话框-模态弹窗-警告提示组件"><a href="#对话框-模态弹窗-警告提示组件" class="headerlink" title="对话框/模态弹窗/警告提示组件"></a>对话框/模态弹窗/警告提示组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/reactjs/react-modal">react-modal</a> - 可访问的模态对话框组件。 <img src="https://img.shields.io/github/stars/reactjs/react-modal.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/davidtheclark/react-aria-modal">react-aria-modal</a> - 一个完全可访问且灵活的 React 模态对话框，根据 WAI-ARIA 最佳实践构建的。 <img src="https://img.shields.io/github/stars/davidtheclark/react-aria-modal.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/marcio/react-skylight">react-skylight</a> - 一个模态弹窗和对话框组件。 <img src="https://img.shields.io/github/stars/marcio/react-skylight.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sweetalert2/sweetalert2-react-content">sweetalert2-react-content</a> - 官方 SweetAlert2 的增强，添加了对 React 元素作为内容的支持。 <img src="https://img.shields.io/github/stars/sweetalert2/sweetalert2-react-content.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hiradary/reoverlay">reoverlay</a> - 一个管理模态对话框的方案。 <img src="https://img.shields.io/github/stars/hiradary/reoverlay.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bold-commerce/reboron">reboron</a> - 一组对话框动画。 <img src="https://img.shields.io/github/stars/bold-commerce/reboron.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="导航菜单"><a href="#导航菜单" class="headerlink" title="导航菜单"></a>导航菜单</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/negomi/react-burger-menu">react-burger-menu</a> - 带有特效和样式的侧边栏菜单。 <img src="https://img.shields.io/github/stars/negomi/react-burger-menu.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/luukdv/hamburger-react">hamburger-react</a> - React 的动画汉堡菜单图标。 <img src="https://img.shields.io/github/stars/luukdv/hamburger-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/innFactory/react-planet">react-planet</a> - 创建看起来像行星的圆形菜单。 <img src="https://img.shields.io/github/stars/innFactory/react-planet.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vutran/react-offcanvas">react-offcanvas</a> - 侧边栏菜单。 <img src="https://img.shields.io/github/stars/vutran/react-offcanvas.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="粘性吸顶"><a href="#粘性吸顶" class="headerlink" title="粘性吸顶"></a>粘性吸顶</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/captivationsoftware/react-sticky">react-sticky</a> - &lt;Sticky /&gt;组件。 <img src="https://img.shields.io/github/stars/captivationsoftware/react-sticky.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/KyleAMathews/react-headroom">react-headroom</a> - 隐藏头部，直到你需要它。 <img src="https://img.shields.io/github/stars/KyleAMathews/react-headroom.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yahoo/react-stickynode">react-stickynode</a> - 一个高性能和全面的React吸顶。 <img src="https://img.shields.io/github/stars/yahoo/react-stickynode.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="标签页"><a href="#标签页" class="headerlink" title="标签页"></a>标签页</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/reactjs/react-tabs">react-tabs</a> - 选项卡切换组件。 <img src="https://img.shields.io/github/stars/reactjs/react-tabs.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ctxhou/react-tabtab">react-tabtab</a> - 选项卡切换组件。 <img src="https://img.shields.io/github/stars/ctxhou/react-tabtab.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="拖放"><a href="#拖放" class="headerlink" title="拖放"></a>拖放</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/atlassian/react-beautiful-dnd">react-beautiful-dnd</a> - 漂亮且易于使用的 React 列表拖拽。 <img src="https://img.shields.io/github/stars/atlassian/react-beautiful-dnd.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gaearon/react-dnd">react-dnd</a> - 拖拽库 <img src="https://img.shields.io/github/stars/gaearon/react-dnd.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/okonet/react-dropzone">react-dropzone</a> - 简单 HTML5 拖放区。 <img src="https://img.shields.io/github/stars/okonet/react-dropzone.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mzabriskie/react-draggable">react-draggable</a> - React可拖动组件。 <img src="https://img.shields.io/github/stars/mzabriskie/react-draggable.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tajo/react-movable">react-movable</a> - 可访问且简约（&lt;4kB gzipped）库，用于在列表和表格中进行垂直拖放。 <img src="https://img.shields.io/github/stars/tajo/react-movable.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bevacqua/react-dragula">react-dragula</a> - 拖放如此简单，让人心痛。 <img src="https://img.shields.io/github/stars/bevacqua/react-dragula.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bokuweb/react-sortable-pane">react-sortable-pane</a> - 可排序和可调整大小的窗格组件。 <img src="https://img.shields.io/github/stars/bokuweb/react-sortable-pane.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="可编辑数据网格-电子表格"><a href="#可编辑数据网格-电子表格" class="headerlink" title="可编辑数据网格/电子表格"></a>可编辑数据网格/电子表格</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ceolter/ag-grid">ag-grid</a> - 高级数据网格/数据表，支持原生JavaScript/React/AngularJS/Web Components. <img src="https://img.shields.io/github/stars/ceolter/ag-grid.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adazzle/react-data-grid">react-data-grid</a> - 类似Excel的数据网格。 <img src="https://img.shields.io/github/stars/adazzle/react-data-grid.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/revolist/revogrid">revo-grid</a> - 适用于React/AngularJS/Vue/Web组件的强大数据网格，具有高级定制功能。 <img src="https://img.shields.io/github/stars/revolist/revogrid.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/silevis/reactgrid">ReactGrid</a> - 向您的应用程序添加类似电子表格的行为。 <img src="https://img.shields.io/github/stars/silevis/reactgrid.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/GigaTables/reactables">gigatables-react</a> - 排序、分页/无限滚动、全局/列搜索、AJAX CRUD等。 <img src="https://img.shields.io/github/stars/GigaTables/reactables.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/tannerlinsley/react-table">react-table</a> - 用于构建快速且可扩展的表和数据网格的Hooks。 <img src="https://img.shields.io/github/stars/tannerlinsley/react-table.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mbrn/material-table">material-table</a> - 基于Material UI，添加：分组、树数据、可扩展行、导出、内联编辑。 <img src="https://img.shields.io/github/stars/mbrn/material-table.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gregnb/mui-datatables">mui-datatables</a> - 基于Material UI。添加：搜索、样式设置、过滤、调整大小/隐藏列、导出、打印、选择/扩展行。 <img src="https://img.shields.io/github/stars/gregnb/mui-datatables.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DevExpress/devextreme-reactive">@devexpress/dx-react-grid</a> -  用于Bootstrap和Material Design的基于插件的高性能数据网格。<img src="https://img.shields.io/github/stars/DevExpress/devextreme-reactive.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jbetancur/react-data-table-component">react-data-table</a> - 可访问、响应式、主题化、声明式可配置表，具有排序、可选行、可扩展行、分页。 <img src="https://img.shields.io/github/stars/jbetancur/react-data-table-component.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rsuite/rsuite-table">rsuite-table</a> - 支持虚拟化的表组件。 <img src="https://img.shields.io/github/stars/rsuite/rsuite-table.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/komarovalexander/ka-table">ka-table</a> - 可定制的表格组件，具有排序、过滤、分组、虚拟化、编辑等功能。 <img src="https://img.shields.io/github/stars/komarovalexander/ka-table.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sematext/sematable">sematable</a> - 基于redux/react的客户端排序、分页和文本过滤器。 <img src="https://img.shields.io/github/stars/sematext/sematable.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/telerik/kendo-react">@progress/kendo-react-grid</a> - 强大的数据网格组件，具有 100 多种即用型功能，如分页、排序、导出到Excel等。 <img src="https://img.shields.io/github/stars/telerik/kendo-react.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="查看-预览器"><a href="#查看-预览器" class="headerlink" title="查看/预览器"></a>查看/预览器</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rexxars/react-markdown">react-markdown</a> - 一个渲染Markdown的React组件。 <img src="https://img.shields.io/github/stars/rexxars/react-markdown.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wojtekmaj/react-pdf">react-pdf</a> - 实现在React应用中PDF在线预览。 <img src="https://img.shields.io/github/stars/wojtekmaj/react-pdf.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alexkuz/react-json-tree">react-json-tree</a> - JSON预览组件，从redux-devtools提取出。<img src="https://img.shields.io/github/stars/alexkuz/react-json-tree.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/phuoc-ng/react-pdf-viewer">react-pdf-viewer</a> - 一个预览PDF文档的React组件。<img src="https://img.shields.io/github/stars/phuoc-ng/react-pdf-viewer.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="轮播组件"><a href="#轮播组件" class="headerlink" title="轮播组件"></a>轮播组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/akiran/react-slick">react-slick</a> - React轮播组件。 <img src="https://img.shields.io/github/stars/akiran/react-slick.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rcbyr/keen-slider">keen-slider</a> - 具有原生触摸/滑动行为的高性能轮播/滑块。 <img src="https://img.shields.io/github/stars/rcbyr/keen-slider.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rcaferati/react-awesome-slider">react-awesome-slider</a> - 3D animated 60fps media and content slider/carousel. <img src="https://img.shields.io/github/stars/rcaferati/react-awesome-slider.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/leandrowd/react-responsive-carousel">react-responsive-carousel</a> - 响应式的可滑动轮播组件。 <img src="https://img.shields.io/github/stars/leandrowd/react-responsive-carousel.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/naver/egjs-flicking/blob/master/packages/react-flicking/">@egjs/react-flicking</a> - 它可靠、灵活且可扩展的轮播组件。 <img src="https://img.shields.io/github/stars/naver/egjs-flicking.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/express-labs/pure-react-carousel">pure-react-carousel</a> - 从头开始构建，并不固执己见。 <img src="https://img.shields.io/github/stars/express-labs/pure-react-carousel.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kidjp85/react-id-swiper">react-id-swiper</a> - 使用危险的 Swiper 作为 ReactJs 组件的库。 <img src="https://img.shields.io/github/stars/phuoc-ng/react-pdf-viewer.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/skozer/react-instagram-zoom-slider">react-instagram-zoom-slider</a> - 受Instagram启发的具有捏合缩放功能的滑块组件。 <img src="https://img.shields.io/github/stars/skozer/react-instagram-zoom-slider.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="懒加载组件"><a href="#懒加载组件" class="headerlink" title="懒加载组件"></a>懒加载组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jasonslyvia/react-lazyload">react-lazyload</a> - 延迟加载组件、图像或任何对性能影响的东西。 <img src="https://img.shields.io/github/stars/jasonslyvia/react-lazyload.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/loktar00/react-lazy-load">react-lazy-load</a> - 当子元素进入视图范围内时，才渲染它们。 <img src="https://img.shields.io/github/stars/loktar00/react-lazy-load.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="虚拟滚动列表-模块"><a href="#虚拟滚动列表-模块" class="headerlink" title="虚拟滚动列表/模块"></a>虚拟滚动列表/模块</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/bvaughn/react-window">react-window</a> - 可有效渲染大型列表和表格数据的React组件。 <img src="https://img.shields.io/github/stars/bvaughn/react-window.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/orgsync/react-list">react-list</a> - 多功能的虚拟滚动组件。 <img src="https://img.shields.io/github/stars/orgsync/react-list.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/naver/egjs-infinitegrid/blob/master/packages/react-infinitegrid">@egjs/react-infinitegrid</a> - 根据各种布局类型排列包含内容的卡片元素。 <img src="https://img.shields.io/github/stars/mkosir/react-parallax-tilt.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nowaalex/af-virtual-scroll">af-virtual-scroll</a> - 渲染大型可滚动列表和表格。 <img src="https://img.shields.io/github/stars/nowaalex/af-virtual-scroll.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="加载组件"><a href="#加载组件" class="headerlink" title="加载组件"></a>加载组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/danilowoz/react-content-loader">react-content-loader</a> - 基于SVG的组件，可轻松创建内容占位加载效果（如 Facebook 的卡片加载效果）。 <img src="https://img.shields.io/github/stars/danilowoz/react-content-loader.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/davidhu2000/react-spinners">react-spinners</a> - 一个加载组件集合。 <img src="https://img.shields.io/github/stars/davidhu2000/react-spinners.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mironov/react-redux-loading-bar">react-redux-loading-bar</a> - 使用React和Redux的简单加载工具条。 <img src="https://img.shields.io/github/stars/mironov/react-redux-loading-bar.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TheCognizantFoundry/react-loader">react-loader</a> - 使用spin.js显示加载效果的React组件，直到您的组件被加载。 <img src="https://img.shields.io/github/stars/TheCognizantFoundry/react-loader.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JoshK2/react-spinners-css">react-spinners-css</a> - 让人惊讶的React加载组件集合。 <img src="https://img.shields.io/github/stars/JoshK2/react-spinners-css.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/availity/react-block-ui">react-block-ui</a> - 阻止用户与UI 交互的简单方法。 <img src="https://img.shields.io/github/stars/availity/react-block-ui.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="折叠组件"><a href="#折叠组件" class="headerlink" title="折叠组件"></a>折叠组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/nkbt/react-collapse">react-collapse</a> - 使用react-motion实现的带动画的折叠组件。 <img src="https://img.shields.io/github/stars/nkbt/react-collapse.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/springload/react-accessible-accordion">react-accessible-accordion</a> - 可访问的手风琴组件。 <img src="https://img.shields.io/github/stars/springload/react-accessible-accordion.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Merri/react-tabbordion">react-tabbordion</a> - <a target="_blank" rel="noopener" href="https://merri.github.io/react-tabbordion">demo</a> - Tabbordion是用于管理多个内容之间的活动状态的组件。你可以用它做任何事情：选项卡组件、手风琴组件、多选列表组件、选项组件、选项列表、复选框列表。 <img src="https://img.shields.io/github/stars/Merri/react-tabbordion.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="树"><a href="#树" class="headerlink" title="树"></a>树</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/alexcurtis/react-treebeard">react-treebeard</a> - React树视图组件。数据驱动、快速、高效且可定制。 <img src="https://img.shields.io/github/stars/alexcurtis/react-treebeard.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chenglou/react-treeview">react-treeview</a> - 使用 简单、轻便、灵活的树视图。 <img src="https://img.shields.io/github/stars/chenglou/react-treeview.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lukasbach/react-complex-tree">react-complex-tree</a> - 具有多选、拖放和搜索功能的不受限制的可访问树组件。 <img src="https://img.shields.io/github/stars/lukasbach/react-complex-tree.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="导航组件"><a href="#导航组件" class="headerlink" title="导航组件"></a>导航组件</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/oliviertassinari/react-swipeable-views">react-swipeable-views</a> - 用于绑定选项卡和可滑动视图的React组件。 <img src="https://img.shields.io/github/stars/oliviertassinari/react-swipeable-views.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fisshy/react-scroll">react-scroll</a> - React滚动组件。 <img src="https://img.shields.io/github/stars/fisshy/react-scroll.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="自定义滚动条"><a href="#自定义滚动条" class="headerlink" title="自定义滚动条"></a>自定义滚动条</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rommguy/react-custom-scroll">react-custom-scroll</a> - 轻松自定义带有原生操作系统滚动行为的浏览器滚动条。 <img src="https://img.shields.io/github/stars/rommguy/react-custom-scroll.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sakhnyuk/rc-scrollbars">rc-scrollbars</a> - React 滚动条组件。 <img src="https://img.shields.io/github/stars/sakhnyuk/rc-scrollbars.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/andrelmlins/react-shadow-scroll">react-shadow-scroll</a> - 可自定义列表并在滚动时插入阴影的组件。 <img src="https://img.shields.io/github/stars/andrelmlins/react-shadow-scroll.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="音视频"><a href="#音视频" class="headerlink" title="音视频"></a>音视频</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/CookPete/react-player">react-player</a> - 用于播放各种URL的React组件，包括YouTube。 <img src="https://img.shields.io/github/stars/CookPete/react-player.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/video-react/video-react">video-react</a> - 为HTML5世界构建的网络视频播放器。 <img src="https://img.shields.io/github/stars/video-react/video-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/soundblogs/react-soundplayer">react-soundplayer</a> - 使用React创建自定义SoundCloud播放器。 <img src="https://img.shields.io/github/stars/soundblogs/react-soundplayer.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/troybetz/react-youtube">react-youtube</a> - React.js 版 YouTube 播放器组件。 <img src="https://img.shields.io/github/stars/troybetz/react-youtube.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Werter12/material-ui-audio-player">material-ui-audio-player</a> - 用于Material UI Design的音频播放器. <img src="https://img.shields.io/github/stars/Werter12/material-ui-audio-player.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/u-wave/react-dailymotion">react-dailymotion</a> - Dailymotion播放器组件。 <img src="https://img.shields.io/github/stars/u-wave/react-dailymotion.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="日期-时间"><a href="#日期-时间" class="headerlink" title="日期/时间"></a>日期/时间</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/nmn/react-timeago">react-timeago</a> - 一个简单的 time-ago组件. <img src="https://img.shields.io/github/stars/nmn/react-timeago.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hustcc/timeago-react">timeago-react</a> - 将Date格式化为 <code>*** time ago</code> 的状态. 例如: ‘3 hours ago’. <img src="https://img.shields.io/github/stars/hustcc/timeago-react.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="照片-图像"><a href="#照片-图像" class="headerlink" title="照片/图像"></a>照片/图像</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/sachinchoolur/lightGallery">lightGallery</a> - 功能齐全的灯箱画廊组件。 <img src="https://img.shields.io/github/stars/sachinchoolur/lightGallery.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xiaolin/react-image-gallery">react-image-gallery</a> - 响应式图片库、轮播、图片滑块React组件。 <img src="https://img.shields.io/github/stars/xiaolin/react-image-gallery.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/neptunian/react-photo-gallery">react-photo-gallery</a> - 响应式的照片画廊组件 <img src="https://img.shields.io/github/stars/neptunian/react-photo-gallery.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fritz-c/react-image-lightbox">react-image-lightbox</a> - React灯箱组件。 <img src="https://img.shields.io/github/stars/fritz-c/react-image-lightbox.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chrvadala/react-svg-pan-zoom">react-svg-pan-zoom</a> - 为SVG添加平移和缩放功能的React组件。 <img src="https://img.shields.io/github/stars/chrvadala/react-svg-pan-zoom.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/malerba118/react-particle-image">react-particle-image</a> - 将图像渲染为交互式粒子。 <img src="https://img.shields.io/github/stars/malerba118/react-particle-image.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/imgix/react-imgix">react-imgix</a> - 添加快速响应式的图像作为图像、图片或背景！ <img src="https://img.shields.io/github/stars/imgix/react-imgix.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/junkboy0315/react-compare-image">react-compare-image</a> - 使用滑块对比两张图片。 <img src="https://img.shields.io/github/stars/junkboy0315/react-compare-image.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/brycedorn/react-intense">react-intense</a> - 用于查看大图像。 <img src="https://img.shields.io/github/stars/brycedorn/react-intense.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="分页"><a href="#分页" class="headerlink" title="分页"></a>分页</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/AdeleD/react-paginate">react-paginate</a> - 用于创建分页的React组件。 <img src="https://img.shields.io/github/stars/AdeleD/react-paginate.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lionix-team/react-laravel-paginex">react-laravel-paginex</a> - Laravel分页(可定制的)。 <img src="https://img.shields.io/github/stars/lionix-team/react-laravel-paginex.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/makotot/paginated">paginated</a> - 使用props和自定义hook来构建分页。 <img src="https://img.shields.io/github/stars/makotot/paginated.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="画布"><a href="#画布" class="headerlink" title="画布"></a>画布</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/konvajs/react-konva">react-konva</a> - React Konva 是一个 JavaScript 库，用于绘制复杂的画布图形。 <img src="https://img.shields.io/github/stars/konvajs/react-konva.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tbolis/react-sketch">react-sketch</a> - 基于FabricJS， 用于React应用程序的 Sketch 工具。 <img src="https://img.shields.io/github/stars/tbolis/react-sketch.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vinothpandian/react-sketch-canvas">react-sketch-canvas</a> - 使用 SVG 作为画布的 React 手绘矢量绘图工具。接受来自鼠标、触摸板和图形输入板的输入。 <img src="https://img.shields.io/github/stars/vinothpandian/react-sketch-canvas.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h3><h4 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/recharts/recharts">recharts</a> - 使用React和D3重新定义图表库。 <img src="https://img.shields.io/github/stars/recharts/recharts.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/airbnb/visx">visx</a> - 🐯 visx | 可视化组件。 <img src="https://img.shields.io/github/stars/airbnb/visx.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FormidableLabs/victory">victory</a> - 数据可视化。 <img src="https://img.shields.io/github/stars/FormidableLabs/victory.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uber/react-vis">react-vis</a> - 基于D3和React的数据可视化。 <img src="https://img.shields.io/github/stars/uber/react-vis.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/BizCharts">BizCharts</a> - 使用G2和React强大的数据可视化库。 <img src="https://img.shields.io/github/stars/alibaba/BizCharts.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jerairrest/react-chartjs-2">react-chartjs-2</a> - 使用Chart.js 2.0的通用React图表组件。 <img src="https://img.shields.io/github/stars/jerairrest/react-chartjs-2.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/borisyankov/react-sparklines">react-sparklines</a> - 美丽而富有表现力的React微线图组件。 <img src="https://img.shields.io/github/stars/borisyankov/react-sparklines.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nteract/semiotic">semiotic</a> - Semiotic是一个React数据可视化框架。 <img src="https://img.shields.io/github/stars/nteract/semiotic.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/codesuki/react-d3-components">react-d3-components</a> - React D3组件。 <img src="https://img.shields.io/github/stars/codesuki/react-d3-components.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Raathigesh/Dazzle">react-dazzle</a> - 使用React轻松制作仪表盘。 <img src="https://img.shields.io/github/stars/Raathigesh/Dazzle.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kirjs/react-highcharts">react-highcharts</a> - React-highcharts. <img src="https://img.shields.io/github/stars/kirjs/react-highcharts.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/RakanNimer/react-google-charts">react-google-charts</a> - React-google-charts React组件。 <img src="https://img.shields.io/github/stars/RakanNimer/react-google-charts.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/esnet/react-timeseries-charts">react-timeseries-charts</a> - 时间序列图表。 <img src="https://img.shields.io/github/stars/esnet/react-timeseries-charts.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kirillstepkin/chartify">chartify</a> - React.js 插件，用于构建可拖动和可自定义的动画图表。 <img src="https://img.shields.io/github/stars/kirillstepkin/chartify.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fraserxu/react-chartist">react-chartist</a> - 使用Chartist.js的React组件。 <img src="https://img.shields.io/github/stars/fraserxu/react-chartist.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rumble-charts/rumble-charts">rumble-charts</a> - 用于构建可组合且灵活的图表的 React 组件。 <img src="https://img.shields.io/github/stars/rumble-charts/rumble-charts.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/syncfusion/ej2-react-ui-components/tree/master/components/charts">ej2-react-charts</a> - 精美交互式图表和图。 <img src="https://img.shields.io/github/stars/syncfusion/ej2-react-ui-components.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/99ff00/react-charty">react-charty</a> - 小巧但强大的交互式数据可视化，具有多种图表类型、动画、缩放、主题。 <img src="https://img.shields.io/github/stars/99ff00/react-charty.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uiwjs/react-heat-map">react-heat-map</a> - 一个基于 SVG 的轻量级日历热图反应组件。 <img src="https://img.shields.io/github/stars/uiwjs/react-heat-map.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chartshq/react-muze">react-muze</a> - 基于<a target="_blank" rel="noopener" href="https://muzejs.org/">muze</a>的封装。(muze是使用 WebAssembly 在浏览器中创建探索性数据可视化的免费数据可视化库) <img src="https://img.shields.io/github/stars/chartshq/react-muze.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="关系图"><a href="#关系图" class="headerlink" title="关系图"></a>关系图</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/antvis/graphin">graphin</a> - 基于G6的React图可视化工具集。 <img src="https://img.shields.io/github/stars/antvis/graphin.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dunnock/react-sigma">react-sigmajs</a> - 基于SigmaJS，轻量但强大的绘制网络关系图。 <img src="https://img.shields.io/github/stars/dunnock/react-sigma.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="地图"><a href="#地图" class="headerlink" title="地图"></a>地图</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/uber/react-map-gl">react-map-gl</a> - 基于MapboxGL-js封装覆盖的API。 <img src="https://img.shields.io/github/stars/uber/react-map-gl.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/istarkov/google-map-react">google-map-react</a> - 通用谷歌地图React组件，允许在谷歌地图上渲染React组件。 <img src="https://img.shields.io/github/stars/istarkov/google-map-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PaulLeCam/react-leaflet">react-leaflet</a> - 基于Leaflet maps的React组件。 <img src="https://img.shields.io/github/stars/PaulLeCam/react-leaflet.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mariusandra/pigeon-maps">pigeon-maps</a> - 没有外部依赖的ReactJS地图。 <img src="https://img.shields.io/github/stars/mariusandra/pigeon-maps.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alex3165/react-mapbox-gl">react-mapbox-gl</a> - 基于mapbox-gl-js React封装。 <img src="https://img.shields.io/github/stars/alex3165/react-mapbox-gl.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ubilabs/react-geosuggest">react-geosuggest</a> - 为 Google Maps Places API做出自动建议的React组件。 <img src="https://img.shields.io/github/stars/ubilabs/react-geosuggest.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/VictorCazanave/react-svg-map">react-svg-map</a> - 一组用于显示交互式 SVG 地图的组件。 <img src="https://img.shields.io/github/stars/VictorCazanave/react-svg-map.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="表单组件"><a href="#表单组件" class="headerlink" title="表单组件"></a>表单组件</h3><h4 id="各类输入框"><a href="#各类输入框" class="headerlink" title="各类输入框"></a>各类输入框</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/msafi/text-mask">react-text-mask</a> - 灵活、健壮、微小的输入框屏蔽(遮罩)，可用于React、Angular 和 vanilla JavaScript。<img src="https://img.shields.io/github/stars/msafi/text-mask.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/amarofashion/react-credit-cards">react-credit-cards</a> - 美观的信用卡输入框，用于你的支付表单。 <img src="https://img.shields.io/github/stars/amarofashion/react-credit-cards.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sanniassin/react-input-mask">react-input-mask</a> - 另一个用于屏蔽输入的React组件。 <img src="https://img.shields.io/github/stars/sanniassin/react-input-mask.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/insin/react-maskedinput">react-maskedinput</a> - 输入遮罩组件。 <img src="https://img.shields.io/github/stars/insin/react-maskedinput.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/medipass/react-payment-inputs">react-payment-inputs</a> - 一个零依赖容器，用于帮助处理支付卡输入字段。 <img src="https://img.shields.io/github/stars/medipass/react-payment-inputs.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gpietro/react-numpad">react-numpad</a> - 可扩展数字键盘控件，支持数字、日期和时间。 <img src="https://img.shields.io/github/stars/gpietro/react-numpad.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="自动完成"><a href="#自动完成" class="headerlink" title="自动完成"></a>自动完成</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/moroshko/react-autosuggest">react-autosuggest</a> - 符合 WAI-ARIA 的 React 自动建议组件。 <img src="https://img.shields.io/github/stars/moroshko/react-autosuggest.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/effektif/react-mentions">react-mentions</a> - 在文本输入框中提及某人。 <img src="https://img.shields.io/github/stars/effektif/react-mentions.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fmoo/react-typeahead">react-typeahead</a> - 纯基于 React 的 typeahead 和 typeahead-tokenizer。 <img src="https://img.shields.io/github/stars/fmoo/react-typeahead.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yury-dymov/react-autocomplete-input">react-autocomplete-input</a> - React自动完成组件。 <img src="https://img.shields.io/github/stars/yury-dymov/react-autocomplete-input.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="自动缩放的输入框-文本输入框"><a href="#自动缩放的输入框-文本输入框" class="headerlink" title="自动缩放的输入框/文本输入框"></a>自动缩放的输入框/文本输入框</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/andreypopp/react-textarea-autosize">react-textarea-autosize</a> - &lt;textarea /&gt; component for React which grows with content. <img src="https://img.shields.io/github/stars/andreypopp/react-textarea-autosize.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JedWatson/react-input-autosize">react-input-autosize</a> - Auto-resizing input field for React. <img src="https://img.shields.io/github/stars/JedWatson/react-input-autosize.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kierien/react-autowidth-input">react-autowidth-input</a> - Highly configurable &amp; extensible automatically sized input field built with hooks. <img src="https://img.shields.io/github/stars/kierien/react-autowidth-input.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="标签输入"><a href="#标签输入" class="headerlink" title="标签输入"></a>标签输入</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/olahol/react-tagsinput">react-tagsinput</a> - 一个简单的React标签输入组件。 <img src="https://img.shields.io/github/stars/olahol/react-tagsinput.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/prakhar1989/react-tags">react-tag-input</a> - 一个非常简单的React标签组件。 <img src="https://img.shields.io/github/stars/prakhar1989/react-tags.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/instructure-react/react-tokeninput">react-tokeninput</a> - React标签组件。 <img src="https://img.shields.io/github/stars/instructure-react/react-tokeninput.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pathofdev/react-tag-input">@pathofdev/react-tag-input</a> - 小巧的可编辑标签组件。 <img src="https://img.shields.io/github/stars/pathofdev/react-tag-input.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="下拉选择框-下拉菜单"><a href="#下拉选择框-下拉菜单" class="headerlink" title="下拉选择框/下拉菜单"></a>下拉选择框/下拉菜单</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/JedWatson/react-select">react-select</a> - 下拉框组件。 <img src="https://img.shields.io/github/stars/JedWatson/react-select.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/davidtheclark/react-aria-menubutton">react-aria-menubutton</a> - 一个完全可访问、易于主题化、由 React 驱动的下拉菜单按钮。 <img src="https://img.shields.io/github/stars/davidtheclark/react-aria-menubutton.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/instructure-react/react-select-box">react-select-box</a> - 一个可访问的下拉组件。 <img src="https://img.shields.io/github/stars/instructure-react/react-select-box.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/based-ghost/react-functional-select">react-functional-select</a> - 体积微小，性能好的下拉组件。 <img src="https://img.shields.io/github/stars/based-ghost/react-functional-select.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chr-ge/react-column-select">react-column-select</a> - 列选择组件. <img src="https://img.shields.io/github/stars/chr-ge/react-column-select.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="单选框"><a href="#单选框" class="headerlink" title="单选框"></a>单选框</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/chenglou/react-radio-group">react-radio-group</a> - 更好的单选输入框按钮。 <img src="https://img.shields.io/github/stars/chenglou/react-radio-group.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="评分组件"><a href="#评分组件" class="headerlink" title="评分组件"></a>评分组件</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/cameronroe/react-star-rating">react-star-rating</a> - 一个简单的星星评分组件。 <img src="https://img.shields.io/github/stars/cameronroe/react-star-rating.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ikr/react-star-rating-input">react-star-rating-input</a> - 输入0-5 (获得更多) 星星的评分组件. <img src="https://img.shields.io/github/stars/ikr/react-star-rating-input.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fedoryakubovich/react-awesome-stars-rating">react-awesome-stars-rating</a> - 具备可访问性的星星评分组件。<img src="https://img.shields.io/github/stars/fedoryakubovich/react-awesome-stars-rating.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="状态切换按钮"><a href="#状态切换按钮" class="headerlink" title="状态切换按钮"></a>状态切换按钮</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/instructure-react/react-toggle">react-toggle</a> - 一个优雅的、可访问的 React切换组件。 还有一个美化的复选框。 <img src="https://img.shields.io/github/stars/instructure-react/react-toggle.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/clari/react-ios-switch">react-ios-switch</a> - React切换组件。 <img src="https://img.shields.io/github/stars/clari/react-ios-switch.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="日期和时间选择器"><a href="#日期和时间选择器" class="headerlink" title="日期和时间选择器"></a>日期和时间选择器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Hacker0x01/react-datepicker">react-datepicker</a> - 一个简单且可重用的 React 日期选择器组件。 <img src="https://img.shields.io/github/stars/Hacker0x01/react-datepicker.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/intljusticemission/react-big-calendar">react-big-calendar</a> - Gcal/outlook类似的日历组件。 <img src="https://img.shields.io/github/stars/intljusticemission/react-big-calendar.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gpbl/react-day-picker">react-day-picker</a> - React 的灵活日期选择器。<img src="https://img.shields.io/github/stars/gpbl/react-day-picker.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wojtekmaj/react-calendar">react-calendar</a> - React 应用程序的终极日历。 <img src="https://img.shields.io/github/stars/wojtekmaj/react-calendar.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Adphorus/react-date-range">react-date-range</a> - 用于选择日期和日期范围的React组件。 <img src="https://img.shields.io/github/stars/Adphorus/react-date-range.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/YouCanBookMe/react-datetime">react-datetime</a> - 轻量级但完整的日期时间选择器React组件。 <img src="https://img.shields.io/github/stars/YouCanBookMe/react-datetime.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DevExpress/devextreme-reactive">devextreme-reactive</a> - 基于插件，用于Material Design的高性能调度程序/日历。 <img src="https://img.shields.io/github/stars/DevExpress/devextreme-reactive.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hernansartorio/react-nice-dates">react-nice-dates</a> - 响应式、对移动端Touch友好和模块化的日期选择器库。 <img src="https://img.shields.io/github/stars/hernansartorio/react-nice-dates.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wojtekmaj/react-date-picker">react-date-picker</a> - 日期选择器。 <img src="https://img.shields.io/github/stars/wojtekmaj/react-date-picker.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/BelkaLab/react-yearly-calendar">react-yearly-calendar</a> - 年历组件。 <img src="https://img.shields.io/github/stars/BelkaLab/react-yearly-calendar.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/coderhaoxin/react-flatpickr">react-flatpickr</a> - React 的 Flatpickr。 <img src="https://img.shields.io/github/stars/coderhaoxin/react-flatpickr.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JSLancerTeam/react-google-flight-datepicker">react-google-flight-datepicker</a> - 受 Google Flight 启发的 React 日期选择器。 <img src="https://img.shields.io/github/stars/JSLancerTeam/react-google-flight-datepicker.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mberneti/react-datepicker2">react-datepicker2</a> - 一个简单且可重用的日期选择器组件（支持波斯 jalali 日历）。 <img src="https://img.shields.io/github/stars/mberneti/react-datepicker2.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/almogtavor/date-range-picker">date-range-picker</a> - 支持日期、范围和范围选择的日历组件。 <img src="https://img.shields.io/github/stars/almogtavor/date-range-picker.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/antonfisher/react-simple-timefield">react-simple-timefield</a> - 简单的时间输入。 <img src="https://img.shields.io/github/stars/antonfisher/react-simple-timefield.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ndom91/react-timezone-select">react-timezone-select</a> - 动态、简洁的时区选择，基于<code>react-select</code>。 <img src="https://img.shields.io/github/stars/ndom91/react-timezone-select.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="表情符号选择器"><a href="#表情符号选择器" class="headerlink" title="表情符号选择器"></a>表情符号选择器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/milesj/interweave/tree/master/packages/emoji-picker">interweave-emoji-picker</a> - 由<code>Interweave</code>和<code>Emojibase</code>提供支持的基于 React的表情符号选择器。 <img src="https://img.shields.io/github/stars/milesj/interweave.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="颜色选择器"><a href="#颜色选择器" class="headerlink" title="颜色选择器"></a>颜色选择器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/omgovich/react-colorful">react-colorful</a> - 极小的(2,5 KB)、零依赖、快速和可访问的颜色选择器组件。 <img src="https://img.shields.io/github/stars/omgovich/react-colorful.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wangzuo/react-input-color">react-input-color</a> - 带有HSV颜色选择器的颜色输入框组件。 <img src="https://img.shields.io/github/stars/wangzuo/react-input-color.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/elrumordelaluz/coloreact">coloreact</a> - 极小的颜色选择器。 <img src="https://img.shields.io/github/stars/elrumordelaluz/coloreact.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uiwjs/react-color">react-color</a> - 极小的颜色选择器。 <img src="https://img.shields.io/github/stars/uiwjs/react-color.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="滑动输入条"><a href="#滑动输入条" class="headerlink" title="滑动输入条"></a>滑动输入条</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/mpowaga/react-slider">react-slider</a> - 滑动输入条组件。 <img src="https://img.shields.io/github/stars/mpowaga/react-slider.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="可排序列表"><a href="#可排序列表" class="headerlink" title="可排序列表"></a>可排序列表</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/SortableJS/Sortable">sortablejs</a> - 可通过拖放排序的列表。. <img src="https://img.shields.io/github/stars/SortableJS/Sortable.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jasonslyvia/react-anything-sortable">react-anything-sortable</a> - 可排序子元素。支持touch并兼容IE8。 <img src="https://img.shields.io/github/stars/jasonslyvia/react-anything-sortable.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/danielstocks/react-sortable">react-sortable</a> - 可排序列表组件。 <img src="https://img.shields.io/github/stars/danielstocks/react-sortable.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="富文本编辑器"><a href="#富文本编辑器" class="headerlink" title="富文本编辑器"></a>富文本编辑器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/ianstormtaylor/slate">slate</a> - 一个完全可定制的框架，用于在浏览器中构建富文本编辑器。 <img src="https://img.shields.io/github/stars/ianstormtaylor/slate.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/facebook/draft-js">draft-js</a> - Draft.js是一个 JavaScript富文本编辑器框架，为React构建并由不可变模型支持。 <img src="https://img.shields.io/github/stars/facebook/draft-js.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jpuri/react-draft-wysiwyg">react-draft-wysiwyg</a> - 基于<a target="_blank" rel="noopener" href="https://draftjs.org/">DraftJS</a>封装的可见即可得的编辑器。 <img src="https://img.shields.io/github/stars/jpuri/react-draft-wysiwyg.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zenoamaro/react-quill">react-quill</a> - 基于Quill封装。 <img src="https://img.shields.io/github/stars/zenoamaro/react-quill.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/liferay/alloy-editor">alloyeditor</a> - 基于CKEditor完全重写的UI可见即可得的编辑器 <img src="https://img.shields.io/github/stars/liferay/alloy-editor.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/remirror/remirror">remirror</a> - 用于React的<code>ProseMirror</code> 工具包。 <img src="https://img.shields.io/github/stars/remirror/remirror.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lovasoa/react-contenteditable">react-contenteditable</a> - 基于div可编辑内容的React组件。 <img src="https://img.shields.io/github/stars/lovasoa/react-contenteditable.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/globocom/megadraft">megadraft</a> - 建立在Draft.js之上的富文本编辑器。 <img src="https://img.shields.io/github/stars/globocom/megadraft.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/edtr-io/edtr-io">edtr-io</a> - 带有插件的可见即可得内嵌 Web 编辑器。 <img src="https://img.shields.io/github/stars/edtr-io/edtr-io.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/wangzuo/react-medium-editor">react-medium-editor</a> - medium编辑器封装。 <img src="https://img.shields.io/github/stars/wangzuo/react-medium-editor.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ckeditor/ckeditor5-react">ckeditor5-react</a> - 基于CKEditor 5官方富文本编辑器封装。 <img src="https://img.shields.io/github/stars/ckeditor/ckeditor5-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/appleple/smartblock">smartblock</a> - 基于ProseMirror的可见即可得的编辑器。 <img src="https://img.shields.io/github/stars/appleple/smartblock.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/RD17/react-trumbowyg">react-trumbowyg</a> - 基于<a target="_blank" rel="noopener" href="https://alex-d.github.io/Trumbowyg/">Trumbowyg</a>的封装。 <img src="https://img.shields.io/github/stars/RD17/react-trumbowyg.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ckeditor/ckeditor4-react">ckeditor4-react</a> - 基于CKEditor 4 rich文本编辑器封装。 <img src="https://img.shields.io/github/stars/ckeditor/ckeditor4-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fritx/react-editor">react-editor</a> - 可以插入图片和HTML的简单富文本编辑器。 <img src="https://img.shields.io/github/stars/fritx/react-editor.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="代码编辑器"><a href="#代码编辑器" class="headerlink" title="代码编辑器"></a>代码编辑器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/securingsincity/react-ace">react-ace</a> - 基于Ace (Advanced Code Editor)封装。 <img src="https://img.shields.io/github/stars/securingsincity/react-ace.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uiwjs/react-codemirror">react-codemirror</a> - 基于CodeMirror封装的React组件。 <img src="https://img.shields.io/github/stars/uiwjs/react-codemirror.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jaywcjlove/react-monacoeditor">react-monacoeditor</a> - 基于Monaco Editor封装的React组件。 <img src="https://img.shields.io/github/stars/jaywcjlove/react-monacoeditor.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="Markdown编辑器"><a href="#Markdown编辑器" class="headerlink" title="Markdown编辑器"></a>Markdown编辑器</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/uiwjs/react-md-editor">react-md-editor</a> - 可预览的简单Markdown编辑器，使用React.js和TypeScript实现。 <img src="https://img.shields.io/github/stars/uiwjs/react-md-editor.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/RIP21/react-simplemde-editor">react-simplemde-editor</a> - 基于<a target="_blank" rel="noopener" href="https://github.com/Ionaru/easy-markdown-editor">EasyMDE (the most fresh SimpleMDE fork)</a>封装的React组件. <img src="https://img.shields.io/github/stars/RIP21/react-simplemde-editor.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JedWatson/react-md-editor">react-md-editor</a> - Markdown编辑器。 <img src="https://img.shields.io/github/stars/JedWatson/react-md-editor.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jrm2k6/react-markdown-editor">react-markdown-editor</a> - 使用React/Reflux简单markdown编辑器。 <img src="https://img.shields.io/github/stars/jrm2k6/react-markdown-editor.svg?style=social&label=Star"></li>
+</ul>
+<h4 id="图片编辑"><a href="#图片编辑" class="headerlink" title="图片编辑"></a>图片编辑</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/DominicTobias/react-image-crop">react-image-crop</a> - 响应式图像裁剪工具。 <img src="https://img.shields.io/github/stars/DominicTobias/react-image-crop.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mosch/react-avatar-editor">react-avatar-editor</a> - 类似Facebook的头像/个人资料图片组件。 <img src="https://img.shields.io/github/stars/mosch/react-avatar-editor.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ricardo-ch/react-easy-crop">react-easy-crop</a> - 通过简单的交互来裁剪/旋转图像/视频的组件。移动端触摸友好。 <img src="https://img.shields.io/github/stars/ricardo-ch/react-easy-crop.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jerryshew/react-image-cropper">react-image-cropper</a> - 图像裁剪。 <img src="https://img.shields.io/github/stars/jerryshew/react-image-cropper.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JosephSmith127/react-avatar-generator">react-avatar-generator</a> - 为用户头像生成有趣的万花筒。 <img src="https://img.shields.io/github/stars/JosephSmith127/react-avatar-generator.svg?style=social&label=Star"></li>
+</ul>
+<h2 id="UI动画"><a href="#UI动画" class="headerlink" title="UI动画"></a>UI动画</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/react-spring/react-spring">react-spring</a> - 基于弹簧物理的动画库。 <img src="https://img.shields.io/github/stars/react-spring/react-spring.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chenglou/react-motion">react-motion</a> - 一个解决您的动画问题的弹簧。 <img src="https://img.shields.io/github/stars/chenglou/react-motion.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/framer/motion">framer-motion</a> - 动画和手势库。 <img src="https://img.shields.io/github/stars/framer/motion.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/joshwcomeau/react-flip-move">react-flip-move</a> - 使用FLIP技术在DOM更改的时候（例如列表重新排序）轻松实现动画。 <img src="https://img.shields.io/github/stars/joshwcomeau/react-flip-move.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/twitter-fabric/velocity-react">velocity-react</a> - 基于Velocity.js的封装。 <img src="https://img.shields.io/github/stars/twitter-fabric/velocity-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/FormidableLabs/react-animations">react-animations</a> - 内联样式库的动画集合，React-animations实现了animate.css中的所有动画。 <img src="https://img.shields.io/github/stars/FormidableLabs/react-animations.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/maisano/react-router-transition">react-router-transition</a> - 为react-router构建的变换库，基于react-motion。 <img src="https://img.shields.io/github/stars/maisano/react-router-transition.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/matteobruni/tsparticles/blob/master/components/react/README.md">react-tsparticles</a> - 轻量级组件，可轻松创建交互式粒子动画。 <img src="https://img.shields.io/github/stars/matteobruni/tsparticles.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rnosov/react-reveal">react-reveal</a> - 轻松地添加滚动动画到您的React应用程序 <img src="https://img.shields.io/github/stars/rnosov/react-reveal.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/stelatech/react-anime">react-anime</a> - 一个超级简单的动画库。 <img src="https://img.shields.io/github/stars/stelatech/react-anime.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/azazdeaz/react-gsap-enhancer">react-gsap-enhancer</a> - 使用React和GSAP的全部功能。 <img src="https://img.shields.io/github/stars/azazdeaz/react-gsap-enhancer.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tkh44/data-driven-motion">data-driven-motion</a> - 轻松为您的数据制作动画。 <img src="https://img.shields.io/github/stars/tkh44/data-driven-motion.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/luukdv/gooey-react">gooey-react</a> - React的粘性效果，用于形状斑点/元球。 <img src="https://img.shields.io/github/stars/luukdv/gooey-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lindelof/particles-bg">react-particles-bg</a> - 粒子背景。 <img src="https://img.shields.io/github/stars/lindelof/particles-bg.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/moarwick/react-mt-svg-lines">react-mt-svg-lines</a> - SVG线条描边动画封装。 <img src="https://img.shields.io/github/stars/moarwick/react-mt-svg-lines.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gilbox/react-spark-scroll">react-spark-scroll</a> - 用于React的基于滚动的动作和动画。 <img src="https://img.shields.io/github/stars/gilbox/react-spark-scroll.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gilbox/react-track">react-track</a> - 跟踪DOM元素的位置，创建很酷的动画。 <img src="https://img.shields.io/github/stars/gilbox/react-track.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/react-component/tween-one">tween-one</a> - 让一个React元素动画。 <img src="https://img.shields.io/github/stars/react-component/tween-one.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bringking/react-web-animation">react-web-animation</a> - 用于Web动画API的React组件. <img src="https://img.shields.io/github/stars/bringking/react-web-animation.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Lapple/react-transitive-number">react-transitive-number</a> - 将过渡效果应用于数字字符串，就像旧的 Groupon 计时器。 <img src="https://img.shields.io/github/stars/Lapple/react-transitive-number.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/teodosii/react-tweenful">react-tweenful</a> - 动画引擎，可让您对DOM节点、挂载、卸载、子元素更改/转换进行动画处理。 <img src="https://img.shields.io/github/stars/teodosii/react-tweenful.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DualWield/auto-size-transition">auto-size-transition</a> - 尺寸大小可以随着内容变化而动态变化。 <img src="https://img.shields.io/github/stars/DualWield/auto-size-transition.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="视觉差"><a href="#视觉差" class="headerlink" title="视觉差"></a>视觉差</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/rrutsche/react-parallax">react-parallax</a> - 视觉差效果。 <img src="https://img.shields.io/github/stars/rrutsche/react-parallax.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mkosir/react-parallax-tilt">react-parallax-tilt</a> - 轻松在组件上应用视差倾斜悬停效果。Easily apply parallax tilt hover effect on components. <img src="https://img.shields.io/github/stars/mkosir/react-parallax-tilt.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/keske/react-parallax-component">react-parallax-component</a> - 在组件上添加滚动视差效果的最简单方法。 <img src="https://img.shields.io/github/stars/keske/react-parallax-component.svg?style=social&label=Star"></li>
+</ul>
+<h2 id="开发工具"><a href="#开发工具" class="headerlink" title="开发工具"></a>开发工具</h2><h3 id="测试相关"><a href="#测试相关" class="headerlink" title="测试相关"></a>测试相关</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/facebook/jest">jest</a> - 愉悦的JavaScript测试。 <img src="https://img.shields.io/github/stars/facebook/jest.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/airbnb/enzyme">enzyme</a> - 用于React的测试工具。 <img src="https://img.shields.io/github/stars/airbnb/enzyme.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/testing-library/react-testing-library">react-testing-library</a> - 🐐 简单而完整的React DOM测试实用程序，鼓励良好的测试实践。 <img src="https://img.shields.io/github/stars/testing-library/react-testing-library.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/producthunt/chai-enzyme">chai-enzyme</a> - 配合enzyme使用的Chai.js断言库和便利函数 <img src="https://img.shields.io/github/stars/producthunt/chai-enzyme.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/philcockfield/ui-harness">ui-harness</a> - 在React中创建、隔离和测试模块化UI组件。 <img src="https://img.shields.io/github/stars/philcockfield/ui-harness.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pzavolinsky/react-unit">react-unit</a> - 轻量级单元测试库。 <img src="https://img.shields.io/github/stars/pzavolinsky/react-unit.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/bruderstein/unexpected-react">unexpected-react</a> - unexpected插件，用于测试完整React虚拟DOM以及浅层渲染器。<img src="https://img.shields.io/github/stars/bruderstein/unexpected-react.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/conorhastings/redux-test-recorder">redux-test-recorder</a> - 一个redux中间件，通过ui交互自动生成reducers的测试。 <img src="https://img.shields.io/github/stars/tcoopman/react-flexbox.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/milesj/rut">rut</a> - 使用<code>react-test-renderer</code>使React测试变得容易。支持DOM和自定义渲染器。<img src="https://img.shields.io/github/stars/milesj/rut.svg?style=social&label=Star"></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/front-end/" rel="tag"><i class="fa fa-tag"></i> front-end</a>
+              <a href="/tags/Framework/" rel="tag"><i class="fa fa-tag"></i> Framework</a>
+              <a href="/tags/React/" rel="tag"><i class="fa fa-tag"></i> React</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/14/awesome-egg/" rel="prev" title="awesome-egg">
+                  <i class="fa fa-chevron-left"></i> awesome-egg
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

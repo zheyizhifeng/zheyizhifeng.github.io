@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="官方文档 官网 仓库 Wiki  框架">
+<meta property="og:type" content="article">
+<meta property="og:title" content="awesome-koa">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/14/awesome-koa/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="官方文档 官网 仓库 Wiki  框架">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/thinkjs/thinkjs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/thinkjs.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/midwayjs/midway.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/midway.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/ladjs/lad.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/lad.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zhennann/Cabloy.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/cabloy.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Koatty/koatty.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koatty.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/strapi/strapi.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/strapi.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/json.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-json.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/json-filter.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-json-filter.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nemtsov/koa-json-mask.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-json-mask.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/is-json.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-is-json.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/kilianc/koa-jsonp.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-jsonp.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/koa-safe-jsonp.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-safe-jsonp.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/keenwon/koa-response-jsonp.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-response-jsonp.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/yosssi/koa-stylus.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-stylus.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/adamkdean/koa-scss.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-scss.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/chosecz/koa-less.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-less.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/clthck/koa-sass.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa.sass.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/HowlingEverett/koa-postcss.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-postcss.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/body-parser.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-bodyparser.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/dlau/koa-body.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-body.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/opensource.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-better-body.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/multer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-multer.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/creeperyang/koa-xml-body.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-xml-body.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/dominhhai/koa-busboy.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-busboy.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/venables/koa-json-body.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-json-body.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/venables/koa-body-parsers.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-body-parsers.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/compose.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-compose.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/gyson/koa-convert.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-convert.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/vkurchatkin/koa-connect.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dt/koa-connect.svg">
+<meta property="og:image" content="https://img.shields.io/github/stars/rvboris/koa-useragent.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-useragent.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/queckezz/koa-views.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-views.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/ejs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-ejs.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/react-view.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-react-view.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/jwilm/koa-hbs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-hbs.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/chrisyip/koa-pug.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-pug.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/dominicbarnes/koa-handlebars.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-handlebars.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/swig.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-swig.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/imingyu/koa-vue-view.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dt/koa-vue-view.svg">
+<meta property="og:image" content="https://img.shields.io/github/stars/d-band/koa-view.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-view.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/beliefgp/koa-nunjucks-next.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-nunjucks-next.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/juliangruber/koa-dom.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-dom.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zce/koa-xtpl.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-xtpl.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/uniibu/koa-nunjucks-async.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-nunjucks-async.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nswbmw/co-ejs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/co-ejs.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Faeson/koajs-nunjucks.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koajs-nunjucks.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/JiangJie/koa-swig-render.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-swig-render.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/artdecocode/koa2-jsx.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa2-jsx.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koahubjs/koahub-handlebars.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koahub-handlebars.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/static.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-static.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/send.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-send.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/jonathanong/koa-static-cache.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-static-cache.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/favicon.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-favicon.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/pkoretic/koa-static-server.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-static-server.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/sendfile.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-sendfile.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/file-server.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-file-server.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/claudetech/koa-stream.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-stream.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/koa-better-serve.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-better-serve.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/ktmud/koa-spa.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-spa.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/serve-static.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-serve-static.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Secbone/koa-static2.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-static2.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/janpieterz/koajs-static-folder.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-static-folder.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/serve-list.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-serve-list.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/adamkdean/koa-serve.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-serve.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/koa-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/@koa/router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/mount.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-mount.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/route.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-route.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/joi-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-joi-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/trie-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-trie-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/steambap/koa-tree-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-tree-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/BiteBit/koa-oai-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-oai-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/rewrite.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-rewrite.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/koa-better-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-better-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/qs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-qs.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/koa-rest-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-rest-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/menems/koa-66.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-66.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/afenton90/koa-react-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-react-router.svg">
+<meta property="og:image" content="https://img.shields.io/github/stars/saadq/koa-combine-routers.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-combine-routers.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/d-band/koa-mapper.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-mapper.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/path-match.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-path-match.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/segmentio/koa-params.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-params.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/MangroveTech/koa-frouter.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-frouter.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zaaack/koa-dec-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-dec-router.svg">
+<meta property="og:image" content="https://img.shields.io/github/stars/ivpusic/koa-routing.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-routing.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/blakeembrey/kroute.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/kroute.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/methodoverride.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-methodoverride.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/gyson/koa-simple-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-simple-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Student007/koa-sub-domain.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-sub-domain.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/xinpianchang/koa2-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa2-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/magicdawn/impress-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/impress-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/TehShrike/koa-bestest-router.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-bestest-router.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/giall/koa-joi-controllers.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-joi-controllers.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zedgu/koa-ovenware.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-ovenware.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nswbmw/koa-forward-request.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-forward-request.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nervgh/koa-architect.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-architect.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/jwt.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-jwt.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/rkusa/koa-passport.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-passport.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/basic-auth.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-basic-auth.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/chentsulin/koa-bearer-token.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-bearer-token.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/jchannon/koa-statelessauth.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-statelessauth.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nealnote/koa-weixin-token.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-weixin-token.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tuvistavie/koa-police.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-police.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/miserylee/koa-jwt-mongo.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-jwt-mongo.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/gerhut/koa-http-auth.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-http-auth.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/uhop/koa-cognito-middleware.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-cognito-middleware.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/MangroveTech/koa-mongo.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-mongo.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/seegno/koa-pagination.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-pagination.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/chilts/koa-pg.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-pg.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/MangroveTech/koa-redis-pool.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-redis-pool.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/exponentjs/koa-graphiql.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-orm.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/ptariche/koa-waterline.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-waterline.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/chentsulin/koa-graphql.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-graphql.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/exponentjs/koa-graphiql.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-graphiql.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/compress.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-compress.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/compressor.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-compressor.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tuananh/kompression.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/kompression.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/coderaiser/koa-minify.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-minify.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/grayleonard/koa-uglify2.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-uglify2.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/session.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-session.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/generic-session.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-generic-session.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/koa-redis.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-redis.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Secbone/koa-session2.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-session2.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/longztian/koa-session-minimal.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-session-minimal.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/redis-session-sets.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-redis-session-sets.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/varunpal/koa-cookie.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-cookie.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/cash.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-cash.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/etag.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-etag.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/conditional-get.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-conditional-get.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/mkozjak/koa-cache-lite.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-cache-lite.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nswbmw/koa-router-cache.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-router-cache.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/animir/node-rate-limiter-flexible.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/rate-limiter-flexible.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/ratelimit.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-ratelimit.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/koa-better-ratelimit.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-better-ratelimit.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/koa-ip-filter.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-ip-filter.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Cody2333/koa-swagger-decorator.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-swagger-decorator.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/carlansley/swagger2-koa.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/swagger2-koa.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/a-s-o/koa-docs.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-docs.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zaaack/koa-joi-swagger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-joi-swagger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/janvotava/swagger-koa.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/swagger-koa.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/cors.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/@koa/cors.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/venables/koa-helmet.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-helmet.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/csrf.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-csrf.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/evert0n/koa-cors.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-cors.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/koa-roles.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-roles.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/yanickrochon/koa-rbac.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-rbac.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/koa-lusca.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-lusca.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/MangroveTech/koa-ip.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-ip.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/node-casbin/koa-authz.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-authz.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/tunnckoCore/koa-ip-filter.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-ip-filter.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/may215/koa-protect.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-protect.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/Jackong/koa-acl.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-acl.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/logger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-logger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/cabinjs/cabin.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/cabin.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/PabloSichert/concurrency-logger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/concurrency-logger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/bunyan-logger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-bunyan-logger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/dominhhai/koa-log4js.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-log4.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/pinojs/koa-pino-logger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-pino-logger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/morgan.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-morgan.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/rudijs/koa-json-logger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-json-logger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/ivpusic/koa-bunyan.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-bunyan.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/accesslog.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-accesslog.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/onerror.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-onerror.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/error.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-error.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/json-error.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-json-error.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/nswbmw/koa-errorhandler.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-errorhandler.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/rturk/koa-error-slack.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-error-slack.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/locales.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-locales.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/i18n.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-i18n.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koa-modules/locale.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-locale.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/koajs/cluster.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/koa-cluster.svg?style=flat-square">
+<meta property="article:published_time" content="2021-10-14T03:22:08.000Z">
+<meta property="article:modified_time" content="2021-10-14T03:25:30.697Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="front-end">
+<meta property="article:tag" content="Node.JS">
+<meta property="article:tag" content="koa">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/github/stars/eggjs/egg.svg?style=social&label=Star">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/14/awesome-koa/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/14/awesome-koa/","path":"2021/10/14/awesome-koa/","title":"awesome-koa"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>awesome-koa | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3"><span class="nav-number">1.</span> <span class="nav-text">官方文档</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AE%B9%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F-CMS"><span class="nav-number">3.</span> <span class="nav-text">内容管理系统 (CMS)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%AD%E9%97%B4%E4%BB%B6"><span class="nav-number">4.</span> <span class="nav-text">中间件</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JSON"><span class="nav-number">4.1.</span> <span class="nav-text">JSON</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JSONP"><span class="nav-number">4.2.</span> <span class="nav-text">JSONP</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS%E9%A2%84%E5%A4%84%E7%90%86%E5%99%A8"><span class="nav-number">4.3.</span> <span class="nav-text">CSS预处理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%BB%E4%BD%93%E8%A7%A3%E6%9E%90-Body%E8%A7%A3%E6%9E%90"><span class="nav-number">4.4.</span> <span class="nav-text">主体解析(Body解析)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B7%A5%E5%85%B7"><span class="nav-number">4.5.</span> <span class="nav-text">工具</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E"><span class="nav-number">4.6.</span> <span class="nav-text">模板引擎</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%9C%8D%E5%8A%A1"><span class="nav-number">4.7.</span> <span class="nav-text">文件服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%92%8C%E6%8C%82%E8%BD%BD"><span class="nav-number">4.8.</span> <span class="nav-text">路由和挂载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%88%E6%9D%83-%E9%89%B4%E6%9D%83"><span class="nav-number">4.9.</span> <span class="nav-text">授权&#x2F;鉴权</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">4.10.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Graphql"><span class="nav-number">4.11.</span> <span class="nav-text">Graphql</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9"><span class="nav-number">4.12.</span> <span class="nav-text">压缩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Session"><span class="nav-number">4.13.</span> <span class="nav-text">Session</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cookies"><span class="nav-number">4.14.</span> <span class="nav-text">Cookies</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">4.15.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%99%90%E6%B5%81"><span class="nav-number">4.16.</span> <span class="nav-text">限流</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E6%A1%A3"><span class="nav-number">4.17.</span> <span class="nav-text">文档</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%89%E5%85%A8"><span class="nav-number">4.18.</span> <span class="nav-text">安全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%A5%E5%BF%97"><span class="nav-number">4.19.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%94%99%E8%AF%AF%E6%8A%A5%E5%91%8A"><span class="nav-number">4.20.</span> <span class="nav-text">错误报告</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#i18n"><span class="nav-number">4.21.</span> <span class="nav-text">i18n</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%83%A8%E7%BD%B2"><span class="nav-number">4.22.</span> <span class="nav-text">部署</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/14/awesome-koa/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          awesome-koa
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-14 11:22:08 / 修改时间：11:25:30" itemprop="dateCreated datePublished" datetime="2021-10-14T11:22:08+08:00">2021-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/" itemprop="url" rel="index"><span itemprop="name">front-end</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/JavaScript/Node-JS/" itemprop="url" rel="index"><span itemprop="name">Node.JS</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://koajs.com/">官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa">仓库</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa/wiki">Wiki</a></li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><a id="more"></a>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg">Egg</a> - 为企业级框架和应用而生。 <img src="https://img.shields.io/github/stars/eggjs/egg.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thinkjs/thinkjs">ThinkJS</a> - 支持ES2015 +的框架, 支持TypeScript。 <img src="https://img.shields.io/github/stars/thinkjs/thinkjs.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/thinkjs.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/midwayjs/midway">midway</a> - 面向前端/全栈开发人员的 Node.js Serverless框架。 Midway 可以使用 koa、express 或 EggJS 作为基本的 web 框架。 <img src="https://img.shields.io/github/stars/midwayjs/midway.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/midway.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ladjs/lad">lad</a> - 最好的Node.js框架，由前Express和Koa团队成员创建。 <img src="https://img.shields.io/github/stars/ladjs/lad.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/lad.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zhennann/Cabloy">CabloyJS</a> - 一款自带工作流引擎的Node.js全栈框架, 基于koa + egg + vue + framework7. <img src="https://img.shields.io/github/stars/zhennann/Cabloy.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/cabloy.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Koatty/koatty">koatty</a> - Koa2 + Typescript = Koatty。使用Typescript装饰器实现了控制反转和面向切面编程。 <img src="https://img.shields.io/github/stars/Koatty/koatty.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koatty.svg?style=flat-square"></li>
+</ul>
+<h2 id="内容管理系统-CMS"><a href="#内容管理系统-CMS" class="headerlink" title="内容管理系统 (CMS)"></a>内容管理系统 (CMS)</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/strapi/strapi">Strapi</a> - 用于构建强大 API 的内容管理框架 (headless-CMS)。 <img src="https://img.shields.io/github/stars/strapi/strapi.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/strapi.svg?style=flat-square"></li>
+</ul>
+<h2 id="中间件"><a href="#中间件" class="headerlink" title="中间件"></a>中间件</h2><h3 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/json">koa-json</a> - 将 JSON 打印美化的中间件。 <img src="https://img.shields.io/github/stars/koajs/json.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-json.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/json-filter">koa-json-filter</a> - 该中间件允许客户端只过滤他们需要的响应，减少线路上的流量。 <img src="https://img.shields.io/github/stars/koajs/json-filter.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-json-filter.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nemtsov/koa-json-mask">koa-json-mask</a> - 该中间件允许客户端只过滤他们需要的响应，减少线路上的流量。 <img src="https://img.shields.io/github/stars/nemtsov/koa-json-mask.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-json-mask.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/is-json">koa-is-json</a> - 检查 koa 主体是否应该被解析为 JSON。 <img src="https://img.shields.io/github/stars/koajs/is-json.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-is-json.svg?style=flat-square"></li>
+</ul>
+<h3 id="JSONP"><a href="#JSONP" class="headerlink" title="JSONP"></a>JSONP</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/kilianc/koa-jsonp">koa-jsonp</a> - 支持GET/POST JSONP流的中间件。 <img src="https://img.shields.io/github/stars/kilianc/koa-jsonp.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-jsonp.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa-safe-jsonp">koa-safe-jsonp</a> - 安全的Koa JSONP插件。 <img src="https://img.shields.io/github/stars/koajs/koa-safe-jsonp.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-safe-jsonp.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/keenwon/koa-response-jsonp">koa-response-jsonp</a> - KOA JSONP中间件。 <img src="https://img.shields.io/github/stars/keenwon/koa-response-jsonp.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-response-jsonp.svg?style=flat-square"></li>
+</ul>
+<h3 id="CSS预处理器"><a href="#CSS预处理器" class="headerlink" title="CSS预处理器"></a>CSS预处理器</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/yosssi/koa-stylus">koa-stylus</a> - Stylus中间件。 <img src="https://img.shields.io/github/stars/yosssi/koa-stylus.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-stylus.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adamkdean/koa-scss">koa-scss</a> - SCSS中间件。 <img src="https://img.shields.io/github/stars/adamkdean/koa-scss.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-scss.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chosecz/koa-less">koa-less</a> - LESS中间件。 <img src="https://img.shields.io/github/stars/chosecz/koa-less.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-less.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/clthck/koa-sass">koa.sass</a> - Sass中间件。 <img src="https://img.shields.io/github/stars/clthck/koa-sass.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa.sass.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/HowlingEverett/koa-postcss">koa-postcss</a> - PostCSS中间件。 <img src="https://img.shields.io/github/stars/HowlingEverett/koa-postcss.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-postcss.svg?style=flat-square"></li>
+</ul>
+<h3 id="主体解析-Body解析"><a href="#主体解析-Body解析" class="headerlink" title="主体解析(Body解析)"></a>主体解析(Body解析)</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/body-parser">koa-bodyparser</a> - 用于Koa，基于co-body的主体解析。 <img src="https://img.shields.io/github/stars/koajs/body-parser.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-bodyparser.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dlau/koa-body">koa-body</a> - 功能齐全的 koa 主体解析器中间件。支持 multipart、urlencoded 和 json 请求正文。 提供与 Express 的 bodyParser 相同的功能 - multer。 <img src="https://img.shields.io/github/stars/dlau/koa-body.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-body.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/opensource/tree/master/@packages/koa-better-body">koa-better-body</a> - 功能齐全的 koa 体解析器！支持解析文本、缓冲区、json、json patch、json api、csp-report、multipart、form和urlencoded body。 适用于 koa@1、koa@2 并将适用于 koa@3。 <img src="https://img.shields.io/github/stars/tunnckoCore/opensource.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-better-body.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/multer">koa-multer</a> - Multer 是一个 Node.js 中间件，用于处理 koa 的 multipart/form-data。 koa 中间件的 multer 封装。 <img src="https://img.shields.io/github/stars/koa-modules/multer.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-multer.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/creeperyang/koa-xml-body">koa-xml-body</a> - 解析 xml http 请求正文。 <img src="https://img.shields.io/github/stars/creeperyang/koa-xml-body.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-xml-body.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dominhhai/koa-busboy">koa-busboy</a> - 处理 koa v2 的 multipart/form-data 数据。 <img src="https://img.shields.io/github/stars/dominhhai/koa-busboy.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-busboy.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/venables/koa-json-body">koa-json-body</a> - 解析合法的 JSON 请求正文。 <img src="https://img.shields.io/github/stars/venables/koa-json-body.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-json-body.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/body-parsers">koa-body-parsers</a> - Koa请求正文解析器集合。<img src="https://img.shields.io/github/stars/venables/koa-body-parsers.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-body-parsers.svg?style=flat-square"></li>
+</ul>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/compose">koa-compose</a> - 组合多个中间件为一个。<img src="https://img.shields.io/github/stars/koajs/compose.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-compose.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gyson/koa-convert">koa-convert</a> - 将koa legacy (v0.x &amp; v1.x版本) 生成器中间件转化为promise中间件(v2.x)。 <img src="https://img.shields.io/github/stars/gyson/koa-convert.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-convert.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/vkurchatkin/koa-connect">koa-connect</a> - 在Koa中使用connect和express中间件。 <img src="https://img.shields.io/github/stars/vkurchatkin/koa-connect.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dt/koa-connect.svg"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rvboris/koa-useragent">koa-useragent</a> - 快速显露user-agent的中间件。 <img src="https://img.shields.io/github/stars/rvboris/koa-useragent.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-useragent.svg?style=flat-square"></li>
+</ul>
+<h3 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a>模板引擎</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/queckezz/koa-views">koa-views</a> - 可使用几乎任何模板引擎渲染你的视图。 <img src="https://img.shields.io/github/stars/queckezz/koa-views.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-views.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/ejs">koa-ejs</a> -  Koa视图渲染中间件，支持ejs所有特性。 <img src="https://img.shields.io/github/stars/koajs/ejs.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-ejs.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/react-view">koa-react-view</a> - Koa视图渲染中间件，用于在服务端渲染React组件。 <img src="https://img.shields.io/github/stars/koajs/react-view.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-react-view.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jwilm/koa-hbs">koa-hbs</a> - Express风格视图渲染。 <img src="https://img.shields.io/github/stars/jwilm/koa-hbs.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-hbs.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chrisyip/koa-pug">koa-pug</a> - <a target="_blank" rel="noopener" href="https://pugjs.org/api/getting-started.html">Pug</a> (原名Jade) 中间件。 <img src="https://img.shields.io/github/stars/chrisyip/koa-pug.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-pug.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dominicbarnes/koa-handlebars">koa-handlebars</a> - <a target="_blank" rel="noopener" href="http://handlebarsjs.com/">Handlebars</a>视图渲染中间件。 <img src="https://img.shields.io/github/stars/dominicbarnes/koa-handlebars.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-handlebars.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/swig">koa-swig</a> - <a target="_blank" rel="noopener" href="http://paularmstrong.github.io/swig/">swig</a>视图渲染中间件, 支持标签，过滤器和插件。 <img src="https://img.shields.io/github/stars/koa-modules/swig.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-swig.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/imingyu/koa-vue-view">koa-vue-view</a> - Koa视图渲染中间件，用于在服务端渲染Vue组件。<img src="https://img.shields.io/github/stars/imingyu/koa-vue-view.svg?style=social&label=Star"> <a target="_blank" rel="noopener" href="https://www.npmjs.com/package/koa-vue-view"><img src="https://img.shields.io/npm/dt/koa-vue-view.svg" alt="image"></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/d-band/koa-view">koa-view</a> - <a target="_blank" rel="noopener" href="http://mozilla.github.io/nunjucks/">Nunjucks</a>视图渲染中间件。 <img src="https://img.shields.io/github/stars/d-band/koa-view.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-view.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/beliefgp/koa-nunjucks-next">koa-nunjucks-next</a> - <a target="_blank" rel="noopener" href="http://mozilla.github.io/nunjucks/">Nunjucks</a>视图渲染中间件, 支持异步过滤器，渲染原始字符串。 <img src="https://img.shields.io/github/stars/beliefgp/koa-nunjucks-next.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-nunjucks-next.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/juliangruber/koa-dom">koa-dom</a> - 服务端渲染DOM模板。<img src="https://img.shields.io/github/stars/juliangruber/koa-dom.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-dom.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zce/koa-xtpl">koa-xtpl</a> - xtemplate模板引擎的封装(使其在Koa 2使用更简单). <img src="https://img.shields.io/github/stars/zce/koa-xtpl.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-xtpl.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uniibu/koa-nunjucks-async">koa-nunjucks-async</a> - 一个Koa@2 <a target="_blank" rel="noopener" href="http://mozilla.github.io/nunjucks/">Nunjucks</a>视图渲染中间件。使用 Node 的原生 <code>async/await</code> 和 <code>util.promisify</code>。 还将 ctx.state 暴露给渲染模板。 <img src="https://img.shields.io/github/stars/uniibu/koa-nunjucks-async.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-nunjucks-async.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nswbmw/co-ejs">co-ejs</a> - koa ejs视图渲染中间件。 <img src="https://img.shields.io/github/stars/nswbmw/co-ejs.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/co-ejs.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Faeson/koajs-nunjucks">koajs-nunjucks</a> - <a target="_blank" rel="noopener" href="http://mozilla.github.io/nunjucks/">Nunjucks</a>视图渲染中间件。 <img src="https://img.shields.io/github/stars/Faeson/koajs-nunjucks.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koajs-nunjucks.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/JiangJie/koa-swig-render">koa-swig-render</a> - <a target="_blank" rel="noopener" href="http://paularmstrong.github.io/swig/">swig</a>视图渲染中间件. <img src="https://img.shields.io/github/stars/JiangJie/koa-swig-render.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-swig-render.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/artdecocode/koa2-jsx">koa2-jsx</a> - <a target="_blank" rel="noopener" href="https://reactjs.org/docs/introducing-jsx.html">JSX</a> 使用服务器端 React 方法渲染，Redux 支持从上下文设置模板数据。可用于创建通用应用程序。 <img src="https://img.shields.io/github/stars/artdecocode/koa2-jsx.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa2-jsx.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koahubjs/koahub-handlebars">koahub-handlebars</a> - Handlebars视图渲染中间件, 使用async/await <img src="https://img.shields.io/github/stars/koahubjs/koahub-handlebars.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koahub-handlebars.svg?style=flat-square"></li>
+</ul>
+<h3 id="文件服务"><a href="#文件服务" class="headerlink" title="文件服务"></a>文件服务</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/static">koa-static</a> - 静态文件服务中间件。 <img src="https://img.shields.io/github/stars/koajs/static.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-static.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/send">koa-send</a> - 传送静态文件。 <img src="https://img.shields.io/github/stars/koajs/send.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-send.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jonathanong/koa-static-cache">koa-static-cache</a> - 带缓存的静态文件服务。 <img src="https://img.shields.io/github/stars/jonathanong/koa-static-cache.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-static-cache.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/favicon">koa-favicon</a> - 基于 <code>serve-favicon</code>提供网站图标服务favicon。 <img src="https://img.shields.io/github/stars/koajs/favicon.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-favicon.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pkoretic/koa-static-server">koa-static-server</a> - 具有目录、重写和索引支持的 koa 静态文件服务中间件。 <img src="https://img.shields.io/github/stars/pkoretic/koa-static-server.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-static-server.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/sendfile">koa-sendfile</a> - 基础文件发送工具。 <img src="https://img.shields.io/github/stars/koajs/sendfile.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-sendfile.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/file-server">koa-file-server</a> - 具有附加功能的静态文件服务，如支持 etag 和 SPDY 推送。 <img src="https://img.shields.io/github/stars/koajs/file-server.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-file-server.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/claudetech/koa-stream">koa-stream</a> - 支持范围请求的文件发送实用程序。 <img src="https://img.shields.io/github/stars/claudetech/koa-stream.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-stream.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/koa-better-serve">koa-better-serve</a> - 使用 <code>koa-send</code> 提供小型、简单和正确的文件服务——仅此而已。 <img src="https://img.shields.io/github/stars/tunnckoCore/koa-better-serve.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-better-serve.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ktmud/koa-spa">koa-spa</a> - 基于<code>koa-static-cache</code>(静态缓存)构建的单页应用服务器。 <img src="https://img.shields.io/github/stars/ktmud/koa-spa.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-spa.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/serve-static">koa-serve-static</a> - 提供静态文件，基于 Express 的 <code>serve-static</code>。 <img src="https://img.shields.io/github/stars/koa-modules/serve-static.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-serve-static.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Secbone/koa-static2">koa-static2</a> - 在用户声明的名称下的文件夹提供文件服务。 <img src="https://img.shields.io/github/stars/Secbone/koa-static2.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-static2.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/janpieterz/koajs-static-folder">koa-static-folder</a> - 使用文件夹提供静态文件。 <img src="https://img.shields.io/github/stars/janpieterz/koajs-static-folder.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-static-folder.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/serve-list">koa-serve-list</a> - 基于 Express 的 <code>serve-index</code> 为 koa 提供目录列表。 <img src="https://img.shields.io/github/stars/koa-modules/serve-list.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-serve-list.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/adamkdean/koa-serve">koa-serve</a> - 提供静态文件服务的Koa中间件。 <img src="https://img.shields.io/github/stars/adamkdean/koa-serve.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-serve.svg?style=flat-square"></li>
+</ul>
+<h3 id="路由和挂载"><a href="#路由和挂载" class="headerlink" title="路由和挂载"></a>路由和挂载</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa-router">koa-router</a> - Koa路由中间件。 <img src="https://img.shields.io/github/stars/koajs/koa-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/@koa/router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/mount">koa-mount</a> - 挂载Koa应用作为中间件。 <img src="https://img.shields.io/github/stars/koajs/mount.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-mount.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/route">koa-route</a> - 一个简单的路由中间件。 <img src="https://img.shields.io/github/stars/koajs/route.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-route.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/joi-router">koa-joi-router</a> - 可配置、输入和输出校验规则的路由。 <img src="https://img.shields.io/github/stars/koajs/joi-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-joi-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/trie-router">koa-trie-router</a> - 基于字典树的路由。<img src="https://img.shields.io/github/stars/koajs/trie-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-trie-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/steambap/koa-tree-router">koa-tree-router</a> - 基于树结构的高性能路由。 <img src="https://img.shields.io/github/stars/steambap/koa-tree-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-tree-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/BiteBit/koa-oai-router">koa-oai-router</a> - Koa 路由，基于 OpenAPI、Swagger 和 Json Schema。 <img src="https://img.shields.io/github/stars/BiteBit/koa-oai-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-oai-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/rewrite">koa-rewrite</a> - URL重写中间件。 <img src="https://img.shields.io/github/stars/koajs/rewrite.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-rewrite.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/koa-better-router">koa-better-router</a> - 稳定和可爱的<code>koa</code>路由，使用 <code>path-match</code>。 轻松构建强大、灵活的RESTful API。 <img src="https://img.shields.io/github/stars/tunnckoCore/koa-better-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-better-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/qs">koa-qs</a> - 支持嵌套的 query string。 <img src="https://img.shields.io/github/stars/koajs/qs.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-qs.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/koa-rest-router">koa-rest-router</a> - 最强大、灵活和可组合的路由中间件，用于轻松构建企业 RESTful API！ <img src="https://img.shields.io/github/stars/tunnckoCore/koa-rest-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-rest-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/menems/koa-66">koa-66</a> - 用于koa v2路由。 <img src="https://img.shields.io/github/stars/menems/koa-66.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-66.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/afenton90/koa-react-router">koa-react-router</a> - koa 2 中间件，用于 React 服务器端渲染和路由使用 <a target="_blank" rel="noopener" href="https://github.com/ReactTraining/react-router">react-router</a> <img src="https://img.shields.io/github/stars/afenton90/koa-react-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-react-router.svg"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/saadq/koa-combine-routers">koa-combine-routers</a> - 组合多个<a target="_blank" rel="noopener" href="https://github.com/koajs/koa-router">@koa/router</a>实例。 <img src="https://img.shields.io/github/stars/saadq/koa-combine-routers.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-combine-routers.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/d-band/koa-mapper">koa-mapper</a> - 更好的路由器支持参数验证和 OpenAPI 生成。 <img src="https://img.shields.io/github/stars/d-band/koa-mapper.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-mapper.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/path-match">koa-path-match</a> - Koa路由中间件。 <img src="https://img.shields.io/github/stars/koajs/path-match.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-path-match.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/segmentio/koa-params">koa-params</a> - 对 koa-route 的 Express 样式参数支持。 <img src="https://img.shields.io/github/stars/segmentio/koa-params.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-params.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MangroveTech/koa-frouter">koa-frouter</a> - File as <code>path</code>. <img src="https://img.shields.io/github/stars/MangroveTech/koa-frouter.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-frouter.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zaaack/koa-dec-router">koa-dec-router</a> - 一个 ES6 装饰器 + 基于类的路由器，支持继承、覆盖、优先级、自动加载控制器等。底层使用<a target="_blank" rel="noopener" href="https://github.com/alexmingoia/koa-router">koa-router</a>。 <img src="https://img.shields.io/github/stars/zaaack/koa-dec-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-dec-router.svg"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ivpusic/koa-routing">koa-routing</a> - 路由中间件。 <img src="https://img.shields.io/github/stars/ivpusic/koa-routing.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-routing.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/blakeembrey/kroute">kroute</a> - 模块化 Koa 路由器中间件，带有 Express 风格的路由和中间件挂载。 <img src="https://img.shields.io/github/stars/blakeembrey/kroute.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/kroute.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/methodoverride">koa-methodoverride</a> - HTTP 方法覆盖中间件 <img src="https://img.shields.io/github/stars/koa-modules/methodoverride.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-methodoverride.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gyson/koa-simple-router">koa-simple-router</a> - 简单快速的 REST 路由中间件（支持koa 2.x） <img src="https://img.shields.io/github/stars/gyson/koa-simple-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-simple-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Student007/koa-sub-domain">koa-sub-domain</a> - 处理多级和子域通配符的中间件。 <img src="https://img.shields.io/github/stars/Student007/koa-sub-domain.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-sub-domain.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/xinpianchang/koa2-router">koa2-router</a> - 一个Express风格的路由中间件。 <img src="https://img.shields.io/github/stars/xinpianchang/koa2-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa2-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/magicdawn/impress-router">impress-router</a> - Express风格的路由。 <img src="https://img.shields.io/github/stars/magicdawn/impress-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/impress-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/TehShrike/koa-bestest-router">koa-bestest-router</a> - Koa 的路由器中间件。无突变(Mutation-free)，少于100行  <img src="https://img.shields.io/github/stars/TehShrike/koa-bestest-router.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-bestest-router.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/giall/koa-joi-controllers">koa-joi-controllers</a> - 对 <code>koa-joi-router</code> 封装的控制器装饰器。 <img src="https://img.shields.io/github/stars/giall/koa-joi-controllers.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-joi-controllers.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zedgu/koa-ovenware">koa-ovenware</a> - Koa 的自动模型/控制器加载器。 <img src="https://img.shields.io/github/stars/zedgu/koa-ovenware.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-ovenware.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nswbmw/koa-forward-request">koa-forward-request</a> - 转发请求。<img src="https://img.shields.io/github/stars/nswbmw/koa-forward-request.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-forward-request.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nervgh/koa-architect">koa-architect</a> - 自动挂载和路由。 <img src="https://img.shields.io/github/stars/nervgh/koa-architect.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-architect.svg?style=flat-square"></li>
+</ul>
+<h3 id="授权-鉴权"><a href="#授权-鉴权" class="headerlink" title="授权/鉴权"></a>授权/鉴权</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/jwt">koa-jwt</a> - 校验JWT（JSON Web Tokens）的Koa中间件。 <img src="https://img.shields.io/github/stars/koajs/jwt.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-jwt.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rkusa/koa-passport">koa-passport</a> - 基于Passport的鉴权中间件。 <img src="https://img.shields.io/github/stars/rkusa/koa-passport.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-passport.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/basic-auth">koa-basic-auth</a> - 简单的用户密码基础授权。 <img src="https://img.shields.io/github/stars/koajs/basic-auth.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-basic-auth.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chentsulin/koa-bearer-token">koa-bearer-token</a> - Bearer token解析器中间件。 <img src="https://img.shields.io/github/stars/chentsulin/koa-bearer-token.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-bearer-token.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jchannon/koa-statelessauth">koa-statelessauth</a> - 基于 <code>Authorization</code> header的自定义验证。 <img src="https://img.shields.io/github/stars/jchannon/koa-statelessauth.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-statelessauth.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nealnote/koa-weixin-token">koa-weixin-token</a> - 微信Token服务。 <img src="https://img.shields.io/github/stars/nealnote/koa-weixin-token.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-weixin-token.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tuvistavie/koa-police">koa-police</a> - 基于策略的身份验证库。 <img src="https://img.shields.io/github/stars/tuvistavie/koa-police.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-police.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/miserylee/koa-jwt-mongo">koa-jwt-mongo</a> - 将JWT（JSON Web Tokens）存储在mongodb中的中间件。 <img src="https://img.shields.io/github/stars/miserylee/koa-jwt-mongo.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-jwt-mongo.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gerhut/koa-http-auth">koa-http-auth</a> - 简单的 HTTP 身份验证，包括基本身份验证和摘要（Digest）身份验证。 <img src="https://img.shields.io/github/stars/gerhut/koa-http-auth.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-http-auth.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/uhop/koa-cognito-middleware">koa-cognito-middleware</a> - 简单的使用 <a target="_blank" rel="noopener" href="https://aws.amazon.com/cognito/">AWS Cognito</a> <a target="_blank" rel="noopener" href="https://docs.aws.amazon.com/cognito/latest/developerguide/cognito-user-identity-pools.html">user pools</a> 的鉴权。 <img src="https://img.shields.io/github/stars/uhop/koa-cognito-middleware.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-cognito-middleware.svg?style=flat-square"></li>
+</ul>
+<h3 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/MangroveTech/koa-mongo">koa-mongo</a> - MongoDB中间件，支持连接池。<img src="https://img.shields.io/github/stars/MangroveTech/koa-mongo.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-mongo.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/seegno/koa-pagination">koa-pagination</a> - 处理<a target="_blank" rel="noopener" href="http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html">Range Pagination Headers</a>, 使用 <code>Range</code> &amp; <code>Content-Range</code> 实体头. <img src="https://img.shields.io/github/stars/seegno/koa-pagination.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-pagination.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/chilts/koa-pg">koa-pg</a> - 自动操作Pg数据库连接。 <img src="https://img.shields.io/github/stars/chilts/koa-pg.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-pg.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MangroveTech/koa-redis-pool">koa-redis-pool</a> - Redis中间件，支持连接池。 <img src="https://img.shields.io/github/stars/MangroveTech/koa-redis-pool.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-redis-pool.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/d-band/koa-orm">koa-orm</a> - 使用sequelize &amp; squel的ORM中间件. <img src="https://img.shields.io/github/stars/exponentjs/koa-graphiql.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-orm.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ptariche/koa-waterline">koa-waterline</a> - waterline orm中间件。 <img src="https://img.shields.io/github/stars/ptariche/koa-waterline.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-waterline.svg?style=flat-square"></li>
+</ul>
+<h3 id="Graphql"><a href="#Graphql" class="headerlink" title="Graphql"></a>Graphql</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/chentsulin/koa-graphql">koa-graphql</a> - 用于创建GraphQL HTTP服务器的中间件。 <img src="https://img.shields.io/github/stars/chentsulin/koa-graphql.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-graphql.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/exponentjs/koa-graphiql">koa-graphiql</a> - Koa 中间件用于显示GraphiQL，一个交互式 GraphQL UI。 <img src="https://img.shields.io/github/stars/exponentjs/koa-graphiql.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-graphiql.svg?style=flat-square"></li>
+</ul>
+<h3 id="压缩"><a href="#压缩" class="headerlink" title="压缩"></a>压缩</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/compress">koa-compress</a> - 用于压缩的中间件。 <img src="https://img.shields.io/github/stars/koajs/compress.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-compress.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/compressor">koa-compressor</a> - SPDY/HTTP2压缩中间件 (总是gzips) <img src="https://img.shields.io/github/stars/koajs/compressor.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-compressor.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tuananh/kompression">kompression</a> - koa-compress的fork版本，用于支持brotli压缩 <img src="https://img.shields.io/github/stars/tuananh/kompression.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/kompression.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/coderaiser/koa-minify">koa-minify</a> - 将 js、css、html 和 img最小化的中间件。<img src="https://img.shields.io/github/stars/coderaiser/koa-minify.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-minify.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/grayleonard/koa-uglify2">koa-uglify2</a> - 带有缓存的 js 的uglify中间件。 <img src="https://img.shields.io/github/stars/grayleonard/koa-uglify2.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-uglify2.svg?style=flat-square"></li>
+</ul>
+<h3 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/session">koa-session</a> - 简单基于Cookie的Session中间件。 <img src="https://img.shields.io/github/stars/koajs/session.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-session.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/generic-session">koa-generic-session</a> - 基于内存、redis或其他的Session存储中间件。 <img src="https://img.shields.io/github/stars/koajs/generic-session.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-generic-session.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa-redis">koa-redis</a> - 使用Redis的Koa Session。 <img src="https://img.shields.io/github/stars/koajs/koa-redis.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-redis.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Secbone/koa-session2">koa-session2</a> - Koa2 的中间件，用于获取/设置与自定义存储（如 Redis 或 mongodb）一起使用的会话。 <img src="https://img.shields.io/github/stars/Secbone/koa-session2.svg?style=social&label=Star">  <img src="https://img.shields.io/npm/dm/koa-session2.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/longztian/koa-session-minimal">koa-session-minimal</a> - 对<code>koa-generic-session</code>的<code>Koa 2</code>重写，支持其核心功能和存储。 <img src="https://img.shields.io/github/stars/longztian/koa-session-minimal.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-session-minimal.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/redis-session-sets">koa-redis-session-sets</a> - 带有字段引用交叉集的 Koa Redis Session。 <img src="https://img.shields.io/github/stars/koajs/redis-session-sets.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-redis-session-sets.svg?style=flat-square"></li>
+</ul>
+<h3 id="Cookies"><a href="#Cookies" class="headerlink" title="Cookies"></a>Cookies</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/varunpal/koa-cookie">koa-cookie</a> - Cookie解析中间件。 <img src="https://img.shields.io/github/stars/varunpal/koa-cookie.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-cookie.svg?style=flat-square"></li>
+</ul>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/cash">koa-cash</a> - Koa 的 HTTP 响应缓存。支持 Redis、内存存储等。 <img src="https://img.shields.io/github/stars/koajs/cash.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-cash.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/etag">koa-etag</a> - 为Koa响应提供Etag功能。 <img src="https://img.shields.io/github/stars/koajs/etag.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-etag.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/conditional-get">koa-conditional-get</a> - 条件Get，用于判断是否新鲜。<img src="https://img.shields.io/github/stars/koajs/conditional-get.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-conditional-get.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/mkozjak/koa-cache-lite">koa-cache-lite</a> - 零依赖的Koa路由缓存。 <img src="https://img.shields.io/github/stars/mkozjak/koa-cache-lite.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-cache-lite.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nswbmw/koa-router-cache">koa-router-cache</a> - 路由缓存中间件。<img src="https://img.shields.io/github/stars/nswbmw/koa-router-cache.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-router-cache.svg?style=flat-square"></li>
+</ul>
+<h3 id="限流"><a href="#限流" class="headerlink" title="限流"></a>限流</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/animir/node-rate-limiter-flexible">rate-limiter-flexible</a> - 在单进程或分布式环境中按原子增量Key限制请求以防止任何规模的 DDoS 和暴力攻击。 <img src="https://img.shields.io/github/stars/animir/node-rate-limiter-flexible.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/rate-limiter-flexible.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/ratelimit">koa-ratelimit</a> - 限流中间件。 <img src="https://img.shields.io/github/stars/koajs/ratelimit.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-ratelimit.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/koa-better-ratelimit">koa-better-ratelimit</a> - 支持自定义存储、自定义 ID、自定义错误消息和自定义头。<img src="https://img.shields.io/github/stars/tunnckoCore/koa-better-ratelimit.svg?style=social&label=Star">  <img src="https://img.shields.io/npm/dm/koa-better-ratelimit.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/koa-ip-filter">koa-ip-filter</a> - Koa 中间件，可使用glob模式、数组、字符串、正则表达式或匹配器函数过滤请求 IP 或自定义 ID。 支持自定义 403 Forbidden 消息和自定义 ID。 <img src="https://img.shields.io/github/stars/tunnckoCore/koa-ip-filter.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-ip-filter.svg?style=flat-square"></li>
+</ul>
+<h3 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Cody2333/koa-swagger-decorator">koa-swagger-decorator</a> - 使用装饰器为 koa-router 自动生成 swagger 文档。 <img src="https://img.shields.io/github/stars/Cody2333/koa-swagger-decorator.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-swagger-decorator.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/carlansley/swagger2-koa">swagger2-koa</a> - 使用 swagger2 的 Koa 2 中间件。 <img src="https://img.shields.io/github/stars/carlansley/swagger2-koa.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/swagger2-koa.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/a-s-o/koa-docs">koa-docs</a> - 用于自动生成和提供API文档的Koa中间件。 <img src="https://img.shields.io/github/stars/a-s-o/koa-docs.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-docs.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zaaack/koa-joi-swagger">koa-joi-swagger</a> - 使用 joi 模式验证请求和响应，并生成 swagger 文档以创建漂亮的 API 文档。 <img src="https://img.shields.io/github/stars/zaaack/koa-joi-swagger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-joi-swagger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/janvotava/swagger-koa">swagger-koa</a> - Swagger + Koa = {swagger-koa} <img src="https://img.shields.io/github/stars/janvotava/swagger-koa.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/swagger-koa.svg?style=flat-square"></li>
+</ul>
+<h3 id="安全"><a href="#安全" class="headerlink" title="安全"></a>安全</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/cors">@koa/cors</a> - 跨域资源共享（CORS）for koa. <img src="https://img.shields.io/github/stars/koajs/cors.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/@koa/cors.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/venables/koa-helmet">koa-helmet</a> - 提供重要的安全头header，使您的应用默认更安全。 <img src="https://img.shields.io/github/stars/venables/koa-helmet.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-helmet.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/csrf">koa-csrf</a> - CSRF tokens。 <img src="https://img.shields.io/github/stars/koajs/csrf.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-csrf.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/evert0n/koa-cors">koa-cors</a> - Koa 的 CORS 中间件。 <img src="https://img.shields.io/github/stars/evert0n/koa-cors.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-cors.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa-roles">koa-roles</a> - Koa版本的<a target="_blank" rel="noopener" href="https://github.com/ForbesLindesay/connect-roles">connect-roles</a>。 <img src="https://img.shields.io/github/stars/koajs/koa-roles.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-roles.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/yanickrochon/koa-rbac">koa-rbac</a> - 用于Koa的基于角色的权限访问控制。 <img src="https://img.shields.io/github/stars/yanickrochon/koa-rbac.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-rbac.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/koa-lusca">koa-lusca</a> - Koa版本的lusca，用于Koa的应用安全。 <img src="https://img.shields.io/github/stars/koajs/koa-lusca.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-lusca.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/MangroveTech/koa-ip">koa-ip</a> - 用于Koa的Ip过滤中间件。支持白名单和黑名单。 <img src="https://img.shields.io/github/stars/MangroveTech/koa-ip.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-ip.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/node-casbin/koa-authz">koa-authz</a> - 用于Koa2，基于Casbin的授权中间件。 <img src="https://img.shields.io/github/stars/node-casbin/koa-authz.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-authz.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tunnckoCore/koa-ip-filter">koa-ip-filter</a> - koa 的中间件，它使用 <code>ip-filter</code> 和 <code>micromatch</code> 根据 glob 模式、RegExp、字符串或 glob 数组过滤 IP。 支持自定义 403 Forbidden 消息和自定义 ID。<img src="https://img.shields.io/github/stars/tunnckoCore/koa-ip-filter.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-ip-filter.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/may215/koa-protect">koa-protect</a> - 用于koa应用的安全模块。 <img src="https://img.shields.io/github/stars/may215/koa-protect.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-protect.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Jackong/koa-acl">koa-acl</a> - 用于Koa的访问控制列表(ACL)中间件。 <img src="https://img.shields.io/github/stars/Jackong/koa-acl.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-acl.svg?style=flat-square"></li>
+</ul>
+<h3 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/logger">koa-logger</a> - 开发风格日志中间件。 <img src="https://img.shields.io/github/stars/koajs/logger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-logger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cabinjs/cabin">cabin</a> - Node.js、Lad、Koa、Express 和 Passport 的日志记录/分析服务和中间件。 <img src="https://img.shields.io/github/stars/cabinjs/cabin.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/cabin.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/PabloSichert/concurrency-logger">concurrency-logger</a> - 分别记录 HTTP 请求/响应，将它们的并发可视化并在请求的上下文中报告日志/错误。 <img src="https://img.shields.io/github/stars/PabloSichert/concurrency-logger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/concurrency-logger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/bunyan-logger">koa-bunyan-logger</a> - 使用Bunyan请求日志的Koa中间件。 <img src="https://img.shields.io/github/stars/koajs/bunyan-logger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-bunyan-logger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/dominhhai/koa-log4js">koa-log4</a> - 基于log4js-node封装的中间件。 <img src="https://img.shields.io/github/stars/dominhhai/koa-log4js.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-log4.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/pinojs/koa-pino-logger">koa-pino-logger</a> - Pino日志中间件。 <img src="https://img.shields.io/github/stars/pinojs/koa-pino-logger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-pino-logger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/morgan">koa-morgan</a> - 基于Morgan的中间件。 <img src="https://img.shields.io/github/stars/koa-modules/morgan.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-morgan.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rudijs/koa-json-logger">koa-json-logger</a> - HTTP请求/响应/错误的JSON格式的日志。 <img src="https://img.shields.io/github/stars/rudijs/koa-json-logger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-json-logger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/ivpusic/koa-bunyan">koa-bunyan</a> - 使用node-bunyan的中间件。 <img src="https://img.shields.io/github/stars/ivpusic/koa-bunyan.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-bunyan.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/accesslog">koa-accesslog</a> - 通用日志格式访问日志的中间件。 <img src="https://img.shields.io/github/stars/koajs/accesslog.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-accesslog.svg?style=flat-square"></li>
+</ul>
+<h3 id="错误报告"><a href="#错误报告" class="headerlink" title="错误报告"></a>错误报告</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/onerror">koa-onerror</a> - Koa 的错误处理程序，hack ctx.onerror。 <img src="https://img.shields.io/github/stars/koajs/onerror.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-onerror.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/error">koa-error</a> - 错误响应中间件(支持返回text, json, html模板引擎). <img src="https://img.shields.io/github/stars/koajs/error.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-error.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/json-error">koa-json-error</a> - 纯 JSON 应用程序的错误处理程序。 <img src="https://img.shields.io/github/stars/koajs/json-error.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-json-error.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/nswbmw/koa-errorhandler">koa-errorhandler</a> - Koa 的错误处理程序中间件。 <img src="https://img.shields.io/github/stars/nswbmw/koa-errorhandler.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-errorhandler.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/rturk/koa-error-slack">koa-error-slack</a> - 发送 Koa 错误到 Slack。 <img src="https://img.shields.io/github/stars/rturk/koa-error-slack.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-error-slack.svg?style=flat-square"></li>
+</ul>
+<h3 id="i18n"><a href="#i18n" class="headerlink" title="i18n"></a>i18n</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/locales">koa-locales</a> - i18n解决方案。 <img src="https://img.shields.io/github/stars/koajs/locales.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-locales.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/i18n">koa-i18n</a> - 基于 i18n-2 的轻量级简单翻译中间件。 <img src="https://img.shields.io/github/stars/koa-modules/i18n.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-i18n.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/koa-modules/locale">koa-locale</a> - 从查询参数、子域名、accept-languages或 cookie 中获取区域设置变量。 <img src="https://img.shields.io/github/stars/koa-modules/locale.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-locale.svg?style=flat-square"></li>
+</ul>
+<h3 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/koajs/cluster">koa-cluster</a> - Koa集群和错误处理工具。 <img src="https://img.shields.io/github/stars/koajs/cluster.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/koa-cluster.svg?style=flat-square"></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/front-end/" rel="tag"><i class="fa fa-tag"></i> front-end</a>
+              <a href="/tags/Node-JS/" rel="tag"><i class="fa fa-tag"></i> Node.JS</a>
+              <a href="/tags/koa/" rel="tag"><i class="fa fa-tag"></i> koa</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/14/awesome-nodejs/" rel="prev" title="awesome-nodejs">
+                  <i class="fa fa-chevron-left"></i> awesome-nodejs
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/14/awesome-egg/" rel="next" title="awesome-egg">
+                  awesome-egg <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

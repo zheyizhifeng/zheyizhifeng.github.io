@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="官方资源 官网 文档 仓库    资源">
+<meta property="og:type" content="article">
+<meta property="og:title" content="awesome-egg">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/14/awesome-egg/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="官方资源 官网 文档 仓库    资源">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/midwayjs/midway.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/midway.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/alibaba/beidou.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/beidou.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/hubcarl/egg-vue-webpack-boilerplate.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-vue-webpack-boilerplate.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/hubcarl/egg-react-webpack-boilerplate.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-react-webpack-boilerplate.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/apgzs/cool-admin-api.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/brickyang/egg-ts-boilerplate.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/tvrcgo/egg-react-mobx-ts-antd.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-boilerplate-simple.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-boilerplate-plugin.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-boilerplate-framework.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-security.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-security.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-bin.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-bin.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-multipart.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-multipart.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-mock.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-mock.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-logger.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-logger.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-static.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-static.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-schedule.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-schedule.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-onerror.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-onerror.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-development.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-development.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-logrotator.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-logrotator.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-session.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-session.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-view.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-view.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-i18n.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-i18n.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-watcher.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-watcher.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-jsonp.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-jsonp.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-validate.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-validate.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/hexindai/egg-valid.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-valid.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-router-plus.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-router-plus.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-rest.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-rest.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zzzs/egg-router-group.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-router-group.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-sequelize.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-sequelize.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-mongoose.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-mongoose.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-mysql.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-mysql.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/brickyang/egg-mongo-native.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-mongo-native.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-redis.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-redis.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-session-redis.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-session-redis.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-etag.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-etag.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-graphql.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-graphql.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-cors.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-cors.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-passport.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-passport.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-userrole.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-userrole.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-cancan.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-cancan.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/lidianhao123/egg-rbac.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-rbac.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/unclexiao/egg-mp.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-mp.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/seasonstar/egg-weapp-sdk.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-weapp-sdk.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/thonatos/egg-wechat-api.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-wechat-api.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-dingtalk.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-dingtalk.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/macacajs/egg-datahub.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-datahub.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-leancloud.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-leancloud.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/thonatos/egg-aliyun-api-gateway.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-aliyun-api-gateway.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/inlym/egg-apigw-tracer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-apigw-tracer.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-tracer.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-tracer.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-logview.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-logview.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/cemremengu/egg-neo4j.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-neo4j.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-socket.io.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-socket.io.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-grpc.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-grpc.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-alinode.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-alinode.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/brickyang/egg-bull.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-bull.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-oss.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-oss.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-zookeeper.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-zookeeper.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/zzzs/egg-downloader.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/npm/dm/egg-downloader.svg?style=flat-square">
+<meta property="og:image" content="https://img.shields.io/github/stars/cnodejs/egg-cnode.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/DXY-F2E/api-mocker.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/seasonstar/egg-24time.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fomenyesu/egg-restapi-module-tool.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/eggjs/egg-ant-design-pro.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/sfyr111/egg-commerce.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/fomenyesu/egg-mongodb-example.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/malun666/hamkd.svg?style=social&label=Star">
+<meta property="og:image" content="https://img.shields.io/github/stars/OrangeXC/mtime.svg?style=social&label=Star">
+<meta property="article:published_time" content="2021-10-14T03:26:50.000Z">
+<meta property="article:modified_time" content="2021-10-14T03:34:26.773Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="front-end">
+<meta property="article:tag" content="Framework">
+<meta property="article:tag" content="Egg.js">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.shields.io/github/stars/eggjs/egg.svg?style=social&label=Star">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/14/awesome-egg/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/14/awesome-egg/","path":"2021/10/14/awesome-egg/","title":"awesome-egg"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>awesome-egg | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">27</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">20</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%98%E6%96%B9%E8%B5%84%E6%BA%90"><span class="nav-number">1.</span> <span class="nav-text">官方资源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B5%84%E6%BA%90"><span class="nav-number">2.</span> <span class="nav-text">资源</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B3%B0%E4%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">峰会</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8D%9A%E5%AE%A2"><span class="nav-number">2.2.</span> <span class="nav-text">博客</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E7%AB%A0"><span class="nav-number">2.3.</span> <span class="nav-text">文章</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B%E5%92%8C%E8%AF%84%E4%BB%B7"><span class="nav-number">2.3.1.</span> <span class="nav-text">简介和评价</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%99%E7%A8%8B"><span class="nav-number">2.3.2.</span> <span class="nav-text">教程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90"><span class="nav-number">2.3.3.</span> <span class="nav-text">源码解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">2.3.4.</span> <span class="nav-text">实战</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%93%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">仓库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">3.1.</span> <span class="nav-text">框架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%89%8B%E6%9E%B6"><span class="nav-number">3.2.</span> <span class="nav-text">脚手架</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%86%85%E7%BD%AE%E6%8F%92%E4%BB%B6"><span class="nav-number">3.3.</span> <span class="nav-text">内置插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6"><span class="nav-number">3.4.</span> <span class="nav-text">插件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C"><span class="nav-number">3.4.1.</span> <span class="nav-text">参数校验</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1"><span class="nav-number">3.4.2.</span> <span class="nav-text">路由</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="nav-number">3.4.3.</span> <span class="nav-text">数据库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">3.4.4.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Graphql"><span class="nav-number">3.4.5.</span> <span class="nav-text">Graphql</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8E%88%E6%9D%83-%E9%89%B4%E6%9D%83-%E5%AE%89%E5%85%A8"><span class="nav-number">3.4.6.</span> <span class="nav-text">授权&#x2F;鉴权&#x2F;安全</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B9%B3%E5%8F%B0SDK"><span class="nav-number">3.4.7.</span> <span class="nav-text">平台SDK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Tracer"><span class="nav-number">3.4.8.</span> <span class="nav-text">Tracer</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%97%A5%E5%BF%97"><span class="nav-number">3.4.9.</span> <span class="nav-text">日志</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">3.4.10.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8"><span class="nav-number">4.</span> <span class="nav-text">应用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">15</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">20</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">27</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/14/awesome-egg/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          awesome-egg
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-14 11:26:50 / 修改时间：11:34:26" itemprop="dateCreated datePublished" datetime="2021-10-14T11:26:50+08:00">2021-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/" itemprop="url" rel="index"><span itemprop="name">front-end</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/front-end/JavaScript/Framework/" itemprop="url" rel="index"><span itemprop="name">Framework</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="官方资源"><a href="#官方资源" class="headerlink" title="官方资源"></a>官方资源</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://eggjs.org/zh-cn/">官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://eggjs.org/zh-cn/intro/index.html">文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg">仓库</a> <img src="https://img.shields.io/github/stars/eggjs/egg.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg.svg?style=flat-square"></li>
+</ul>
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><a id="more"></a>
+<h3 id="峰会"><a href="#峰会" class="headerlink" title="峰会"></a>峰会</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/atian25/blog/blob/master/assets/files/egg%20-%20JSConf%20China%202016.pdf">egg - 企业级 node 框架 @天猪</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/Hangzhou-Node-Party/Node-Party/blob/master/2017-08-19/Egg.js%E5%9C%A8%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4%E9%9B%86%E5%9B%A2%E7%9A%84%E7%9A%84%E5%AE%9E%E8%B7%B5%E8%BF%90%E7%94%A8.pdf">Egg.js在阿里巴巴集团的的实践运用 @庄少</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/atian25/blog/raw/master/assets/files/Egg%20%26%20Node.js%20%E4%BB%8E%E5%B0%8F%E5%B7%A5%E5%9D%8A%E8%B5%B0%E5%90%91%E4%BC%81%E4%B8%9A%E7%BA%A7%E5%BC%80%E5%8F%91.pdf">Egg &amp; Node.js 从小工坊走向企业级开发 @天猪</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/jtyjty99999/share/raw/master/security%20risk%20in%20node%20web.pdf">脆弱的Node.js - Security risk in Node Web @姜天意</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=1w-DyxiMU4w&index=17&list=PLfMzBWSH11xa-iNnQG2555lgi4574nZOh">Node.js at Alibaba [A] @Joyee Cheung</a></li>
+</ul>
+<h3 id="博客"><a href="#博客" class="headerlink" title="博客"></a>博客</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/eggjs">Node.js 从小工坊走向企业级开发</a></li>
+</ul>
+<h3 id="文章"><a href="#文章" class="headerlink" title="文章"></a>文章</h3><h4 id="简介和评价"><a href="#简介和评价" class="headerlink" title="简介和评价"></a>简介和评价</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25860846">Egg.js 1.0.0 正式发布 - 企业级 Node.js 框架</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/50526101/answer/144952130">如何评价阿里开源的企业级 Node.js 框架 EggJS？</a></li>
+</ul>
+<h4 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27438662">Egg.js 爬坑日记快速入门（一）</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27439307">Egg.js 爬坑日记使用一个插件（二）</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/27445997">Egg.js 爬坑日记编写一个service（三）</a></li>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000009377030">koa和egg项目webpack内存编译和热更新实现</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29346081">Egg + Webpack 热更新实现</a></li>
+<li><a target="_blank" rel="noopener" href="https://cnodejs.org/topic/580a6a7e541dfb7b50f40a60">深夜放毒——阿里开源的企业级Node框架Egg使用指南</a></li>
+</ul>
+<h4 id="源码解析"><a href="#源码解析" class="headerlink" title="源码解析"></a>源码解析</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/SunShinewyf/issue-blog/issues/30">结合源码解密egg运行原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47178799">Egg 源码分析之 egg-core（一）</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/47180589">Egg 源码分析之 egg-core（二）</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/29374045">Egg 源码解析之 egg-cluster</a></li>
+</ul>
+<h4 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://segmentfault.com/a/1190000010491016">Egg.js开发七牛云备份项目总结</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/25956323">可能是最好的 JS Assert 库 - 皇帝的新衣</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26267678">Node.js 中 source map 使用问题总结</a></li>
+</ul>
+<h2 id="仓库"><a href="#仓库" class="headerlink" title="仓库"></a>仓库</h2><h3 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/midwayjs/midway">midway</a> -  A Node.js Serverless Framework for front-end/full-stack developers. <img src="https://img.shields.io/github/stars/midwayjs/midway.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/midway.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/alibaba/beidou">beidou</a> - Isomorphic framework for server-rendered React apps。<img src="https://img.shields.io/github/stars/alibaba/beidou.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/beidou.svg?style=flat-square"></li>
+</ul>
+<h3 id="脚手架"><a href="#脚手架" class="headerlink" title="脚手架"></a>脚手架</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/hubcarl/egg-vue-webpack-boilerplate">egg-vue-webpack-boilerplate</a> - 基于egg-view-vue, egg-view-vue-ssr, egg-webpack, egg-webpack-vue插件的多页面和单页面服务器渲染同构工程骨架项目 <img src="https://img.shields.io/github/stars/hubcarl/egg-vue-webpack-boilerplate.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-vue-webpack-boilerplate.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hubcarl/egg-react-webpack-boilerplate">egg-react-webpack-boilerplate</a> - 基于Egg + React + Webpack3/Webpack2 多页面和单页面服务器渲染同构工程骨架项目 <img src="https://img.shields.io/github/stars/hubcarl/egg-react-webpack-boilerplate.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-react-webpack-boilerplate.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/apgzs/cool-admin-api">cool-admin-api</a> - cool-admin-api 是基于egg.js、typeorm、jwt等封装的api开发脚手架、快速开发api接口。<img src="https://img.shields.io/github/stars/apgzs/cool-admin-api.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/brickyang/egg-ts-boilerplate">egg-ts-boilerplate</a> - 用 TypeScript 写 Egg 应用 <img src="https://img.shields.io/github/stars/brickyang/egg-ts-boilerplate.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/tvrcgo/egg-react-mobx-ts-antd">egg-react-mobx-ts-antd</a> - Start node with eggjs, react, mobx-react, typescript and ant design. <img src="https://img.shields.io/github/stars/tvrcgo/egg-react-mobx-ts-antd.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-boilerplate-simple">egg-boilerplate-simple</a> - Boilerplate for egg simple project <img src="https://img.shields.io/github/stars/eggjs/egg-boilerplate-simple.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-boilerplate-plugin">egg-boilerplate-plugin</a> - Boilerplate for egg plugin <img src="https://img.shields.io/github/stars/eggjs/egg-boilerplate-plugin.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-boilerplate-framework">egg-boilerplate-framework</a> - Boilerplate for egg framework <img src="https://img.shields.io/github/stars/eggjs/egg-boilerplate-framework.svg?style=social&label=Star"></li>
+</ul>
+<h3 id="内置插件"><a href="#内置插件" class="headerlink" title="内置插件"></a><a target="_blank" rel="noopener" href="https://eggjs.org/zh-cn/basics/plugin.html#%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8">内置插件</a></h3><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-security">egg-security</a> - 安全。 <img src="https://img.shields.io/github/stars/eggjs/egg-security.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-security.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-bin">egg-bin</a> - Egg开发工具. <img src="https://img.shields.io/github/stars/eggjs/egg-bin.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-bin.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-multipart">egg-multipart</a> - 文件流式上传。 <img src="https://img.shields.io/github/stars/eggjs/egg-multipart.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-multipart.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-mock">egg-mock</a> - 用于Egg测试的Mock库。 <img src="https://img.shields.io/github/stars/eggjs/egg-mock.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-mock.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-logger">egg-logger</a> - 日志。 <img src="https://img.shields.io/github/stars/eggjs/egg-logger.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-logger.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-static">egg-static</a> - 静态服务器插件。 <img src="https://img.shields.io/github/stars/eggjs/egg-static.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-static.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-schedule">egg-schedule</a> - 定时任务。 <img src="https://img.shields.io/github/stars/eggjs/egg-schedule.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-schedule.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-onerror">egg-onerror</a> - 统一异常处理。 <img src="https://img.shields.io/github/stars/eggjs/egg-onerror.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-onerror.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-development">egg-development</a> - 开发环境配置。 <img src="https://img.shields.io/github/stars/eggjs/egg-development.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-development.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-logrotator">egg-logrotator</a> - 日志切分。 <img src="https://img.shields.io/github/stars/eggjs/egg-logrotator.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-logrotator.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-session">egg-session</a> - Session 实现。 <img src="https://img.shields.io/github/stars/eggjs/egg-session.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-session.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-view">egg-view</a> - 模板引擎。 <img src="https://img.shields.io/github/stars/eggjs/egg-view.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-view.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-i18n">egg-i18n</a> - 多语言。 <img src="https://img.shields.io/github/stars/eggjs/egg-i18n.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-i18n.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-watcher">egg-watcher</a> - 文件和文件夹监控。 <img src="https://img.shields.io/github/stars/eggjs/egg-watcher.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-watcher.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-jsonp">egg-jsonp</a> - jsonp 支持。 <img src="https://img.shields.io/github/stars/eggjs/egg-jsonp.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-jsonp.svg?style=flat-square"></li>
+</ul>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><h4 id="参数校验"><a href="#参数校验" class="headerlink" title="参数校验"></a>参数校验</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-validate">egg-validate</a> - validate plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-validate.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-validate.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/hexindai/egg-valid">egg-valid</a> - another validate plugin for egg <img src="https://img.shields.io/github/stars/hexindai/egg-valid.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-valid.svg?style=flat-square"></li>
+</ul>
+<h4 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-router-plus">egg-router-plus</a> - The missing router feature for eggjs <img src="https://img.shields.io/github/stars/eggjs/egg-router-plus.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-router-plus.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-rest">egg-rest</a> - Restful API plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-rest.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-rest.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zzzs/egg-router-group">egg-router-group</a> - have the ability to route group operations for egg <img src="https://img.shields.io/github/stars/zzzs/egg-router-group.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-router-group.svg?style=flat-square"></li>
+</ul>
+<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-sequelize">egg-sequelize</a> - Sequelize for Egg.js. <img src="https://img.shields.io/github/stars/eggjs/egg-sequelize.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-sequelize.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-mongoose">egg-mongoose</a> - mongoose plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-mongoose.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-mongoose.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-mysql">egg-mysql</a> - MySQL plugin for egg. <img src="https://img.shields.io/github/stars/eggjs/egg-mysql.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-mysql.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/brickyang/egg-mongo-native">egg-mongo-native</a> - The native MongoDB driver for Egg.js <img src="https://img.shields.io/github/stars/brickyang/egg-mongo-native.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-mongo-native.svg?style=flat-square"></li>
+</ul>
+<h4 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-redis">egg-redis</a> - redis plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-redis.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-redis.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-session-redis">egg-session-redis</a> - redis store for egg session <img src="https://img.shields.io/github/stars/eggjs/egg-session-redis.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-session-redis.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-etag">egg-etag</a> - Etag plugin for egg application. <img src="https://img.shields.io/github/stars/eggjs/egg-etag.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-etag.svg?style=flat-square"></li>
+</ul>
+<h4 id="Graphql"><a href="#Graphql" class="headerlink" title="Graphql"></a>Graphql</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-graphql">egg-graphql</a> - Graphql for Egg.js <img src="https://img.shields.io/github/stars/eggjs/egg-graphql.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-graphql.svg?style=flat-square"></li>
+</ul>
+<h4 id="授权-鉴权-安全"><a href="#授权-鉴权-安全" class="headerlink" title="授权/鉴权/安全"></a>授权/鉴权/安全</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-cors">egg-cors</a> - CORS plugin for egg. <img src="https://img.shields.io/github/stars/eggjs/egg-cors.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-cors.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-passport">egg-passport</a> - Passport plugin for egg. <img src="https://img.shields.io/github/stars/eggjs/egg-passport.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-passport.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-userrole">egg-userrole</a> - user role plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-userrole.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-userrole.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-cancan">egg-cancan</a> - Cancancan like authorization plugin for Egg.js. <img src="https://img.shields.io/github/stars/eggjs/egg-cancan.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-cancan.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/lidianhao123/egg-rbac">egg-rbac</a> - Role Based Access Control for eggjs (now support RBAC0 level) <img src="https://img.shields.io/github/stars/lidianhao123/egg-rbac.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-rbac.svg?style=flat-square"></li>
+</ul>
+<h4 id="平台SDK"><a href="#平台SDK" class="headerlink" title="平台SDK"></a>平台SDK</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/unclexiao/egg-mp">egg-mp</a> - EggJS插件：微信公众平台基本服务. <img src="https://img.shields.io/github/stars/unclexiao/egg-mp.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-mp.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/seasonstar/egg-weapp-sdk">egg-weapp-sdk</a> - Egg的微信小程序登录会话管理SDK. <img src="https://img.shields.io/github/stars/seasonstar/egg-weapp-sdk.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-weapp-sdk.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thonatos/egg-wechat-api">egg-wechat-api</a> - WechatApi for egg <img src="https://img.shields.io/github/stars/thonatos/egg-wechat-api.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-wechat-api.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-dingtalk">egg-dingtalk</a> - dingtalk plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-dingtalk.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-dingtalk.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/macacajs/egg-datahub">egg-datahub</a> - Macaca <a target="_blank" rel="noopener" href="//github.com/macacajs/macaca-datahub">DataHub</a> plugin for Egg.js <img src="https://img.shields.io/github/stars/macacajs/egg-datahub.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-datahub.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-leancloud">egg-leancloud</a> - leancloud plugin for Egg.js <img src="https://img.shields.io/github/stars/eggjs/egg-leancloud.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-leancloud.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thonatos/egg-aliyun-api-gateway">egg-aliyun-api-gateway</a> - aliyun-api-gateway for eggjs <img src="https://img.shields.io/github/stars/thonatos/egg-aliyun-api-gateway.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-aliyun-api-gateway.svg?style=flat-square"></li>
+</ul>
+<h4 id="Tracer"><a href="#Tracer" class="headerlink" title="Tracer"></a>Tracer</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/inlym/egg-apigw-tracer">egg-apigw-tracer</a> - 适配 API 网关的 HTTP 请求示踪器，用于 Egg.js 框架. <img src="https://img.shields.io/github/stars/inlym/egg-apigw-tracer.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-apigw-tracer.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-tracer">egg-tracer</a> - tracer plugin for egg. <img src="https://img.shields.io/github/stars/eggjs/egg-tracer.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-tracer.svg?style=flat-square"></li>
+</ul>
+<h4 id="日志"><a href="#日志" class="headerlink" title="日志"></a>日志</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-logview">egg-logview</a> - 为开发环境提供一个日志查看器。 <img src="https://img.shields.io/github/stars/eggjs/egg-logview.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-logview.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/cemremengu/egg-neo4j">egg-neo4j</a> - Neo4j plugin for egg framework <img src="https://img.shields.io/github/stars/cemremengu/egg-neo4j.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-neo4j.svg?style=flat-square"></li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-socket.io">egg-socket.io</a> - egg plugin for socket.io <img src="https://img.shields.io/github/stars/eggjs/egg-socket.io.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-socket.io.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-grpc">egg-grpc</a> - grpc plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-grpc.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-grpc.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-alinode">egg-alinode</a> - alinode plugin for egg <a target="_blank" rel="noopener" href="https://node.console.aliyun.com/">https://node.console.aliyun.com</a> <img src="https://img.shields.io/github/stars/eggjs/egg-alinode.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-alinode.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/brickyang/egg-bull">egg-bull</a> - The fastest, most reliable, Redis-based queue for Egg.js <img src="https://img.shields.io/github/stars/brickyang/egg-bull.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-bull.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-oss">egg-oss</a> - aliyun oss plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-oss.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-oss.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-zookeeper">egg-zookeeper</a> - zookeeper plugin for egg <img src="https://img.shields.io/github/stars/eggjs/egg-zookeeper.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-zookeeper.svg?style=flat-square"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/zzzs/egg-downloader">egg-downloader</a> - download file plugin for egg <img src="https://img.shields.io/github/stars/zzzs/egg-downloader.svg?style=social&label=Star"> <img src="https://img.shields.io/npm/dm/egg-downloader.svg?style=flat-square"></li>
+</ul>
+<h2 id="应用"><a href="#应用" class="headerlink" title="应用"></a>应用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/cnodejs/egg-cnode">egg-cnode</a> The largest Chinese Node.js forum that rewritten in egg.js <img src="https://img.shields.io/github/stars/cnodejs/egg-cnode.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/DXY-F2E/api-mocker">API Mocker</a> - Api Mocker is more of an api management system than a mocker <img src="https://img.shields.io/github/stars/DXY-F2E/api-mocker.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/seasonstar/egg-24time">egg-24time</a> - A Twitter-like news and social server for Egg. 微信小程序社区全栈解决方案 <img src="https://img.shields.io/github/stars/seasonstar/egg-24time.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fomenyesu/egg-restapi-module-tool">egg-restapi-module-tool</a> - a example of eggjs, react, antd, dva, webpack, mysql, restful api and other stuff made it work… <img src="https://img.shields.io/github/stars/fomenyesu/egg-restapi-module-tool.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/eggjs/egg-ant-design-pro">egg-ant-design-pro</a> Egg love Ant Design Pro <img src="https://img.shields.io/github/stars/eggjs/egg-ant-design-pro.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sfyr111/egg-commerce">egg-commerce</a> - 使用egg + sequelizejs 搭建的电商平台，集成支付宝面对面支付、手机唤醒客户端支付 <img src="https://img.shields.io/github/stars/sfyr111/egg-commerce.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/fomenyesu/egg-mongodb-example">egg-mongodb-example</a> - a example of eggjs, mongodb, restful api and other stuff made it work… <img src="https://img.shields.io/github/stars/fomenyesu/egg-mongodb-example.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/malun666/hamkd">hamkd</a> - 寒门知识社区官网源码 <img src="https://img.shields.io/github/stars/malun666/hamkd.svg?style=social&label=Star"></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/OrangeXC/mtime">mtime</a> - A MVC mTime websit build with egg <img src="https://img.shields.io/github/stars/OrangeXC/mtime.svg?style=social&label=Star"></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/front-end/" rel="tag"><i class="fa fa-tag"></i> front-end</a>
+              <a href="/tags/Framework/" rel="tag"><i class="fa fa-tag"></i> Framework</a>
+              <a href="/tags/Egg-js/" rel="tag"><i class="fa fa-tag"></i> Egg.js</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/14/awesome-koa/" rel="prev" title="awesome-koa">
+                  <i class="fa fa-chevron-left"></i> awesome-koa
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/14/awesome-react/" rel="next" title="awesome-react">
+                  awesome-react <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

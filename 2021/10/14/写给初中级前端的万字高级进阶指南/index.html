@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="转载自掘金，原文链接 点这里查看  🔥 这是什么？笔者在学会 JS 以及框架的应用后，有一段时间不知道该如何深入下去，活能干，就是不知道该学啥。相信这个问题也会有很多读者朋友遇到。 当然笔者目前已经突破了这个瓶颈，也成为了知名公司基础架构组的成员。因此想通过自己成长的经历及积累的资料整理出一系列的学习路线及资料推荐，帮助各位读者朋友解决这个问题。  仓库内容笔者为主要贡献者，另外还拉了将近 20">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写给初中级前端的万字高级进阶指南">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/14/%E5%86%99%E7%BB%99%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E7%9A%84%E4%B8%87%E5%AD%97%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="转载自掘金，原文链接 点这里查看  🔥 这是什么？笔者在学会 JS 以及框架的应用后，有一段时间不知道该如何深入下去，活能干，就是不知道该学啥。相信这个问题也会有很多读者朋友遇到。 当然笔者目前已经突破了这个瓶颈，也成为了知名公司基础架构组的成员。因此想通过自己成长的经历及积累的资料整理出一系列的学习路线及资料推荐，帮助各位读者朋友解决这个问题。  仓库内容笔者为主要贡献者，另外还拉了将近 20">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7823cf5008814505ac7cd700ebfb9174~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec39552dd0c84985bedb861ba7cb09f5~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="article:published_time" content="2021-10-14T07:44:52.000Z">
+<meta property="article:modified_time" content="2021-10-14T08:08:47.518Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="Programming">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="前端进阶">
+<meta property="article:tag" content="掘金">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7823cf5008814505ac7cd700ebfb9174~tplv-k3u1fbpfcp-watermark.awebp">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/14/%E5%86%99%E7%BB%99%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E7%9A%84%E4%B8%87%E5%AD%97%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/14/%E5%86%99%E7%BB%99%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E7%9A%84%E4%B8%87%E5%AD%97%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97/","path":"2021/10/14/写给初中级前端的万字高级进阶指南/","title":"写给初中级前端的万字高级进阶指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>写给初中级前端的万字高级进阶指南 | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">33</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">12</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">17</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%94%A5-%E8%BF%99%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-number">1.</span> <span class="nav-text">🔥 这是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%92%BB-%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">💻 如何使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%9C%AC%E6%96%87%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">如何获取本文资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%F0%9F%93%96-%E7%9B%AE%E5%BD%95"><span class="nav-number">4.</span> <span class="nav-text">📖 目录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E9%AB%98%E6%95%88%E8%87%AA%E5%AD%A6"><span class="nav-number">5.</span> <span class="nav-text">如何高效自学</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B9%A6%E7%B1%8D%E6%8E%A8%E8%8D%90"><span class="nav-number">6.</span> <span class="nav-text">书籍推荐</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%88%9D%E7%BA%A7"><span class="nav-number">6.1.</span> <span class="nav-text">初级</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%BF%9B%E9%98%B6"><span class="nav-number">6.2.</span> <span class="nav-text">进阶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E7%BA%A7"><span class="nav-number">6.3.</span> <span class="nav-text">高级</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E7%AB%AF%E6%A0%B8%E5%BF%83%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84"><span class="nav-number">7.</span> <span class="nav-text">前端核心学习路径</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-%E6%A0%B8%E5%BF%83%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">7.1.</span> <span class="nav-text">JS 核心知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">7.1.1.</span> <span class="nav-text">数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E5%88%A4%E6%96%AD"><span class="nav-number">7.1.2.</span> <span class="nav-text">类型判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="nav-number">7.1.3.</span> <span class="nav-text">类型转换</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#this"><span class="nav-number">7.1.4.</span> <span class="nav-text">this</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%97%AD%E5%8C%85"><span class="nav-number">7.1.5.</span> <span class="nav-text">闭包</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%9C%E7%94%A8%E5%9F%9F"><span class="nav-number">7.1.6.</span> <span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E6%8F%90%E5%8D%87"><span class="nav-number">7.1.7.</span> <span class="nav-text">变量提升</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#new"><span class="nav-number">7.1.8.</span> <span class="nav-text">new</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#call%E3%80%81apply%E3%80%81bind"><span class="nav-number">7.1.9.</span> <span class="nav-text">call、apply、bind</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8E%9F%E5%9E%8B"><span class="nav-number">7.1.10.</span> <span class="nav-text">原型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Class"><span class="nav-number">7.1.11.</span> <span class="nav-text">Class</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%A7%E6%89%BF"><span class="nav-number">7.1.12.</span> <span class="nav-text">继承</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A8%A1%E5%9D%97%E5%8C%96"><span class="nav-number">7.1.13.</span> <span class="nav-text">模块化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Promise"><span class="nav-number">7.1.14.</span> <span class="nav-text">Promise</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%AD%E4%BB%A3%E5%99%A8%E4%B8%8E%E7%94%9F%E6%88%90%E5%99%A8"><span class="nav-number">7.1.15.</span> <span class="nav-text">迭代器与生成器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#async-await"><span class="nav-number">7.1.16.</span> <span class="nav-text">async await</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8B%E4%BB%B6%E5%BE%AA%E7%8E%AF"><span class="nav-number">7.1.17.</span> <span class="nav-text">事件循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%8A%82%E6%B5%81%E4%B8%8E%E9%98%B2%E6%8A%96"><span class="nav-number">7.1.18.</span> <span class="nav-text">节流与防抖</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9F%AF%E9%87%8C%E5%8C%96"><span class="nav-number">7.1.19.</span> <span class="nav-text">柯里化</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E5%9B%9E%E6%94%B6"><span class="nav-number">7.1.20.</span> <span class="nav-text">垃圾回收</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E9%9B%B6%E6%95%A3%E4%BD%86%E9%87%8D%E8%A6%81%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-number">7.1.21.</span> <span class="nav-text">其他零散但重要的知识点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML"><span class="nav-number">7.2.</span> <span class="nav-text">HTML</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AF%AD%E4%B9%89%E5%8C%96"><span class="nav-number">7.2.1.</span> <span class="nav-text">语义化</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS"><span class="nav-number">7.3.</span> <span class="nav-text">CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9B%92%E5%AD%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">7.3.1.</span> <span class="nav-text">盒子模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%80%89%E6%8B%A9%E5%99%A8"><span class="nav-number">7.3.2.</span> <span class="nav-text">选择器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Flex"><span class="nav-number">7.3.3.</span> <span class="nav-text">Flex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#grid"><span class="nav-number">7.3.4.</span> <span class="nav-text">grid</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">7.3.5.</span> <span class="nav-text">其他</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A1%86%E6%9E%B6"><span class="nav-number">8.</span> <span class="nav-text">框架</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F-DOM"><span class="nav-number">8.1.</span> <span class="nav-text">虚拟 DOM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1"><span class="nav-number">8.2.</span> <span class="nav-text">路由</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#React"><span class="nav-number">9.</span> <span class="nav-text">React</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84"><span class="nav-number">9.1.</span> <span class="nav-text">React 推荐学习路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">9.2.</span> <span class="nav-text">React 推荐学习资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%BC%96%E5%86%99%E4%B8%80%E4%B8%AA%E7%BB%84%E4%BB%B6"><span class="nav-number">9.3.</span> <span class="nav-text">如何编写一个组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6%E5%92%8C%E9%9D%9E%E5%8F%97%E6%8E%A7%E7%BB%84%E4%BB%B6"><span class="nav-number">9.4.</span> <span class="nav-text">受控组件和非受控组件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%AB%98%E9%98%B6%E7%BB%84%E4%BB%B6%EF%BC%88HOC%EF%BC%89"><span class="nav-number">9.5.</span> <span class="nav-text">高阶组件（HOC）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Hooks"><span class="nav-number">9.6.</span> <span class="nav-text">Hooks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%90%88%E6%88%90%E4%BA%8B%E4%BB%B6"><span class="nav-number">9.7.</span> <span class="nav-text">合成事件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E8%B7%AF%E7%94%B1"><span class="nav-number">9.8.</span> <span class="nav-text">React 路由</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86"><span class="nav-number">9.9.</span> <span class="nav-text">React 状态管理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E6%8E%A5%E5%8F%A3%E8%AF%B7%E6%B1%82"><span class="nav-number">9.10.</span> <span class="nav-text">React 接口请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-SSR"><span class="nav-number">9.11.</span> <span class="nav-text">React SSR</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E5%8D%95%E6%B5%8B"><span class="nav-number">9.12.</span> <span class="nav-text">React 单测</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-CSS-%E6%96%B9%E6%A1%88"><span class="nav-number">9.13.</span> <span class="nav-text">React CSS 方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E5%8E%9F%E7%90%86"><span class="nav-number">9.14.</span> <span class="nav-text">React 原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Blog-%E6%8E%A8%E8%8D%90"><span class="nav-number">9.15.</span> <span class="nav-text">Blog 推荐</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Vue"><span class="nav-number">10.</span> <span class="nav-text">Vue</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E8%B7%AF%E5%BE%84"><span class="nav-number">10.1.</span> <span class="nav-text">Vue 推荐学习路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">10.2.</span> <span class="nav-text">Vue 推荐学习资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Vue-%E5%8E%9F%E7%90%86"><span class="nav-number">10.3.</span> <span class="nav-text">Vue 原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8"><span class="nav-number">11.</span> <span class="nav-text">浏览器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9E%B6%E6%9E%84"><span class="nav-number">11.1.</span> <span class="nav-text">架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B"><span class="nav-number">11.2.</span> <span class="nav-text">整体流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B8%B2%E6%9F%93%E7%9B%B8%E5%85%B3"><span class="nav-number">11.3.</span> <span class="nav-text">渲染相关</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-%E6%89%A7%E8%A1%8C%E6%9C%BA%E5%88%B6"><span class="nav-number">11.4.</span> <span class="nav-text">JS 执行机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BC%93%E5%AD%98"><span class="nav-number">11.5.</span> <span class="nav-text">缓存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Devtools"><span class="nav-number">11.6.</span> <span class="nav-text">Devtools</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%89%E5%85%A8"><span class="nav-number">11.7.</span> <span class="nav-text">浏览器安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="nav-number">12.</span> <span class="nav-text">性能优化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E4%B9%A6%E7%B1%8D"><span class="nav-number">12.1.</span> <span class="nav-text">推荐书籍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E7%BD%91%E7%AB%99"><span class="nav-number">12.2.</span> <span class="nav-text">推荐网站</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%95%B4%E4%BD%93%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="nav-number">12.3.</span> <span class="nav-text">整体优化建议</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87"><span class="nav-number">12.4.</span> <span class="nav-text">性能指标</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E7%9B%91%E6%8E%A7"><span class="nav-number">12.5.</span> <span class="nav-text">性能监控</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#TypeScript"><span class="nav-number">13.</span> <span class="nav-text">TypeScript</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Electron"><span class="nav-number">14.</span> <span class="nav-text">Electron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%84%E4%BB%B6%E5%BA%93"><span class="nav-number">15.</span> <span class="nav-text">组件库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%AE%E5%89%8D%E7%AB%AF"><span class="nav-number">16.</span> <span class="nav-text">微前端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%8D%90%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">16.1.</span> <span class="nav-text">推荐学习资料</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B7%A8%E7%AB%AF%E6%A1%86%E6%9E%B6"><span class="nav-number">17.</span> <span class="nav-text">跨端框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%9B%91%E6%8E%A7"><span class="nav-number">18.</span> <span class="nav-text">监控</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%97%A5%E5%B8%B8%E5%85%85%E7%94%B5"><span class="nav-number">19.</span> <span class="nav-text">日常充电</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#CSS-%E6%97%A5%E5%B8%B8%E5%85%85%E7%94%B5"><span class="nav-number">19.1.</span> <span class="nav-text">CSS 日常充电</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-%E4%BC%98%E7%A7%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">20.</span> <span class="nav-text">Github 优秀学习资料</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#JS-%E4%BC%98%E7%A7%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">20.1.</span> <span class="nav-text">JS 优秀学习资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#React-%E4%BC%98%E7%A7%80%E5%AD%A6%E4%B9%A0%E8%B5%84%E6%96%99"><span class="nav-number">20.2.</span> <span class="nav-text">React 优秀学习资料</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E6%A0%B7%E5%BC%8F%E5%8F%8A%E5%AE%89%E5%85%A8"><span class="nav-number">20.3.</span> <span class="nav-text">代码样式及安全</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%94%9F%E4%BA%A7%E5%8A%9B%E5%B7%A5%E5%85%B7"><span class="nav-number">21.</span> <span class="nav-text">生产力工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="nav-number">21.1.</span> <span class="nav-text">流程图</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E5%90%8E"><span class="nav-number">22.</span> <span class="nav-text">最后</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">33</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/14/%E5%86%99%E7%BB%99%E5%88%9D%E4%B8%AD%E7%BA%A7%E5%89%8D%E7%AB%AF%E7%9A%84%E4%B8%87%E5%AD%97%E9%AB%98%E7%BA%A7%E8%BF%9B%E9%98%B6%E6%8C%87%E5%8D%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          写给初中级前端的万字高级进阶指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-14 15:44:52 / 修改时间：16:08:47" itemprop="dateCreated datePublished" datetime="2021-10-14T15:44:52+08:00">2021-10-14</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Programming/" itemprop="url" rel="index"><span itemprop="name">Programming</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Programming/JavaScript/" itemprop="url" rel="index"><span itemprop="name">JavaScript</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>转载自掘金，原文链接 <a target="_blank" rel="noopener" href="https://juejin.cn/post/7017645909483716615?utm_source=gold_browser_extension">点这里查看</a></p>
+<hr>
+<h2 id="🔥-这是什么？"><a href="#🔥-这是什么？" class="headerlink" title="🔥 这是什么？"></a>🔥 这是什么？</h2><p>笔者在学会 JS 以及框架的应用后，有一段时间不知道该如何深入下去，活能干，就是不知道该学啥。相信这个问题也会有很多读者朋友遇到。</p>
+<p>当然笔者目前已经突破了这个瓶颈，也成为了知名公司基础架构组的成员。因此想通过自己成长的经历及积累的资料整理出<strong>一系列的学习路线及资料推荐</strong>，帮助各位读者朋友解决这个问题。</p>
+<blockquote>
+<p>仓库内容笔者为主要贡献者，另外还拉了将近 20 位资深前端开发做内容共建及审核，多数人员任职一线大厂 P6、P7，第一版耗时数周，大家国庆假期也没停歇，内容绝对让各位看官满意。</p>
+</blockquote>
+<p><strong>此资料适用于小白入门、初中级进阶、高级查漏补缺。</strong></p>
+<a id="more"></a>
+
+<p><strong>内容每天都在更新，大家可以持续关注。</strong></p>
+<p>这里是 <a href="https://link.juejin.cn/?target=https://github.com/KieSun/fucking-frontend">Github 链接</a>，最新内容都会首先更新在 Github，如果你觉得内容对你有帮助，可以点个 Star。</p>
+<h2 id="💻-如何使用"><a href="#💻-如何使用" class="headerlink" title="💻 如何使用"></a>💻 如何使用</h2><p>如果你是初中级工程师来说，笔者也推荐先行学习「前端核心学习路径」，主要是巩固基础，之后再挑选感兴趣的主题。</p>
+<p>如果你是高级工程化，笔者推荐跳过「前端核心学习路径」，直接挑选感兴趣的主题学习即可。</p>
+<p>以下所有知识点笔者都会帮助读者朋友们将知识连贯起来，从而建立自己的知识体系而不是单独记忆松散的知识点。</p>
+<h2 id="如何获取本文资料"><a href="#如何获取本文资料" class="headerlink" title="如何获取本文资料"></a>如何获取本文资料</h2><p><strong>笔者已经将仓库内容里的重要资料整理好了， 另外还附赠了前端 10 万字的面试攻略，已经帮助上千人拿到 offer。大家可以关注【<a href="https://link.juejin.cn/?target=https://github.com/KieSun/all-of-frontend%23%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%9C%AC%E4%BB%93%E5%BA%93%E8%B5%84%E6%96%99">公众号</a>】发送「资料」获取。</strong></p>
+<h2 id="📖-目录"><a href="#📖-目录" class="headerlink" title="📖 目录"></a>📖 目录</h2><p>因为掘金的 <code>header</code> 标签并不支持跳转，因此大家只能受累自己划文章到感兴趣的地方了，或者读者朋友也可以前往 <a href="https://link.juejin.cn/?target=https://github.com/KieSun/fucking-frontend">Github</a> 浏览目录。</p>
+<h2 id="如何高效自学"><a href="#如何高效自学" class="headerlink" title="如何高效自学"></a>如何高效自学</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7823cf5008814505ac7cd700ebfb9174~tplv-k3u1fbpfcp-watermark.awebp" alt="Z0qdJz"></p>
+<p>自学是每个工程师都需要掌握的一项技能。这个学习方法笔者百试百灵，学习任何技术都会用上这个思路。另外我们还能通过这个思路拓宽自己的技术栈，将各个知识联系起来建立自己的知识体系，并且通过这种学习方式学到的知识也不容易遗忘。</p>
+<h2 id="书籍推荐"><a href="#书籍推荐" class="headerlink" title="书籍推荐"></a>书籍推荐</h2><p>以下书籍主要还是推荐了 JS 方面的，其它比如说框架、TS 等等技术会在各自章节为大家介绍。</p>
+<h3 id="初级"><a href="#初级" class="headerlink" title="初级"></a>初级</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/35175321/">JavaScript 高级程序设计（第 4 版）</a></li>
+</ul>
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/30143702/">JavaScript 忍者秘籍（第 2 版）</a></li>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/26351021/">你不知道的 JS 三卷</a>，该书英文版是开源的，并且作者已经在写第二版，有能力阅读英文的读者推荐直接看 <a href="https://link.juejin.cn/?target=https://github.com/getify/You-Dont-Know-JS">原著</a></li>
+</ul>
+<h3 id="高级"><a href="#高级" class="headerlink" title="高级"></a>高级</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/35469273/">JavaScript 悟道</a></li>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/35085910/">JavaScript 语言精髓与编程实践（第 3 版）</a></li>
+</ul>
+<p><strong>上述书籍大家可以关注【<a href="https://link.juejin.cn/?target=https://github.com/KieSun/fucking-frontend%23%E4%BD%9C%E8%80%85%E4%BF%A1%E6%81%AF">公众号</a>】发送「资料」获取， 另外还附赠了前端 10 万字的面试攻略，已经帮助上千人拿到 offer。</strong></p>
+<h2 id="前端核心学习路径"><a href="#前端核心学习路径" class="headerlink" title="前端核心学习路径"></a>前端核心学习路径</h2><p>前端知识点很多这是公认的事情，但是我们确实没必要把所有知识都去学习，那样只会贪多嚼不烂。我们能把核心知识点、热门技术以及工作中需要用到的知识学好就已经能打败大部分前端工程师了，剩下的大家可以自行根据兴趣选择学习内容。</p>
+<p><strong>但是在学习其他内容之前，笔者强烈推荐各位务必一定一定先把基础打扎实了，基础不好真的不可能把自己技术往上拔高的。</strong></p>
+<blockquote>
+<p>为了保证大家学到的知识是正确的，下文中的文档资料笔者都使用了英文版本。因为在审核资料的过程中笔者发现不少中文文档都存在翻译错误或者过时的情况。</p>
+</blockquote>
+<p>如果你还是一位初学者，推荐先自行完整阅读一至二本书后再按照该计划学习，因为以下计划并没有囊括 JS 的所有知识，而是列出了所有核心知识点。</p>
+<p>关于书籍笔者推荐以下两本：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/35175321/">JavaScript 高级程序设计（第 4 版）</a></li>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/30143702/">JavaScript 忍者秘籍（第 2 版）</a></li>
+</ul>
+<h3 id="JS-核心知识点"><a href="#JS-核心知识点" class="headerlink" title="JS 核心知识点"></a>JS 核心知识点</h3><h4 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h4><p>JS 数据类型分为两大类及八种数据类型，注意别漏了 ES6 新增的 <code>bigint</code>。</p>
+<ul>
+<li>文档：<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">JavaScript 数据类型和数据结构</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="类型判断"><a href="#类型判断" class="headerlink" title="类型判断"></a>类型判断</h4><p>类型判断有好几种方式，分别为：</p>
+<ul>
+<li><code>typeof</code></li>
+<li><code>instanceof</code></li>
+<li><code>Object.prototype.toString</code></li>
+<li><code>isXXX</code>，比如 <code>isArray</code></li>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof">typeof</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof">instanceof</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/toString%23using_tostring_to_detect_object_class">Object.prototype.toString</a></li>
+</ul>
+</li>
+<li>推荐文章，Issue 也挺重要<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/28">JavaScript 专题之类型判断(上)</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/30">JavaScript 专题之类型判断(下)</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h4><p>类型转换算是 JS 中情况繁杂且容易出错，但是开发中还经常会遇到的知识点。强行全部记忆容易遗忘，推荐记忆及练习开发中的常见情况。</p>
+<ul>
+<li>文档<ul>
+<li>ES 标准<ul>
+<li>标准并不好读，如果读者英文水平欠佳，可以只阅读该小节内的表格内容。</li>
+</ul>
+</li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Equality">双等判断</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/weiqinl/You-Dont-Know-JS-CN/blob/master/types%20&%20grammar/ch4.md">You Don’t Know JS 书中关于类型转换的一章节</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zh.javascript.info/type-conversions">几种基本类型简单的类型转换</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/159">JavaScript 深入之头疼的类型转换(上)</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/164">JavaScript 深入之头疼的类型转换(下)</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="this"><a href="#this" class="headerlink" title="this"></a>this</h4><p><code>this</code> 算是不少初学者容易搞混的一个知识点，但是它很重要，务必掌握。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">this</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20&%20object%20prototypes/ch1.md">You Don’t Know JS 书中关于 this 的第一章节</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20&%20object%20prototypes/ch2.md">You Don’t Know JS 书中关于 this 的第二章节</a></li>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000011194676">深入理解 js this 绑定 ( 无需死记硬背，尾部有总结和面试题解析 )</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h4><p>闭包特别常用，但是其实挺多工程师对于闭包的理解是错误的。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">闭包</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/scope-closures/ch7.md">You Don’t Know JS 第二版中对于闭包的解释</a>，该版本暂无中文翻译，读者可用 <a href="https://link.juejin.cn/?target=https://www.deepl.com/translator">DeepL</a> 进行翻译。</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6957913856488243237">JavaScript 的静态作用域链与“动态”闭包链</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.zhihu.com/question/34210214">知乎中关于闭包的讨论</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h4><p>作用域是指程序中定义变量的区域，该位置决定了变量的生命周期，也就是变量和函数的可访问范围。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Glossary/Scope">作用域</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Glossary/Block/Scripting">块作用域</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/3">JavaScript 深入之词法作用域和动态作用域</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/6">JavaScript 深入之作用域链</a></li>
+<li><a href="https://link.juejin.cn/?target=https://javascript.info/closure">Variable scope, closure</a>，另有 <a href="https://link.juejin.cn/?target=https://zh.javascript.info/closure">中文翻译版</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/getify/You-Dont-Know-JS/tree/2nd-ed/scope-closures">You Don’t Know JS Yet: Scope &amp; Closures</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.deadcoderising.com/2017-04-11-es6-var-let-and-const-the-battle-between-function-scope-and-block-scope/">The battle between function scope and block scope</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h4><p>变量提升（Hoisting）可以将变量和函数在编译阶段放入内存，从而在执行阶段时在声明前使用。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">JS 变量提升</a>，变量提升的概念</li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://towind.fun/2021/05/10/js-hoisting/">JavsScript 变量提升和函数提升</a>，深度解析变量提升和函数提升，举例说明各种情况下的变量提升</li>
+<li><a href="https://link.juejin.cn/?target=https://fangyinghang.com/let-in-js/">我用了两个月的时间才理解 let</a>，深度理解解析 let 和 val 的区别，和 let 的暂时死区</li>
+<li><a href="https://link.juejin.cn/?target=http://www.adequatelygood.com/JavaScript-Scoping-and-Hoisting.html">JavaScript Scoping and Hoisting</a>，JavaScript 中的作用域和函数声明和变量声明的提升</li>
+</ul>
+</li>
+</ul>
+<h4 id="new"><a href="#new" class="headerlink" title="new"></a>new</h4><p><code>new</code> 操作符可以帮助我们构建出一个实例，并且绑定上 <code>this</code>。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">new</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/23987456">JS 的 new 到底是干什么的？</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/13">JavaScript 深入之 new 的模拟实现</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="call、apply、bind"><a href="#call、apply、bind" class="headerlink" title="call、apply、bind"></a>call、apply、bind</h4><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/call">call</a>，call 的概念</li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/apply">apply</a>，apply 的概念</li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind">bind</a>，bind 的概念</li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000018270750">JS 中的 call、apply、bind 方法详解</a>，对这三个方法的使用、面试题及具体实现做了详解</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/11">call 和 apply 的模拟实现</a>，模拟实现 call 和 apply，帮助更好理解</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/12">bind 的模拟实现</a>，模拟实现 bind，帮助更好理解</li>
+</ul>
+</li>
+</ul>
+<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><p>通过原型这种机制，JavaScript 中的对象从其他对象继承功能特性。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">原型</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/getify/You-Dont-Know-JS/blob/1st-ed/this%20&%20object%20prototypes/ch5.md">You Don’t Know JS: this &amp; Object Prototypes</a></li>
+<li><a href="https://link.juejin.cn/?target=https://mp.weixin.qq.com/s/1UDILezroK5wrcK-Z5bHOg">深入理解 JavaScript 原型</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903575974313992">深度解析原型中的各个难点</a></li>
+<li><a href="https://link.juejin.cn/?target=https://betterprogramming.pub/prototypes-in-javascript-5bba2990e04b">Prototypes in JavaScript</a> 需自备梯子</li>
+</ul>
+</li>
+</ul>
+<h4 id="Class"><a href="#Class" class="headerlink" title="Class"></a>Class</h4><p><code>class</code> 只是原型链的语法糖，与其它语言中的类不是同一样东西。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Glossary/Class">Class</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://www.digitalocean.com/community/tutorials/understanding-classes-in-javascript">理解 JavaScript 的类</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/105">Babel 是如何编译 Class 上</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/106">Babel 是如何编译 Class 下</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6924108426125508616">给 ES6 class 说句公道话</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/158956514">应该在 JavaScript 中使用 Class 吗？</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="继承"><a href="#继承" class="headerlink" title="继承"></a>继承</h4><p>继承是面向对象语言（Object-Oriented Language）三大特征之一，在 JS 中也占有非常重要的地位。而想要实现继承有多种方式，它们都有各自的优缺点。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Inheritance">继承</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/16">JavaScript 深入之继承的多种方式和优缺点</a></li>
+<li><a href="https://link.juejin.cn/?target=https://medium.com/@happymishra66/inheritance-in-javascript-21d2b82ffa6f">JavaScript 中的继承</a>，需自备梯子</li>
+<li><a href="https://link.juejin.cn/?target=https://javascript.info/class-inheritance">JS 类继承</a>，另有 <a href="https://link.juejin.cn/?target=https://zh.javascript.info/class-inheritance">中文翻译版</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p>这块知识必会，最好了解下模块化的前世今生以及对 ES6 的原生模块化有个深入的理解。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules">Modules</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000023711059">【深度全面】前端 JavaScript 模块化规范进化论</a>，记录了 JS 模块化的进化之路</li>
+<li><a href="https://link.juejin.cn/?target=https://v8.dev/features/modules">JavaScript modules</a>，由浅入深解释 JS 模块化</li>
+<li><a href="https://link.juejin.cn/?target=https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/">ES modules: A cartoon deep-dive</a>，一篇对 JS 模块化深入解释的文章，另有 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903591979778061">中文版</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></li>
+<li><a href="https://link.juejin.cn/?target=https://promisesaplus.com/">Promises/A+ 规范</a></li>
+</ul>
+</li>
+<li>推荐文章</li>
+<li><a href="https://link.juejin.cn/?target=https://theflyingmantis.medium.com/callbacks-vs-promises-and-basics-of-js-80d3d1515e81">Callbacks Vs Promises and basics of JS</a>，需自备梯子</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904094079926286">最简实现 Promise，支持异步链式调用（20 行）</a></li>
+<li><a href="https://link.juejin.cn/?target=https://mp.weixin.qq.com/s/qdJ0Xd8zTgtetFdlJL3P1g">100 行代码实现 Promises/A+ 规范</a></li>
+<li>Github</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/sindresorhus/promise-fun">promise-fun</a></li>
+</ul>
+<h4 id="迭代器与生成器"><a href="#迭代器与生成器" class="headerlink" title="迭代器与生成器"></a>迭代器与生成器</h4><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_Generators">迭代器与生成器</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li>[<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903616357072910">译] 什么是 JavaScript 生成器？如何使用生成器？</a></li>
+<li><a href="https://link.juejin.cn/?target=https://codeburst.io/understanding-generators-in-es6-javascript-with-examples-6728834016d5">Understanding Generators in ES6 JavaScript with Examples</a>，需自备梯子</li>
+<li><a href="https://link.juejin.cn/?target=https://codeburst.io/a-simple-guide-to-es6-iterators-in-javascript-with-examples-189d052c3d8e">A Simple Guide to ES6 Iterators in JavaScript with Examples</a>，需自备梯子</li>
+</ul>
+</li>
+</ul>
+<h4 id="async-await"><a href="#async-await" class="headerlink" title="async await"></a>async await</h4><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/async_function">async</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await">await</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904102053281806">手写 async await 的最简实现（20 行）</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/102">Babel 将 Generator 编译成了什么样子</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="事件循环"><a href="#事件循环" class="headerlink" title="事件循环"></a>事件循环</h4><p>大家都知道 JS 是一门单线程的非阻塞的脚本语言。这也就意味着，代码在执行的任何时候只有一个主线程来处理所有的任务。所以弄懂事件循环机制对我们学习 JS 至关重要。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">事件循环</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903512845860872">这一次，彻底弄懂 JavaScript 执行机制</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903764202094606">一次弄懂 Event Loop</a></li>
+<li><a href="https://link.juejin.cn/?target=https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5">JavaScript 的工作原理</a>，需自备梯子，另有 <a href="https://link.juejin.cn/?target=https://github.com/Troland/how-javascript-works/blob/master/event-loop.md">中文翻译版</a>。</li>
+</ul>
+</li>
+<li>事件循环可视化<ul>
+<li><a href="https://link.juejin.cn/?target=http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4=">Loupe</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="节流与防抖"><a href="#节流与防抖" class="headerlink" title="节流与防抖"></a>节流与防抖</h4><p>节流指连续触发事件的情况下，在某个时间段内，函数只会执行一次。 防抖指在事件被触发一定时间后再执行回调函数，如果在一定时间内该事件又被重复触发，则重启计时。</p>
+<ul>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/38313717">函数防抖与函数节流</a></li>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000018428170">浅谈 JS 防抖和节流</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.freecodecamp.org/news/javascript-debounce-example">Debounce – How to Delay a Function in JavaScript</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.telerik.com/blogs/debouncing-and-throttling-in-javascript">Debouncing and Throttling in JavaScript</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="柯里化"><a href="#柯里化" class="headerlink" title="柯里化"></a>柯里化</h4><p>柯里化就是将接收多个参数的函数转换成接收一个参数的函数。</p>
+<ul>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://zh.javascript.info/currying-partials">柯里化（Currying）</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mqyqingfeng/Blog/issues/42">JavaScript 专题之函数柯里化</a></li>
+<li><a href="https://link.juejin.cn/?target=https://blog.bitsrc.io/understanding-currying-in-javascript-ceb2188c339">Understanding Currying in JavaScript</a>，需自备梯子，另有 <a href="https://link.juejin.cn/?target=https://www.cnblogs.com/GeniusLyzh/p/9937829.html">中文翻译版</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="垃圾回收"><a href="#垃圾回收" class="headerlink" title="垃圾回收"></a>垃圾回收</h4><p>JavaScrip 在变量被创建时分配内存，并在对象不再使用时自动释放内存，这个过程被称为垃圾回收。另外我们主要学习 V8 引擎下的垃圾回收机制。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/JavaScript/Memory_Management">内存管理 &amp; 垃圾回收</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/yacan8/blog/issues/33">深入理解 Chrome V8 垃圾回收机制</a>，该文章的参考文献也可阅读下</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/lrlna/sketchin/blob/master/guides/garbage-collection-in-v8.md">GC in v8</a></li>
+<li><a href="https://link.juejin.cn/?target=https://blog.sessionstack.com/how-javascript-works-memory-management-how-to-handle-4-common-memory-leaks-3f28b94cfbec">JavaScript 工作原理：内存管理 + 处理常见的 4 种内存泄漏</a>，另有<a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903519078580238">中文版</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="其他零散但重要的知识点"><a href="#其他零散但重要的知识点" class="headerlink" title="其他零散但重要的知识点"></a>其他零散但重要的知识点</h4><ul>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/225490777">0.1 + 0.2 !== 0.3</a>，JS 浮点数会造成的问题</li>
+</ul>
+<p><strong>如果你觉得以上内容对你有帮助，可以前往 <a href="https://link.juejin.cn/?target=https://github.com/KieSun/fucking-frontend">Github</a> 点个 Star 支持一下。</strong></p>
+<h3 id="HTML"><a href="#HTML" class="headerlink" title="HTML"></a>HTML</h3><h4 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h4><p>html 语义化就是让页面的内容结构化，便于对浏览器、搜索引擎解析。在没有引入样式 CCS 样式的时候也能以一种可以分辨出来大致表示内容的文档格式显示，并且是容易阅读的。 搜索引擎的爬虫依赖于标记来确定上下文和各个关键字的权重，利于 SEO。 使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Glossary/Semantics%23semantics_in_html">HTML 中的语义</a>，什么是 HTML 语义化，HTML 语义化有什么好处</li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://rainylog.com/post/ife-note-1/">IFE-NOTE：页面结构语义化</a>，HTML5 语义化中的页面结构语义化的一些经验和理解</li>
+<li><a href="https://link.juejin.cn/?target=http://nicolasgallagher.com/about-html-semantics-front-end-architecture/">关于 HTML 语义和前端架构</a>，HTML 语义化在开发中配合 CSS 结构化类名的使用构建可重用和可组合的组件</li>
+</ul>
+</li>
+</ul>
+<h3 id="CSS"><a href="#CSS" class="headerlink" title="CSS"></a>CSS</h3><ul>
+<li>推荐文章<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6854573212337078285">一文梳理 CSS 必会知识点</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="盒子模型"><a href="#盒子模型" class="headerlink" title="盒子模型"></a>盒子模型</h4><p>在 CSS 中，所有的元素都被一个个的“盒子（box）”包围着，我们广泛地使用两种“盒子” —— 块级盒子 (block box) 和 内联盒子 (inline box)，理解这些“盒子”的基本原理，是我们使用 CSS 实现准确布局、处理元素排列的关键。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/The_box_model">CSS 盒子模型</a>，官方文档深入了解 CSS 盒子模型</li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6880111680153059341">CSS 盒模型之内边距、边框、外边距 十九问</a>，通过举例说明盒子模型各种常见形态和问题</li>
+<li><a href="https://link.juejin.cn/?target=https://www.w3.org/TR/css-box-3/">CSS Box Model</a>，盒子模型的一些规范介绍</li>
+<li><a href="https://link.juejin.cn/?target=https://www.cnblogs.com/qianguyihao/p/7256371.html">CSS 盒模型详解（图文教程）</a>，通过图片和例子说明盒子模型的各个部分和在页面上的表现形式</li>
+</ul>
+</li>
+</ul>
+<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a>选择器</h4><p>CSS 中，选择器用来指定网页上我们想要样式化的 HTML 元素。CSS 选择器提供了很多种方法，所以在选择要样式化的元素时，我们可以做到很精细的地步。</p>
+<p>CSS 选择器是 CSS 规则的第一部分。它是元素和其他部分组合起来告诉浏览器哪个 HTML 元素应当是被选为应用规则中的 CSS 属性值的方式。选择器所选择的元素，叫做“选择器的对象”。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Selectors">CSS 选择器</a>，官方文档详细地讲授选择器的不同使用方式，并了解它们的工作原理。</li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://code.tutsplus.com/zh-hans/tutorials/the-30-css-selectors-you-must-memorize--net-16048">30 个你必须熟记的 CSS 选择器</a>，开发中常用的 CSS 选择器，熟练掌握以后可以很大程度提高 CSS 的编码体验</li>
+<li><a href="https://link.juejin.cn/?target=https://cloud.tencent.com/developer/article/1545341">深入解析 CSS 样式优先级</a>，详细介绍了 CSS 样式的权重优先级，避免写重复样式和样式被覆盖不生效的问题</li>
+</ul>
+</li>
+</ul>
+<h4 id="Flex"><a href="#Flex" class="headerlink" title="Flex"></a>Flex</h4><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox">flexbox</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6938292463605907492">Flexbox 布局中不为人知的细节</a></li>
+</ul>
+</li>
+<li>实战<ul>
+<li><a href="https://link.juejin.cn/?target=https://flexboxfroggy.com/">FLEXBOX FROGGY</a> 一个趣味性小游戏学习 Flex 的网站</li>
+</ul>
+</li>
+</ul>
+<h4 id="grid"><a href="#grid" class="headerlink" title="grid"></a>grid</h4><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout">grid</a></li>
+</ul>
+</li>
+<li>推荐文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://css-tricks.com/snippets/css/complete-guide-grid/">A Complete Guide to Grid</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6854573220306255880">最强大的 CSS 布局 —— Grid 布局</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><ul>
+<li>推荐文档<ul>
+<li><a href="https://link.juejin.cn/?target=http://jartto.wang/2017/09/29/expand-on-performance-composite/">详谈层合成（composite)</a></li>
+<li><a href="https://link.juejin.cn/?target=https://jinlong.github.io/2015/05/24/css-retina-hairlines/">移动设备如何实现真正 1px 的线？</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="框架"><a href="#框架" class="headerlink" title="框架"></a>框架</h2><p>框架一般选其一深入学习即可。</p>
+<h3 id="虚拟-DOM"><a href="#虚拟-DOM" class="headerlink" title="虚拟 DOM"></a>虚拟 DOM</h3><p>Virtual DOM 也就是虚拟节点。通过 JS 的 Object 对象模拟 DOM 中的真实节点对象，再通过特定的 render 方法将其渲染成真实的 DOM 节点。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://reactjs.org/docs/faq-internals.html">React 官网介绍</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://medium.com/@gethylgeorge/how-virtual-dom-and-diffing-works-in-react-6fc805f9f84e">Virtual Dom 和 Diff 算法在 React 中是如何工作的？</a>，需自备梯子</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/pfan123/Articles/issues/62">React 核心知识点 – Virtual Dom 与 Diff</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="路由"><a href="#路由" class="headerlink" title="路由"></a>路由</h3><p>路由在 SPA 架构中都有被用到，实际原理就是运用 <code>hash</code> 及 <code>history</code> 相关的 API 实现。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/API/Window/hashchange_event">hashchange</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/API/History">history</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/37730038">前端路由简介以及 vue-router 实现原理</a>，对前端路由及 Vue-Route 库原理做了解释，<strong>几个框架的路由库原理都一致</strong></li>
+</ul>
+</li>
+</ul>
+<h2 id="React"><a href="#React" class="headerlink" title="React"></a>React</h2><p>学习框架务必从<a href="https://link.juejin.cn/?target=https://reactjs.org/">文档</a>出发，起码熟读一遍及自己写过一些初步的 Demo 之后再考虑学习别的资料。</p>
+<h3 id="React-推荐学习路径"><a href="#React-推荐学习路径" class="headerlink" title="React 推荐学习路径"></a>React 推荐学习路径</h3><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ec39552dd0c84985bedb861ba7cb09f5~tplv-k3u1fbpfcp-watermark.awebp" alt="reactStudy.png"></p>
+<p>大家可以跟着以上学习路径学习，其中除了概念相关的内容是必须学习之外，生态相关的内容大家可以在使用时再学习。</p>
+<h3 id="React-推荐学习资料"><a href="#React-推荐学习资料" class="headerlink" title="React 推荐学习资料"></a>React 推荐学习资料</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://leanpub.com/the-road-to-learn-react-chinese/">React 学习之道</a>，可以 0 元购买</li>
+<li><a href="https://link.juejin.cn/?target=https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">React 生命周期</a></li>
+</ul>
+<h3 id="如何编写一个组件"><a href="#如何编写一个组件" class="headerlink" title="如何编写一个组件"></a>如何编写一个组件</h3><ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://reactjs.org/docs/components-and-props.html">React 官方文档</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li>[<a href="https://link.juejin.cn/?target=https://jishuin.proginn.com/p/763bfbd4cad4">译]React 函数组件和类组件的差异</a></li>
+<li><a href="https://link.juejin.cn/?target=https://medium.com/@chihsuan/%E5%AF%AB-react-components-%E8%A9%B2%E6%B3%A8%E6%84%8F%E7%9A%846%E5%80%8B%E5%9C%B0%E6%96%B9%E8%88%87%E6%8A%80%E5%B7%A7-faa2bb87a18e">寫 React Components 該注意的 6 個地方與技巧</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.infoq.cn/article/ry4icky5crb1pokvi0ql">编写高效且可读组件的 5 个最佳实践</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.thisdot.co/blog/designing-react-components-best-practices">designing-react-components-best-practices</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.smashingmagazine.com/2021/08/compound-components-react/">React 复合组件</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="受控组件和非受控组件"><a href="#受控组件和非受控组件" class="headerlink" title="受控组件和非受控组件"></a>受控组件和非受控组件</h3><ul>
+<li>受控组件：在 HTML 中，表单元素（如 input、 textarea 和 select ）通常自己维护 state，并根据用户输入进行更新。而在 React 中，可变状态（mutable state）通常保存在组件的 state 属性中，并且只能通过使用 setState() 或者 props 来更新</li>
+<li>非受控组件：是一个存储其自己的内部状态，并且您使用查询 DOM ref，当你需要它来找到它的当前值，这有点像传统的 HTML</li>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://reactjs.org/docs/uncontrolled-components.html">React 官方文档</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6858276396968951822">受控和非受控组件真的那么难理解吗</a></li>
+<li>[<a href="https://link.juejin.cn/?target=https://www.baobangdong.cn/controlled-components-and-uncontrolled-components/">译]受控组件 &amp; 非受控组件</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="高阶组件（HOC）"><a href="#高阶组件（HOC）" class="headerlink" title="高阶组件（HOC）"></a>高阶组件（HOC）</h3><p>高阶组件（HOC）是 React 中用于复用组件逻辑的一种高级技巧。HOC 自身不是 React API 的一部分，它是一种基于 React 的组合特性而形成的设计模式。</p>
+<p>具体而言，高阶组件是参数为组件，返回值为新组件的函数。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://reactjs.org/docs/higher-order-components.html">React 官方文档</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/MrErHu/blog/issues/4">React 高阶组件(HOC)入门指南</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/acdlite/recompose">hoc 库 recompose</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/27434557">精读 React 高阶组件</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="Hooks"><a href="#Hooks" class="headerlink" title="Hooks"></a>Hooks</h3><p>Hook 是 React 16.8 的新增特性。它可以让你在不编写类组件的情况下使用 React 的特性。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://zh-hans.reactjs.org/docs/hooks-intro.html">React Hooks 官方文档</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904032113278990">彻底理解 React hook useCallback 和 useMemo 的区别</a></li>
+<li><a href="https://link.juejin.cn/?target=https://mp.weixin.qq.com/s/0sykIHDM_Ih3W3md-DwFkw">React hooks 最佳实践</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="合成事件"><a href="#合成事件" class="headerlink" title="合成事件"></a>合成事件</h3><p>合成事件（SyntheticEvent）是 React 模拟原生 DOM 事件所有能力的一个事件对象，即浏览器原生事件的跨浏览器包装器。React 根据 <a href="https://link.juejin.cn/?target=https://www.w3.org/TR/DOM-Level-3-Events/">W3C 规范</a> 定义了合成事件。需要注意的是 v16 和 17 版本中的合成事件有差异。</p>
+<ul>
+<li>文档<ul>
+<li><a href="https://link.juejin.cn/?target=https://reactjs.org/docs/events.html">React 官方文档</a></li>
+</ul>
+</li>
+<li>推荐文章<ul>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000038251163">探索 React 合成事件</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/380941094">大佬，怎么办？升级 React17，Toast 组件不能用了</a></li>
+<li><a href="https://link.juejin.cn/?target=https://betterprogramming.pub/whats-the-difference-between-synthetic-react-events-and-javascript-events-ba7dbc742294">What’s the Difference Between Synthetic React Events and JavaScript Events?</a>，需自备梯子</li>
+<li><a href="https://link.juejin.cn/?target=https://blog.saeloun.com/2021/04/06/react-17-removes-event-pooling-in-modern-system.html">React 17 removes event pooling in the modern browsers</a></li>
+</ul>
+</li>
+</ul>
+<h3 id="React-路由"><a href="#React-路由" class="headerlink" title="React 路由"></a>React 路由</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/remix-run/react-router">react-router</a>，React 声明式路由</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/reach/router">reach router</a>，下一代的 React 路由</li>
+</ul>
+<h3 id="React-状态管理"><a href="#React-状态管理" class="headerlink" title="React 状态管理"></a>React 状态管理</h3><p>React 状态管理可谓百花齐放百家争鸣，远远不止笔者列的这些库。但是实际上很多项目完全是不需要用到状态管理的，反而是增加编码复杂度，其实利用 React Context 或者 <a href="https://link.juejin.cn/?target=https://github.com/tannerlinsley/react-query">react-query</a> 这类接口请求库就能很好地满足需求了。</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/reduxjs/redux">redux</a>，JS 应用的状态容器，提供可预测的状态管理</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mobxjs/mobx">mobx</a>，简单，可扩展的状态管理库</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/facebookexperimental/Recoil">recoil</a>，React 状态管理库</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/statelyai/xstate">xstate</a>，有限状态机</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/pmndrs/zustand">zustand</a>，简单、快速和可扩展的骨状态管理解决方案</li>
+</ul>
+<h3 id="React-接口请求"><a href="#React-接口请求" class="headerlink" title="React 接口请求"></a>React 接口请求</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/axios/axios">axios</a>，传统接口请求库</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/tannerlinsley/react-query">react-query</a>，用于获取、缓存和更新 React 中异步数据的 Hooks 接口请求库</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/vercel/swr">swr</a>，用于数据请求的 React Hooks 库</li>
+</ul>
+<h3 id="React-SSR"><a href="#React-SSR" class="headerlink" title="React SSR"></a>React SSR</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/nestjs/nest">nest.js</a>，一个渐进式的 Node.js 框架，用于构建高效、可靠和可扩展的服务端应用。</li>
+</ul>
+<h3 id="React-单测"><a href="#React-单测" class="headerlink" title="React 单测"></a>React 单测</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/facebook/jest">jest</a>，优雅、简洁的 JavaScript 测试框架，单测必选项</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/testing-library/react-testing-library">react-testing-library</a>，简单且完整的 React DOM 测试工具</li>
+</ul>
+<h3 id="React-CSS-方案"><a href="#React-CSS-方案" class="headerlink" title="React CSS 方案"></a>React CSS 方案</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/styled-components/styled-components">styled-components</a>，CSS in JS 方案</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/tailwindlabs/tailwindcss">tailwindcss</a>，Atom CSS 方案</li>
+</ul>
+<h3 id="React-原理"><a href="#React-原理" class="headerlink" title="React 原理"></a>React 原理</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/neroneroffy/react-source-code-debug">react-source-code-debug</a>，学习如何调试源码</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/7kms/react-illustration-series">react-illustration-series</a>，图解 react 源码，用大量配图的方式，致力于将 react 原理表述清楚</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/BetaSu/just-react">just-react</a>，「React 技术揭秘」，一本自顶向下的 React 源码分析书</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/PiNengShaoNian/tiny-react">tiny-react</a>，基于 React17 精简而来的最小版实现</li>
+</ul>
+<h3 id="Blog-推荐"><a href="#Blog-推荐" class="headerlink" title="Blog 推荐"></a>Blog 推荐</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://overreacted.io/">Dan Abramov</a>，React 核心开发者的 Blog</li>
+</ul>
+<h2 id="Vue"><a href="#Vue" class="headerlink" title="Vue"></a>Vue</h2><p>学习框架务必从<a href="https://link.juejin.cn/?target=https://vuejs.org/">文档</a>出发，起码熟读一遍及自己写过一些初步的 Demo 之后再考虑学习别的资料。</p>
+<p>对于 Vue 来说，官方文档内容相当齐全，并且全家桶也都是官方出的，因此无需头疼技术栈选型。</p>
+<h3 id="Vue-推荐学习路径"><a href="#Vue-推荐学习路径" class="headerlink" title="Vue 推荐学习路径"></a>Vue 推荐学习路径</h3><p>目前 3.0 生态并不完善，在公司内部基本需要先熟悉 2.0 的写法，因此推荐新手先学习 2.0 的内容。</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/23134551">新手向：Vue 2.0 的建议学习顺序</a>，尤雨溪自己写的学习路径，时至今日也不过时</li>
+</ul>
+<h3 id="Vue-推荐学习资料"><a href="#Vue-推荐学习资料" class="headerlink" title="Vue 推荐学习资料"></a>Vue 推荐学习资料</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/vuejs/awesome-vue">awesome-vue</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/learn-vuejs/vue-patterns">vue-patterns</a>，有用的 Vue 模式、技巧、提示以及有帮助的精选链接</li>
+</ul>
+<h3 id="Vue-原理"><a href="#Vue-原理" class="headerlink" title="Vue 原理"></a>Vue 原理</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/ustbhuangyi/vue-analysis">vue-analysis</a>，黄老师出品</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/HcySunYang/vue-design">vue-design</a>，官方人员出品，域名已过期，需要大家自行在仓库内浏览内容。虽然麻烦了点，但是质量绝对过关</li>
+</ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><p>一般说到浏览器，常指的都是 Chrome。浏览器作为前端不可或缺的载体，我们势必需要好好学习及掌握其相关的知识。</p>
+<p><strong>另外浏览器中涉及到的知识面很多，与 JS 执行机制、网络、性能优化、安全等领域都有关联，因此大家在学习这部分的内容时需要多与之前学习的知识联系起来。</strong></p>
+<h3 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://developers.google.com/web/updates/2018/09/inside-browser-part1">Inside look at modern web browser</a>，这是一个 Google 出的系列专栏，共有四篇文章，内容上到浏览器的整体架构，下至页面的渲染规则都说了一遍，另有 <a href="https://link.juejin.cn/?target=https://cloud.tencent.com/developer/article/1806716">中文翻译</a></li>
+</ul>
+<h3 id="整体流程"><a href="#整体流程" class="headerlink" title="整体流程"></a>整体流程</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://www.html5rocks.com/zh/tutorials/internals/howbrowserswork/">浏览器的工作原理：新式网络浏览器幕后揭秘</a>，这虽然是一篇 11 年的文章，但是内容在如今也不过时，文章广为流传</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/skyline75489/what-happens-when-zh_CN">当···时发生了什么？</a>，经典面试题，文中对于这个流程里的相关内容力求尽可能具体，不遗漏任何细节</li>
+<li><a href="https://link.juejin.cn/?target=https://fex.baidu.com/blog/2014/05/what-happen/">从输入 URL 到页面加载完成的过程中都发生了什么事情？</a>，这篇文章涉及了大量网络及硬件知识</li>
+</ul>
+<h3 id="渲染相关"><a href="#渲染相关" class="headerlink" title="渲染相关"></a>渲染相关</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://coolshell.cn/articles/9666.html">浏览器的渲染原理简介</a>，左耳朵耗子出品，如果上文「浏览器的工作原理：新式网络浏览器幕后揭秘」觉得太长不看或者看完觉得没看懂什么，那么可以来阅读下本文，起码能从中学会一些能用在工作上的东西</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903569087266823">浏览器的回流与重绘 (Reflow &amp; Repaint)</a></li>
+</ul>
+<h3 id="JS-执行机制"><a href="#JS-执行机制" class="headerlink" title="JS 执行机制"></a>JS 执行机制</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000012925872">从浏览器多进程到 JS 单线程，JS 运行机制最全面的一次梳理</a>，超长文，这篇文章能让你对进程线程，浏览器多进程、浏览器内核多线程、JS 单线程、JS 运行机制有个不错的理解</li>
+</ul>
+<h3 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Caching">文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903593275817998">彻底理解浏览器的缓存机制</a>，浏览器缓存机制与性能优化息息相关</li>
+</ul>
+<h3 id="Devtools"><a href="#Devtools" class="headerlink" title="Devtools"></a>Devtools</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.chrome.com/docs/devtools/">Chrome DevTools</a>，Google 出的 DevTools 的使用说明书，对于每个功能的使用都有详细的介绍，看啥文章都不如看这个</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/dendoink/FrontendWingman/tree/master/Chrome_Devtools_Tricks">Chrome_Devtools_Tricks</a>，介绍了 Chrome DevTools 的使用技巧，从不同的情景来说明应该如何搭配使用 Chrome DevTools 中的小技巧，适合英文不怎么好的读者阅读</li>
+</ul>
+<h3 id="浏览器安全"><a href="#浏览器安全" class="headerlink" title="浏览器安全"></a>浏览器安全</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/Security">文档</a></li>
+<li><a href="https://link.juejin.cn/?target=https://segmentfault.com/a/1190000023396707">一文读懂 Web 安全</a>，简单介绍了一些前端需要注意的安全知识</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/trimstray/the-book-of-secret-knowledge">the-book-of-secret-knowledge</a>，如果你对安全领域有兴趣，可以阅读下这个仓库的内容</li>
+</ul>
+<h2 id="性能优化"><a href="#性能优化" class="headerlink" title="性能优化"></a>性能优化</h2><p>性能优化是一个系统性工程，涉及到的方面很多，不仅仅只是大家常说的静态文件和代码优化那么简单。</p>
+<p>大家学习这部分内容的时候可以先从推荐的文章中了解具体有哪些性能优化手段及具体方法，然后根据这些内容去实验。</p>
+<h3 id="推荐书籍"><a href="#推荐书籍" class="headerlink" title="推荐书籍"></a>推荐书籍</h3><p>其实性能优化相关的书籍市面上出的不多，优秀的也都是好几年前的老书了，看不看也无所谓了。</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/25856314/">Web 性能权威指南</a>，豆瓣 8.9 分，老书</li>
+<li><a href="https://link.juejin.cn/?target=https://book.douban.com/subject/4719162/">高性能网站建设进阶指南</a>，豆瓣 8.9 分，老书</li>
+</ul>
+<h3 id="推荐网站"><a href="#推荐网站" class="headerlink" title="推荐网站"></a>推荐网站</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://web.dev/">web.dev</a>，Google 自家的 blog，你能在这上面学到很多性能优化及如何做好用户体验的知识，其实很多市面上的文章内容都有这个网站的影子</li>
+</ul>
+<h3 id="整体优化建议"><a href="#整体优化建议" class="headerlink" title="整体优化建议"></a>整体优化建议</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6892994632968306702">前端性能优化 24 条建议（2020）</a>，类似现代版雅虎军规</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/alienzhou/fe-performance-journey">前端性能优化之旅</a>，系统性介绍性能优化的手段，参考资料也值得学习</li>
+<li><a href="https://link.juejin.cn/?target=https://www.smashingmagazine.com/2021/01/front-end-performance-2021-free-pdf-checklist/">Front-End Performance Checklist 2021</a>，一本很火的免费 PDF，包含了很多性能优化相关的 Checklist</li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6935584878071119885">React 性能优化 | 包括原理、技巧、Demo、工具使用</a></li>
+</ul>
+<h3 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://web.dev/learn-web-vitals/">文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6850037270729359367">还在看那些老掉牙的性能优化文章么？这些最新性能指标了解下</a>，文章会介绍谷歌提倡的七个用户体验指标（也可以认为是性能指标）</li>
+<li><a href="https://link.juejin.cn/?target=https://mp.weixin.qq.com/s/SlS0J9eSb20PCLW062sQVg">做性能优化时，我们关注哪些指标？</a></li>
+</ul>
+<h3 id="性能监控"><a href="#性能监控" class="headerlink" title="性能监控"></a>性能监控</h3><ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6919295789630455815">前端搞工程化：从零打造性能检测库「源码 + 视频」</a>，光会性能优化的手段还是不够的，如何体现优化的价值也是至关重要的</li>
+</ul>
+<h2 id="TypeScript"><a href="#TypeScript" class="headerlink" title="TypeScript"></a>TypeScript</h2><p>TypeScript 是为开发大型应用而设计的，并且 TypeScript 可转译成 JavaScript。由于 TypeScript 是 JavaScript 的严格超集，任何现有的 JavaScript 程序都是合法的 TypeScript 程序。</p>
+<p>文档</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://www.typescriptlang.org/docs/">TypeScript 官方文档</a></li>
+</ul>
+<p>推荐文章</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://ts.xcatliu.com/">TypeScript 入门教程</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6989796543880495135">TypeScript 的另一面：类型编程</a></li>
+<li><a href="https://link.juejin.cn/?target=https://basarat.gitbook.io/typescript/">TypeScript Deep Dive</a> 另有<a href="https://link.juejin.cn/?target=https://jkchao.github.io/typescript-book-chinese/">中文版</a></li>
+</ul>
+<p>推荐开源项目</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/chibicode/TypeScript-for-Beginner-Programmers">TypeScript-for-Beginner-Programmers</a> 需自备梯子</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/type-challenges/type-challenges">type-challenges</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/typescript-exercises/typescript-exercises">TypeScript exercises</a></li>
+</ul>
+<h2 id="Electron"><a href="#Electron" class="headerlink" title="Electron"></a>Electron</h2><p>Electron 是一个可以使用 Web 技术如 JavaScript、HTML 和 CSS 来创建跨平台原生桌面应用的框架。借助 Electron，我们可以使用纯 JavaScript 来调用丰富的原生 APIs。</p>
+<p>文档</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://www.electronjs.org/">Electron 官网</a></li>
+<li><a href="https://link.juejin.cn/?target=https://weishuai.gitbooks.io/electron-/content/">Electron 中文教程</a></li>
+</ul>
+<p>推荐文章</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904029231775758">分享这半年的 Electron 应用开发和优化经验</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903862302670862">用 JS 开发跨平台桌面应用，从原理到实践</a></li>
+<li><a href="https://link.juejin.cn/?target=https://medium.com/developers-writing/building-a-desktop-application-with-electron-204203eeb658">Building a desktop application with Electron</a> 需翻墙访问</li>
+</ul>
+<p>推荐开源项目</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/sindresorhus/awesome-electron">Electron 资源</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/tal-tech/electron-playground">Electron Playground</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/xiaozhu188/electron-vue-cloud-music">electron-vue-cloud-music</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/electron-userland/electron-builder">electron-builder</a></li>
+</ul>
+<h2 id="组件库"><a href="#组件库" class="headerlink" title="组件库"></a>组件库</h2><p>组件库顾名思义指的就是将多个公共模块或者可复用的组件提取整合生成的一个仓库</p>
+<p>知名度较广的组件库：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/ant-design/ant-design.git">antd</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/ElemeFE/element.git">elementUI</a></li>
+</ul>
+<p>相关文档：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/lerna/lerna">lerna</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/angular/angular/blob/master/CONTRIBUTING.md%23commit">angular commit 规范</a></li>
+<li><a href="https://link.juejin.cn/?target=https://yarnpkg.com/">yarn</a></li>
+<li><a href="https://link.juejin.cn/?target=https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">css variables</a></li>
+</ul>
+<p>推荐文章：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://www.infoq.cn/article/i4q9ybdmxzmu8eex8qvh">从 0 到 1，搭建一个体系完善的前端 React 组件库</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/182553920">如何规范你的 Git commit？</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/71385053">基于 lerna 和 yarn workspace 的 monorepo 工作流</a></li>
+<li><a href="https://link.juejin.cn/?target=https://zhuanlan.zhihu.com/p/257159028">FusionNext 可配置能力从 Sass 体系升级为支持 Css Variable</a></li>
+</ul>
+<h2 id="微前端"><a href="#微前端" class="headerlink" title="微前端"></a>微前端</h2><p>是一种类似于微服务的架构，它将微服务的理念应用于浏览器端，即将单页面前端应用由单一的单体应用转变为多个小型前端应用聚合为一的应用。</p>
+<p>优势：</p>
+<ul>
+<li>代码库更小，更内聚、可维护性更高</li>
+<li>松耦合、自治的团队可扩展性更好</li>
+<li>渐进地升级、更新甚至重写部分前端功能成为了可能</li>
+<li>独立开发部署，缩小变更范围，进而降低相关风险</li>
+</ul>
+<p>框架：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://single-spa.js.org/">single-spa</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/umijs/qiankun">蚂蚁-乾坤</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/ice-lab/icestark">淘系-icestark</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/modern-js-dev/garfish">字节-Garfish</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/micro-zoe/micro-app">京东-micro-app</a></li>
+<li><a href="https://link.juejin.cn/?target=https://bit.dev">Bit</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/efoxTeam/emp">EMP - Micro Frontends solution</a> 基于 webpack 5 &amp; module federation</li>
+</ul>
+<p>推荐文章：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7004661323124441102">从零到一实现企业级微前端框架，保姆级教学</a></li>
+<li><a href="https://link.juejin.cn/?target=https://mp.weixin.qq.com/s/L9wbfNG5fTXF5bx7dcgj4Q">字节跳动是如何落地微前端的</a></li>
+<li><a href="https://link.juejin.cn/?target=https://livebook.manning.com/book/micro-frontends-in-action/chapter-1/v-4/">What Are Micro Frontends?</a></li>
+<li><a href="https://link.juejin.cn/?target=https://tech.meituan.com/2019/12/26/meituan-bifrost.html">Bifrost 微前端框架及其在美团闪购中的实践</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903943873675271">每日优鲜供应链前端团队微前端改造</a></li>
+<li><a href="https://link.juejin.cn/?target=https://tech.meituan.com/2020/02/27/meituan-waimai-micro-frontends-practice.html">微前端在美团外卖的实践</a></li>
+<li><a href="https://link.juejin.cn/?target=https://blog.bitsrc.io/how-we-build-micro-front-ends-d3eeeac0acfc">How We Build Micro Frontends</a></li>
+<li><a href="https://link.juejin.cn/?target=https://blog.bitsrc.io/revolutionizing-micro-frontends-with-webpack-5-module-federation-and-bit-99ff81ceb0">Revolutionizing Micro Frontends with Webpack 5, Module Federation and Bit</a></li>
+</ul>
+<h3 id="推荐学习资料"><a href="#推荐学习资料" class="headerlink" title="推荐学习资料"></a>推荐学习资料</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/billyjov/microfrontend-resources">microfrontend-resources</a> ，🔥 关于微前端的各类资料推荐</li>
+</ul>
+<h2 id="跨端框架"><a href="#跨端框架" class="headerlink" title="跨端框架"></a>跨端框架</h2><p>跨端的最主要的含义就是一套代码多端运行，减少重复劳动</p>
+<p>目前看来，国内比较流行的是小程序, H5, App 三端跨的框架， <a href="https://link.juejin.cn/?target=https://github.com/dcloudio/uni-app">uniapp</a> 及 <a href="https://link.juejin.cn/?target=https://github.com/NervJS/taro">taro</a> 是其中做的比较出彩的两个框架。当然在 taro3.0 之前（以下主要是说小程序），taro 跟 uniapp 都是使用编译时做更多的事情，编译成小程序能够运行的代码。</p>
+<p>而在 taro3.0 之后变成了与 <a href="https://link.juejin.cn/?target=https://github.com/remaxjs/remax">remax</a> 相同的思想，在运行时做更多的事情，保证了原框架代码能够完全使用，而不需要为了转换成其他小程序时做兼容。</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/remaxjs/awesome-remax">awesome-remax</a></li>
+<li><a href="https://link.juejin.cn/?target=https://tech.meituan.com/2021/06/10/react-native-hybrid-practice-dsl-in-meituan.html">美团自研 react 跨端</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904036743774216">京东 taro</a></li>
+</ul>
+<h2 id="监控"><a href="#监控" class="headerlink" title="监控"></a>监控</h2><p>当业务进入稳定，最需要做的肯定是对于业务线上的各种性能、异常及常规业务进行监控，避免在上线之后成为瞎子。</p>
+<p>目前市场比较出名的监控系统：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://sentry.io/welcome/">sentry</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.aliyun.com/product/nodejs">ali node</a></li>
+<li><a href="https://link.juejin.cn/?target=https://bugly.qq.com/v2/">bugly</a></li>
+<li><a href="https://link.juejin.cn/?target=https://mixpanel.com/">mixpanel</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.tingyun.com/">听云</a></li>
+</ul>
+<p>推荐开源库：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/rrweb-io/rrweb">rrweb</a>，提供像素级的录制与回放，帮助正确定位问题是如何发生的</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/clouDr-f2e/monitor">monitor</a>，👀 一款轻量级的收集页面的用户点击行为、路由跳转、接口报错、代码报错、并上报服务端的 SDK</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mitojs/mitojs">mitojs</a> 上面 <code>monitor</code> 作者新维护的库。全新插拔式的监控 SDK，代码架构更清晰，配置项更丰富，高度可定制化</li>
+</ul>
+<p>推荐文章：</p>
+<ul>
+<li><a href="https://link.juejin.cn/?target=https://tech.meituan.com/2019/08/15/mtflexbox-automation-buried-point-exploration.html">美团可视化埋点方案</a></li>
+<li><a href="https://link.juejin.cn/?target=http://www.alloyteam.com/2020/01/14184/%23prettyPhoto">如何进行 web 性能监控？</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.infoq.cn/article/dxa8am44oz*lukk5ufhy">蚂蚁金服如何把前端性能监控做到极致?</a></li>
+<li><a href="https://link.juejin.cn/?target=https://www.zhihu.com/question/29953354">如何做前端异常监控？</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6862559324632252430#heading-17">前端监控平台系列：JS SDK（已开源）</a></li>
+</ul>
+<h2 id="日常充电"><a href="#日常充电" class="headerlink" title="日常充电"></a>日常充电</h2><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/sdmg15/Best-websites-a-programmer-should-visit">Best-websites-a-programmer-should-visit</a>，优秀的工程师都应该阅读的网站</li>
+</ul>
+<h3 id="CSS-日常充电"><a href="#CSS-日常充电" class="headerlink" title="CSS 日常充电"></a>CSS 日常充电</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/l-hammer/You-need-to-know-css">You-need-to-know-css</a></li>
+<li><a href="https://link.juejin.cn/?target=https://csscoco.com/inspiration/%23/">CSS Inspiration</a></li>
+<li><a href="https://link.juejin.cn/?target=https://qishaoxuan.github.io/css_tricks/">CSS Tricks</a></li>
+<li><a href="https://link.juejin.cn/?target=https://tobiasahlin.com/spinkit/">spinkit</a> 需自备梯子</li>
+<li><a href="https://link.juejin.cn/?target=https://animista.net/">animista</a></li>
+</ul>
+<h2 id="Github-优秀学习资料"><a href="#Github-优秀学习资料" class="headerlink" title="Github 优秀学习资料"></a>Github 优秀学习资料</h2><h3 id="JS-优秀学习资料"><a href="#JS-优秀学习资料" class="headerlink" title="JS 优秀学习资料"></a>JS 优秀学习资料</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/leonardomso/33-js-concepts">33-js-concepts</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/Tencent/secguide/blob/main/JavaScript%E5%AE%89%E5%85%A8%E6%8C%87%E5%8D%97.md%231.1">JavaScript 安全指南</a></li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/denysdovhan/wtfjs">What the f*ck JavaScript?</a>，有趣的 JavaScript 示例列表，附有解释</li>
+<li><a href="https://link.juejin.cn/?target=https://github.com/ryanmcdermott/clean-code-javascript">clean-code-javascript</a>，适应于 JavaScript 的优雅代码建议</li>
+</ul>
+<h3 id="React-优秀学习资料"><a href="#React-优秀学习资料" class="headerlink" title="React 优秀学习资料"></a>React 优秀学习资料</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/mithi/react-philosophies">react-philosophies</a>，React 哲学，内容为写 React 代码时思考的事情</li>
+</ul>
+<h3 id="代码样式及安全"><a href="#代码样式及安全" class="headerlink" title="代码样式及安全"></a>代码样式及安全</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://github.com/Tencent/secguide">secguide</a>，面向开发人员梳理的代码安全指南</li>
+</ul>
+<h2 id="生产力工具"><a href="#生产力工具" class="headerlink" title="生产力工具"></a>生产力工具</h2><h3 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h3><ul>
+<li><a href="https://link.juejin.cn/?target=https://whimsical.com/">whimsical</a></li>
+</ul>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>内容其实目前只能算作是第一版，并不完善，欢迎大家参与投稿内容，<a href="https://link.juejin.cn/?target=https://github.com/KieSun/fucking-frontend">这里是仓库链接</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Programming/" rel="tag"><i class="fa fa-tag"></i> Programming</a>
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6/" rel="tag"><i class="fa fa-tag"></i> 前端进阶</a>
+              <a href="/tags/%E6%8E%98%E9%87%91/" rel="tag"><i class="fa fa-tag"></i> 掘金</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/14/%E5%89%8D%E7%AB%AF%E7%94%9F%E4%BA%A7%E7%8E%AF%E5%A2%83%E9%83%A8%E7%BD%B2%20ES6%20%E4%BB%A3%E7%A0%81/" rel="prev" title="前端生产环境部署 ES 6 代码">
+                  <i class="fa fa-chevron-left"></i> 前端生产环境部署 ES 6 代码
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

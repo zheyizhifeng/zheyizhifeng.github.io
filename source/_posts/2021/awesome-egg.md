@@ -2,7 +2,7 @@
 title: awesome-egg
 date: 2021-10-14 11:26:50
 categories:
-  - front-end
+  - Programming
   - JavaScript
   - Framework
 tags: 

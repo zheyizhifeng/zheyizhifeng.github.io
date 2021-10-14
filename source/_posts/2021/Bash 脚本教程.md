@@ -4,15 +4,15 @@ date: 2021-10-12 17:36:37
 categories: 
   - Programming
   - Linux
-  - Shell
-  - 脚本
 tags: 
   - Programming
   - Linux
-  - Shell
-  - 脚本
+  - Bash
 ---
 
+来自网道项目，原文 [点这里查看](https://wangdoc.com/bash/) 
+
+---
 # 简介
 
 Bash 是 Unix 系统和 Linux 系统的一种 Shell（命令行环境），是目前绝大多数 Linux 发行版的默认 Shell。

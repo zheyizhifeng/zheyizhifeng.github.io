@@ -2,7 +2,7 @@
 title: awesome-react
 date: 2021-10-14 11:36:01
 categories:
-  - front-end
+  - Programming
   - JavaScript
   - Framework
 tags: 

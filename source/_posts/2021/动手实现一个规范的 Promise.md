@@ -11,6 +11,9 @@ tags:
   - Promise
 ---
 
+转载自掘金，原文链接 [点这里查看](https://juejin.cn/post/6844904147884441608?utm_source=gold_browser_extension%3Futm_source%3Dgold_browser_extension)
+
+---
 ## 前言
 
 关于 `Promise` 原理解析的优秀文章已经屡见不鲜，但是笔者总 **看了就会，一写就废**，为了理一下 `Promise` 的编写思路，从零开始手写一波代码，同时也方便自己日后回顾。

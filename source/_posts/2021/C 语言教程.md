@@ -7,8 +7,13 @@ categories:
 tags: 
   - Programming
   - C 语言
+  - 教程
+  - 文档
 ---
 
+来自网道项目，原文 [点这里查看](https://wangdoc.com/clang/) 
+
+---
 # C 语言简介
 
 ## 历史

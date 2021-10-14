@@ -2,11 +2,16 @@
 title: Web API 教程
 date: 2021-10-12 17:23:24
 categories: 
-  - Web
+  - Programming
   - JavaScript
 tags: 
-  - Web
   - JavaScript
+  - Web API
+  - 浏览器
+---
+
+来自网道项目，原文 [点这里查看](https://wangdoc.com/webapi/) 
+
 ---
 
 # Canvas API

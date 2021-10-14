@@ -2,8 +2,8 @@
 title: awesome-frontend
 date: 2021-10-14 10:46:22
 categories: 
-  - front-end
-  - Web
+  - Programming
+  - 前端资源
 tags: 
   - front-end
   - Web

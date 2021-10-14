@@ -4,13 +4,16 @@ date: 2021-10-13 15:49:51
 categories: 
   - Programming
   - JavaScript
-  - 异常
 tags: 
   - Programming
   - JavaScript
+  - try catch
   - 异常
 ---
 
+转载自掘金，原文链接 [点这里查看](https://juejin.cn/post/6844904143891464200)
+
+---
 `try catch` 执行主要分为三段：try catch 之前，之中，之后。
 
 ## try catch 之前
@@ -18,6 +21,8 @@ tags:
 代码报错的时候，线程执行未进入 try catch，那么无法捕捉异常。
 
 比如语法异常（syntaxError），因为语法异常是在语法检查阶段就报错了，线程执行尚未进入 try catch 代码块，自然就无法捕获到异常。
+
+<!-- more -->
 
 例子 1：
 

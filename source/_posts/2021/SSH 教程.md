@@ -3,14 +3,16 @@ title: SSH 教程
 date: 2021-10-12 17:12:26
 categories: 
   - Programming
-  - SSH
-  - Shell
-  - 脚本
+  - Linux
+
 tags: 
   - Programming
+  - Linux
   - SSH
-  - Shell
-  - 脚本
+---
+
+来自网道项目，原文 [点这里查看](https://wangdoc.com/ssh/) 
+
 ---
 
 SSH 是 Linux 系统的登录工具，现在广泛用于服务器登录和各种加密通信。

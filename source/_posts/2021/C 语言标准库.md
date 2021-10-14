@@ -7,8 +7,12 @@ categories:
 tags: 
   - Programming
   - C 语言
+  - 标准库
 ---
 
+来自网道项目，原文 [点这里查看](https://wangdoc.com/clang/) 
+
+---
 # assert.h
 
 ## assert()

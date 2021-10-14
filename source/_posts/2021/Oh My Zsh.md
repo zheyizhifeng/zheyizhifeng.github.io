@@ -7,7 +7,7 @@ categories:
 tags: 
   - Tools
   - Terminal
-  - oh-my-zsh
+  - Oh-My-Zsh
 ---
 # 查看已有终端
 ```bash

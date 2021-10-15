@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="转载自掘金，原文链接 点这里查看  前言 Chrome浏览器我想是每一个前端er必用工具之一吧，一部分原因是它速度快，体积不大，支持的新特性也比其它浏览器多，还有一部分我想就是因为它的控制台功能强大了吧，说它是神器一点也不过分，很方便。但其实很多开发者并没有用出控制台的精髓，只是使用简单的console.log();其实控制台功能远远不止这么简单哦。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome 控制台实用指南">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/15/Chrome%E6%8E%A7%E5%88%B6%E5%8F%B0/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="转载自掘金，原文链接 点这里查看  前言 Chrome浏览器我想是每一个前端er必用工具之一吧，一部分原因是它速度快，体积不大，支持的新特性也比其它浏览器多，还有一部分我想就是因为它的控制台功能强大了吧，说它是神器一点也不过分，很方便。但其实很多开发者并没有用出控制台的精髓，只是使用简单的console.log();其实控制台功能远远不止这么简单哦。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/16573bcd3e15fead9ffde70609380b06~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/82605c97399bbee425524c971d4685dc~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/26e2ee45384a2fd5b34e08d61a3e27a0~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/e1635979936eaf5a2b8ff249e8921c95~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/e08f61646a8e55f4b1781894fdd226c6~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/0ab99d1594fe63284c97bee06cc75a5e~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/d7536829bced6078e897a52539fec6f8~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/d0b44ef61a042a1bcd2968c185870797~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/61cd5a4e62d45dc46c1daf48668956d1~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/1c19ece2590dd6897182c811f0ca4c76~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/9b7ad8fcfb2f50ab540d191ac0760b2e~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/63a411d9a2e3e6b2c0797fb16d94b3a9~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/27e9411e03611ab618c8043a55bf703a~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/30/314acd9a1c3e45bd400cf1b6d1f66241~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/1b60d32c2373ad60e027e45075a2e7af~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/2e8585130071b038a8b8040714efca7e~tplv-t2oaga2asx-watermark.awebp">
+<meta property="article:published_time" content="2021-10-15T03:22:34.000Z">
+<meta property="article:modified_time" content="2021-10-15T06:01:43.376Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="Tools">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="浏览器">
+<meta property="article:tag" content="Chrome">
+<meta property="article:tag" content="控制台">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/16573bcd3e15fead9ffde70609380b06~tplv-t2oaga2asx-watermark.awebp">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/15/Chrome%E6%8E%A7%E5%88%B6%E5%8F%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/15/Chrome%E6%8E%A7%E5%88%B6%E5%8F%B0/","path":"2021/10/15/Chrome控制台/","title":"Chrome 控制台实用指南"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Chrome 控制台实用指南 | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">41</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">22</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-clear"><span class="nav-number">2.</span> <span class="nav-text">console.clear</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-log%E5%AE%B6%E6%97%8F"><span class="nav-number">3.</span> <span class="nav-text">console.log家族</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-table"><span class="nav-number">4.</span> <span class="nav-text">console.table</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-assert"><span class="nav-number">5.</span> <span class="nav-text">console.assert</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-count"><span class="nav-number">6.</span> <span class="nav-text">console.count</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-dir"><span class="nav-number">7.</span> <span class="nav-text">console.dir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#console-time-amp-console-timeEnd"><span class="nav-number">8.</span> <span class="nav-text">console.time &amp; console.timeEnd</span></a></li><li class="nav-item nav-level-2"><a class="nav-link"><span class="nav-number">9.</span> <span class="nav-text">$</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x-path"><span class="nav-number">10.</span> <span class="nav-text">$x(path)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#copy"><span class="nav-number">11.</span> <span class="nav-text">copy</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#keys-amp-values"><span class="nav-number">12.</span> <span class="nav-text">keys &amp; values</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#monitor-amp-unmonitor"><span class="nav-number">13.</span> <span class="nav-text">monitor &amp; unmonitor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#debug-amp-undebug"><span class="nav-number">14.</span> <span class="nav-text">debug &amp; undebug</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">41</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/15/Chrome%E6%8E%A7%E5%88%B6%E5%8F%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Chrome 控制台实用指南
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2021-10-15 11:22:34 / 修改时间：14:01:43" itemprop="dateCreated datePublished" datetime="2021-10-15T11:22:34+08:00">2021-10-15</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tools/" itemprop="url" rel="index"><span itemprop="name">Tools</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tools/%E6%B5%8F%E8%A7%88%E5%99%A8/" itemprop="url" rel="index"><span itemprop="name">浏览器</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Tools/%E6%B5%8F%E8%A7%88%E5%99%A8/Chrome/" itemprop="url" rel="index"><span itemprop="name">Chrome</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>转载自掘金，原文链接 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903443887308814">点这里查看</a></p>
+<hr>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><blockquote>
+<p>Chrome浏览器我想是每一个前端er必用工具之一吧，一部分原因是它速度快，体积不大，支持的新特性也比其它浏览器多，还有一部分我想就是因为它的控制台功能强大了吧，说它是神器一点也不过分，很方便。但其实很多开发者并没有用出控制台的精髓，只是使用简单的console.log();其实控制台功能远远不止这么简单哦。</p>
+</blockquote>
+<a id="more"></a>
+
+<h2 id="console-clear"><a href="#console-clear" class="headerlink" title="console.clear"></a>console.clear</h2><blockquote>
+<p>console.clear();清空控制台，这个应该和console.log知名度一样高吧。</p>
+</blockquote>
+<h2 id="console-log家族"><a href="#console-log家族" class="headerlink" title="console.log家族"></a>console.log家族</h2><blockquote>
+<p>先简单介绍一下chrome的控制台，打开chrome浏览器，按f12就可以轻松的打开控制台</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/16573bcd3e15fead9ffde70609380b06~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p>如果你是一位开发者，我想console.log肯定是经常使用的了，我们主要看看console.log的几个兄弟：</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">1.</span>console<span class="token punctuation">.</span><span class="token function">log</span> <span class="token punctuation">(</span><span class="token string">'普通信息'</span><span class="token punctuation">)</span>
+
+<span class="token number">2.</span>console<span class="token punctuation">.</span><span class="token function">info</span> <span class="token punctuation">(</span><span class="token string">'提示性信息'</span><span class="token punctuation">)</span>
+
+<span class="token number">3.</span>console<span class="token punctuation">.</span><span class="token function">error</span> <span class="token punctuation">(</span><span class="token string">'错误信息'</span><span class="token punctuation">)</span>
+
+<span class="token number">4.</span>console<span class="token punctuation">.</span><span class="token function">warn</span> <span class="token punctuation">(</span><span class="token string">'警示信息'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/82605c97399bbee425524c971d4685dc~tplv-t2oaga2asx-watermark.awebp" alt="控制台"></p>
+<p><strong>大家都会用log，但很少有人能够很好地利用console.error , console.warn 等将输出到控制台的信息进行分类整理。他们功能区别不大，意义在于将输出到控制台的信息进行归类，或者说让它们更语义化。</strong></p>
+<blockquote>
+<p>如果再配合console.group 与console.groupEnd，可以将这种分类管理的思想发挥到极致。这适合于在开发一个规模很大模块很多很复杂的Web APP时，将各自的log信息分组到以各自命名空间为名称的组里面。</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"app.bundle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"来自bundle模块的警告信息1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">warn</span><span class="token punctuation">(</span><span class="token string">"来自bundle模块的警告信息2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">groupEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">group</span><span class="token punctuation">(</span><span class="token string">"app.bundle"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"来自bundle模块的信息1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"来自bundle模块的信息2"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">groupEnd</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/26e2ee45384a2fd5b34e08d61a3e27a0~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<p><strong>这样的控制台信息看上去就一目了然了，就不用再为了找这是属于那一行代码输出的再翻一遍源码了。</strong></p>
+<blockquote>
+<p>另外，console.log家族还给我们提供了一个的API：第一个参数可以带一些格式化指令，比如%c,\n;看下面这个炫酷的效果：</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'%chello world'</span><span class="token punctuation">,</span> <span class="token string">'background-image:-webkit-gradient( linear, left top, right top, color-stop(0, #f22), color-stop(0.15, #f2f), color-stop(0.3, #22f), color-stop(0.45, #2ff), color-stop(0.6, #2f2),color-stop(0.75, #2f2), color-stop(0.9, #ff2), color-stop(1, #f22) );color:transparent;-webkit-background-clip: text;font-size:5em;'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/e1635979936eaf5a2b8ff249e8921c95~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<p><strong>当然，图片也是可以的，读者可以自行尝试，修改上述代码即可。</strong></p>
+<blockquote>
+<p>另外，console.log() 接收不定参数，参数间用逗号分隔，最终会输出会将它们以空白字符连接。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/e08f61646a8e55f4b1781894fdd226c6~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+</blockquote>
+<h2 id="console-table"><a href="#console-table" class="headerlink" title="console.table"></a>console.table</h2><blockquote>
+<p>看着这种“黑魔法”是不是有种坑分的感觉呢，其实还不止哦！console.table可以让我们输出表格,示例：</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span>code<span class="token operator">:</span><span class="token number">200</span><span class="token punctuation">,</span>content<span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token string">'品名'</span><span class="token operator">:</span> <span class="token string">'杜雷斯'</span><span class="token punctuation">,</span> <span class="token string">'数量'</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">&#123;</span><span class="token string">'品名'</span><span class="token operator">:</span> <span class="token string">'冈本'</span><span class="token punctuation">,</span> <span class="token string">'数量'</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">table</span><span class="token punctuation">(</span>data<span class="token punctuation">.</span>content<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/0ab99d1594fe63284c97bee06cc75a5e~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<p><strong>有的时候后端传回来一大串数据，是不是觉得直接console.log或是通过抓包工具查看都会让人晕头转向呢，这个时候正事console.table发挥作用的时候了，以表格的形式呈现数据，自然一目了然。</strong></p>
+<h2 id="console-assert"><a href="#console-assert" class="headerlink" title="console.assert"></a>console.assert</h2><pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> isDebug<span class="token operator">=</span><span class="token boolean">false</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">assert</span><span class="token punctuation">(</span>isDebug<span class="token punctuation">,</span><span class="token string">'开发中的log信息。。。'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>当你想代码满足某些条件时才输出信息到控制台，那么你大可不必写if或者三元表达式来达到目的，cosole.assert便是这样场景下一种很好的工具，它会先对传入的表达式进行断言，只有表达式为假时才输出相应信息到控制台。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/d7536829bced6078e897a52539fec6f8~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+</blockquote>
+<h2 id="console-count"><a href="#console-count" class="headerlink" title="console.count"></a>console.count</h2><blockquote>
+<p>除了条件输出的场景，还有常见的场景是计数。 当你想统计某段代码执行了多少次时也大可不必自己去写相关逻辑，内置的console.count可以很地胜任这样的任务.</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/d0b44ef61a042a1bcd2968c185870797~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+</blockquote>
+<h2 id="console-dir"><a href="#console-dir" class="headerlink" title="console.dir"></a>console.dir</h2><blockquote>
+<p>将DOM结点以JavaScript对象的形式输出到控制台 而console.log是直接将该DOM结点以DOM树的结构进行输出，与在元素审查时看到的结构是一致的。不同的展现形式，同样的优雅，各种体位任君选择反正就是方便与体贴。</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">dir</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/61cd5a4e62d45dc46c1daf48668956d1~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+</blockquote>
+<h2 id="console-time-amp-console-timeEnd"><a href="#console-time-amp-console-timeEnd" class="headerlink" title="console.time &amp; console.timeEnd"></a>console.time &amp; console.timeEnd</h2><blockquote>
+<p>输出一些调试信息是控制台最常用的功能，当然，它的功能远不止于此。当做一些性能测试时，同样可以在这里很方便地进行。比如需要考量一段代码执行的耗时情况时，可以用console.time与 console.timeEnd来做此事。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token string">"Array耗时"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> array<span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Array</span><span class="token punctuation">(</span><span class="token number">10000000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">var</span> i <span class="token operator">=</span> array<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    array<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Object</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">timeEnd</span><span class="token punctuation">(</span><span class="token string">"Array耗时"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/1c19ece2590dd6897182c811f0ca4c76~tplv-t2oaga2asx-watermark.awebp" alt="这里写代码片"></p>
+<blockquote>
+<p>当想要查看CPU使用相关的信息时，可以使用console.profile配合 console.profileEnd来完成这个需求。 这一功能可以通过UI界面来完成，Chrome 开发者工具里面有个tab便是Profile。使用方法和console.time基本一样，其实time开发者工具里也有个tab就是timeline。关于console.prefile博主就不做多余的介绍了。想要做更多了解的读者可以看<a href="https://link.juejin.cn/?target=https://developers.google.com/web/tools/chrome-devtools/debug/console/console-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3%23consolelogobject-object">这里</a>。</p>
+</blockquote>
+<h2 id=""><a href="#" class="headerlink" title="$"></a>$</h2><blockquote>
+<p>讲真，米国程序员们真的很喜欢money啊（谁又不是呢），看看PHP就知道了,满屏的$。而在Chrome的控制台里，$用处同样是蛮多且方便的。</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token number">2</span><span class="token operator">+</span><span class="token number">2</span><span class="token comment">//回车，再</span>
+$_<span class="token operator">+</span><span class="token number">1</span><span class="token comment">//回车得5</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>上面的<code>$_</code>需要领悟其奥义才能使用得当，而<code>$0~$4</code>则代表了最近5个你选择过的DOM节点。 什么意思呢？在页面右击选择审查元素，然后在弹出来的DOM结点树上面随便点选，这些被点过的节点会被记录下来，而$0会返回最近一次点选的DOM结点，以此类推，$1返回的是上上次点选的DOM节点，最多保存了5个，如果不够5个，则返回undefined。</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/9b7ad8fcfb2f50ab540d191ac0760b2e~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<blockquote>
+<p>另外值得一赞的是，Chrome 控制台中原生支持类jQuery的选择器，也就是说你可以用$加上熟悉的css选择器来选择DOM节点，多么滴熟悉。</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'body'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/63a411d9a2e3e6b2c0797fb16d94b3a9~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<blockquote>
+<p>$(selector)返回的是满足选择条件的首个DOM元素。 剥去她伪善的外衣，其实$(selector)是原生JavaScript document.querySelector() 的封装。 同时另一个命令?(selector)返回的是所有满足选择条件的元素的一个集合，是对document.querySelectorAll() 的封装。</p>
+<h2 id="x-path"><a href="#x-path" class="headerlink" title="$x(path)"></a>$x(path)</h2><p>将所匹配的节点放在一个数组里返回</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">"//p"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">$x</span><span class="token punctuation">(</span><span class="token string">"//p[a]"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/27e9411e03611ab618c8043a55bf703a~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<blockquote>
+<p>$x(“//p”)匹配所有的p节点，$x(“//p[a]”);匹配所有子节点包含a的p节点</p>
+<h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2></blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token function">copy</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span>body<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>然后你就可以Ctrl+v了。</p>
+</blockquote>
+<p><strong>注意：他不依附于任何全局变量比如window，所以其实在JS代码里是访问不了这个copy方法的，所以从代码层面来调用复制功能也就无从谈起。但愿有天浏览器会提供相应的JS实现吧~这样我们就可以通过js代码进行复制操作而不用再依赖Flash插件了。</strong></p>
+<h2 id="keys-amp-values"><a href="#keys-amp-values" class="headerlink" title="keys &amp; values"></a>keys &amp; values</h2><blockquote>
+<p>这是一对基友。前者返回传入对象所有属性名组成的数据，后者返回所有属性值组成的数组。具体请看下面的例子：</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">var</span> tfboy<span class="token operator">=</span><span class="token punctuation">&#123;</span>name<span class="token operator">:</span><span class="token string">'wayou'</span><span class="token punctuation">,</span>gender<span class="token operator">:</span><span class="token string">'unknown'</span><span class="token punctuation">,</span>hobby<span class="token operator">:</span><span class="token string">'opposite to the gender'</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token function">keys</span><span class="token punctuation">(</span>tfboy<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">values</span><span class="token punctuation">(</span>tfboy<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/30/314acd9a1c3e45bd400cf1b6d1f66241~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+<h2 id="monitor-amp-unmonitor"><a href="#monitor-amp-unmonitor" class="headerlink" title="monitor &amp; unmonitor"></a>monitor &amp; unmonitor</h2><blockquote>
+<p>monitor(function)，它接收一个函数名作为参数，比如function a,每次a被执行了，都会在控制台输出一条信息，里面包含了函数的名称a及执行时所传入的参数。而unmonitor(function)便是用来停止这一监听。</p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">'hello,'</span><span class="token operator">+</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token function">monitor</span><span class="token punctuation">(</span>sayHello<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token string">'damonare'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">sayHello</span><span class="token punctuation">(</span><span class="token string">'tjz'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">unmonitor</span><span class="token punctuation">(</span>sayHello<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/1b60d32c2373ad60e027e45075a2e7af~tplv-t2oaga2asx-watermark.awebp" alt="这里写图片描述"></p>
+</blockquote>
+<h2 id="debug-amp-undebug"><a href="#debug-amp-undebug" class="headerlink" title="debug &amp; undebug"></a>debug &amp; undebug</h2><blockquote>
+<p>debug同样也是接收一个函数名作为参数。当该函数执行时自动断下来以供调试，类似于在该函数的入口处打了个断点，可以通过debugger来做到，同时也可以通过在Chrome开发者工具里找到相应源码然后手动打断点。而undebug 则是解除该断点。而其他还有好些命令则让人没有说的欲望，因为好些都可以通过Chrome开发者工具的UI界面来操作并且比用在控制台输入要方便。</p>
+</blockquote>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2016/11/29/2e8585130071b038a8b8040714efca7e~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p><strong>本博文依据<a href="https://link.juejin.cn/?target=https://developers.google.com/web/tools/chrome-devtools/debug/console/console-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3%23consolelogobject-object">Console API文档</a>和<a href="https://link.juejin.cn/?target=https://developers.google.com/web/tools/chrome-devtools/debug/command-line/command-line-reference?utm_source=dcc&utm_medium=redirect&utm_campaign=2016q3%23debugfunction">Commond API</a>书写。</strong></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Tools/" rel="tag"><i class="fa fa-tag"></i> Tools</a>
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/" rel="tag"><i class="fa fa-tag"></i> 浏览器</a>
+              <a href="/tags/Chrome/" rel="tag"><i class="fa fa-tag"></i> Chrome</a>
+              <a href="/tags/%E6%8E%A7%E5%88%B6%E5%8F%B0/" rel="tag"><i class="fa fa-tag"></i> 控制台</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/15/%E8%8A%82%E6%B5%81%E5%92%8C%E9%98%B2%E6%8A%96/" rel="prev" title="JS 函数节流和函数防抖">
+                  <i class="fa fa-chevron-left"></i> JS 函数节流和函数防抖
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/15/10%E7%A7%8D%E8%B7%A8%E5%9F%9F%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" rel="next" title="10种跨域解决方案">
+                  10种跨域解决方案 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

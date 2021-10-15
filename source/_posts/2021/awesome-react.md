@@ -20,9 +20,9 @@ tags:
 - [reach](https://github.com/reach/router) - React 的下一代路由。 ![](https://img.shields.io/github/stars/reach/router.svg?style=social&label=Star)
 - [wouter](https://github.com/molefrog/wouter) - 一个极简友好的 ~1.3KB 路由库。 ![](https://img.shields.io/github/stars/molefrog/wouter.svg?style=social&label=Star)
 - [navi](https://github.com/frontarm/navi) - React 的声明式异步路由。 ![](https://img.shields.io/github/stars/frontarm/navi.svg?style=social&label=Star)
+<!-- more -->
 - [universal-router](https://github.com/kriasoft/universal-router) - 简单中间件式路由，用于同构 JavaScript Web 应用程序的。 ![](https://img.shields.io/github/stars/kriasoft/universal-router.svg?style=social&label=Star)
 - [curi](https://github.com/pshrmn/curi) - 用于单页应用程序的 JavaScript 路由。 ![](https://img.shields.io/github/stars/pshrmn/curi.svg?style=social&label=Star)
-<!-- more -->
 ### i18n
 
 - [react-intl](https://github.com/yahoo/react-intl) - React 应用国际化。 ![](https://img.shields.io/github/stars/yahoo/react-intl.svg?style=social&label=Star)

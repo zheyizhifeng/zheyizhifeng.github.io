@@ -3,11 +3,13 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "start": "hexo s -p 8080",
     "server": "hexo g && hexo s",
     "clean": "hexo clean",
     "build": "hexo generate",
-    "deploy": "hexo deploy",
-    "product": "hexo cl && hexo g && hexo d"
+    "deploy": "hexo cl && hexo g && hexo d",
+    "gcloud-deploy": "gcloud app deploy app.yml && gcloud app browse",
+    "gcloud-log": "gcloud app logs tail -s default"
   },
   "hexo": {
     "version": "5.1.1"

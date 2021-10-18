@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="转载自掘金，原文链接 点这里查看  前言 Coding 应当是一生的事业，而不仅仅是 30 岁的青春饭本文已收录 GitHub https:&#x2F;&#x2F;github.com&#x2F;ponkans&#x2F;F2E，欢迎 Star，持续更新  每篇文章都希望你能收获到东西，这篇将带你深入 HTTPS 加解密原理，希望看完能够有这些收获：  明白 HTTPS 到底解决了什么问题 理解对称加密与非对称加密的原理和使用场景 明白">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《大前端进阶 安全》系列 HTTPS 详解">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2021/10/15/%E3%80%8A%E5%A4%A7%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6%20%E5%AE%89%E5%85%A8%E3%80%8B%E7%B3%BB%E5%88%97%20HTTPS%20%E8%AF%A6%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="转载自掘金，原文链接 点这里查看  前言 Coding 应当是一生的事业，而不仅仅是 30 岁的青春饭本文已收录 GitHub https:&#x2F;&#x2F;github.com&#x2F;ponkans&#x2F;F2E，欢迎 Star，持续更新  每篇文章都希望你能收获到东西，这篇将带你深入 HTTPS 加解密原理，希望看完能够有这些收获：  明白 HTTPS 到底解决了什么问题 理解对称加密与非对称加密的原理和使用场景 明白">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d37bbb486~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d38d0c44b~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d3922763b~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d3f62b170~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d6cfaf6e3~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d6f9ececf~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d74933ff0~tplv-t2oaga2asx-watermark.awebp">
+<meta property="og:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3da7b1edc3~tplv-t2oaga2asx-watermark.awebp">
+<meta property="article:published_time" content="2021-10-15T09:21:37.000Z">
+<meta property="article:modified_time" content="2021-10-18T04:05:46.089Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="Https">
+<meta property="article:tag" content="网络安全">
+<meta property="article:tag" content="网络通信">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d37bbb486~tplv-t2oaga2asx-watermark.awebp">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2021/10/15/%E3%80%8A%E5%A4%A7%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6%20%E5%AE%89%E5%85%A8%E3%80%8B%E7%B3%BB%E5%88%97%20HTTPS%20%E8%AF%A6%E8%A7%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2021/10/15/%E3%80%8A%E5%A4%A7%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6%20%E5%AE%89%E5%85%A8%E3%80%8B%E7%B3%BB%E5%88%97%20HTTPS%20%E8%AF%A6%E8%A7%A3/","path":"2021/10/15/《大前端进阶 安全》系列 HTTPS 详解/","title":"《大前端进阶 安全》系列 HTTPS 详解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>《大前端进阶 安全》系列 HTTPS 详解 | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">42</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">15</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">23</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Why-HTTPS"><span class="nav-number">2.</span> <span class="nav-text">Why HTTPS</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTTPS-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">3.</span> <span class="nav-text">HTTPS 实现原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B"><span class="nav-number">3.1.</span> <span class="nav-text">工作流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9D%9E%E5%AF%B9%E7%A7%B0%E5%8A%A0%E5%AF%86"><span class="nav-number">3.2.</span> <span class="nav-text">对称加密与非对称加密</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CA%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84"><span class="nav-number">3.3.</span> <span class="nav-text">CA颁发机构</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%98%8E%E6%96%87%E6%95%B0%E6%8D%AE%E5%92%8C%E6%95%B0%E5%AD%97%E7%AD%BE%E5%90%8D%E7%BB%84%E6%88%90%E8%AF%81%E4%B9%A6%EF%BC%8C%E4%BC%A0%E9%80%92%E7%BB%99%E5%AE%A2%E6%88%B7%E7%AB%AF%E3%80%82"><span class="nav-number">3.3.1.</span> <span class="nav-text">明文数据和数字签名组成证书，传递给客户端。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">23</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2021/10/15/%E3%80%8A%E5%A4%A7%E5%89%8D%E7%AB%AF%E8%BF%9B%E9%98%B6%20%E5%AE%89%E5%85%A8%E3%80%8B%E7%B3%BB%E5%88%97%20HTTPS%20%E8%AF%A6%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          《大前端进阶 安全》系列 HTTPS 详解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-15 17:21:37" itemprop="dateCreated datePublished" datetime="2021-10-15T17:21:37+08:00">2021-10-15</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-10-18 12:05:46" itemprop="dateModified" datetime="2021-10-18T12:05:46+08:00">2021-10-18</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" itemprop="url" rel="index"><span itemprop="name">网络通信</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>转载自掘金，原文链接 <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904127420432391">点这里查看</a></p>
+<hr>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
+<p>Coding 应当是一生的事业，而不仅仅是 30 岁的青春饭<br>本文已收录 <a href="https://link.juejin.cn/?target=https://github.com/ponkans/F2E">GitHub https://github.com/ponkans/F2E</a>，欢迎 Star，持续更新</p>
+</blockquote>
+<p>每篇文章都希望你能收获到东西，这篇将带你<strong>深入 HTTPS 加解密原理</strong>，希望看完能够有这些收获：</p>
+<ul>
+<li>明白 HTTPS 到底解决了什么问题</li>
+<li>理解对称加密与非对称加密的原理和使用场景</li>
+<li>明白 CA 机构和根证书到底起了什么作用</li>
+</ul>
+<a id="more"></a>
+<h1 id="Why-HTTPS"><a href="#Why-HTTPS" class="headerlink" title="Why HTTPS"></a>Why HTTPS</h1><blockquote>
+<p>近几年来，各大公司都在大力推进 HTTPS 的建设。Google Chrome将非 HTTPS 的网站标注为「不安全」，苹果要求 APP 中需要使用HTTPS进行通信，微信小程序也要求使用HTTPS协议。那么，我们为什么非要做这么一件事呢？</p>
+</blockquote>
+<p>我们先来看看HTTP。HTTP（Hypertext Transfer Protocol）超文本传输协议，是一种用于分布式、协作式和超媒体信息系统的应用层协议，可以说 HTTP 是当代互联网通信的基础。</p>
+<p>但是，HTTP 有着一个致命的缺陷，那就是内容是<strong>明文传输</strong>的，没有经过任何加密，而这些明文数据会经过<strong>WiFi、路由器、运营商、机房</strong>等多个物理设备节点，如果在这中间任意一个节点被监听，传输的内容就会完全暴露，，这一攻击手法叫做MITM（Man In The Middle）<strong>中间人</strong>攻击。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d37bbb486~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p><strong>举个例子</strong></p>
+<p>可以拿小时候上课传纸条来类比，你坐在教室靠墙的一边，想要传一句<strong>「晚上放学操场我等你」</strong>给坐在窗边的小红，中间要经过六七个人的传递。虽然你把纸条对折了一下，但是防君子不防小人，中间的所有人都可以很轻易地打开纸条看到你想要说什么。</p>
+<p>只是看还好，如果有小刚也喜欢小红，看到你俩马上就要甜甜蜜蜜地回家了，心有不甘，换了一张纸条，改成了<strong>「晚上放学你自己回家吧，我要去网吧玩游戏」</strong>。</p>
+<p>小红看到你要抛弃她自己去玩游戏，非常伤心，开始在纸条上质问<strong>「说好的一起回家呢，为什么要去打游戏，哼」</strong>。</p>
+<p>在小红的纸条传回来的路上，小刚又改了纸条<strong>「你玩你的游戏去吧，我要和小刚回家」</strong>。</p>
+<p>于是，你和小红都倍感伤心，小刚横刀夺爱，而你一头雾水。</p>
+<hr>
+<p>回忆一下几年前遍地都是的<strong>运营商劫持</strong>，当你访问一个本来很正常的网页，但页面上却莫名其妙出现了一些广告标签、跳转脚本、欺骗性的红包按钮，甚至有时候本来要下载一个文件，最后下下来却变成了另外一个完全不同的东西，这些都是被运营商劫持了HTTP明文数据的现象。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d38d0c44b~tplv-t2oaga2asx-watermark.awebp" alt="**运营商劫持**">运营商劫持</p>
+<p>还有各大公司的员工<strong>安全培训</strong>里都有一条「不要连陌生的WiFi」，也是类似的原因，恶意WiFi的控制者可以看到和篡改HTTP明文传输的信息。</p>
+<p>为了解决HTTP明文传输数据可能导致的安全问题，1994年网景公司提出了HTTPS（HyperText Transfer Protocol Secure）超文本传输安全协议，数据通信仍然是HTTP，但利用<strong>SSL/TLS加密数据包</strong>。</p>
+<h1 id="HTTPS-实现原理"><a href="#HTTPS-实现原理" class="headerlink" title="HTTPS 实现原理"></a>HTTPS 实现原理</h1><blockquote>
+<p>前面说到，HTTPS其实就是将HTTP的数据包再通过SSL/TLS加密后传输，那么SSL/TLS又是什么呢？</p>
+</blockquote>
+<p>SSL（Secure Sockets Layer）安全套接层和TLS（Transport Layer Security）传输层安全协议其实是<strong>一套东西</strong>。</p>
+<p>网景公司在1994年提出HTTPS协议时，使用的是SSL进行加密。后来IETF（Internet Engineering Task Force）互联网工程任务组将SSL进一步标准化，于1999年公布第一版TLS协议文件TLS 1.0。目前最新版的TLS协议是TLS 1.3，于2018年公布。</p>
+<h2 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h2><p>我们先来看看HTTPS的加解密流程。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d3922763b~tplv-t2oaga2asx-watermark.awebp" alt="HTTPS加解密流程">HTTPS加解密流程</p>
+<ol>
+<li>用户在浏览器发起HTTPS请求（如 <a target="_blank" rel="noopener" href="https://juejin.cn/user/747323638163768">juejin.cn</a>），默认使用服务端的443端口进行连接；</li>
+<li>HTTPS需要使用一套<strong>CA数字证书</strong>，证书内会附带一个<strong>公钥Pub</strong>，而与之对应的<strong>私钥Private</strong>保留在服务端不公开；</li>
+<li>服务端收到请求，返回配置好的包含<strong>公钥Pub</strong>的证书给客户端；</li>
+<li>客户端收到<strong>证书</strong>，校验合法性，主要包括是否在有效期内、证书的域名与请求的域名是否匹配，上一级证书是否有效（递归判断，直到判断到系统内置或浏览器配置好的根证书），如果不通过，则显示HTTPS警告信息，如果通过则继续；</li>
+<li>客户端生成一个用于对称加密的<strong>随机Key</strong>，并用证书内的<strong>公钥Pub</strong>进行加密，发送给服务端；</li>
+<li>服务端收到<strong>随机Key</strong>的密文，使用与<strong>公钥Pub</strong>配对的<strong>私钥Private</strong>进行解密，得到客户端真正想发送的<strong>随机Key</strong>；</li>
+<li>服务端使用客户端发送过来的<strong>随机Key</strong>对要传输的HTTP数据进行对称加密，将密文返回客户端；</li>
+<li>客户端使用<strong>随机Key</strong>对称解密密文，得到HTTP数据明文；</li>
+<li>后续HTTPS请求使用之前交换好的<strong>随机Key</strong>进行对称加解密。</li>
+</ol>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d3f62b170~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<h2 id="对称加密与非对称加密"><a href="#对称加密与非对称加密" class="headerlink" title="对称加密与非对称加密"></a>对称加密与非对称加密</h2><blockquote>
+<p>又是对称加密又是非对称加密，一会公钥一会私钥一会随机Key，为什么要这么复杂呢，一套搞到底不好么？</p>
+</blockquote>
+<p>对称加密是指有一个密钥，用它可以对一段明文加密，加密之后也只能用这个密钥来解密得到明文。如果通信双方都持有密钥，且天知地知你知我知，绝对不会有别的人知道，那么通信安全自然是可以得到保证的（在<strong>密钥足够强</strong>的情况下）。</p>
+<p>然而，在HTTPS的传输场景下，服务端事先并不知道客户端是谁，你也<strong>不可能在事先不通过互联网和每一个网站的管理员都悄悄商量好一个通信密钥</strong>出来，那么必然存在一个密钥在互联网上传输的过程，如果在传输过程中被别人监听到了，那么后续的所有加密都是无用功。</p>
+<p>这时，我们就需要另一种神奇的加密类型，非对称加密。</p>
+<p>非对称加密有两个密钥，一个是公钥，另一个是私钥。一般来说，公钥用来加密，这时密文只能用私钥才能解开。</p>
+<p>那么，当客户端发起连接请求，服务端将公钥传输过去，客户端利用公钥加密好信息，再将密文发送给服务端，服务端里有私钥可以解密。</p>
+<p>但是，当服务端要返回数据，如果用公钥加密，那么客户端并没有私钥用来解密，而如果用私钥加密，客户端虽然有公钥可以解密，但这个公钥之前就在<strong>互联网上传输过</strong>，很有可能已经有人拿到，并不安全，所以这一过程只用非对称加密是不能满足的。</p>
+<blockquote>
+<p>注意，严格来讲，私钥并不能用来加密，只能用作签名使用，这是由于密码学中生成公钥私钥时对不同变量的数学要求是不同的，因此公钥私钥抵抗攻击的能力也不同，在实际使用中不可互换。签名的功能在HTTPS里也有用到，下文中会说明。</p>
+</blockquote>
+<p>只有一组公钥私钥只能保证单程的加解密，那么如果我们准备<strong>两组公钥私钥</strong>呢，是不是可以解决这个问题？来看下面这个过程。</p>
+<ol>
+<li>服务端有非对称加密的公钥A1，私钥A2；</li>
+<li>客户端有非对称加密的公钥B1，私钥B2；</li>
+<li>客户端向服务端发起请求，服务端将公钥A1返回给客户端；</li>
+<li>浏览器收到公钥A1，将自己保存的公钥B1发送给服务端；</li>
+<li>之后服务端所有向客户端发送的数据，使用公钥B1加密，客户端可以使用私钥B2解密；</li>
+<li>客户端所有向服务端发送的数据，使用公钥A1加密，服务端可以使用私钥A2解密。</li>
+</ol>
+<p>此时，两条传输方向的数据都经过非对称加密，都能保证安全性，那么为什么不采用这种方案呢？</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d6cfaf6e3~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p>最主要的原因是<strong>非对称加解密耗时要远大于对称加解密</strong>，对性能有很大损耗，大家的使用体验很差。</p>
+<p>所以，我们才最终选用了上文介绍到非对称加密+对称加密的方案，再复习一下↓↓↓</p>
+<ol>
+<li>服务端有非对称加密的公钥A1，私钥A2；</li>
+<li>客户端发起请求，服务端将公钥A1返回给客户端；</li>
+<li>客户端随机生成一个对称加密的密钥K，用公钥A1加密后发送给服务端；</li>
+<li>服务端收到密文后用自己的私钥A2解密，得到对称密钥K，此时完成了安全的对称密钥交换，解决了对称加密时密钥传输被人窃取的问题</li>
+<li>之后双方通信都使用密钥K进行对称加解密。</li>
+</ol>
+<p>看起来是一个非常完美的方案，<strong>兼顾</strong>了安全性和性能，但是，真的就安全了么？</p>
+<h2 id="CA颁发机构"><a href="#CA颁发机构" class="headerlink" title="CA颁发机构"></a>CA颁发机构</h2><p>依然考虑<strong>中间人攻击</strong>的情况，非对称加密的算法都是<strong>公开</strong>的，所有人都可以自己生成一对公钥私钥。</p>
+<p>当服务端向客户端返回公钥A1的时候，中间人将其<strong>替换</strong>成自己的公钥B1传送给浏览器。</p>
+<p>而浏览器此时一无所知，傻乎乎地使用公钥B1加密了密钥K发送出去，又被<strong>中间人截获</strong>，中间人利用自己的私钥B2解密，得到密钥K，再使用服务端的公钥A1加密传送给服务端，完成了通信链路，而服务端和客户端毫无感知。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d6f9ececf~tplv-t2oaga2asx-watermark.awebp" alt="HTTPS中间人">HTTPS中间人</p>
+<p>出现这一问题的核心原因是<strong>客户端无法确认收到的公钥是不是真的是服务端发来的</strong>。为了解决这个问题，互联网引入了一个公信机构，这就是CA。</p>
+<p>服务端在使用HTTPS前，去经过认证的CA机构申请颁发一份<strong>数字证书</strong>，数字证书里包含有证书持有者、证书有效期、公钥等信息，服务端将证书发送给客户端，客户端校验证书身份和要访问的网站身份确实一致后再进行后续的加密操作。</p>
+<p>但是，如果中间人也聪明一点，<strong>只改动了证书中的公钥部分</strong>，客户端依然不能确认证书<strong>是否被篡改</strong>，这时我们就需要一些防伪技术了。</p>
+<p>前面说过，非对称加密中一般公钥用来加密，私钥用来解密，虽然私钥加密理论上可行，但由于数学上的设计这么做并不适合，那么私钥就只有解密这个功能了么？</p>
+<p>私钥除了解密外的真正用途其实还有一个，就是<strong>数字签名</strong>，其实就是一种防伪技术，只要有人篡改了证书，那么数字签名必然校验失败。具体过程如下</p>
+<ol>
+<li>CA机构拥有自己的一对公钥和私钥</li>
+<li>CA机构在颁发证书时对证书明文信息进行哈希</li>
+<li>将哈希值用私钥进行<strong>加签</strong>，得到数字签名</li>
+</ol>
+<h3 id="明文数据和数字签名组成证书，传递给客户端。"><a href="#明文数据和数字签名组成证书，传递给客户端。" class="headerlink" title="明文数据和数字签名组成证书，传递给客户端。"></a>明文数据和数字签名组成证书，传递给客户端。</h3><ol>
+<li>客户端得到证书，分解成明文部分Text和数字签名Sig1</li>
+<li>用CA机构的公钥进行<strong>解签</strong>，得到Sig2（由于CA机构是一种公信身份，因此在系统或浏览器中会内置CA机构的证书和公钥信息）</li>
+<li>用证书里声明的哈希算法对明文Text部分进行哈希得到T</li>
+<li>当自己计算得到的哈希值H与<strong>解签</strong>后的Sig2<strong>相等</strong>，表示证书可信，<strong>没有被篡改</strong></li>
+</ol>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3d74933ff0~tplv-t2oaga2asx-watermark.awebp" alt="img"></p>
+<p>这时，签名是由CA机构的私钥生成的，中间人篡改信息后无法拿到CA机构的私钥，保证了证书可信。</p>
+<blockquote>
+<p>注意，这里有一个比较<strong>难以理解</strong>的地方，非对称加密的签名过程是，私钥将一段消息进行加签，然后将签名部分和消息本身一起发送给对方，收到消息后对签名部分利用公钥验签，如果验签出来的内容和消息本身一致，表明消息没有被篡改。</p>
+</blockquote>
+<p>在这个过程中，系统或浏览器中内置的CA机构的证书和公钥成为了至关重要的环节，这也是CA机构公信身份的证明，如果系统或浏览器中没有这个CA机构，那么客户端可以不接受服务端传回的证书，显示HTTPS警告。</p>
+<p>实际上CA机构的证书是一条信任链，A信任B，B信任C，以<strong>掘金的证书</strong>为例，掘金向RapidSSL申请一张证书，而RapidSSL的CA身份是由DigiCert Global根CA认证的，构成了一条信任链。</p>
+<p>各级CA机构的私钥是绝对的私密信息，一旦CA机构的私钥泄露，其公信力就会一败涂地。之前就有过几次<strong>CA机构私钥泄露</strong>，引发信任危机，各大系统和浏览器只能纷纷吊销内置的对应CA的根证书。</p>
+<p>有些老旧的网站会要求使用前下载安装他自己的根证书，这就是这个网站使用的证书并不能在系统内置的CA机构和根证书之间形成一条信任链，需要自己安装根证书来构成信任链，这里的风险就要<strong>使用者自己承担</strong>了。</p>
+<p><img src="https://p1-jj.byteimg.com/tos-cn-i-t2oaga2asx/gold-user-assets/2020/3/29/17126e3da7b1edc3~tplv-t2oaga2asx-watermark.awebp" alt="证书明细">证书明细</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><blockquote>
+<p>本文已收录 <a href="https://link.juejin.cn/?target=https://github.com/ponkans/F2E">Github https://github.com/ponkans/F2E</a>，欢迎 Star，持续更新💧</p>
+</blockquote>
+<p>HTTPS 的出发点是解决HTTP明文传输时信息被篡改和监听的问题。</p>
+<ul>
+<li>为了兼顾性能和安全性，使用了非对称加密+对称加密的方案。</li>
+<li>为了保证公钥传输中不被篡改，又使用了非对称加密的数字签名功能，借助CA机构和系统根证书的机制保证了HTTPS证书的公信力。</li>
+</ul>
+<p>近期原创文章传送门，biubiubiu：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904103114440718">《吐血整理》系列 大厂前端组件库工具集合（PC端、移动端、JS、CSS等）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904093475930125">《大前端进阶 Node.js》系列 必知必会必问</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904099972907021">《大前端进阶 Node.js》系列 多进程模型原理（字节跳动被问）</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6844904095514378254">《大前端进阶 Node.js》系列 双十一秒杀系统</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Https/" rel="tag"><i class="fa fa-tag"></i> Https</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" rel="tag"><i class="fa fa-tag"></i> 网络安全</a>
+              <a href="/tags/%E7%BD%91%E7%BB%9C%E9%80%9A%E4%BF%A1/" rel="tag"><i class="fa fa-tag"></i> 网络通信</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/15/Web%20Security/" rel="prev" title="Web Security">
+                  <i class="fa fa-chevron-left"></i> Web Security
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>

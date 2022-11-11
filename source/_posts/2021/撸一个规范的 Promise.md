@@ -1,5 +1,5 @@
 ---
-title: 动手实现一个规范的 Promise
+title: 撸一个一个规范的 Promise
 date: 2021-10-13 17:44:27
 categories: 
   - Programming

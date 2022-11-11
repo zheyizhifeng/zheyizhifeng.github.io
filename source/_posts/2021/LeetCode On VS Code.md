@@ -3,12 +3,13 @@ title: LeetCode On VS Code
 date: 2020-10-28 10:39:06
 categories: 
   - Tools
-  - LeetCode
+  - VSCode
 tags: 
   - Tools
-  - Vscode扩展
-  - Leetcode
+  - VSCode
+  - LeetCode
   - 算法
+  - 插件
 ---
 # 如何优雅的在VS Code刷Leetcode算法题库？
 

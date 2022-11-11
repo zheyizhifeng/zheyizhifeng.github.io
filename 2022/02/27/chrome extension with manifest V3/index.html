@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)">
+<meta name="generator" content="Hexo 5.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Sans+Simplified+Chinese:300,300italic,400,400italic,700,700italic%7CCousine:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/themes/green/pace-theme-minimal.css">
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"zheyizhifeng.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/db.json","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Chrome Extension With Manifest V3What Extension Is  Extensions are software programs, built on web technologies (such as HTML, CSS, and JavaScript) that enable users to customize the Chrome browsing e">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Chrome Extension With Manifest V3">
+<meta property="og:url" content="https://zheyizhifeng.github.io/2022/02/27/chrome%20extension%20with%20manifest%20V3/index.html">
+<meta property="og:site_name" content="Lucida&#39;s Blog">
+<meta property="og:description" content="Chrome Extension With Manifest V3What Extension Is  Extensions are software programs, built on web technologies (such as HTML, CSS, and JavaScript) that enable users to customize the Chrome browsing e">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217175042667.png">
+<meta property="og:image" content="https://static.careerengine.us/api/aov2/https%3A_%7C__%7C_mmbiz.qpic.cn_%7C_mmbiz_png_%7C_dkwuWwLoRK95qOVpY72zicpWwLAHwxKPr7SrWicJERd9iaQklkZ0DpCKG2GMHOzS3AhicmVIur4pbMrcH5mbgyQKtw_%7C_640%3Fwx_fmt%3Dpng">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217183003834.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217183440530.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217184100318.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217184118220.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217202754281.png">
+<meta property="og:image" content="http://www.co-ding.com/assets/img/2019-10-18-chrome-1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217195734158.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217200117586.png">
+<meta property="og:image" content="https://wd.imgix.net/image/BrQidfK9jaQyIHwdw91aVpkPiib2/kcLMpTY6qtez03TVSqt4.png?auto=format">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217200944834.png">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/826e09b59b2647679eef9f7b42be652a~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1932d450523c4b19972a820a00d920f4~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f890ba9522574bbda5a0223e22b01c71~tplv-k3u1fbpfcp-watermark.awebp">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220224214333026.png">
+<meta property="article:published_time" content="2022-02-27T09:21:37.000Z">
+<meta property="article:modified_time" content="2022-11-11T05:29:04.257Z">
+<meta property="article:author" content="lucida">
+<meta property="article:tag" content="JavaScript">
+<meta property="article:tag" content="Chrome">
+<meta property="article:tag" content="Extension">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217175042667.png">
+
+
+<link rel="canonical" href="https://zheyizhifeng.github.io/2022/02/27/chrome%20extension%20with%20manifest%20V3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"https://zheyizhifeng.github.io/2022/02/27/chrome%20extension%20with%20manifest%20V3/","path":"2022/02/27/chrome extension with manifest V3/","title":"Chrome Extension With Manifest V3"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Chrome Extension With Manifest V3 | Lucida's Blog</title>
+  
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucida's Blog</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Stay Hungry, Stay Foolish</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">51</span></a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">21</span></a></li>
+        <li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">31</span></a></li>
+        <li class="menu-item menu-item-commonweal"><a href="/404/" rel="section"><i class="fa fa-heartbeat fa-fw"></i>公益 404</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chrome-Extension-With-Manifest-V3"><span class="nav-number">1.</span> <span class="nav-text">Chrome Extension With Manifest V3</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Extension-Is"><span class="nav-number">1.1.</span> <span class="nav-text">What Extension Is</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#What-Manifest-Is"><span class="nav-number">1.2.</span> <span class="nav-text">What Manifest Is</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#About-manifest-json"><span class="nav-number">1.2.1.</span> <span class="nav-text">About manifest.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Why-Not-Manifest-V2"><span class="nav-number">1.2.2.</span> <span class="nav-text">Why Not Manifest V2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-A-MV3-Hello-Extension"><span class="nav-number">1.3.</span> <span class="nav-text">Build A MV3 Hello Extension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Project-Structure"><span class="nav-number">1.3.1.</span> <span class="nav-text">Project Structure</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-Run-Hello-Extension"><span class="nav-number">1.3.2.</span> <span class="nav-text">Install &#x2F; Run Hello Extension</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Debug-Extension"><span class="nav-number">1.3.3.</span> <span class="nav-text">Debug Extension</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#More-Extension"><span class="nav-number">1.4.</span> <span class="nav-text">More Extension</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#page-render"><span class="nav-number">1.4.1.</span> <span class="nav-text">page-render</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#bookmarks"><span class="nav-number">1.4.2.</span> <span class="nav-text">bookmarks</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chrome-Extension-Basic-Composition"><span class="nav-number">1.5.</span> <span class="nav-text">Chrome Extension Basic Composition</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#service-worker-background-js"><span class="nav-number">1.5.1.</span> <span class="nav-text">service_worker(background.js)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#content-script"><span class="nav-number">1.5.2.</span> <span class="nav-text">content_script</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%B3%A8%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">注入方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popup"><span class="nav-number">1.5.3.</span> <span class="nav-text">popup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#option"><span class="nav-number">1.5.4.</span> <span class="nav-text">option</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#devtools"><span class="nav-number">1.5.5.</span> <span class="nav-text">devtools</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Basic-Composition-Communication"><span class="nav-number">1.6.</span> <span class="nav-text">Basic Composition Communication</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#content-script-amp-amp-service-worker-popup"><span class="nav-number">1.6.1.</span> <span class="nav-text">content script &amp;&amp; service worker&#x2F;popup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popup-amp-amp-service-worker"><span class="nav-number">1.6.2.</span> <span class="nav-text">popup &amp;&amp; service worker</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#popup-amp-amp-content-script"><span class="nav-number">1.6.3.</span> <span class="nav-text">popup &amp;&amp; content script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#devtools-amp-amp-content-script"><span class="nav-number">1.6.4.</span> <span class="nav-text">devtools &amp;&amp; content script</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#devtools-amp-amp-popup"><span class="nav-number">1.6.5.</span> <span class="nav-text">devtools &amp;&amp; popup</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Beyla-Chrome-Extension"><span class="nav-number">1.7.</span> <span class="nav-text">Beyla Chrome Extension</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recommend-Extension"><span class="nav-number">1.8.</span> <span class="nav-text">Recommend Extension</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="lucida"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">lucida</p>
+  <div class="site-description" itemprop="description">文质彬彬，然后君子</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">21</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">51</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/zheyizhifeng" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:zheyizhifeng@126.com" title="E-Mail → mailto:zheyizhifeng@126.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/zheyizhifeng" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-weibo fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/zheyizhifeng" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/zheyizhifeng" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;zheyizhifeng" rel="noopener" target="_blank"><i class="fab fa-facebook fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:zheyizhifeng?call|chat" title="Skype → skype:zheyizhifeng?call|chat" rel="noopener" target="_blank"><i class="fab fa-skype fa-fw"></i></a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/zheyizhifeng" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://zheyizhifeng.github.io/2022/02/27/chrome%20extension%20with%20manifest%20V3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="lucida">
+      <meta itemprop="description" content="文质彬彬，然后君子">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucida's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Chrome Extension With Manifest V3
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2022-02-27 17:21:37" itemprop="dateCreated datePublished" datetime="2022-02-27T17:21:37+08:00">2022-02-27</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2022-11-11 13:29:04" itemprop="dateModified" datetime="2022-11-11T13:29:04+08:00">2022-11-11</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Chrome/" itemprop="url" rel="index"><span itemprop="name">Chrome</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Chrome-Extension-With-Manifest-V3"><a href="#Chrome-Extension-With-Manifest-V3" class="headerlink" title="Chrome Extension With Manifest V3"></a>Chrome Extension With Manifest V3</h1><h2 id="What-Extension-Is"><a href="#What-Extension-Is" class="headerlink" title="What Extension Is"></a>What Extension Is</h2><blockquote>
+<p> Extensions are software programs, built on web technologies (such as HTML, CSS, and JavaScript) that enable users to customize the Chrome browsing experience.</p>
+<p> 扩展程序是基于 Web 技术（例如 HTML、CSS 和 JavaScript）构建的软件程序，可让用户自定义 Chrome 浏览体验。</p>
+</blockquote>
+<p>以上是对chrome extension的官方介绍，个人理解就是：</p>
+<blockquote>
+<p>Chrome Extension 是能通过『当前选项卡』『插件弹出页』『全局js脚本』『devtools信息』等合作通信去实现特定功能的后台程序。</p>
+</blockquote>
+<h2 id="What-Manifest-Is"><a href="#What-Manifest-Is" class="headerlink" title="What Manifest Is"></a>What Manifest Is</h2><h3 id="About-manifest-json"><a href="#About-manifest-json" class="headerlink" title="About manifest.json"></a>About manifest.json</h3><blockquote>
+<p>Each extender needs to have a **configuration checklist <code>manifest.json</code> document **, which provides basic information about the extension, such as required permissions, names, versions, and so on.</p>
+<p>每一个扩展程序都需要有一个<strong>配置清单 <code>manifest.json</code> 文档</strong>，它提供了关于扩展程序的基本信息，例如所需的权限、名称、版本等。</p>
+</blockquote>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json">  <span class="token punctuation">&#123;</span>
+  <span class="token comment">// Required - 通俗易懂</span>
+  <span class="token property">"manifest_version"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"My Extension"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"versionString"</span><span class="token punctuation">,</span>
+
+   <span class="token comment">// 『重点』action配置项主要用于点击图标弹出框，对于弹出框接受的是html文件</span>
+  <span class="token property">"action"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+     <span class="token property">"default_title"</span><span class="token operator">:</span> <span class="token string">"Click to view a popup"</span><span class="token punctuation">,</span>
+   	 <span class="token property">"default_popup"</span><span class="token operator">:</span> <span class="token string">"popup.html"</span>
+   <span class="token punctuation">&#125;</span>
+    
+  <span class="token comment">// 通俗易懂</span>
+  <span class="token property">"default_locale"</span><span class="token operator">:</span> <span class="token string">"en"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"A plain text description"</span><span class="token punctuation">,</span>
+  <span class="token property">"icons"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>...<span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> ...<span class="token punctuation">,</span>
+
+  <span class="token comment">// 『重点』下面将出现的background.js 配置service work</span>
+  <span class="token property">"background"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Required</span>
+    <span class="token property">"service_worker"</span><span class="token operator">:</span> <span class="token string">"service-worker.js"</span><span class="token punctuation">,</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 『重点』下面将出现content_script.js 应用于所有页面上下文的js</span>
+  <span class="token property">"content_scripts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+     <span class="token punctuation">&#123;</span>
+       <span class="token property">"matches"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://*.google.com/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token property">"css"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"my-styles.css"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+       <span class="token property">"js"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"content-script.js"</span><span class="token punctuation">]</span>
+     <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 使用/添加devtools中的功能</span>
+  <span class="token property">"devtools_page"</span><span class="token operator">:</span> <span class="token string">"devtools.html"</span><span class="token punctuation">,</span>
+
+
+    <span class="token comment">/**
+    * 三个permission
+    * host_permissions - 允许使用扩展的域名
+    * permissions - 包含已知字符串列表中的项目 【只需一次弹框要求允许】
+    * optional_permissions - 与常规类似permissions，但由扩展的用户在运行时授予，而不是提前授予【安全】
+    * 列出常见选项
+    * &#123;
+    *		activeTab: 当扩展卡选项被改变需要重新获取新的权限
+    *		tabs: 操作选项卡api（改变位置等）
+    *		downloads: 访问chrome.downloads API 的权限 便于下载但还是会受到跨域影响
+    *		history: history api权限
+    *		storage: 访问localstorage/sessionStorage权限
+    * &#125;
+    */</span>
+  <span class="token property">"host_permissions"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"http://*/*"</span><span class="token punctuation">,</span> <span class="token string">"https://*/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"permissions"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"tabs"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"optional_permissions"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"downloads"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+
+    <span class="token comment">// 内部弹出可选页面 - 见fehelper操作页</span>
+  <span class="token property">"options_page"</span><span class="token operator">:</span> <span class="token string">"options.html"</span><span class="token punctuation">,</span>
+  <span class="token property">"options_ui"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"chrome_style"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"page"</span><span class="token operator">:</span> <span class="token string">"options.html"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Why-Not-Manifest-V2"><a href="#Why-Not-Manifest-V2" class="headerlink" title="Why Not Manifest V2"></a>Why Not Manifest V2</h3><p><strong>当前配置清单类型最新的版本是 Manifest V3，MV3</strong>，遵循该配置清单版本的扩展程序，会更注重安全和用户的隐私保护，在性能方面也会得到提升，同时开发简易性和功能实现也会更佳。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217175042667.png" alt="image-20220217175042667"></p>
+<p><img src="https://static.careerengine.us/api/aov2/https%3A_%7C__%7C_mmbiz.qpic.cn_%7C_mmbiz_png_%7C_dkwuWwLoRK95qOVpY72zicpWwLAHwxKPr7SrWicJERd9iaQklkZ0DpCKG2GMHOzS3AhicmVIur4pbMrcH5mbgyQKtw_%7C_640%3Fwx_fmt%3Dpng" alt="img"></p>
+<h2 id="Build-A-MV3-Hello-Extension"><a href="#Build-A-MV3-Hello-Extension" class="headerlink" title="Build A MV3 Hello Extension"></a>Build A MV3 Hello Extension</h2><p><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/examples/hello-world">https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/examples/hello-world</a></p>
+<h3 id="Project-Structure"><a href="#Project-Structure" class="headerlink" title="Project Structure"></a>Project Structure</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">--hello
+  --hello.html // 插件界面
+  --background.js // service_worker
+  --manifest.json // 配置文件<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token comment">// manifest.json</span>
+
+<span class="token punctuation">&#123;</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"Hello, World!"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"manifest_version"</span><span class="token operator">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
+  <span class="token property">"background"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
+    <span class="token property">"service_worker"</span><span class="token operator">:</span> <span class="token string">"background.js"</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+  <span class="token property">"action"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// background.js</span>
+
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onInstalled<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">let</span> url <span class="token operator">=</span> chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span><span class="token function">getURL</span><span class="token punctuation">(</span><span class="token string">'hello.html'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> tab <span class="token operator">=</span> <span class="token keyword">await</span> chrome<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> url <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Created tab </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">$&#123;</span>tab<span class="token punctuation">.</span>id<span class="token interpolation-punctuation punctuation">&#125;</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-html" data-language="html"><code class="language-html"><span class="token comment">&lt;!-- hello.html --></span>
+
+<span class="token doctype"><span class="token punctuation">&lt;!</span><span class="token doctype-tag">DOCTYPE</span> <span class="token name">html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Hello, World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>p</span><span class="token punctuation">></span></span>Hello, World!<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>p</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="Install-Run-Hello-Extension"><a href="#Install-Run-Hello-Extension" class="headerlink" title="Install / Run Hello Extension"></a>Install / Run Hello Extension</h3><p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217183003834.png" alt="image-20220217183003834"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217183440530.png" alt="image-20220217183440530"></p>
+<blockquote>
+<p>新版 Chrome 不再支持 <code>.crx</code> 形式的扩展程序，可以安装，但无法启用。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217184100318.png" alt="image-20220217184100318"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217184118220.png" alt="image-20220217184118220"></p>
+<h3 id="Debug-Extension"><a href="#Debug-Extension" class="headerlink" title="Debug Extension"></a>Debug Extension</h3><p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217202754281.png" alt="image-20220217202754281"></p>
+<h2 id="More-Extension"><a href="#More-Extension" class="headerlink" title="More Extension"></a>More Extension</h2><h3 id="page-render"><a href="#page-render" class="headerlink" title="page-render"></a>page-render</h3><p><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/examples/page-redder">https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/examples/page-redder</a></p>
+<h3 id="bookmarks"><a href="#bookmarks" class="headerlink" title="bookmarks"></a>bookmarks</h3><p><a target="_blank" rel="noopener" href="https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/examples/bookmarks">https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/examples/bookmarks</a></p>
+<h2 id="Chrome-Extension-Basic-Composition"><a href="#Chrome-Extension-Basic-Composition" class="headerlink" title="Chrome Extension Basic Composition"></a>Chrome Extension Basic Composition</h2><p><img src="http://www.co-ding.com/assets/img/2019-10-18-chrome-1.png" alt="Keep coding, Keep thinking"></p>
+<h3 id="service-worker-background-js"><a href="#service-worker-background-js" class="headerlink" title="service_worker(background.js)"></a>service_worker(background.js)</h3><blockquote>
+<p>The <strong>background script</strong> is the extension’s event handler; it contains listeners for browser events that are important to the extension. It lies dormant until an event is fired then performs the instructed logic. An effective background script is only loaded when it is needed and unloaded when it goes idle.</p>
+<p><strong>background script</strong>是扩展的事件处理程序; 它包含对扩展很重要的浏览器事件的侦听器。它处于休眠状态，直到触发事件，然后执行指示的逻辑。有效的后台脚本仅在需要时加载，并在空闲时卸载。</p>
+</blockquote>
+<p>要关注两点：</p>
+<ul>
+<li>不使用时终止，需要时重新启动（类似于事件页面）。</li>
+<li>无权访问 DOM。（service worker 独立于页面）</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">message<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">const</span> tabId <span class="token operator">=</span> <span class="token function">getForegroundTabId</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>data <span class="token operator">===</span> <span class="token string">"setAlarm"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    chrome<span class="token punctuation">.</span>alarms<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>delayInMinutes<span class="token operator">:</span> <span class="token number">5</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>data <span class="token operator">===</span> <span class="token string">"runLogic"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    chrome<span class="token punctuation">.</span>scripting<span class="token punctuation">.</span><span class="token function">executeScript</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>file<span class="token operator">:</span> <span class="token string">'logic.js'</span><span class="token punctuation">,</span> tabId<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>message<span class="token punctuation">.</span>data <span class="token operator">===</span> <span class="token string">"changeColor"</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    chrome<span class="token punctuation">.</span>scripting<span class="token punctuation">.</span><span class="token function">executeScript</span><span class="token punctuation">(</span>
+        <span class="token punctuation">&#123;</span><span class="token function-variable function">func</span><span class="token operator">:</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> document<span class="token punctuation">.</span>body<span class="token punctuation">.</span>style<span class="token punctuation">.</span>backgroundColor<span class="token operator">=</span><span class="token string">"orange"</span><span class="token punctuation">,</span> tabId<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="content-script"><a href="#content-script" class="headerlink" title="content_script"></a>content_script</h3><blockquote>
+<p>Extensions that read or write to web pages utilize a <strong>content_script</strong>. The content script contains JavaScript that executes in the contexts of a page that has been loaded into the browser. Content scripts read and modify the DOM of web pages the browser visits.</p>
+<p>Content scripts can communicate with their parent extension by exchanging <a href="https://link.juejin.cn/?target=https://developer.chrome.com/docs/extensions/mv3/messaging/">messages</a> and storing values using the <a href="https://link.juejin.cn/?target=https://developer.chrome.com/docs/extensions/reference/storage/">storage</a> API.</p>
+<p>读取或写入网页的扩展程序使用 <strong>content_script</strong>。内容脚本包含在已加载到浏览器的页面上下文中执行的 JavaScript。内容脚本读取和修改浏览器访问的网页的 DOM。</p>
+</blockquote>
+<p><code>content_script</code>可以通过使用storage/message API来与扩展其他部分进行通信。</p>
+<h4 id="注入方式"><a href="#注入方式" class="headerlink" title="注入方式"></a>注入方式</h4><ul>
+<li><p>对于<code>manifest.json</code>来说</p>
+<ul>
+<li>可以配置静态声明去注入</li>
+</ul>
+</li>
+<li><p>可以通过编程方式注入 需要获取<code>activeTab</code>权限</p>
+</li>
+</ul>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token comment">// manifest.json</span>
+<span class="token punctuation">&#123;</span>
+ <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"My extension"</span><span class="token punctuation">,</span>
+ ...
+ <span class="token property">"content_scripts"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+   <span class="token punctuation">&#123;</span>
+     <span class="token comment">// 满足matches匹配的域名</span>
+     <span class="token property">"matches"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"https://*.google.com/*"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+     <span class="token comment">// 注入css</span>
+     <span class="token property">"css"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"my-styles.css"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+     <span class="token comment">// 注入js</span>
+     <span class="token property">"js"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"content-script.js"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+     <span class="token property">"run_at"</span><span class="token operator">:</span> <span class="token string">"document_idle"</span> | <span class="token string">"document_start"</span> | <span class="token string">"document_end"</span>
+   <span class="token punctuation">&#125;</span>
+ <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"permissions"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"activeTab"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>对于获取了权限的<code>content_script</code>通过代码执行注入</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">chrome<span class="token punctuation">.</span>action<span class="token punctuation">.</span>onClicked<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">tab</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  chrome<span class="token punctuation">.</span>scripting<span class="token punctuation">.</span><span class="token function">executeScript</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+    target<span class="token operator">:</span> <span class="token punctuation">&#123;</span> tabId<span class="token operator">:</span> tab<span class="token punctuation">.</span>id <span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+    files<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'content-script.js'</span><span class="token punctuation">]</span>
+  <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="popup"><a href="#popup" class="headerlink" title="popup"></a>popup</h3><p>运行于弹窗的html文件和JS脚本</p>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217195734158.png" alt="image-20220217195734158"></p>
+<h3 id="option"><a href="#option" class="headerlink" title="option"></a>option</h3><blockquote>
+<p>Just as extensions allow users to customize the Chrome browser, the <a href="https://link.juejin.cn/?target=https://developer.chrome.com/docs/extensions/mv3/options/">options page</a> enables customization of the extension. Options can be used to enable features and allow users to choose what functionality is relevant to their needs.</p>
+<p>正如扩展程序允许用户自定义 Chrome 浏览器一样，<a href="https://link.juejin.cn/?target=https://developer.chrome.com/docs/extensions/mv3/options/">选项页面</a>支持扩展程序的自定义。选项可用于启用功能并允许用户选择与其需求相关的功能。</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217200117586.png" alt="image-20220217200117586"></p>
+<h3 id="devtools"><a href="#devtools" class="headerlink" title="devtools"></a>devtools</h3><blockquote>
+<p> A DevTools extension is structured like any other extension: it can have a background page, content scripts, and other items. In addition, each DevTools extension has a DevTools page, which has access to the DevTools APIs.</p>
+<p>DevTools 扩展的结构与任何其他扩展一样：它可以有一个背景页面、内容脚本和其他项目。此外，每个 DevTools 扩展都有一个 DevTools 页面，可以访问 DevTools API。</p>
+</blockquote>
+<p><img src="https://wd.imgix.net/image/BrQidfK9jaQyIHwdw91aVpkPiib2/kcLMpTY6qtez03TVSqt4.png?auto=format" alt="Extending DevTools - Chrome Developers"></p>
+<p>每次打开 DevTools 窗口时，都会创建一个扩展的 DevTools 页面实例。DevTools 页面在 DevTools 窗口的整个生命周期内都存在。DevTools 页面可以访问 DevTools API 和一组有限的扩展 API。devtools 可以提供能力：</p>
+<ul>
+<li>能自定义添加新的Devtools panel</li>
+<li>能嵌入自定义的页面到自定义的panel中</li>
+<li><em>devtools中的 elements &amp; sources两个面板中</em></li>
+</ul>
+<p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220217200944834.png" alt="image-20220217200944834"></p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/826e09b59b2647679eef9f7b42be652a~tplv-k3u1fbpfcp-watermark.awebp" alt="image-20211020151945359"></p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1932d450523c4b19972a820a00d920f4~tplv-k3u1fbpfcp-watermark.awebp" alt="2.png"></p>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js">chrome<span class="token punctuation">.</span>devtools<span class="token punctuation">.</span>panels<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span>
+  <span class="token string">'🔨 Beyla'</span><span class="token punctuation">,</span>
+  <span class="token string">'images/128x128.png'</span><span class="token punctuation">,</span>
+  <span class="token string">'html/devtools.html'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">panel</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// panel loaded</span>
+    panel<span class="token punctuation">.</span>onShown<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span>onPanelShown<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    panel<span class="token punctuation">.</span>onHidden<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span>onPanelHidden<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// [devtools].js</span>
+chrome<span class="token punctuation">.</span>devtools<span class="token punctuation">.</span>panels<span class="token punctuation">.</span>elements<span class="token punctuation">.</span><span class="token function">createSidebarPane</span><span class="token punctuation">(</span>
+	<span class="token string">"element pannel"</span><span class="token punctuation">,</span>
+	<span class="token punctuation">(</span><span class="token parameter">sidebar</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+		sidebar<span class="token punctuation">.</span><span class="token function">setExpression</span><span class="token punctuation">(</span><span class="token string">"(() => &#123;return &#123;a:1&#125;&#125;)()"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+chrome<span class="token punctuation">.</span>devtools<span class="token punctuation">.</span>panels<span class="token punctuation">.</span>sources<span class="token punctuation">.</span><span class="token function">createSidebarPane</span><span class="token punctuation">(</span>
+	<span class="token string">"sources pannel"</span><span class="token punctuation">,</span>
+	<span class="token punctuation">(</span><span class="token parameter">sidebar</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+		sidebar<span class="token punctuation">.</span><span class="token function">setPage</span><span class="token punctuation">(</span><span class="token string">"sources.html"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="Basic-Composition-Communication"><a href="#Basic-Composition-Communication" class="headerlink" title="Basic Composition Communication"></a>Basic Composition Communication</h2><p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f890ba9522574bbda5a0223e22b01c71~tplv-k3u1fbpfcp-watermark.awebp" alt="组件间关系图"></p>
+<table>
+<thead>
+<tr>
+<th>JS种类</th>
+<th>可访问的API</th>
+<th>DOM访问情况</th>
+<th>JS访问情况</th>
+<th>直接跨域</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>injected script</td>
+<td>和普通JS无任何差别，不能访问任何扩展API</td>
+<td>可以访问</td>
+<td>可以访问</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>content script</td>
+<td>只能访问 extension、runtime等部分API</td>
+<td>可以访问</td>
+<td>不可以</td>
+<td>不可以</td>
+</tr>
+<tr>
+<td>popup js</td>
+<td>可访问绝大部分API，除了devtools系列</td>
+<td>不可直接访问</td>
+<td>不可以</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>background js</td>
+<td>可访问绝大部分API，除了devtools系列</td>
+<td>不可直接访问</td>
+<td>不可以</td>
+<td>可以</td>
+</tr>
+<tr>
+<td>devtools js</td>
+<td>只能访问 devtools、extension、runtime等部分API</td>
+<td>可以访问devtools</td>
+<td>可以访问devtools</td>
+<td>不可以</td>
+</tr>
+</tbody></table>
+<h3 id="content-script-amp-amp-service-worker-popup"><a href="#content-script-amp-amp-service-worker-popup" class="headerlink" title="content script &amp;&amp; service worker/popup"></a>content script &amp;&amp; service worker/popup</h3><p>和 <code>content script</code> 有关的通信</p>
+<ul>
+<li>使用 <code>chrome.runtime.sendMessage</code> 发送信息</li>
+<li>使用 <code>chrome.runtime.onMessage.addListener </code> 接收监听信息</li>
+</ul>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// -----[content script].js-----</span>
+<span class="token comment">// 发送信息</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span> beylaDetected<span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -----[service worker].js-----</span>
+<span class="token comment">// 监听消息</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">req<span class="token punctuation">,</span> sender</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>sender<span class="token punctuation">.</span>tab <span class="token operator">&amp;&amp;</span> req<span class="token punctuation">.</span>beylaDetected<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    chrome<span class="token punctuation">.</span>action<span class="token punctuation">.</span><span class="token function">setIcon</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+      tabId<span class="token operator">:</span> sender<span class="token punctuation">.</span>tab<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+      path<span class="token operator">:</span> <span class="token string">'../images/128x128.png'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    chrome<span class="token punctuation">.</span>action<span class="token punctuation">.</span><span class="token function">setPopup</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>
+      tabId<span class="token operator">:</span> sender<span class="token punctuation">.</span>tab<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+      popup<span class="token operator">:</span> <span class="token string">'html/beyla-enable.html'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="popup-amp-amp-service-worker"><a href="#popup-amp-amp-service-worker" class="headerlink" title="popup &amp;&amp; service worker"></a>popup &amp;&amp; service worker</h3><blockquote>
+<p>当只有一对一关系时，可使用万能的<code>chrome.runtime.sendMessage</code> &amp; <code>chrome.runtime.onMessage.addListener</code></p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// -----[popup].js-----</span>
+document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#button"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">const</span> val1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#input1"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">||</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> val2 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#input2"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>value <span class="token operator">||</span> <span class="token string">"0"</span><span class="token punctuation">;</span>
+	chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>val1<span class="token punctuation">,</span> val2<span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+		document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#ans"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> response<span class="token punctuation">.</span>res<span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// -----[service worker].js-----</span>
+<span class="token keyword">const</span> <span class="token function-variable function">dealwithBigNumber</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">val1<span class="token punctuation">,</span> val2</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">BigInt</span><span class="token punctuation">(</span>val1<span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token function">BigInt</span><span class="token punctuation">(</span>val2<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">""</span><span class="token punctuation">;</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> sendResponse</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">const</span> <span class="token punctuation">&#123;</span>val1<span class="token punctuation">,</span> val2<span class="token punctuation">&#125;</span> <span class="token operator">=</span> request<span class="token punctuation">;</span>
+	<span class="token function">sendResponse</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>res<span class="token operator">:</span> <span class="token function">dealwithBigNumber</span><span class="token punctuation">(</span>val1<span class="token punctuation">,</span> val2<span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="popup-amp-amp-content-script"><a href="#popup-amp-amp-content-script" class="headerlink" title="popup &amp;&amp; content script"></a>popup &amp;&amp; content script</h3><blockquote>
+<p>本demo中引用了jquery，想看怎么操作的请看 <a href="https://link.juejin.cn/?target=https://github.com/caifeng123/chrome-extension">源码</a> ~~</p>
+</blockquote>
+<pre class="line-numbers language-js" data-language="js"><code class="language-js"><span class="token comment">// -----[content script].js-----</span>
+<span class="token comment">// 接收popup数据并修改dom</span>
+chrome<span class="token punctuation">.</span>runtime<span class="token punctuation">.</span>onMessage<span class="token punctuation">.</span><span class="token function">addListener</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">request<span class="token punctuation">,</span> sender<span class="token punctuation">,</span> sendResponse</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+	<span class="token comment">// document.querySelector("body").style.setProperty("background", request.color);</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"body"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span> request<span class="token punctuation">.</span>color<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">sendResponse</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>name<span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+
+<span class="token comment">// -----[popup].js-----</span>
+<span class="token comment">// 获取当前tab标签</span>
+<span class="token keyword">const</span> <span class="token function-variable function">getCurrentTab</span> <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">let</span> queryOptions <span class="token operator">=</span> <span class="token punctuation">&#123;</span>active<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span> currentWindow<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+	<span class="token keyword">let</span> <span class="token punctuation">[</span>tab<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token keyword">await</span> chrome<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">query</span><span class="token punctuation">(</span>queryOptions<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">return</span> tab<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
+
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#background"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">paigusu</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span>color<span class="token operator">:</span> <span class="token string">"#1926dc"</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token parameter">event<span class="token punctuation">,</span> obj</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">&#123;</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#info"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"修改中"</span><span class="token punctuation">;</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#show"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">css</span><span class="token punctuation">(</span><span class="token string">"background"</span><span class="token punctuation">,</span> <span class="token string">"#"</span> <span class="token operator">+</span> obj<span class="token punctuation">.</span>hex<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">const</span> tab <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">getCurrentTab</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token keyword">await</span> chrome<span class="token punctuation">.</span>tabs<span class="token punctuation">.</span><span class="token function">sendMessage</span><span class="token punctuation">(</span>tab<span class="token punctuation">.</span>id<span class="token punctuation">,</span> <span class="token punctuation">&#123;</span>color<span class="token operator">:</span> <span class="token string">"#"</span> <span class="token operator">+</span> obj<span class="token punctuation">.</span>hex<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#info"</span><span class="token punctuation">)</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token string">"修改成功"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="devtools-amp-amp-content-script"><a href="#devtools-amp-amp-content-script" class="headerlink" title="devtools &amp;&amp; content script"></a>devtools &amp;&amp; content script</h3><blockquote>
+<p>同1 content script与service worker/popup的通信</p>
+</blockquote>
+<p>​    1对多通信 使用chrome.tabs去找对应页面</p>
+<h3 id="devtools-amp-amp-popup"><a href="#devtools-amp-amp-popup" class="headerlink" title="devtools &amp;&amp; popup"></a>devtools &amp;&amp; popup</h3><blockquote>
+<p>同2  content script与service worker/popup的通信</p>
+</blockquote>
+<p>​    1对1通信 使用chrome.runtime</p>
+<h2 id="Beyla-Chrome-Extension"><a href="#Beyla-Chrome-Extension" class="headerlink" title="Beyla Chrome Extension"></a>Beyla Chrome Extension</h2><p>Repo 参考 <a target="_blank" rel="noopener" href="https://gitlab.ushareit.me/web/fe-workflow/h5/beyla-chrome-extension.git">https://gitlab.ushareit.me/web/fe-workflow/h5/beyla-chrome-extension.git</a></p>
+<h2 id="Recommend-Extension"><a href="#Recommend-Extension" class="headerlink" title="Recommend Extension"></a>Recommend Extension</h2><p><img src="https://cdn.jsdelivr.net/gh/zheyizhifeng/picture_repo/images/image-20220224214333026.png" alt="image-20220224214333026"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="followme">
+  <span>欢迎关注我的其它发布渠道</span>
+
+  <div class="social-list">
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://twitter.com/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-twitter"></i>
+          </span>
+
+          <span class="label">Twitter</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="https://t.me/zheyizhifeng">
+          <span class="icon">
+            <i class="fab fa-telegram"></i>
+          </span>
+
+          <span class="label">Telegram</span>
+        </a>
+      </div>
+
+      <div class="social-item">
+        <a target="_blank" class="social-link" href="/images/wechat.jpg">
+          <span class="icon">
+            <i class="fab fa-weixin"></i>
+          </span>
+
+          <span class="label">WeChat</span>
+        </a>
+      </div>
+  </div>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/JavaScript/" rel="tag"><i class="fa fa-tag"></i> JavaScript</a>
+              <a href="/tags/Chrome/" rel="tag"><i class="fa fa-tag"></i> Chrome</a>
+              <a href="/tags/Extension/" rel="tag"><i class="fa fa-tag"></i> Extension</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/01/20/%E5%AE%A2%E6%88%B7%E7%AB%AF%E4%B8%8B%E5%8F%91ES6%E4%BB%A3%E7%A0%81%E5%8F%AF%E8%A1%8C%E6%80%A7%E6%8E%A2%E7%A9%B6/" rel="prev" title="Webview 下发 ES 6 代码可行吗？">
+                  <i class="fa fa-chevron-left"></i> Webview 下发 ES 6 代码可行吗？
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2022/07/14/H5%E5%B0%8F%E8%AF%B4%E9%98%85%E8%AF%BB%E5%99%A8%E4%B9%8B%E7%BF%BB%E9%A1%B5%E7%AF%87/" rel="next" title="H5 小说阅读器-翻页篇">
+                  H5 小说阅读器-翻页篇 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lucida</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div><script color="0,0,255" opacity="0.5" zIndex="-1" count="99" src="https://cdn.jsdelivr.net/npm/canvas-nest.js@1/dist/canvas-nest.js"></script>
+
+    </div>
+  </footer>
+
+  
+  <script size="300" alpha="0.6" zIndex="-1" src="https://cdn.jsdelivr.net/npm/ribbon.js@1.0.2/dist/ribbon.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  
+
+
+
+
+
+</body>
+</html>
